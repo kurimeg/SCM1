@@ -20,7 +20,6 @@
       jJiseki JJSK
     WHERE
       <!--JJSK.JISEKI_SEQ_NO = #JISEKI_SEQ_NO#-->
-    <!--タンクNo999⇒「ご指定品」のデータは時間外データを作らない為、実績取得SQLにて除外-->
     <!--AND-->
       JJSK.TANK_NO &lt;&gt; '999'
   </select>

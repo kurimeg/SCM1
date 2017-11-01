@@ -10,6 +10,9 @@ namespace SCM1_API.DataAccess
 {
     public static class DataAccess
     {
+        //SQLの格納フォルダは固定なのでコンストで切る
+        const string sqlFilePath = @"DataAccess\SQL";
+
 
         /// <summary>
         /// 接続文字列取得メソッド
@@ -26,28 +29,14 @@ namespace SCM1_API.DataAccess
         }
 
 
-        //public static string FetchSQLString(string sqlId, dynamic parameter)
-        //{
-        //    //var date = DateTime.Now;
-        //    //var param = new
-        //    //{
-        //    //    ShipName = "小料理ひろ",
-        //    //    //OrderDateFm = date,
-        //    //    OrderDateTo = date
-        //    //};
-        //    //var sqlId = "GetList";
-        //    return new QueryXmlBuilder<dynamic>("SQLFile", "Sample", sqlId, parameter).GetQuery();
-        //}
-
-
         /// <summary>
         /// SQLServer_SQL実行メソッド
         /// </summary>
-        public static IEnumerable<dynamic> ThrowSQL(string sqlFilePath, string sqlFileId, string sqlId, dynamic parameter = null)
+        public static IEnumerable<dynamic> ThrowSQL(string sqlFileId, string sqlId, dynamic parameter = null)
         {
             //接続文字列の取得
             var ConnectionString = FetchConnectionString();
-
+            //SQLの取得
             var SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
 
             IEnumerable<dynamic> returnObject;
@@ -79,10 +68,12 @@ namespace SCM1_API.DataAccess
         /// <summary>
         /// SQLServer_SQL実行メソッド_返り値をモデル指定
         /// </summary>
-        public static List<T> ThrowSQLModel<T>(string SQL)
+        public static List<T> ThrowSQLModel<T>(string sqlFileId, string sqlId, dynamic parameter = null)
         {
             //接続文字列の取得
-            var ConnectionString = ConfigurationManager.ConnectionStrings["sqlsvr"].ConnectionString;
+            var ConnectionString = FetchConnectionString();
+            //SQLの取得
+            var SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
 
             List<T> returnObject;
 
@@ -96,7 +87,7 @@ namespace SCM1_API.DataAccess
                     connection.Open();
 
                     // 実行するSQLの準備
-                    returnObject = connection.Query<T>(SQL).ToList();
+                    returnObject = parameter == null ? connection.Query<T>(SQL).ToList() : connection.Query<T>(SQL, (Object)parameter).ToList();
                     //★★↑返り値はList<T>になるので、普通にモデルクラス
                 }
                 catch (Exception exception)
