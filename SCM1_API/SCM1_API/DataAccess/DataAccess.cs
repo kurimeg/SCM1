@@ -12,7 +12,7 @@ namespace SCM1_API.DataAccess
     {
         //SQLの格納フォルダは固定なのでコンストで切る
         const string sqlFilePath = @"DataAccess\SQL";
-
+        const string DAconfigFilePath = @"\DataAccess\DataAccess.config";
 
         /// <summary>
         /// 接続文字列取得メソッド
@@ -21,7 +21,7 @@ namespace SCM1_API.DataAccess
         public static string FetchConnectionString()
         {
             //既定の構成ファイルとは別のファイルを構成ファイルとして読み込む
-            var configFile = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"\DataAccess\DataAccess.config";
+            var configFile = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + DAconfigFilePath;
             var exeFileMap = new ExeConfigurationFileMap { ExeConfigFilename = configFile };
             var config = ConfigurationManager.OpenMappedExeConfiguration(exeFileMap, ConfigurationUserLevel.None);
 

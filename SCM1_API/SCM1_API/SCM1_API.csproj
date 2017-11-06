@@ -127,6 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataAccess\SQL\MST_EMP.xml" />
     <Content Include="DataAccess\SQL\Sample.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -134,15 +135,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIController\EMPController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="APIController\TestController.cs" />
+    <Compile Include="APIController\ValuesController.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\MST_EMP_MODEL.cs" />
+    <Compile Include="PresentationService\EMP_PresentationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\MST_EMP_Repository.cs" />
+    <Compile Include="Service\EMP_Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -159,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

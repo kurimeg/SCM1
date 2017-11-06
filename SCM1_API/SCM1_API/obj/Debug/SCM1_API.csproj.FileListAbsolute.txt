@@ -63,4 +63,6 @@ C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\bin\Syste
 C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\bin\System.Web.Http.WebHost.xml
 C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\SCM1_API.dll
 C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\SCM1_API.pdb
-C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\SCM1_API.csprojResolveAssemblyReference.cache
+C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\bin\ja\System.Net.Http.Formatting.resources.dll
+C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\bin\ja\System.Web.Http.resources.dll
+C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\bin\ja\System.Web.Http.WebHost.resources.dll
