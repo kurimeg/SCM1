@@ -11,7 +11,12 @@ namespace SCM1_API.APIController
 {
     public class empController : ApiController
     {
-        // GET api/<controller>
+        
+        /// <summary>
+        /// GET _社員番号をキーに社員マスタの情報を取得する<controller> 
+        /// </summary>
+        /// <param name="empno"></param>
+        /// <returns></returns>
         public System.Web.Http.Results.JsonResult<object> Get(string empno)
         {
             //PresentationService
