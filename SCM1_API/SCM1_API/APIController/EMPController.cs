@@ -9,14 +9,19 @@ using SCM1_API.Model;
 
 namespace SCM1_API.APIController
 {
-    public class EMPController : ApiController
+    public class empController : ApiController
     {
-        // GET api/<controller>
-        public System.Web.Http.Results.JsonResult<object> Get(int postedEMP_NO)
+        
+        /// <summary>
+        /// GET _社員番号をキーに社員マスタの情報を取得する<controller> 
+        /// </summary>
+        /// <param name="empno"></param>
+        /// <returns></returns>
+        public System.Web.Http.Results.JsonResult<object> Get(string empno)
         {
             //PresentationService
-            var PresenttationService = new EMP_PresentationService();
-            var ProcessResult = PresenttationService.FetchEMPInfo(postedEMP_NO.ToString());
+            var PresentationService = new EMP_PresentationService();
+            var ProcessResult = PresentationService.FetchEMPInfo(empno);
             var ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
 
             return Json((object)new Tuple<String,object>(ResultStatus, ProcessResult.Item2));

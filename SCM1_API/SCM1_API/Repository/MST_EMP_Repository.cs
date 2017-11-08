@@ -18,9 +18,9 @@ namespace SCM1_API.Repository
         /// <returns></returns>
         public static IEnumerable<MST_EMP_MODEL> FetchEMPInfo_Repository(dynamic TargetEMP_NO)
         {
-            //                                           ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
             return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "test", TargetEMP_NO);
-            //                                                     ↑左のxmlファイル内の実際に呼び出すSQLのID
+            //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
     }
 }

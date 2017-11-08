@@ -26,7 +26,7 @@ namespace SCM1_API.PresentationService
         {
             var FetchedEmpInfo = emp_Service.FetchEMPInfo_Service(postedEMP_NO);
             
-
+            //処理ステータスと取得結果を返す
             var returnValue = new Tuple<bool, object>(FetchedEmpInfo.Count() != 0? true:false, FetchedEmpInfo);
             return returnValue;
         } 
