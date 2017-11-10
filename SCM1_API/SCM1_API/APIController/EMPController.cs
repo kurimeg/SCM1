@@ -11,31 +11,40 @@ namespace SCM1_API.APIController
 {
     public class empController : ApiController
     {
-        
+
         /// <summary>
         /// GET _社員番号をキーに社員マスタの情報を取得する<controller> 
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> Get(string empno)
+        public System.Web.Http.Results.JsonResult<object> Get([FromUri]string searchempno)
         {
             //PresentationService
             var PresentationService = new EMP_PresentationService();
-            var ProcessResult = PresentationService.FetchEMPInfo(empno);
-            var ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
-
-            return Json((object)new Tuple<String,object>(ResultStatus, ProcessResult.Item2));
+            String ResultStatus = string.Empty;
+            try
+            { 
+                var ProcessResult = PresentationService.FetchEMPInfo(searchempno);
+                ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
+                return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
+            }
+            catch (Exception ex)
+            {
+                ResultStatus = "ER";
+                return Json((object)(ResultStatus));
+            }
         }
 
-        //// GET api/<controller>/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET api/<controller>/5
+        public System.Web.Http.Results.JsonResult<object> Get([FromUri]string id, [FromUri]string areadv)
+        {
+            return Json((object)new Tuple<String, object>("OK", id));
+        }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public System.Web.Http.Results.JsonResult<object> Post([FromUri]MST_EMP_MODEL insertempdata)
         {
+            return Json((object)new Tuple<String, object>("OK",insertempdata));
         }
 
         // PUT api/<controller>/5
