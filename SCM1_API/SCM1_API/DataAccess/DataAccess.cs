@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Dapper;
 using System.Data.SqlClient;
+using SCM1_API.Model.constants;
 
 namespace SCM1_API.DataAccess
 {
@@ -32,12 +33,27 @@ namespace SCM1_API.DataAccess
         /// <summary>
         /// SQLServer_SQL実行メソッド
         /// </summary>
-        public static IEnumerable<dynamic> ThrowSQL(string sqlFileId, string sqlId, dynamic parameter = null)
+        public static IEnumerable<dynamic> ThrowSQL(string sqlFileId, string sqlId, dynamic parameter = null,DBAccessType dbAccessType = DBAccessType.Select)
         {
             //接続文字列の取得
             var ConnectionString = FetchConnectionString();
             //SQLの取得
-            var SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
+            string SQL = string.Empty;
+            switch(dbAccessType)
+            {
+                case DBAccessType.Select:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
+                    break;
+                case DBAccessType.Insert:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.insert);
+                    break;
+                case DBAccessType.Update:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.update);
+                    break;
+                case DBAccessType.Delete:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.delete);
+                    break;
+            }
 
             IEnumerable<dynamic> returnObject;
 
@@ -68,12 +84,27 @@ namespace SCM1_API.DataAccess
         /// <summary>
         /// SQLServer_SQL実行メソッド_返り値をモデル指定
         /// </summary>
-        public static List<T> ThrowSQLModel<T>(string sqlFileId, string sqlId, dynamic parameter = null)
+        public static List<T> ThrowSQLModel<T>(string sqlFileId, string sqlId, dynamic parameter = null, DBAccessType dbAccessType = DBAccessType.Select)
         {
             //接続文字列の取得
             var ConnectionString = FetchConnectionString();
             //SQLの取得
-            var SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
+            string SQL = string.Empty;
+            switch (dbAccessType)
+            {
+                case DBAccessType.Select:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery();
+                    break;
+                case DBAccessType.Insert:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.insert);
+                    break;
+                case DBAccessType.Update:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.update);
+                    break;
+                case DBAccessType.Delete:
+                    SQL = new QueryXmlBuilder<dynamic>(sqlFilePath, sqlFileId, sqlId, parameter).GetQuery(SqlType.delete);
+                    break;
+            }
 
             List<T> returnObject;
 
