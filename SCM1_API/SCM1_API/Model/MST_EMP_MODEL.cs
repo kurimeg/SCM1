@@ -22,5 +22,13 @@ namespace SCM1_API.Model
         {
             get;set;
         }
+
+        /// <summary>
+        /// 固定席利用可能フラグ
+        /// </summary>
+        public char CAN_SIT_FIXED_SHEET_FLG
+        {
+            get; set;
+        }
     }
 }
