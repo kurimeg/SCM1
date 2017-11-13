@@ -24,9 +24,17 @@ namespace SCM1_API.Model
         }
 
         /// <summary>
+        /// アクセストークン
+        /// </summary>
+        public string ACCESS_TOKEN
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 固定席利用可能フラグ
         /// </summary>
-        public char CAN_SIT_FIXED_SHEET_FLG
+        public bool CAN_SIT_FIXED_SHEET_FLG
         {
             get; set;
         }

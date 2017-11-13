@@ -12,4 +12,26 @@
   </select>
   
 
+  <update id="StoreAccessToken">
+   UPDATE
+     MST_EMP
+   SET
+     ACCESS_TOKEN = #ACCESS_TOKEN#
+   WHERE
+     EMP_NO = #EMP_NO#
+  </update>
+
+  
+    
+  <select id="FetchAccessToken">
+    SELECT
+      ACCESS_TOKEN
+    FROM
+      MST_EMP EMP
+    WHERE
+      EMP.EMP_NO = #EMP_NO#
+  </select>
+
+
+
 </SqlMap>

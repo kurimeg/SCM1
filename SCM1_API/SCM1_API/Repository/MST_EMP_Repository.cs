@@ -22,5 +22,29 @@ namespace SCM1_API.Repository
             return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "test", TargetEMP_NO);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
+
+        /// <summary>
+        /// アクセストークン保存
+        /// </summary>
+        /// <param name="AccessToken_and_TargetEMP_NO">アクセストークンと絞込条件に使用する社員番号</param>
+        /// <returns></returns>
+        public static void StoreAccessToken_Repository(dynamic AccessToken_and_TargetEMP_NO)
+        {
+            //                                 ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            DataAccess.DataAccess.ThrowSQL(SQL_FILE_NM, "StoreAccessToken", AccessToken_and_TargetEMP_NO,Model.constants.DBAccessType.Update);
+            //                                                ↑左のxmlファイル内の実際に呼び出すSQLのID
+        }
+
+        /// <summary>
+        /// アクセストークン取得
+        /// </summary>
+        /// <param name="AccessToken_and_TargetEMP_NO">アクセストークンと絞込条件に使用する社員番号</param>
+        /// <returns></returns>
+        public static IEnumerable<MST_EMP_MODEL> FetchAccessToken_Repository(dynamic TargetEMP_NO)
+        {
+            //                                                   ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
+            //                                                                    ↑左のxmlファイル内の実際に呼び出すSQLのID
+        }
     }
 }
