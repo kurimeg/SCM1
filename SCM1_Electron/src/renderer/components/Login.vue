@@ -2,7 +2,7 @@
     <div class="backimageToka">
         <div class="form">
             <div class="login-char">社員番号</div>
-            <input type="text" v-model="id" class="txtbox"></input>
+            <input type="text" v-model="empNo" class="txtbox"></input>
             <div class="login-char">パスワード</div>
             <input type="password" v-model="password" class="txtbox"></input>
             <button type="button" @click="onLogin" class="login">ログイン</button>
@@ -11,29 +11,34 @@
 </template>
 
 <script>
- import { mapActions } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapState, mapActions } = createNamespacedHelpers('auth')
 
  export default {
    data: function () {
      return {
-       id: null,
+       empNo: null,
        password: null
      }
    },
-   methods: {
-     ...mapActions('auth', [
-       'login'
-     ]),
+   beforeCreate () {
+        if (this.$store.state.isLogged) {
+            this.$router.replace('chart')
+        }
+    },
+    methods: {
+        ...mapActions([
+            'login'
+        ]),
 
-     onLogin: function () {
-       var self = this
-       self.login({
-         mail: this.$data.id,
-         pass: this.$data.password,
-         router: self.$router
-       })
-     }
-   }
+        onLogin: function () {
+            this.login({
+                empNo: this.empNo,
+                password: this.password
+            })
+        }
+    }
 }
 </script>
 
