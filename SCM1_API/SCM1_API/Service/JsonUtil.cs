@@ -19,6 +19,9 @@ namespace SCM1_API.Service
             responce.Headers.Add("Access-Control-Allow-Origin", "*");
             responce.Headers.Add("Access-Control-Allow-Headers", "X-Requested-With");
             responce.Headers.Add("Access-Control-Allow-Methods", "GET");
+            responce.Headers.Add("Access-Control-Allow-Methods", "POST");
+            responce.Headers.Add("Access-Control-Allow-Methods", "PUT");
+            responce.Headers.Add("Access-Control-Allow-Methods", "DELETE");
 
             responce.Content = CreateHttpContentJson(obj);
 
