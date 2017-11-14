@@ -15,6 +15,7 @@ namespace SCM1_API.Service
     public class TokenHandling
     {
         const string DAconfigFilePath = @"\DataAccess\DataAccess.config";
+        const string SCMIssuer = "SCMIssuer";
 
         /// <summary>
         /// トークン生成共通鍵_文字列取得メソッド
@@ -40,7 +41,8 @@ namespace SCM1_API.Service
         public static bool CreateToken(string empid)
         {
             // 共通鍵を用意
-            var keyString = FetchTokenPublicKeyString();
+            var dateKeyString = DateTime.Now.Date.ToString();
+            var keyString = dateKeyString + FetchTokenPublicKeyString() + empid;
             // トークン操作用のクラスを用意
             var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
             // 共通鍵なのでSymmetricSecurityKeyクラスを使う
@@ -52,7 +54,7 @@ namespace SCM1_API.Service
             // トークンの詳細情報クラス？を生成
             var descriptor = new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor
             {
-                Issuer = empid,
+                Issuer = SCMIssuer,
                 SigningCredentials = credentials,
             };
             // トークンの生成
@@ -64,7 +66,7 @@ namespace SCM1_API.Service
             try
             {
                 //                ↓はxml内に記述されたSQLの「#」で括られた部分
-                var param = new { ACCESS_TOKEN = tokenString, EMP_NO = empid };
+                var param = new { ACCESS_TOKEN = tokenString, TOKEN_CREATE_DATE = dateKeyString, EMP_NO = empid };
                 MST_EMP_Repository.StoreAccessToken_Repository(param);
 
                 return true;
@@ -78,7 +80,7 @@ namespace SCM1_API.Service
 
 
         /// <summary>
-        /// 共通鍵で署名されたトークンを検証するメソッド
+        /// 共通鍵で署名されたトークンを検証するメソッド_test
         /// トークンの内容は
         /// aud: 空
         /// iss: empno(社員のID)
@@ -88,15 +90,18 @@ namespace SCM1_API.Service
         /// <returns></returns>
         public static bool InspectToken(string empid)
         {
-            // 鍵
-            var keyString = FetchTokenPublicKeyString();
-            var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
-            // トークン操作用のクラス
-            var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
-            // トークンの文字列表現
+            //DBよりトークン文字列とトークン生成日付を取得
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = empid };
-            var tokenString = MST_EMP_Repository.FetchAccessToken_Repository(param).First().ACCESS_TOKEN; //"★★DBより取得！！@2017/11/13";
+            var resultModelData = MST_EMP_Repository.FetchAccessToken_Repository(param).First();
+            // 復号鍵文字列
+            var keyString = resultModelData.TOKEN_CREATE_DATE.Date.ToString() + FetchTokenPublicKeyString() + empid;
+            // 検証用正解トークン文字列
+            var tokenString = resultModelData.ACCESS_TOKEN;
+
+            var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
+            // トークン操作用のクラス
+            var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();          
 
             // トークン検証用のパラメータを用意
             // Audience, Issuer, Lifetimeに関してはデフォルトで検証が有効になっている
@@ -124,6 +129,26 @@ namespace SCM1_API.Service
                 //("トークンが無効です: " + e.Message);
             }
 
+        }
+
+
+
+        /// <summary>
+        /// 渡されたトークンを検証するメソッド
+        /// トークンの内容は
+        /// aud: 空
+        /// iss: empno(社員のID)
+        /// exp: 期限切れ
+        /// </summary>
+        /// <param name="empid"></param>
+        /// <returns></returns>
+        public static bool InspectToken_direct(string token)
+        {
+            //DBよりトークン文字列とトークン生成日付を取得
+            //                ↓はxml内に記述されたSQLの「#」で括られた部分
+            var param = new { ACCESS_TOKEN = token };
+            string Inspectresult = MST_EMP_Repository.InspectAccessToken_Repository(param);
+            return Inspectresult ==  "Valid"? true : false; 
         }
     }
 }

@@ -46,5 +46,18 @@ namespace SCM1_API.Repository
             return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
             //                                                                    ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
+
+        /// <summary>
+        /// アクセストークン整合性チェック
+        /// </summary>
+        /// <param name="AccessToken_and_TargetEMP_NO">アクセストークンと絞込条件に使用する社員番号</param>
+        /// <returns></returns>
+        public static string InspectAccessToken_Repository(dynamic RecievedAccessToken)
+        {
+            //                                                           ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+             var returnobject = DataAccess.DataAccess.ThrowSQL(SQL_FILE_NM, "FetchAccessToken_Direct", RecievedAccessToken);
+            //                                                                            ↑左のxmlファイル内の実際に呼び出すSQLのID
+            return returnobject.Count > 0? "Valid": "Invalid";
+        }
     }
 }

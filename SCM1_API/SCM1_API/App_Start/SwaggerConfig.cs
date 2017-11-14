@@ -251,7 +251,6 @@ namespace SCM1_API
     /// call above that wires this Operation Filter into 
     /// the pipeline.
     /// </summary>
-    /*
     internal class IncludeParameterNamesInOperationIdFilter : IOperationFilter
     {
         public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
@@ -267,5 +266,4 @@ namespace SCM1_API
             }
         }
     }
-    */
 }
