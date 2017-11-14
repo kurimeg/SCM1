@@ -2,6 +2,7 @@
     <div class="backimage">
         <div class="backimageToka">
             <div class="form">
+				<div class="error-char" v-if="this.$store.state.auth.hasError">{{ $store.state.auth.errorMessage }}</div>
                 <div class="login-char">社員番号</div>
                 <input type="text" v-model="empNo" class="txtbox"></input>
                 <div class="login-char">パスワード</div>
@@ -20,8 +21,8 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
  export default {
    data: function () {
      return {
-       empNo: null,
-       password: null
+		empNo: null,
+		password: null
      }
    },
 //    beforeCreate () {
@@ -37,7 +38,7 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
         onLogin: function () {
             this.login({
                 empNo: this.empNo,
-                password: this.password
+				password: this.password
             })
         }
     }
@@ -79,6 +80,13 @@ body {
 	margin-top: 20px;
 	color: #28a1f7;
 	font-size: 20px;
+	font-family: 'Century Gothic';
+	display: block;
+}
+.error-char{
+	margin-left: 25px; 
+	color: #DD0000;
+	font-size: 15px;
 	font-family: 'Century Gothic';
 	display: block;
 }
