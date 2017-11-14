@@ -58,12 +58,14 @@ namespace SCM1_API.APIController
             try
             {
                 var ProcessResult = PresentationService.InspectAccessToken(value);
-                return JsonUtil.ReturnJson((object)(ProcessResult));
+                //return JsonUtil.ReturnJson((object)(ProcessResult));
+                return JsonUtil.ReturnJson((object)new Tuple<String, object>("OK", value));
             }
             catch (Exception ex)
             {
                 ResultStatus = "ER";
-                return JsonUtil.ReturnJson((object)(ResultStatus));
+                //return JsonUtil.ReturnJson((object)(ResultStatus));
+                return JsonUtil.ReturnJson((object)new Tuple<String, object>("ER", value));
             }
         }
 
