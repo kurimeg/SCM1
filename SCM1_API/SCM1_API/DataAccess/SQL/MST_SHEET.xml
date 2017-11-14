@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <select id="FetchSheetInfo">
+    SELECT
+      EXTENSION_LINE_NO
+      ,FIXED_SHEET_FLG
+      ,CONTENTS_ID
+      ,CONTENTS_DV
+      ,CONTENT_POSITION_X
+      ,CONTENT_POSITION_Y
+    FROM
+      MST_SHEET MS
+    INNER JOIN 
+      MST_CONTENT_VIEW MCV
+    ON
+      MS.CONTENTS_ID = MCV.CONTENTS_ID
+    WHERE
+      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+
+  </select>
+  
+
+  <update id="StoreAccessToken">
+   UPDATE
+     MST_EMP
+   SET
+     ACCESS_TOKEN = #ACCESS_TOKEN#
+     ,TOKEN_CREATE_DATE = #TOKEN_CREATE_DATE#
+   WHERE
+     EMP_NO = #EMP_NO#
+  </update>
+
+  
+    
+  <select id="FetchAccessToken">
+    SELECT
+      ACCESS_TOKEN
+      ,TOKEN_CREATE_DATE
+    FROM
+      MST_EMP EMP
+    WHERE
+      EMP.EMP_NO = #EMP_NO#
+  </select>
+
+  <select id="FetchAccessToken_Direct">
+    SELECT
+      'Vaild'
+    FROM
+      MST_EMP EMP
+    WHERE
+      ACCESS_TOKEN = #ACCESS_TOKEN#
+  </select>
+
+</SqlMap>

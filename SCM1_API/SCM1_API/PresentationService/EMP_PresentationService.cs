@@ -44,7 +44,7 @@ namespace SCM1_API.PresentationService
         /// <returns></returns>
         public bool InspectAccessToken(string postedAccessToken)
         {
-            //アクセストークンを検証する_@2017/11/13Test
+            //アクセストークンを検証する
             var tokenInspectResult = TokenHandling.InspectToken_direct(postedAccessToken);
 
             //処理ステータスを返す
