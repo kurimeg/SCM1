@@ -8,6 +8,7 @@ using SCM1_API.PresentationService;
 using SCM1_API.Model;
 using SCM1_API.Service;
 using Swashbuckle.Swagger.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace SCM1_API.APIController
 {
@@ -47,25 +48,27 @@ namespace SCM1_API.APIController
         // POST api/<controller>
         [SwaggerOperation("InspectToken")]
         [SwaggerResponse(HttpStatusCode.Created)]
-        public HttpResponseMessage Post([FromBody]string value)
+        public HttpResponseMessage Post(JToken accesstoken)
         {
             //値がNullの場合(テスト用)
-            if (value == null)  return JsonUtil.ReturnJson((object)("値がNUllです(ノД`)・゜・。\r\nなので処理は行っていません。"));
+            if (accesstoken == null)  return JsonUtil.ReturnJson((object)("値がNUllです(ノД`)・゜・。\r\nなので処理は行っていません。"));
+            //request変数に移し替え
+            dynamic request = accesstoken;
 
             //PresentationService
             var PresentationService = new EMP_PresentationService();
             String ResultStatus = string.Empty;
             try
             {
-                var ProcessResult = PresentationService.InspectAccessToken(value);
+                var ProcessResult = PresentationService.InspectAccessToken((string)request.token);
                 //return JsonUtil.ReturnJson((object)(ProcessResult));
-                return JsonUtil.ReturnJson((object)new Tuple<String, object>("OK", value));
+                return JsonUtil.ReturnJson((object)new Tuple<String, object>("OK", (string)request.token));
             }
             catch (Exception ex)
             {
                 ResultStatus = "ER";
                 //return JsonUtil.ReturnJson((object)(ResultStatus));
-                return JsonUtil.ReturnJson((object)new Tuple<String, object>("ER", value));
+                return JsonUtil.ReturnJson((object)new Tuple<String, object>("ER", (string)request.token));
             }
         }
 
