@@ -1,11 +1,13 @@
 <template>
-    <div class="backimageToka">
-        <div class="form">
-            <div class="login-char">社員番号</div>
-            <input type="text" v-model="empNo" class="txtbox"></input>
-            <div class="login-char">パスワード</div>
-            <input type="password" v-model="password" class="txtbox"></input>
-            <button type="button" @click="onLogin" class="login">ログイン</button>
+    <div class="backimage">
+        <div class="backimageToka">
+            <div class="form">
+                <div class="login-char">社員番号</div>
+                <input type="text" v-model="empNo" class="txtbox"></input>
+                <div class="login-char">パスワード</div>
+                <input type="password" v-model="password" class="txtbox"></input>
+                <button type="button" @click="onLogin" class="login">ログイン</button>
+            </div>
         </div>
     </div>
 </template>
@@ -22,11 +24,11 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
        password: null
      }
    },
-   beforeCreate () {
-        if (this.$store.state.isLogged) {
-            this.$router.replace('chart')
-        }
-    },
+//    beforeCreate () {
+//         if (this.$store.state.auth.isLogged) {
+//             this.$router.replace('chart')
+//         }
+//     },
     methods: {
         ...mapActions([
             'login'
@@ -44,7 +46,6 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
 
 <style>
     body {
-        /* background-image: url("../assets/images/back.jpg"); */
         background-size: 100% auto;
         background-repeat: no-repeat;
         margin: 0;
@@ -52,6 +53,11 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
     }
     .floatL {
         float: left;
+    }
+    .backimage{
+        background-image: url("../assets/images/back.jpg");
+        background-size: 100vw auto;
+        background-repeat: no-repeat;
     }
     .backimageToka{
         height: 100vh;
