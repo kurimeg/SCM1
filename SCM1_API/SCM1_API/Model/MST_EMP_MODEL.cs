@@ -32,6 +32,14 @@ namespace SCM1_API.Model
         }
 
         /// <summary>
+        /// アクセストークン作成日付
+        /// </summary>
+        public DateTime TOKEN_CREATE_DATE
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 固定席利用可能フラグ
         /// </summary>
         public bool CAN_SIT_FIXED_SHEET_FLG

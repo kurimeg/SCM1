@@ -36,7 +36,19 @@ namespace SCM1_API.PresentationService
             //処理ステータスと取得結果を返す
             var returnValue = new Tuple<bool, object>(FetchedEmpInfo.Count() != 0? true:false, FetchedEmpInfo);
             return returnValue;
-        } 
+        }
 
+        /// <summary>
+        /// アクセストークンを検証
+        /// </summary>
+        /// <returns></returns>
+        public bool InspectAccessToken(string postedAccessToken)
+        {
+            //アクセストークンを検証する_@2017/11/13Test
+            var tokenInspectResult = TokenHandling.InspectToken_direct(postedAccessToken);
+
+            //処理ステータスを返す
+            return tokenInspectResult;
+        }
     }
 }

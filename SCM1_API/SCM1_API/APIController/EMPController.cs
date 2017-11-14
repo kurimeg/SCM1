@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using SCM1_API.PresentationService;
 using SCM1_API.Model;
+using SCM1_API.Service;
+using Swashbuckle.Swagger.Annotations;
 
 namespace SCM1_API.APIController
 {
@@ -17,7 +19,7 @@ namespace SCM1_API.APIController
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> Get([FromUri]string searchempno)
+        public HttpResponseMessage Get([FromUri]string searchempno)
         {
             //PresentationService
             var PresentationService = new EMP_PresentationService();
@@ -26,12 +28,12 @@ namespace SCM1_API.APIController
             { 
                 var ProcessResult = PresentationService.FetchEMPInfo(searchempno);
                 ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
-                return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
+                return JsonUtil.ReturnJson((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
             }
             catch (Exception ex)
             {
                 ResultStatus = "ER";
-                return Json((object)(ResultStatus));
+                return JsonUtil.ReturnJson((object)(ResultStatus));
             }
         }
 
@@ -41,11 +43,33 @@ namespace SCM1_API.APIController
             return Json((object)new Tuple<String, object>("OK", id));
         }
 
+
         // POST api/<controller>
-        public System.Web.Http.Results.JsonResult<object> Post([FromUri]MST_EMP_MODEL insertempdata)
+        [SwaggerOperation("InspectToken")]
+        [SwaggerResponse(HttpStatusCode.Created)]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return Json((object)new Tuple<String, object>("OK",insertempdata));
+            //値がNullの場合(テスト用)
+            if (value == null)  return JsonUtil.ReturnJson((object)("値がNUllです(ノД`)・゜・。\r\nなので処理は行っていません。"));
+
+            //PresentationService
+            var PresentationService = new EMP_PresentationService();
+            String ResultStatus = string.Empty;
+            try
+            {
+                var ProcessResult = PresentationService.InspectAccessToken(value);
+                return JsonUtil.ReturnJson((object)(ProcessResult));
+            }
+            catch (Exception ex)
+            {
+                ResultStatus = "ER";
+                return JsonUtil.ReturnJson((object)(ResultStatus));
+            }
         }
+
+
+
+
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)
