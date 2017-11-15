@@ -6,23 +6,23 @@ using System.Web;
 
 namespace SCM1_API.PresentationService
 {
-    public class Phone_PresentationService
+    public class PHONE_PresentationService
     {
-        private Phone_Service phone_Service;
+        private PHONE_Service phone_Service;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Phone_PresentationService()
+        public PHONE_PresentationService()
         {
-            phone_Service = new Phone_Service();
+            phone_Service = new PHONE_Service();
         }
 
         /// <summary>
         /// 内線情報を取得する
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool, object> FetchPhoneInfo(string postedAreaDv)
+        public Tuple<bool, object> FetchPhoneInfo(int postedAreaDv)
         {
             //内線情報の取得
             var FetchedPhoneInfo = phone_Service.FetchPhoneInfo_Service(postedAreaDv);

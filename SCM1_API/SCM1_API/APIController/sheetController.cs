@@ -9,21 +9,22 @@ using System.Web.Http;
 
 namespace SCM1_API.APIController
 {
-    public class phoneController : ApiController
+    public class sheetController : ApiController
     {
         /// <summary>
-        /// GET _事業所別に内線マスタの情報を取得する<controller> 
+        /// GET _事業所別に座席マスタの情報を取得する<controller> 
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
         public HttpResponseMessage Get([FromUri]int searchareadv)
         {
             //PresentationService
-            var PresentationService = new PHONE_PresentationService();
+            var PresentationService = new SHEET_PresentationService();
             String ResultStatus = string.Empty;
+
             try
             {
-                var ProcessResult = PresentationService.FetchPhoneInfo(searchareadv);
+                var ProcessResult = PresentationService.FetchSheetInfo(searchareadv);
                 ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
                 return JsonUtil.ReturnJson((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
             }

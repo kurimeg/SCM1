@@ -136,7 +136,12 @@
     <Content Include="DataAccess\SQL\MST_EMP.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml" />
+    <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataAccess\SQL\MST_SHEET.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -146,6 +151,7 @@
   <ItemGroup>
     <Compile Include="APIController\empController.cs" />
     <Compile Include="APIController\phoneController.cs" />
+    <Compile Include="APIController\sheetController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="APIController\TestController.cs" />
@@ -159,14 +165,18 @@
     <Compile Include="Model\MST_CONTENT_VIEW.cs" />
     <Compile Include="Model\MST_EMP_MODEL.cs" />
     <Compile Include="Model\MST_EXTENSION_LINE.cs" />
+    <Compile Include="Model\MST_SHEET.cs" />
     <Compile Include="PresentationService\EMP_PresentationService.cs" />
-    <Compile Include="PresentationService\Phone_PresentationService.cs" />
+    <Compile Include="PresentationService\PHONE_PresentationService.cs" />
+    <Compile Include="PresentationService\SHEET_PresentationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MST_EMP_Repository.cs" />
     <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
+    <Compile Include="Repository\MST_SHEET_Repository.cs" />
     <Compile Include="Service\EMP_Service.cs" />
     <Compile Include="Service\JsonUtil.cs" />
-    <Compile Include="Service\Phone_Service.cs" />
+    <Compile Include="Service\PHONE_Service.cs" />
+    <Compile Include="Service\SHEET_Service.cs" />
     <Compile Include="Service\TokenHandling.cs" />
   </ItemGroup>
   <ItemGroup>
