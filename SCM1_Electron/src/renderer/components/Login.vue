@@ -37,8 +37,8 @@ const { mapActions } = createNamespacedHelpers('auth')
 
         onLogin: function () {
             this.login({
-                empno: this.empNo,
-				password: this.password
+                EmpNo: this.empNo,
+				Password: this.password
             })
         }
     }

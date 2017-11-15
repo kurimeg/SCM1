@@ -1,5 +1,6 @@
 import router from '@/router'
 import axios from 'axios'
+import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
@@ -22,19 +23,19 @@ const actions = {
     login ({ commit }, authInfo) {
         axios.post('http://scm1test.azurewebsites.net/api/auth',authInfo)
         .then((response) =>{
-            if(response.data.Item1)
+            if(response.data.Status === constants.STATUS_OK && response.data.Authenticated)
             {
-                localStorage.setItem('token', response.data.Item2)
+                localStorage.setItem('token', response.data.Token)
                 commit('login')
                 router.replace('chart')
             } 
             else
             {
-                commit('error', response.data.Item2)
+                commit('error', messages.E_001)
             }
         }).catch((error) => {
             commit('error', messages.E_001)
-        });
+    });
 
         // GET sample
         // axios.get('http://scm1test.azurewebsites.net/api/emp/testget/', {
