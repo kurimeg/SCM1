@@ -88,6 +88,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="QueryXmlBuilder, Version=0.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\QueryXmlBuilder.dll</HintPath>
@@ -151,6 +154,7 @@
     </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
     <Content Include="Global.asax" />
+    <Content Include="Plugins\QueryXmlBuilder.dll" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -170,6 +174,7 @@
     </Compile>
     <Compile Include="Model\constants\DBAccessType.cs" />
     <Compile Include="Model\constants\FLOOR_PLACE_DV.cs" />
+    <Compile Include="Model\constants\STATUS.cs" />
     <Compile Include="Model\MST_CONTENT_VIEW.cs" />
     <Compile Include="Model\MST_EMP_MODEL.cs" />
     <Compile Include="Model\MST_EXTENSION_LINE.cs" />
@@ -184,11 +189,12 @@
     <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
     <Compile Include="Repository\MST_SHEET_Repository.cs" />
     <Compile Include="Service\EMP_Service.cs" />
-    <Compile Include="Service\JsonUtil.cs" />
     <Compile Include="Service\PHONE_Service.cs" />
     <Compile Include="Service\SHEET_Service.cs" />
     <Compile Include="Service\TokenHandling.cs" />
     <Compile Include="Util\JsonUtil.cs" />
+    <Compile Include="Util\Logger.cs" />
+    <Compile Include="Util\LoggingFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

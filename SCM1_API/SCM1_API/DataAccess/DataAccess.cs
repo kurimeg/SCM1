@@ -6,6 +6,7 @@ using System.Web;
 using Dapper;
 using System.Data.SqlClient;
 using SCM1_API.Model.constants;
+using SCM1_API.Util;
 
 namespace SCM1_API.DataAccess
 {
@@ -63,6 +64,7 @@ namespace SCM1_API.DataAccess
             {
                 try
                 {
+                    Logger.Write(string.Format("[SQL]{0} Params:{1}", SQL, Convert.ToString((object)parameter)));
                     // データベースの接続開始
                     connection.Open();
 
@@ -114,6 +116,7 @@ namespace SCM1_API.DataAccess
             {
                 try
                 {
+                    Logger.Write(string.Format("[SQL]{0} Params:{1}", SQL, Convert.ToString((object)parameter)));
                     // データベースの接続開始
                     connection.Open();
 

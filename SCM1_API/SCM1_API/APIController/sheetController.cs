@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace SCM1_API.APIController
 {
@@ -16,7 +17,7 @@ namespace SCM1_API.APIController
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        public HttpResponseMessage Get([FromUri]int searchareadv)
+        public JsonResult<object> Get([FromUri]int searchareadv)
         {
             //PresentationService
             var PresentationService = new SHEET_PresentationService();
@@ -26,12 +27,12 @@ namespace SCM1_API.APIController
             {
                 var ProcessResult = PresentationService.FetchSheetInfo(searchareadv);
                 ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
-                return JsonUtil.ReturnJson((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
+                return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
             }
             catch (Exception ex)
             {
                 ResultStatus = "ER";
-                return JsonUtil.ReturnJson((object)(ResultStatus));
+                return Json((object)(ResultStatus));
             }
         }
     }
