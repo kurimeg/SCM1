@@ -136,7 +136,12 @@
     <Content Include="DataAccess\SQL\MST_EMP.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml" />
+    <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataAccess\SQL\MST_SHEET.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -146,6 +151,7 @@
   <ItemGroup>
     <Compile Include="APIController\empController.cs" />
     <Compile Include="APIController\phoneController.cs" />
+    <Compile Include="APIController\sheetController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="APIController\TestController.cs" />
