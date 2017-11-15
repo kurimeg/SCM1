@@ -16,7 +16,7 @@ namespace SCM1_API.Controllers
         /// GETのテストメソッド
         /// </summary>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> Get()
+        public JsonResult<object> Get()
         {
             var isReturnDBData = true;
 
@@ -64,7 +64,7 @@ namespace SCM1_API.Controllers
         /// POSTのテストメソッド
         /// </summary>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> POST()
+        public JsonResult<object> POST()
         {
             return Json((object)"OK");
         }
@@ -74,7 +74,7 @@ namespace SCM1_API.Controllers
         /// PUTのテストメソッド
         /// </summary>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> PUT()
+        public JsonResult<object> PUT()
         {
             return Json((object)"OK");
         }
@@ -84,7 +84,7 @@ namespace SCM1_API.Controllers
         /// DELETEのテストメソッド
         /// </summary>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> DELETE()
+        public JsonResult<object> DELETE()
         {
             return Json((object)"OK");
         }
@@ -94,7 +94,7 @@ namespace SCM1_API.Controllers
         /// PATCHのテストメソッド
         /// </summary>
         /// <returns></returns>
-        public System.Web.Http.Results.JsonResult<object> PATCH()
+        public JsonResult<object> PATCH()
         {
             return Json((object)"OK");
         }
