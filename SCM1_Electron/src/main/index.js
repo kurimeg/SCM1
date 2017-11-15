@@ -48,8 +48,10 @@ app.on('ready', () => {
   appIcon.setContextMenu(contextMenu)
 })
 
-//常駐させる為、何もしない
-app.on('window-all-closed', () => {})
+app.on('window-all-closed', () => {
+  //常駐させる為、後で外す
+  mainWindow = null
+})
 
 app.on('activate', () => {
   if (mainWindow === null) {
