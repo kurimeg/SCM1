@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, Tray } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -17,11 +17,16 @@ function createWindow () {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
-    height: 563,
-    useContentSize: true,
-    width: 1000
-  })
+  if (mainWindow) {
+    if (mainWindow.isMinimized())
+        mainWindow.focus()
+  } else {
+    mainWindow = new BrowserWindow({
+      height: 563,
+      useContentSize: true,
+      width: 1000
+    })
+  }
 
   mainWindow.loadURL(winURL)
 
@@ -30,13 +35,21 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  //タスクトレイに格納
+  var appIcon = new Tray(__dirname + '/image/icon.png')
+  const contextMenu = Menu.buildFromTemplate([
+      {label: 'Open(O)', accelerator: 'Command+O', click: () => createWindow()}
+      ,{label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
+  ])
+  appIcon.setToolTip('SekiPa : 座席管理システム')
+  appIcon.setContextMenu(contextMenu)
 })
+
+//常駐させる為、何もしない
+app.on('window-all-closed', () => {})
 
 app.on('activate', () => {
   if (mainWindow === null) {
