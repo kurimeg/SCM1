@@ -50,7 +50,7 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
   //常駐させる為、後で外す
-  mainWindow = null
+  app.quit()
 })
 
 app.on('activate', () => {

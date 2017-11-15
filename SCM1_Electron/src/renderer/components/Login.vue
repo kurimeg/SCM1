@@ -53,7 +53,7 @@ body {
 	float: left;
 }
 .backimage{
-	background-image: url("../img/back.jpg");
+	background-image: url("../assets/images/back.jpg");
 	background-size: 100vw auto;
 	background-repeat: no-repeat;
 }
