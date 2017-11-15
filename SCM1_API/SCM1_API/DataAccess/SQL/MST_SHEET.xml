@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <select id="FetchSheetInfo">
+    SELECT
+      SHEET_NO
+      ,FIXED_SHEET_FLG
+      ,MCV.CONTENTS_ID
+      ,MCV.CONTENTS_DV
+      ,MCV.CONTENT_POSITION_X
+      ,MCV.CONTENT_POSITION_Y
+    FROM
+      MST_SHEET MS
+    INNER JOIN 
+      MST_CONTENT_VIEW MCV
+    ON
+      MS.CONTENTS_ID = MCV.CONTENTS_ID
+    WHERE
+      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </select>
+  
+
+  
+
+</SqlMap>

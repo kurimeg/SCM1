@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\Package\PackageTmp" />
+  <setAcl path="C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\46012\Desktop\self_study\scm1\scm1_git\SCM1\SCM1_API\SCM1_API\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>
