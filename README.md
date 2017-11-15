@@ -4,13 +4,13 @@ For Internal Development
 ## 開発時の備忘
 ### WebAPI開発
 + 接続文字列の外部ファイル
-「$\SCM1\SCM1_API\SCM1_API\DataAccess」にDataAccess.configを配置する必要がある
-DataAccess.configは、「KSC文書サーバ\プロジェクト\KSC\SCM1\DataAccess.config」に配置
+    + 「$\SCM1\SCM1_API\SCM1_API\DataAccess」にDataAccess.configを配置する必要がある
+    + DataAccess.configは、「KSC文書サーバ\プロジェクト\KSC\SCM1\DataAccess.config」に配置
 
 + ビルドでエラーが発生する場合（プログラム 'http://localhost:xxxxx/'を開始できません）
-「$\SCM1\SCM1_API」の「.vs」（隠しフォルダ）と「packages」を削除
-→Nugetパッケージの復元
-→リビルドで解決
+    + 「$\SCM1\SCM1_API」の「.vs」（隠しフォルダ）と「packages」を削除
+    + →Nugetパッケージの復元
+    + →リビルドで解決
 　
 
 ## はじめに
