@@ -7,20 +7,20 @@ using System.Web;
 
 namespace SCM1_API.Service
 {
-    public class PHONE_Service
+    public class SHEET_Service
     {
         private const int DefaultAreadv = (int)Model.constants.FLOOR_PLACE_DV.SINURA;
 
 
         /// <summary>
-        /// 内線情報を取得する
+        /// 座席情報を取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<MST_EXTENSION_LINE> FetchPhoneInfo_Service(int postedAreaDv = DefaultAreadv)
+        public IEnumerable<MST_SHEET> FetchSheetInfo_Service(int postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
-            return MST_EXTENSION_LINE_Repository.FetchPhoneInfo_Repository(param);
+            return MST_SHEET_Repository.FetchSheetInfo_Repository(param);
         }
     }
 }
