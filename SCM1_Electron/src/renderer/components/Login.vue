@@ -16,7 +16,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 
-const { mapState, mapActions } = createNamespacedHelpers('auth')
+const { mapActions } = createNamespacedHelpers('auth')
 
  export default {
    data: function () {
@@ -37,7 +37,7 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
 
         onLogin: function () {
             this.login({
-                empNo: this.empNo,
+                empno: this.empNo,
 				password: this.password
             })
         }
