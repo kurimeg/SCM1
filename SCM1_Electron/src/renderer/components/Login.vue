@@ -25,15 +25,15 @@ const { mapActions } = createNamespacedHelpers('auth')
 		password: null
      }
    },
-//    mounted: function () {
-//         if (this.$store.state.auth.isLogged) {
-// 			let authInfo = localStorage.getItem('authInfo')
-//             this.login({
-//                 EmpNo: authInfo.EmpNo,
-// 				Password: authInfo.Password
-//             })
-//         }
-//     },
+   mounted: function () {
+        if (this.$store.state.auth.isLogged) {
+			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+            this.login({
+                EmpNo: authInfo.EmpNo,
+				Password: authInfo.Password
+            })
+        }
+    },
     methods: {
         ...mapActions([
             'login'

@@ -14,14 +14,20 @@ const mutations = {
     login (state , token) {
         state.isLogged = true
         state.token = token
+        state.hasError = false
+        state.errorMessage = ''
     },
     error (state, errorMessage) {
+        state.isLogged = false
+        state.token = ''
         state.hasError = true
         state.errorMessage = errorMessage
     },
     logout (state) {
         state.isLogged = false
         state.token = ''
+        state.hasError = false
+        state.errorMessage = ''
     }
 }
 
@@ -31,7 +37,7 @@ const actions = {
         .then((response) =>{
             if(response.data.Status === constants.STATUS_OK && response.data.Authenticated)
             {
-                localStorage.setItem('authInfo', authInfo)
+                localStorage.setItem('authInfo', JSON.stringify(authInfo))
                 commit('login', response.data.Token)
                 router.replace('chart')
             } 
@@ -55,7 +61,7 @@ const actions = {
     },
     logout ({ commit }) {
         localStorage.removeItem('authInfo')
-        commit('logout', response.data.Token)
+        commit('logout')
         router.replace('login')
     }
 }
