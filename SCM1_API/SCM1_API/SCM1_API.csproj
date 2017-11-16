@@ -88,6 +88,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="QueryXmlBuilder, Version=0.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\QueryXmlBuilder.dll</HintPath>
@@ -103,6 +106,10 @@
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.4\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -112,6 +119,9 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -136,14 +146,24 @@
     <Content Include="DataAccess\SQL\MST_EMP.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataAccess\SQL\MST_SHEET.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
     <Content Include="Global.asax" />
+    <Content Include="Plugins\QueryXmlBuilder.dll" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIController\authController.cs" />
     <Compile Include="APIController\empController.cs" />
+    <Compile Include="APIController\phoneController.cs" />
+    <Compile Include="APIController\sheetController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="APIController\TestController.cs" />
@@ -153,13 +173,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\constants\DBAccessType.cs" />
+    <Compile Include="Model\constants\FLOOR_PLACE_DV.cs" />
+    <Compile Include="Model\constants\STATUS.cs" />
+    <Compile Include="Model\MST_CONTENT_VIEW.cs" />
     <Compile Include="Model\MST_EMP_MODEL.cs" />
+    <Compile Include="Model\MST_EXTENSION_LINE.cs" />
+    <Compile Include="Model\ScreenModel\Auth.cs" />
+    <Compile Include="PresentationService\Auth_PresentationService.cs" />
+    <Compile Include="Model\MST_SHEET.cs" />
     <Compile Include="PresentationService\EMP_PresentationService.cs" />
+    <Compile Include="PresentationService\PHONE_PresentationService.cs" />
+    <Compile Include="PresentationService\SHEET_PresentationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MST_EMP_Repository.cs" />
+    <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
+    <Compile Include="Repository\MST_SHEET_Repository.cs" />
     <Compile Include="Service\EMP_Service.cs" />
-    <Compile Include="Service\JsonUtil.cs" />
+    <Compile Include="Service\PHONE_Service.cs" />
+    <Compile Include="Service\SHEET_Service.cs" />
     <Compile Include="Service\TokenHandling.cs" />
+    <Compile Include="Util\JsonUtil.cs" />
+    <Compile Include="Util\Logger.cs" />
+    <Compile Include="Util\LoggingFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -169,6 +204,7 @@
     <Content Include="DataAccess\DataAccess.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\scm1test - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\scm1test - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
