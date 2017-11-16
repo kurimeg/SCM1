@@ -4,18 +4,24 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    isLogged: !!localStorage.getItem('token'),
+    isLogged: !!localStorage.getItem('authInfo'),
+    token: '',
     hasError: false,
     errorMessage: ''
 }
 
 const mutations = {
-    login (state) {
+    login (state , token) {
         state.isLogged = true
+        state.token = token
     },
     error (state, errorMessage) {
         state.hasError = true
         state.errorMessage = errorMessage
+    },
+    logout (state) {
+        state.isLogged = false
+        state.token = ''
     }
 }
 
@@ -25,8 +31,8 @@ const actions = {
         .then((response) =>{
             if(response.data.Status === constants.STATUS_OK && response.data.Authenticated)
             {
-                localStorage.setItem('token', response.data.Token)
-                commit('login')
+                localStorage.setItem('authInfo', authInfo)
+                commit('login', response.data.Token)
                 router.replace('chart')
             } 
             else
@@ -35,7 +41,7 @@ const actions = {
             }
         }).catch((error) => {
             commit('error', messages.E_001)
-    });
+    })
 
         // GET sample
         // axios.get('http://scm1test.azurewebsites.net/api/emp/testget/', {
@@ -46,6 +52,11 @@ const actions = {
         // .then((response) =>{
         //     console.log(response)
         // })
+    },
+    logout ({ commit }) {
+        localStorage.removeItem('authInfo')
+        commit('logout', response.data.Token)
+        router.replace('login')
     }
 }
 

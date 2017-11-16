@@ -25,9 +25,13 @@ const { mapActions } = createNamespacedHelpers('auth')
 		password: null
      }
    },
-//    beforeCreate () {
+//    mounted: function () {
 //         if (this.$store.state.auth.isLogged) {
-//             this.$router.replace('chart')
+// 			let authInfo = localStorage.getItem('authInfo')
+//             this.login({
+//                 EmpNo: authInfo.EmpNo,
+// 				Password: authInfo.Password
+//             })
 //         }
 //     },
     methods: {
