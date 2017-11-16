@@ -1,8 +1,10 @@
 import router from '@/router'
+// TODO: main.jsでimport済。各moduleでそれを使うには？
 import axios from 'axios'
 import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
+// TODO: localStateとしたい。
 const state = {
     isLogged: !!localStorage.getItem('authInfo'),
     token: '',
@@ -10,6 +12,7 @@ const state = {
     errorMessage: ''
 }
 
+// TODO: もっときれいになるはず。
 const mutations = {
     login (state , token) {
         state.isLogged = true
