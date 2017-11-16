@@ -1,8 +1,8 @@
 {
   "name": "SekiPa",
-  "version": "0.0.0",
-  "author": "katsunori <watanabe-katsunori@ksc.co.jp>",
-  "description": "An electron-vue project",
+  "version": "1.0.0",
+  "author": "SekiPa Development Team <ksc.sekipa@gmail.com>",
+  "description": "SekiPa project",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
