@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class MST_CONTENT_VIEW
+    public class MST_CONTENT_VIEW : ScreenModel.basicParameter
     {
         /// <summary>
         /// コンテンツID

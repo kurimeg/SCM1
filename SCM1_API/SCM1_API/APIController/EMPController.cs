@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
+using SCM1_API.Model.ScreenModel.Auth;
 using SCM1_API.PresentationService;
+using SCM1_API.Util;
 using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Net;
@@ -9,23 +11,30 @@ using System.Web.Http.Results;
 
 namespace SCM1_API.APIController
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")] // <-- CORSを有効化（クロスドメイン対策）
     public class empController : ApiController
     {
+        private EMP_PresentationService presentationService;
+        public empController()
+        {
+            presentationService = new EMP_PresentationService();
+        }
+
 
         /// <summary>
         /// GET _社員番号をキーに社員マスタの情報を取得する<controller> 
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        public JsonResult<object> Get([FromUri]string searchempno)
+        public JsonResult<object> Get(JToken reqJson) // <-- ActionResultのJsonResultを戻り値とする
         {
             //PresentationService
-            var PresentationService = new EMP_PresentationService();
+            
             String ResultStatus = string.Empty;
             try
-            { 
-                var ProcessResult = PresentationService.FetchEMPInfo(searchempno);
+            {
+                Request req = JsonUtil.Deserialize<Request>(reqJson.ToString()); // <-- JSONをモデルに変換
+                Response res = presentationService.FetchEMPInfo(req);
                 ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
                 return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
             }

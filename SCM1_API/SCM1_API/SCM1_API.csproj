@@ -90,7 +90,7 @@
     </Reference>
     <Reference Include="QueryXmlBuilder, Version=0.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\QueryXmlBuilder.dll</HintPath>
+      <HintPath>plugins\QueryXmlBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Swashbuckle.Core">
       <HintPath>..\packages\Swashbuckle.Core.5.3.1\lib\net40\Swashbuckle.Core.dll</HintPath>
@@ -158,6 +158,7 @@
   <ItemGroup>
     <Compile Include="APIController\authController.cs" />
     <Compile Include="APIController\empController.cs" />
+    <Compile Include="APIController\emplocationController.cs" />
     <Compile Include="APIController\phoneController.cs" />
     <Compile Include="APIController\sheetController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Model\MST_EMP_MODEL.cs" />
     <Compile Include="Model\MST_EXTENSION_LINE.cs" />
     <Compile Include="Model\ScreenModel\Auth.cs" />
+    <Compile Include="Model\ScreenModel\basicParameter.cs" />
     <Compile Include="PresentationService\Auth_PresentationService.cs" />
     <Compile Include="Model\MST_SHEET.cs" />
     <Compile Include="PresentationService\EMP_PresentationService.cs" />
@@ -184,7 +186,6 @@
     <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
     <Compile Include="Repository\MST_SHEET_Repository.cs" />
     <Compile Include="Service\EMP_Service.cs" />
-    <Compile Include="Service\JsonUtil.cs" />
     <Compile Include="Service\PHONE_Service.cs" />
     <Compile Include="Service\SHEET_Service.cs" />
     <Compile Include="Service\TokenHandling.cs" />

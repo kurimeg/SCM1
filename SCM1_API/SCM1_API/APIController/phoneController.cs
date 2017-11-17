@@ -19,7 +19,7 @@ namespace SCM1_API.APIController
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        public JsonResult<object> Get([FromUri]string searchareadv)
+        public JsonResult<object> Get([FromUri]int searchareadv)
         {
             //PresentationService
             var PresentationService = new PHONE_PresentationService();
