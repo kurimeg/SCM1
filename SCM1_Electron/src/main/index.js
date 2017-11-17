@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, Tray } from 'electron'
+import { app, BrowserWindow, Menu, Tray, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -17,16 +17,11 @@ function createWindow () {
   /**
    * Initial window options
    */
-  if (mainWindow) {
-    if (mainWindow.isMinimized())
-        mainWindow.focus()
-  } else {
-    mainWindow = new BrowserWindow({
-      height: 563,
-      useContentSize: true,
-      width: 1000
-    })
-  }
+  mainWindow = new BrowserWindow({
+    height: 563,
+    useContentSize: true,
+    width: 1000
+  })
 
   mainWindow.loadURL(winURL)
 
@@ -41,17 +36,24 @@ app.on('ready', () => {
   //タスクトレイに格納
   var appIcon = new Tray(__dirname + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
-      {label: 'Open(O)', accelerator: 'Command+O', click: () => createWindow()}
-      ,{label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
+      {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
+  appIcon.on('click', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()){
+        mainWindow.focus()
+      } else if (mainWindow.isVisible()) {
+        mainWindow.show()
+      }
+    } else {
+      createWindow()
+    }
+  })
   appIcon.setToolTip('SekiPa : 座席管理システム')
   appIcon.setContextMenu(contextMenu)
 })
 
-app.on('window-all-closed', () => {
-  //常駐させる為、後で外す
-  app.quit()
-})
+app.on('window-all-closed', () => {})
 
 app.on('activate', () => {
   if (mainWindow === null) {

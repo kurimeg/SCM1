@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using SCM1_API.Model.constants;
+using System.Runtime.Serialization;
 
 namespace SCM1_API.Model.ScreenModel.Auth
 {
@@ -13,6 +14,7 @@ namespace SCM1_API.Model.ScreenModel.Auth
 
     public class Response
     {
+        public string Status { get; set; }
         public bool Authenticated { get; set; }
         public string Token { get; set; }
     }

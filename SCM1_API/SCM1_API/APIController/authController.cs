@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using SCM1_API.Model.constants;
 using SCM1_API.Model.ScreenModel.Auth;
 using SCM1_API.PresentationService;
 using SCM1_API.Util;
@@ -21,6 +22,7 @@ namespace SCM1_API.APIController
         #endregion
 
         #region api/auth(type:POST)
+        [LoggingFilter("api/auth")] // <-- AOP（処理開始、終了時のロギング処理）
         public JsonResult<object> Post(JToken reqJson)　 // <-- ActionResultのJsonResultを戻り値とする
         {
             try
@@ -29,10 +31,10 @@ namespace SCM1_API.APIController
                 Response res = presentationService.Auth(req);
                 return Json((object)res);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                // TODO:ログを・・ログをはきたいんじゃ・・
-                return Json((object)new Response() { Authenticated = false, Token = "" });
+                Logger.WriteException("想定外のエラー", ex);
+                return Json((object)new Response() {Status = STATUS.ER, Authenticated = false, Token = "" });
             }
         }
         #endregion

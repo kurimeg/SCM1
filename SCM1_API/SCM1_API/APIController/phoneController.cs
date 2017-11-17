@@ -26,7 +26,7 @@ namespace SCM1_API.APIController
             String ResultStatus = string.Empty;
             try
             {
-                var ProcessResult = PresentationService.FetchPhoneInfo(searchareadv);
+                var ProcessResult = PresentationService.FetchPhoneInfo(int.Parse(searchareadv));
                 ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
                 return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
             }
