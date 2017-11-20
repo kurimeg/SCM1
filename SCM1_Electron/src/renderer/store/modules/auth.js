@@ -38,7 +38,7 @@ const actions = {
     login ({ commit }, authInfo) {
         axios.post('http://scm1test.azurewebsites.net/api/auth',authInfo)
         .then((response) =>{
-            if(response.data.Status === constants.STATUS_OK && response.data.Authenticated)
+            if(response.data.ProcessStatus === constants.STATUS_OK && response.data.Authenticated)
             {
                 localStorage.setItem('authInfo', JSON.stringify(authInfo))
                 commit('login', response.data.Token)
@@ -46,7 +46,7 @@ const actions = {
             } 
             else
             {
-                commit('error', messages.E_001)
+                commit('error', response.data.ResponseMessage)
             }
         }).catch((error) => {
             commit('error', messages.E_001)
