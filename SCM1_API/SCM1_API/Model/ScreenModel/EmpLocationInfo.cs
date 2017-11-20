@@ -5,16 +5,17 @@ using System.Runtime.Serialization;
 using System.Web;
 using SCM1_API.Model.ScreenModel;
 
-namespace SCM1_API.Model.ScreenModel.AllEmpLocationInfo
+namespace SCM1_API.Model.ScreenModel.EmpLocationInfo
 {
 
     [DataContract]
-    public class AllEmpLocationRequest : ScmApiBaseParameter.Request
+    public class EmpLocationRequest : ScmApiBaseParameter.Request
     {
-        //追加項目なし
+        [DataMember]
+        public string EmpNo { get; set; }
     }
 
-    public class AllEmpLocationResponse : ScmApiBaseParameter.Response
+    public class EmpLocationResponse : ScmApiBaseParameter.Response
     {
         public IEnumerable<T_EMP_LOCATION> EmpLocation { get; set; }
     }

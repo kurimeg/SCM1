@@ -12,6 +12,17 @@ namespace SCM1_API.Repository
 
 
         /// <summary>
+        /// ユーザー位置情報取得
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Repository(dynamic EmpNo_TargetAreaDv)
+        {
+            //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            return DataAccess.DataAccess.ThrowSQLModel<T_EMP_LOCATION>(SQL_FILE_NM, "FetchEmpLocationInfo", EmpNo_TargetAreaDv);
+            //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
+        }
+
+        /// <summary>
         /// ユーザー位置情報全件取得
         /// </summary>
         /// <returns></returns>

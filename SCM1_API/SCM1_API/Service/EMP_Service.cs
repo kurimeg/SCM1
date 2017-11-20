@@ -21,5 +21,14 @@ namespace SCM1_API.Service
             
         }
 
+        /// <summary>
+        /// 社員情報を全件取得する
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MST_EMP> FetchAllEMPInfo_Service()
+        {
+            return MST_EMP_Repository.FetchAllEMPInfo_Repository();
+
+        }
     }
 }

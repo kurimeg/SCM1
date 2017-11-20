@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SCM1_API.PresentationService;
 using SCM1_API.Util;
-using SCM1_API.Model.ScreenModel.AllEmpLocationInfo;
+using SCM1_API.Model.ScreenModel.EmpLocationInfo;
 using SCM1_API.Model.constants;
 using System;
 using System.Collections.Generic;
@@ -36,18 +36,27 @@ namespace SCM1_API.APIController
         {
             try
             {
-                var req = JsonUtil.Deserialize<AllEmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+                var req = JsonUtil.Deserialize<EmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
-                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new AllEmpLocationResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new EmpLocationResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
 
-                var res = presentationService.FetchAllEmpLocationInfo(req);
-                return Json((object)res);
+                //社員番号が無ければ全件取得
+                if (string.IsNullOrEmpty(req.EmpNo))
+                {
+                    var res = presentationService.FetchAllEmpLocationInfo(req);
+                    return Json((object)res);
+                }
+                else
+                {
+                    var res = presentationService.FetchEmpLocationInfo(req);
+                    return Json((object)res);
+                }
             }
             catch (Exception ex)
             {
                 Logger.WriteException(MESSAGE.MSG_ER, ex);
-                return Json((object)new AllEmpLocationResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+                return Json((object)new EmpLocationResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
             }
         }
 

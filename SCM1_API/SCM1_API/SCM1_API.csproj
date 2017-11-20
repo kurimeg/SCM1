@@ -177,7 +177,7 @@
     <Compile Include="Model\constants\DBAccessType.cs" />
     <Compile Include="Model\constants\FLOOR_PLACE_DV.cs" />
     <Compile Include="Model\constants\MESSAGE.cs" />
-    <Compile Include="Model\ScreenModel\AllEmpLocationInfo.cs" />
+    <Compile Include="Model\ScreenModel\EmpLocationInfo.cs" />
     <Compile Include="Model\ScreenModel\EmpInfo.cs" />
     <Compile Include="Model\ScreenModel\Phone.cs" />
     <Compile Include="Model\ScreenModel\ScmApiBaseParameter.cs" />

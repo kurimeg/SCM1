@@ -3,6 +3,30 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   
+  
+  
+  
+  <select id="FetchEmpLocationInfo">
+   SELECT
+     EL.LOCATION_DATA_SEQ
+     ,EL.EMP_NO
+     ,EL.SHEET_NO
+     ,EL.EXTENSION_LINE_NO
+     ,EL.EMP_STATUS_DV
+     ,EL.FIXED_FLG
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SHEET MS
+   ON
+     EL.SHEET_NO = MS.SHEET_NO
+   WHERE
+     EL.EMP_NO = #EMP_NO#
+   AND
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </select>
+  
+  
   <select id="FetchAllEmpLocationInfo">
   SELECT
     EL.LOCATION_DATA_SEQ
