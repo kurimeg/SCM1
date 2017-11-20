@@ -19,5 +19,10 @@ namespace SCM1_API.Model.constants
         /// 異常終了（予期せぬエラー）
         /// </summary>
         public const string ER = "ER";
+
+        /// <summary>
+        /// アクセストークン認証失敗
+        /// </summary>
+        public const string TOKEN_ER = "TOKEN_ER";
     }
 }

@@ -16,10 +16,10 @@ namespace SCM1_API.Repository
         /// </summary>
         /// <param name="TargetEMP_NO">絞込条件に使用する社員番号</param>
         /// <returns></returns>
-        public static IEnumerable<MST_EMP_MODEL> FetchEMPInfo_Repository(dynamic TargetEMP_NO)
+        public static IEnumerable<MST_EMP> FetchEMPInfo_Repository(dynamic TargetEMP_NO)
         {
             //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "test", TargetEMP_NO);
+            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP>(SQL_FILE_NM, "FetchAllInfo", TargetEMP_NO);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -40,10 +40,10 @@ namespace SCM1_API.Repository
         /// </summary>
         /// <param name="AccessToken_and_TargetEMP_NO">アクセストークンと絞込条件に使用する社員番号</param>
         /// <returns></returns>
-        public static IEnumerable<MST_EMP_MODEL> FetchAccessToken_Repository(dynamic TargetEMP_NO)
+        public static IEnumerable<MST_EMP> FetchAccessToken_Repository(dynamic TargetEMP_NO)
         {
             //                                                   ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP_MODEL>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
+            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
             //                                                                    ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SCM1_API.Model.ScreenModel.Auth
 {
     [DataContract]
-    public class Request
+    public class AuthRequest
     {
         [DataMember]
         public string EmpNo { get; set; }
@@ -12,9 +12,8 @@ namespace SCM1_API.Model.ScreenModel.Auth
         public string Password { get; set; }
     }
 
-    public class Response
+    public class AuthResponse : ScmApiBaseParameter.Response
     {
-        public string Status { get; set; }
         public bool Authenticated { get; set; }
         public string Token { get; set; }
     }

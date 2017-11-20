@@ -153,6 +153,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
+    <Content Include="DataAccess\SQL\T_EMP_LOCATION.xml" />
     <Content Include="Global.asax" />
     <Content Include="Plugins\QueryXmlBuilder.dll" />
     <Content Include="Web.config">
@@ -175,14 +176,21 @@
     </Compile>
     <Compile Include="Model\constants\DBAccessType.cs" />
     <Compile Include="Model\constants\FLOOR_PLACE_DV.cs" />
+    <Compile Include="Model\constants\MESSAGE.cs" />
+    <Compile Include="Model\ScreenModel\AllEmpLocationInfo.cs" />
+    <Compile Include="Model\ScreenModel\EmpInfo.cs" />
+    <Compile Include="Model\ScreenModel\Phone.cs" />
+    <Compile Include="Model\ScreenModel\ScmApiBaseParameter.cs" />
     <Compile Include="Model\constants\STATUS.cs" />
     <Compile Include="Model\MST_CONTENT_VIEW.cs" />
-    <Compile Include="Model\MST_EMP_MODEL.cs" />
+    <Compile Include="Model\MST_EMP.cs" />
     <Compile Include="Model\MST_EXTENSION_LINE.cs" />
     <Compile Include="Model\ScreenModel\Auth.cs" />
-    <Compile Include="Model\ScreenModel\basicParameter.cs" />
+    <Compile Include="Model\ScreenModel\Sheet.cs" />
+    <Compile Include="Model\T_EMP_LOCATION.cs" />
     <Compile Include="PresentationService\Auth_PresentationService.cs" />
     <Compile Include="Model\MST_SHEET.cs" />
+    <Compile Include="PresentationService\EMP_LOCATION_PresentationService.cs" />
     <Compile Include="PresentationService\EMP_PresentationService.cs" />
     <Compile Include="PresentationService\PHONE_PresentationService.cs" />
     <Compile Include="PresentationService\SHEET_PresentationService.cs" />
@@ -190,6 +198,8 @@
     <Compile Include="Repository\MST_EMP_Repository.cs" />
     <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
     <Compile Include="Repository\MST_SHEET_Repository.cs" />
+    <Compile Include="Repository\T_EMP_LOCATION_Repository.cs" />
+    <Compile Include="Service\EMP_LOCATION_Service.cs" />
     <Compile Include="Service\EMP_Service.cs" />
     <Compile Include="Service\PHONE_Service.cs" />
     <Compile Include="Service\SHEET_Service.cs" />

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SCM1_API.Service;
-using SCM1_API.Model.ScreenModel.Auth;
+using SCM1_API.Model.ScreenModel.EmpInfo;
+using SCM1_API.Model.constants;
 
 namespace SCM1_API.PresentationService
 {
@@ -23,10 +24,11 @@ namespace SCM1_API.PresentationService
         /// 社員情報を取得する
         /// </summary>
         /// <returns></returns>
-        public Response FetchEMPInfo(Request req)
+        public EmpInfoResponse FetchEMPInfo(EmpInfoRequest req)
         {
+            var returnModel = new EmpInfoResponse();
             //社員情報の取得
-            var FetchedEmpInfo = emp_Service.FetchEMPInfo_Service(req.EmpNo);
+            returnModel.EmpInfo = emp_Service.FetchEMPInfo_Service(req.EmpNo);
 
             ////アクセストークンを保存する_@2017/11/13Test
             //var tokenStoreResult = TokenHandling.CreateToken(postedEMP_NO);
@@ -35,8 +37,10 @@ namespace SCM1_API.PresentationService
             //var tokenInspectResult = TokenHandling.InspectToken(postedEMP_NO);
 
             //処理ステータスと取得結果を返す
-            var returnValue = new Tuple<bool, object>(FetchedEmpInfo.Count() != 0? true:false, FetchedEmpInfo);
-            return returnValue;
+            returnModel.ProcessStatus = returnModel.EmpInfo.Count() != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_INFO_NG;
+            return returnModel;
         }
 
         /// <summary>

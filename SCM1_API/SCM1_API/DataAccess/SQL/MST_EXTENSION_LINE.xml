@@ -4,7 +4,7 @@
 
   <select id="FetchPhoneInfo">
     SELECT
-      EXTENSION_LINE_NO
+      MEL.EXTENSION_LINE_NO
       ,MCV.CONTENTS_ID
       ,MCV.CONTENTS_DV
       ,MCV.CONTENT_POSITION_X

@@ -2,7 +2,7 @@
 <SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <select id="test">
+  <select id="FetchAllInfo">
     SELECT
       *
     FROM

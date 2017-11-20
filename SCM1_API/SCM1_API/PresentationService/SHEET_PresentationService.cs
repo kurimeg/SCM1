@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SCM1_API.Model.ScreenModel.Sheet;
+using SCM1_API.Model.constants;
 
 namespace SCM1_API.PresentationService
 {
@@ -22,14 +24,18 @@ namespace SCM1_API.PresentationService
         /// 座席情報を取得する
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool, object> FetchSheetInfo(int postedAreaDv)
+        public SheetResponse FetchSheetInfo(SheetRequest req)
         {
+            var returnModel = new SheetResponse();
+
             //座席情報の取得
-            var FetchedSheetInfo = sheet_Service.FetchSheetInfo_Service(postedAreaDv);
+            returnModel.SheetInfo = sheet_Service.FetchSheetInfo_Service(req.ClientAreaDv);
 
             //処理ステータスと取得結果を返す
-            var returnValue = new Tuple<bool, object>(FetchedSheetInfo.Count() != 0 ? true : false, FetchedSheetInfo);
-            return returnValue;
+            returnModel.ProcessStatus = returnModel.SheetInfo.Count() != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_SHEET_NG;
+            return returnModel;
         }
     }
 }

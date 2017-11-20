@@ -1,4 +1,6 @@
-﻿using SCM1_API.Service;
+﻿using SCM1_API.Model.constants;
+using SCM1_API.Model.ScreenModel.Phone;
+using SCM1_API.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +24,18 @@ namespace SCM1_API.PresentationService
         /// 内線情報を取得する
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool, object> FetchPhoneInfo(int postedAreaDv)
+        public PhoneResponse FetchPhoneInfo(PhoneRequest req)
         {
+            var returnModel = new PhoneResponse();
+
             //内線情報の取得
-            var FetchedPhoneInfo = phone_Service.FetchPhoneInfo_Service(postedAreaDv);
+            var FetchedPhoneInfo = phone_Service.FetchPhoneInfo_Service(req.ClientAreaDv);
 
             //処理ステータスと取得結果を返す
-            var returnValue = new Tuple<bool, object>(FetchedPhoneInfo.Count() != 0 ? true : false, FetchedPhoneInfo);
-            return returnValue;
+            returnModel.ProcessStatus = returnModel.PhoneInfo.Count() != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_PHONE_NG;
+            return returnModel;
         }
     }
 }

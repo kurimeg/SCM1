@@ -27,14 +27,14 @@ namespace SCM1_API.APIController
         {
             try
             {
-                Request req = JsonUtil.Deserialize<Request>(reqJson.ToString()); // <-- JSONをモデルに変換
-                Response res = presentationService.Auth(req);
+                AuthRequest req = JsonUtil.Deserialize<AuthRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+                AuthResponse res = presentationService.Auth(req);
                 return Json((object)res);
             }
             catch (Exception ex)
             {
-                Logger.WriteException("想定外のエラー", ex);
-                return Json((object)new Response() {Status = STATUS.ER, Authenticated = false, Token = "" });
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new AuthResponse() { ProcessStatus = STATUS.ER, Authenticated = false, Token = "", ResponseMessage = MESSAGE.MSG_ER });
             }
         }
         #endregion

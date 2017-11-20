@@ -13,7 +13,7 @@ namespace SCM1_API.Service
         /// 社員情報を取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<MST_EMP_MODEL> FetchEMPInfo_Service(string postedEMP_NO)
+        public IEnumerable<MST_EMP> FetchEMPInfo_Service(string postedEMP_NO)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = postedEMP_NO };

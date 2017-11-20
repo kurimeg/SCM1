@@ -4,8 +4,8 @@
 
   <select id="FetchSheetInfo">
     SELECT
-      SHEET_NO
-      ,FIXED_SHEET_FLG
+      MS.SHEET_NO
+      ,MS.FIXED_SHEET_FLG
       ,MCV.CONTENTS_ID
       ,MCV.CONTENTS_DV
       ,MCV.CONTENT_POSITION_X

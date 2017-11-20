@@ -5,44 +5,52 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class MST_EMP_MODEL
+    public class T_EMP_LOCATION
     {
+        /// <summary>
+        /// 位置データSEQ
+        /// </summary>
+        public int LOCATION_DATA_SEQ
+        {
+            get; set;
+        }
+        
         /// <summary>
         /// 社員番号
         /// </summary>
         public int EMP_NO
         {
-            get;set;
+            get; set;
         }
 
         /// <summary>
-        /// パスワード
+        /// 座席番号
         /// </summary>
-        public string LOGIN_PASSWORD
-        {
-            get;set;
-        }
-
-        /// <summary>
-        /// アクセストークン
-        /// </summary>
-        public string ACCESS_TOKEN
+        public int SHEET_NO
         {
             get; set;
         }
 
         /// <summary>
-        /// アクセストークン作成日付
+        /// 内線番号
         /// </summary>
-        public DateTime TOKEN_CREATE_DATE
+        public int EXT_LINE_NO
         {
             get; set;
         }
 
         /// <summary>
-        /// 固定席利用可能フラグ
+        /// 社員ステータス
         /// </summary>
-        public bool CAN_SIT_FIXED_SHEET_FLG
+        public string EMP_STATUS_DV
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 固定済フラグ
+        /// </summary>
+        public bool FIXED_FLG
         {
             get; set;
         }

@@ -19,11 +19,11 @@ namespace SCM1_API.PresentationService
             empService = new EMP_Service();
         }
 
-        public Response Auth(Request req)
+        public AuthResponse Auth(AuthRequest req)
         {
-            var resModel = new Response()
+            var resModel = new AuthResponse()
             {
-                Status = STATUS.NG,
+                ProcessStatus = STATUS.NG,
                 Authenticated = false,
                 Token = ""
             };
@@ -43,7 +43,7 @@ namespace SCM1_API.PresentationService
 
             if (TokenHandling.CreateToken(req.EmpNo))
             {
-                resModel.Status = STATUS.OK;
+                resModel.ProcessStatus = STATUS.OK;
                 resModel.Token = empService.FetchEMPInfo_Service(req.EmpNo).First().ACCESS_TOKEN;
                 resModel.Authenticated = true;
             }

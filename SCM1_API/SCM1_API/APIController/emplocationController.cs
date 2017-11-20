@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using SCM1_API.PresentationService;
+using SCM1_API.Util;
+using SCM1_API.Model.ScreenModel.AllEmpLocationInfo;
+using SCM1_API.Model.constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,33 +10,55 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
+using System.Web.Http.Cors;
+using Swashbuckle.Swagger.Annotations;
 
 namespace SCM1_API.APIController
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")] // <-- CORSを有効化（クロスドメイン対策）
     public class emplocationController : ApiController
     {
+        private EMP_LOCATION_PresentationService presentationService;
+        public emplocationController()
+        {
+            presentationService = new EMP_LOCATION_PresentationService();
+        }
+
+
         /// <summary>
         /// GET _事業所別にユーザー位置情報を取得する<controller> 
         /// </summary>
-        /// <param name="empno"></param>
+        /// <param name="reqJson">POSTされたJSON形式の値</param>
         /// <returns></returns>
-        public JsonResult<object> Get(JToken reqJson)
+        [SwaggerOperation("FetchAllEmpLocationInfo")]
+        [LoggingFilter("api/emplocation")] // <-- AOP（処理開始、終了時のロギング処理）
+        public JsonResult<object> Post(JToken reqJson) // <-- ActionResultのJsonResultを戻り値とする
         {
-            //PresentationService
-            var PresentationService = new SHEET_PresentationService();
-            String ResultStatus = string.Empty;
-
             try
             {
-                var ProcessResult = PresentationService.FetchSheetInfo(searchareadv);
-                ResultStatus = ProcessResult.Item1 == true ? "OK" : "NG";
-                return Json((object)new Tuple<String, object>(ResultStatus, ProcessResult.Item2));
+                var req = JsonUtil.Deserialize<AllEmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+
+                //トークンを検証
+                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new AllEmpLocationResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+
+                var res = presentationService.FetchAllEmpLocationInfo(req);
+                return Json((object)res);
             }
             catch (Exception ex)
             {
-                ResultStatus = "ER";
-                return Json((object)(ResultStatus));
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new AllEmpLocationResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
             }
+        }
+
+        // PUT api/<controller>/5
+        /// <summary>
+        /// PUT_ユーザー位置情報を登録する
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void Put(int id, [FromBody]string value)
+        {
         }
     }
 }
