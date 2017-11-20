@@ -14,13 +14,13 @@ namespace SCM1_API.Util
 
         public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            Logger.Write("[API処理-START]" + message);
+            Logger.Write("[API処理-START]" + message + "\r\n");
             base.OnActionExecuting(actionContext);
         }
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            Logger.Write("[API処理-END]" + message);
+            Logger.Write("[API処理-END]" + message + "\r\n");
             base.OnActionExecuted(actionExecutedContext);
         }
     }

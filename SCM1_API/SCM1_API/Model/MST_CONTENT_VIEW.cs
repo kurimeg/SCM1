@@ -38,5 +38,13 @@ namespace SCM1_API.Model
         {
             get; set;
         }
+
+        /// <summary>
+        /// 縦フラグ
+        /// </summary>
+        public bool VERTICAL_FLG
+        {
+            get; set;
+        }
     }
 }

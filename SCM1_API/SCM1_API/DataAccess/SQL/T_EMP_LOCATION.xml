@@ -5,7 +5,7 @@
   
   <select id="FetchAllEmpLocationInfo">
   SELECT
-    LOCATION_DATA_SEQ
+    EL.LOCATION_DATA_SEQ
     ,EL.EMP_NO
     ,EL.SHEET_NO
     ,EL.EXTENSION_LINE_NO
@@ -18,7 +18,7 @@
   ON
     EL.SHEET_NO = MS.SHEET_NO
   WHERE
-    MSL.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+    MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </select>
   
 
