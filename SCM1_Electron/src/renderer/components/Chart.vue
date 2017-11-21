@@ -432,7 +432,7 @@
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
     }
     .main {
-        width: 1500px;
+        width: 1420px;
         height: 600px;
         margin: 10px auto;
     }

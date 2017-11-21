@@ -12,4 +12,7 @@
 
 <style>
   /* CSS */
+  #app{
+    zoom: 70%;
+  }
 </style>
