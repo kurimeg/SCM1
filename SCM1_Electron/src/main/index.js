@@ -34,7 +34,7 @@ app.on('ready', () => {
   createWindow()
 
   //タスクトレイに格納
-  var appIcon = new Tray(__dirname + '/image/icon.png')
+  var appIcon = new Tray(__static + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
       {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
