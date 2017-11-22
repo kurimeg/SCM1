@@ -4,10 +4,6 @@ using SCM1_API.Util;
 using SCM1_API.Model.ScreenModel.EmpLocationInfo;
 using SCM1_API.Model.constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Http.Cors;
@@ -65,7 +61,7 @@ namespace SCM1_API.APIController
         /// </summary>
         /// <param name="reqJson">POSTされたJSON形式の値</param>
         /// <returns></returns>
-        [SwaggerOperation("FetchAllEmpLocationInfo")]
+        [SwaggerOperation("RegisterEmpLocation")]
         [LoggingFilter("api/emplocation")] // <-- AOP（処理開始、終了時のロギング処理）
         public JsonResult<object> Put(JToken reqJson) // <-- ActionResultのJsonResultを戻り値とする
         {
@@ -80,7 +76,7 @@ namespace SCM1_API.APIController
                         ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER
                     });
 
-                //社員番号と座席位置を登録
+                //座席情報を登録
                 var res = presentationService.RegisterLocation(req);
                 return Json((object)res);
             }

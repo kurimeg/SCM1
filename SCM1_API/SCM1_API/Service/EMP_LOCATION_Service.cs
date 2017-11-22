@@ -39,15 +39,46 @@ namespace SCM1_API.Service
             return T_EMP_LOCATION_Repository.FetchAllEmpLocationInfo_Repository(param);
         }
 
-        public bool GetLocationStatus(int sheetNo)
+        public string GetLocationStatus(string sheetNo)
         {
-            var result = _repository.GetLocationStatus("GetLocationStatus",
-                new T_EMP_LOCATION
+            var result = _repository.GetLocationStatus("GetLocation",
+                new T_EMP_LOCATION()
                 {
                     SHEET_NO = sheetNo,
                 });
 
             return result;
+        }
+
+        public int? GetLocationEmpId(int empId)
+        {
+            int? result = _repository.GetLocationEmpId("GetLocationEmpId",
+                new T_EMP_LOCATION()
+                {
+                    EMP_NO = empId,
+                });
+            return result;
+        }
+
+        public void RegisterEmpLocation(int empId, string sheetNo)
+        {
+
+            _repository.RegisterEmpLocation("InsertEmpLocation",
+                new T_EMP_LOCATION()
+                {
+                    EMP_NO = empId,
+                    SHEET_NO = sheetNo,
+                });
+        }
+
+        public void ReRegiseterEmpLocation(int empId, string sheetNo)
+        {
+            _repository.ReRegisterEmpLocation("UpdateEmpLocation",
+                new T_EMP_LOCATION()
+                {
+                    EMP_NO = empId,
+                    SHEET_NO = sheetNo,
+                });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SCM1_API.Model;
+using SCM1_API.Model.constants;
 using System.Collections.Generic;
 
 namespace SCM1_API.Repository
@@ -29,9 +30,24 @@ namespace SCM1_API.Repository
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
-        public bool GetLocationStatus(string sqlId, dynamic dbModel)
+        public string GetLocationStatus(string sqlId, dynamic dbModel)
         {
-            return DataAccess.DataAccess.ThrowSQLModel(SQL_FILE_NM, sqlId, dbModel);
+            return DataAccess.DataAccess.ThrowSQLModelFirst<string>(SQL_FILE_NM, sqlId, dbModel);
+        }
+
+        public int? GetLocationEmpId(string sqlId, dynamic dbModel)
+        {
+            return DataAccess.DataAccess.ThrowSQLModelFirst<int>(SQL_FILE_NM, sqlId, dbModel);
+        }
+
+        public void RegisterEmpLocation(string sqlId, dynamic dbModel)
+        {
+            DataAccess.DataAccess.ThrowSQLModelFirst<dynamic>(SQL_FILE_NM, sqlId, dbModel);
+        }
+
+        public void ReRegisterEmpLocation(string sqlId, dynamic dbModel)
+        {
+            DataAccess.DataAccess.ThrowSQLModelFirst<dynamic>(SQL_FILE_NM, sqlId, dbModel);
         }
     }
 }

@@ -24,6 +24,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -153,7 +154,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
-    <Content Include="DataAccess\SQL\T_EMP_LOCATION.xml" />
+    <Content Include="DataAccess\SQL\T_EMP_LOCATION.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Plugins\QueryXmlBuilder.dll" />
     <Content Include="Web.config">

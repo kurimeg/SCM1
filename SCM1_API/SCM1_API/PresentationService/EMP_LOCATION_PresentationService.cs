@@ -62,29 +62,34 @@ namespace SCM1_API.PresentationService
         /// <returns></returns>
         public EmpLocationResponse RegisterLocation(EmpLocationRequest req)
         {
-            var ReturnModel = new EmpLocationResponse();
 
-            //座席が空いてるか確認(EmpLocationのステータスチェック)
-            var locationStatus = empLocation_Service.GetLocationStatus(req.SheetNo);
-            if (!locationStatus) {
-                ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
-                return ReturnModel;
+            //座席が空いてなければ終了
+            var isVacant = empLocation_Service.GetLocationStatus(req.SheetNo);
+            if (!string.IsNullOrEmpty(isVacant)) {
+
+                return new EmpLocationResponse()
+                {
+                    ProcessStatus = STATUS.NG,
+                    ResponseMessage = MESSAGE.MSG_GET_EMP_LOCATION_NG,
+                };
             }
 
-
             //その人にとって最初の席かチェック
+            int? onLocationEmpId = empLocation_Service.GetLocationEmpId(int.Parse(req.EmpNo));
 
-            //最初の席だったら登録して終了
+            if (onLocationEmpId == null) {
+                //最初の席だったら登録して終了
+                empLocation_Service.RegisterEmpLocation(int.Parse(req.EmpNo), req.SheetNo);
+            } else {
+                //次の席じゃないなら更新
+                empLocation_Service.ReRegiseterEmpLocation(int.Parse(req.EmpNo), req.SheetNo);
+            }
 
-            //次の席だったらその席を空ける→登録
-
-            ReturnModel.EmpLocation = empLocation_Service.FetchAllEmpLocationInfo_Service(req.ClientAreaDv);
-
-            //処理ステータスと取得結果を返す
-            ReturnModel.ProcessStatus = ReturnModel.EmpLocation.Count() != 0 ? STATUS.OK : STATUS.NG;
-            //NGの場合はメッセージを設定
-            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
-            return ReturnModel;
+            return new EmpLocationResponse()
+            {
+                ProcessStatus = STATUS.OK,
+                ResponseMessage = MESSAGE.MSG_OK,
+            };
         }
     }
 }
