@@ -10,49 +10,31 @@ namespace SCM1_API.Model
         /// <summary>
         /// 位置データSEQ
         /// </summary>
-        public int LOCATION_DATA_SEQ
-        {
-            get; set;
-        }
+        public int LOCATION_DATA_SEQ { get; set; }
         
         /// <summary>
         /// 社員番号
         /// </summary>
-        public int EMP_NO
-        {
-            get; set;
-        }
+        public int EMP_NO { get; set; }
 
         /// <summary>
         /// 座席番号
         /// </summary>
-        public int SHEET_NO
-        {
-            get; set;
-        }
+        public int SHEET_NO { get; set; }
 
         /// <summary>
         /// 内線番号
         /// </summary>
-        public int EXT_LINE_NO
-        {
-            get; set;
-        }
+        public int EXT_LINE_NO { get; set; }
 
         /// <summary>
         /// 社員ステータス
         /// </summary>
-        public string EMP_STATUS_DV
-        {
-            get; set;
-        }
+        public string EMP_STATUS_DV { get; set; }
 
         /// <summary>
         /// 固定済フラグ
         /// </summary>
-        public bool FIXED_FLG
-        {
-            get; set;
-        }
+        public bool FIXED_FLG { get; set; }
     }
 }

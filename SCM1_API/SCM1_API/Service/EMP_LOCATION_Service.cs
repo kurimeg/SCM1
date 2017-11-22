@@ -10,6 +10,12 @@ namespace SCM1_API.Service
     public class EMP_LOCATION_Service
     {
         private const int DefaultAreadv = (int)Model.constants.FLOOR_PLACE_DV.SINURA;
+        private T_EMP_LOCATION_Repository _repository;
+
+        public EMP_LOCATION_Service()
+        {
+            _repository = new T_EMP_LOCATION_Repository();
+        }
 
         /// <summary>
         /// ユーザー位置情報を取得する
@@ -31,6 +37,17 @@ namespace SCM1_API.Service
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
             return T_EMP_LOCATION_Repository.FetchAllEmpLocationInfo_Repository(param);
+        }
+
+        public bool GetLocationStatus(int sheetNo)
+        {
+            var result = _repository.GetLocationStatus("GetLocationStatus",
+                new T_EMP_LOCATION
+                {
+                    SHEET_NO = sheetNo,
+                });
+
+            return result;
         }
     }
 }

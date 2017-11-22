@@ -13,6 +13,7 @@ namespace SCM1_API.Model.ScreenModel.EmpLocationInfo
     {
         [DataMember]
         public string EmpNo { get; set; }
+        public int SheetNo { get; set; }
     }
 
     public class EmpLocationResponse : ScmApiBaseParameter.Response
