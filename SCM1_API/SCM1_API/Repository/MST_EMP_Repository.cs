@@ -19,7 +19,7 @@ namespace SCM1_API.Repository
         public static IEnumerable<MST_EMP> FetchEMPInfo_Repository(dynamic TargetEMP_NO)
         {
             //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP>(SQL_FILE_NM, "FetchEmpInfo", TargetEMP_NO);
+            return DataAccess.DataAccess.SELECT_Model<MST_EMP>(SQL_FILE_NM, "FetchEmpInfo", TargetEMP_NO);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -30,7 +30,7 @@ namespace SCM1_API.Repository
         public static IEnumerable<MST_EMP> FetchAllEMPInfo_Repository()
         {
             //                                                      ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP>(SQL_FILE_NM, "FetchAllEmpInfo");
+            return DataAccess.DataAccess.SELECT_Model<MST_EMP>(SQL_FILE_NM, "FetchAllEmpInfo");
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -42,7 +42,7 @@ namespace SCM1_API.Repository
         public static void StoreAccessToken_Repository(dynamic AccessToken_and_TargetEMP_NO)
         {
             //                                 ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            DataAccess.DataAccess.ThrowSQL(SQL_FILE_NM, "StoreAccessToken", AccessToken_and_TargetEMP_NO,Model.constants.DBAccessType.Update);
+            DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "StoreAccessToken", AccessToken_and_TargetEMP_NO,Model.constants.DBAccessType.Update);
             //                                                ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -54,7 +54,7 @@ namespace SCM1_API.Repository
         public static IEnumerable<MST_EMP> FetchAccessToken_Repository(dynamic TargetEMP_NO)
         {
             //                                                   ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EMP>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
+            return DataAccess.DataAccess.SELECT_Model<MST_EMP>(SQL_FILE_NM, "FetchAccessToken", TargetEMP_NO);
             //                                                                    ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -66,7 +66,7 @@ namespace SCM1_API.Repository
         public static string InspectAccessToken_Repository(dynamic RecievedAccessToken)
         {
             //                                                           ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-             var returnobject = DataAccess.DataAccess.ThrowSQL(SQL_FILE_NM, "FetchAccessToken_Direct", RecievedAccessToken);
+             var returnobject = DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "FetchAccessToken_Direct", RecievedAccessToken);
             //                                                                            ↑左のxmlファイル内の実際に呼び出すSQLのID
             return returnobject.Count > 0? "Valid": "Invalid";
         }

@@ -38,7 +38,12 @@ namespace SCM1_API.APIController
                 SheetRequest req = JsonUtil.Deserialize<SheetRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
-                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new SheetResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new SheetResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
 
                 SheetResponse res = presentationService.FetchSheetInfo(req);
                 return Json((object)res);
