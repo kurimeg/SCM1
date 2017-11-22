@@ -19,7 +19,7 @@ namespace SCM1_API.Repository
         public static IEnumerable<MST_EXTENSION_LINE> FetchPhoneInfo_Repository(dynamic TargetAreaDv)
         {
             //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<MST_EXTENSION_LINE>(SQL_FILE_NM, "FetchPhoneInfo", TargetAreaDv);
+            return DataAccess.DataAccess.SELECT_Model<MST_EXTENSION_LINE>(SQL_FILE_NM, "FetchPhoneInfo", TargetAreaDv);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
     }

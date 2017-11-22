@@ -29,7 +29,7 @@ namespace SCM1_API.PresentationService
             var returnModel = new PhoneResponse();
 
             //内線情報の取得
-            var FetchedPhoneInfo = phone_Service.FetchPhoneInfo_Service(req.ClientAreaDv);
+            returnModel.PhoneInfo = phone_Service.FetchPhoneInfo_Service(req.ClientAreaDv);
 
             //処理ステータスと取得結果を返す
             returnModel.ProcessStatus = returnModel.PhoneInfo.Count() != 0 ? STATUS.OK : STATUS.NG;

@@ -15,7 +15,7 @@ namespace SCM1_API.Service
         /// ユーザー位置情報を取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T_EMP_LOCATION> FetchAllEmpLocationInfo_Service(string PostedEmpNo,int postedAreaDv = DefaultAreadv)
+        public IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Service(string PostedEmpNo,int postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
@@ -31,6 +31,28 @@ namespace SCM1_API.Service
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
             return T_EMP_LOCATION_Repository.FetchAllEmpLocationInfo_Repository(param);
+        }
+
+        /// <summary>
+        /// ユーザー位置情報を消去する
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearEmpLocationInfo_Service(string PostedEmpNo, int postedAreaDv = DefaultAreadv)
+        {
+            //                ↓はxml内に記述されたSQLの「#」で括られた部分
+            var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
+            return T_EMP_LOCATION_Repository.ClearEmpLocationInfo_Repository(param);
+        }
+
+        /// <summary>
+        /// ユーザー位置情報を固定席以外全件消去する
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearAllEmpLocationInfo_Service(int postedAreaDv = DefaultAreadv)
+        {
+            //                ↓はxml内に記述されたSQLの「#」で括られた部分
+            var param = new { FLOOR_PLACE_DV = postedAreaDv };
+            return T_EMP_LOCATION_Repository.ClearAllEmpLocationInfo_Repository(param);
         }
     }
 }

@@ -45,14 +45,14 @@ namespace SCM1_API.Controllers
                     //                ↓はxml内に記述されたSQLの「#」で括られた部分
                     var param = new { JISEKI_SEQ_NO = "00000" };
                     //                                           ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-                    resultData = DataAccess.DataAccess.ThrowSQL("Sample", "test", param);
+                    resultData = DataAccess.DataAccess.ExecuteSQL("Sample", "test", param);
                     //                                                     ↑左のxmlファイル内の実際に呼び出すSQLのID
                 }
                 //パラメーターを使わない場合
                 else
                 {
                     //                                           ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-                    resultData = DataAccess.DataAccess.ThrowSQL("Sample", "test");
+                    resultData = DataAccess.DataAccess.ExecuteSQL("Sample", "test");
                     //                                                     ↑左のxmlファイル内の実際に呼び出すSQLのID
                 }
                 return Json(resultData);

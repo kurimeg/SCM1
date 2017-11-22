@@ -10,7 +10,7 @@ namespace SCM1_API.Model
         /// <summary>
         /// 座席番号
         /// </summary>
-        public int SHEET_NO
+        public string SHEET_NO
         {
             get; set;
         }

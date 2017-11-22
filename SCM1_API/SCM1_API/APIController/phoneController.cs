@@ -40,7 +40,12 @@ namespace SCM1_API.APIController
                 PhoneRequest req = JsonUtil.Deserialize<PhoneRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
-                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new PhoneResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new PhoneResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
 
                 PhoneResponse res = presentationService.FetchPhoneInfo(req);
                 return Json((object)res);

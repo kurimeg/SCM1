@@ -36,7 +36,12 @@ namespace SCM1_API.APIController
                 EmpInfoRequest req = JsonUtil.Deserialize<EmpInfoRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
-                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new EmpInfoResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new EmpInfoResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
 
                 //社員番号が無ければ全件取得
                 if (string.IsNullOrEmpty(req.EmpNo))
