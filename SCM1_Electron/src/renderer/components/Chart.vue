@@ -3,7 +3,9 @@
 		<div class="row01 floatL child">
 			<div class="row01_seat_top">
 				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square"></div>
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2001</div>
+				</div>
 			</div>
 			<div class="row01_seat_bottom">
 				<div class="line01 floatL">
@@ -16,7 +18,16 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec01"></div>
+					<div class="desk_rec01">
+						<div class="naisen_l">
+							<div class="naisen naisen_oneigyo">2007</div>
+							<div class="naisen naisen_oneigyo">2008</div>
+							<div class="naisen naisen_oneigyo">2009</div>
+							<div class="naisen naisen_oneigyo">2010</div>
+							<div class="naisen naisen_oneigyo">2011</div>
+							<div class="naisen naisen_oneigyo">2012</div>
+						</div>
+					</div>
 				</div>
 				<div class="line01 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -33,7 +44,9 @@
 		<div class="row02 floatL child">
 			<div class="row02_seat_top">
 				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
+				<div class="desk_square floatL">
+					<div class="naisen naisen_onsquare">2002</div>
+				</div>
 				<button type="button" class="seat_vertical floatL"></button>
 			</div>
 			<div class="row02_seat_bottom">
@@ -48,7 +61,9 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec02"></div>
+					<div class="desk_rec02">
+						<div class="naisen naisen_l2">2013</div>
+					</div>
 				</div>
 				<div class="line02 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -66,7 +81,9 @@
 		<div class="row02 floatL child">
 			<div class="row02_seat_top">
 				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
+				<div class="desk_square floatL">
+					<div class="naisen naisen_onsquare">2003</div>
+				</div>
 				<button type="button" class="seat_vertical floatL"></button>
 			</div>
 			<div class="row02_seat_bottom">
@@ -81,7 +98,12 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec02"></div>
+					<div class="desk_rec02">
+						<div class="naisen_l">
+							<div class="naisen naisen_l3">2014</div>
+							<div class="naisen naisen_l3">2015</div>
+						</div>
+					</div>
 				</div>
 				<div class="line02 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -99,7 +121,9 @@
 		<div class="row02 floatL child">
 			<div class="row02_seat_top">
 				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
+				<div class="desk_square floatL">
+					<div class="naisen naisen_onsquare">2004</div>
+				</div>
 				<button type="button" class="seat_vertical floatL"></button>
 			</div>
 			<div class="row02_seat_bottom">
@@ -114,7 +138,12 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec02"></div>
+					<div class="desk_rec02">
+						<div class="naisen_l">
+							<div class="naisen naisen_l4">2016</div>
+							<div class="naisen naisen_l4">2017</div>
+						</div>
+					</div>
 				</div>
 				<div class="line02 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -132,7 +161,9 @@
 		<div class="row02 floatL child">
 			<div class="row02_seat_top">
 				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
+				<div class="desk_square floatL">
+					<div class="naisen naisen_onsquare">2005</div>
+				</div>
 				<button type="button" class="seat_vertical floatL"></button>
 			</div>
 			<div class="row01_seat_bottom">
@@ -146,7 +177,9 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec05"></div>
+					<div class="desk_rec05">
+						<div class="naisen naisen_l2">2018</div>
+					</div>
 				</div>
 				<div class="line05 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -163,7 +196,9 @@
 		<div class="row01 floatL child">
 			<div class="row01_seat_top">
 				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square"></div>
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2006</div>
+				</div>
 			</div>
 			<div class="row06_seat_bottom">
 				<div class="line06 floatL">
@@ -176,7 +211,12 @@
 					<button type="button" class="seat_vertical"></button>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec06"></div>
+					<div class="desk_rec06">
+						<div class="naisen_l">
+							<div class="naisen naisen_l4">2019</div>
+							<div class="naisen naisen_l4">2020</div>
+						</div>
+					</div>
 				</div>
 				<div class="line06 floatL">
 					<button type="button" class="seat_vertical"></button>
@@ -250,6 +290,7 @@
 								<button type="button" class="seat_vertical square02_seat_left"></button>
 								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
+									<div class="naisen naisen_onfree">2023</div>
 								</div>
 								<button type="button" class="seat_vertical square02_seat_right"></button>
 								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
@@ -294,6 +335,7 @@
 								<button type="button" class="seat_vertical square02_seat_left"></button>
 								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
+									<div class="naisen naisen_onfree">2027</div>
 								</div>
 								<button type="button" class="seat_vertical square02_seat_right"></button>
 								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
@@ -343,6 +385,40 @@
 								<button type="button" class="seat_vertical square02_seat_left"></button>
 								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
+									<div class="naisen naisen_onfree">2031</div>
+								</div>
+								<button type="button" class="seat_vertical square02_seat_right"></button>
+								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="freeSpace">
+								<button type="button" class="seat_vertical square02_seat_left"></button>
+								<button type="button" class="seat_horizontal square02_seat_top"></button>
+								<div class="desk_square02">
+									<div class="naisen naisen_onfree">2032</div>
+								</div>
+								<button type="button" class="seat_vertical square02_seat_right"></button>
+								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
+							</div>
+						</td>
+						<td>
+							<div class="freeSpace">
+								<button type="button" class="seat_vertical square02_seat_left"></button>
+								<button type="button" class="seat_horizontal square02_seat_top"></button>
+								<div class="desk_square02">
+								</div>
+								<button type="button" class="seat_vertical square02_seat_right"></button>
+								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
+							</div>
+						</td>
+						<td>
+							<div class="freeSpace">
+								<button type="button" class="seat_vertical square02_seat_left"></button>
+								<button type="button" class="seat_horizontal square02_seat_top"></button>
+								<div class="desk_square02">
 								</div>
 								<button type="button" class="seat_vertical square02_seat_right"></button>
 								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
@@ -375,38 +451,7 @@
 								<button type="button" class="seat_vertical square02_seat_left"></button>
 								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
+									<div class="naisen naisen_onfree">2037</div>
 								</div>
 								<button type="button" class="seat_vertical square02_seat_right"></button>
 								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
@@ -633,4 +678,50 @@
     .nine_desk {
     	margin: 138px 0 0;
     }
+    /* 内線関係 */
+.naisen{
+    width: 45px;
+    height: 20px;
+    background-color: #f7ffa3;
+    color: #495f92;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #495f92;
+    border-radius: 5px;
+}
+.naisen_onsquare{
+    position: absolute;
+    margin-left: -2px;
+    margin-top: 13px;
+}
+.naisen_l{
+    position: absolute;
+}
+.naisen_oneigyo{
+    margin-left: -2px;
+    margin-top: 34px;
+    margin-bottom: 30px;
+}
+.naisen_l2{
+    position: absolute;
+    margin-left: -2px;
+    margin-top: 50px;
+}
+.naisen_l3{
+    margin-left: -2px;
+    margin-top: 50px;
+    margin-bottom: 140px;
+}
+.naisen_l4{
+    margin-left: -2px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+.naisen_onfree{
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 19px;
+}
 </style>
