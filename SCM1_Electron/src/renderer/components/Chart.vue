@@ -1,354 +1,140 @@
 <template>
 	<div class="main">
 		<div class="row01 floatL child">
-			<div class="row01_seat_top">
-				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2001</div>
-				</div>
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2001</div>
 			</div>
-			<div class="row01_seat_bottom">
-				<div class="line01 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec01">
-						<div class="naisen_l">
-							<div class="naisen naisen_oneigyo">2007</div>
-							<div class="naisen naisen_oneigyo">2008</div>
-							<div class="naisen naisen_oneigyo">2009</div>
-							<div class="naisen naisen_oneigyo">2010</div>
-							<div class="naisen naisen_oneigyo">2011</div>
-							<div class="naisen naisen_oneigyo">2012</div>
-						</div>
+			<div class="floatL">
+				<div class="desk_rec01">
+					<div class="naisen_l">
+						<div class="naisen naisen_oneigyo">2007</div>
+						<div class="naisen naisen_oneigyo">2008</div>
+						<div class="naisen naisen_oneigyo">2009</div>
+						<div class="naisen naisen_oneigyo">2010</div>
+						<div class="naisen naisen_oneigyo">2011</div>
+						<div class="naisen naisen_oneigyo">2012</div>
 					</div>
-				</div>
-				<div class="line01 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
 				</div>
 			</div>
 		</div>
 		<div class="rack01 floatL"></div>
 		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL">
-					<div class="naisen naisen_onsquare">2002</div>
-				</div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2002</div>
 			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec02">
-						<div class="naisen naisen_l2">2013</div>
-					</div>
-				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<div class="desk_rec02">
+					<div class="naisen naisen_l2">2013</div>
+			</div>
+			<div class="rack02 floatL"></div>
+		</div>
+		<div class="row02 floatL child">
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2003</div>
+			</div>
+			<div class="desk_rec02">
+				<div class="naisen_l">
+					<div class="naisen naisen_l3">2014</div>
+					<div class="naisen naisen_l3">2015</div>
 				</div>
 			</div>
 			<div class="rack02 floatL"></div>
 		</div>
 		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL">
-					<div class="naisen naisen_onsquare">2003</div>
-				</div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2004</div>
 			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec02">
-						<div class="naisen_l">
-							<div class="naisen naisen_l3">2014</div>
-							<div class="naisen naisen_l3">2015</div>
-						</div>
-					</div>
-				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<div class="desk_rec02">
+				<div class="naisen_l">
+					<div class="naisen naisen_l4">2016</div>
+					<div class="naisen naisen_l4">2017</div>
 				</div>
 			</div>
 			<div class="rack02 floatL"></div>
 		</div>
 		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL">
-					<div class="naisen naisen_onsquare">2004</div>
-				</div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2005</div>
 			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec02">
-						<div class="naisen_l">
-							<div class="naisen naisen_l4">2016</div>
-							<div class="naisen naisen_l4">2017</div>
-						</div>
-					</div>
-				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL">
-					<div class="naisen naisen_onsquare">2005</div>
-				</div>
-				<button type="button" class="seat_vertical floatL"></button>
-			</div>
-			<div class="row01_seat_bottom">
-				<div class="line05 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec05">
-						<div class="naisen naisen_l2">2018</div>
-					</div>
-				</div>
-				<div class="line05 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
+			<div class="desk_rec05">
+				<div class="naisen naisen_l2">2018</div>
 			</div>
 			<div class="rack02 floatL"></div>
 		</div>
 		<div class="row01 floatL child">
-			<div class="row01_seat_top">
-				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2006</div>
-				</div>
+			<div class="desk_square">
+				<div class="naisen naisen_onsquare">2006</div>
 			</div>
-			<div class="row06_seat_bottom">
-				<div class="line06 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec06">
-						<div class="naisen_l">
-							<div class="naisen naisen_l4">2019</div>
-							<div class="naisen naisen_l4">2020</div>
-						</div>
+				<div class="desk_rec06">
+					<div class="naisen_l">
+						<div class="naisen naisen_l4">2019</div>
+						<div class="naisen naisen_l4">2020</div>
 					</div>
 				</div>
-				<div class="line06 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-			</div>
 			<div class="rack02 floatL"></div>
 		</div>
 		<div class="row07 floatL child">
-			<div class="row07_seat_bottom">
-				<div class="line07 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec07"></div>
-				</div>
-				<div class="line07 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-			</div>
+			<div class="desk_rec07"></div>
 			<div class="rack02 floatL"></div>
 		</div>
 		<!--正方形机-->
-		<div class="floatL child">
+		<div class="eight_desk floatL child">
 			<table>
 				<tbody>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 									<div class="naisen naisen_onfree">2023</div>
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 									<div class="naisen naisen_onfree">2027</div>
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
@@ -362,99 +148,63 @@
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 									<div class="naisen naisen_onfree">2031</div>
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 									<div class="naisen naisen_onfree">2032</div>
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
+								</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 						<td>
 							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
 								<div class="desk_square02">
 									<div class="naisen naisen_onfree">2037</div>
 								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
 							</div>
 						</td>
 					</tr>
@@ -466,219 +216,106 @@
 </template>
 
 <style>
-    body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-    }
-    .main {
-        width: 1420px;
-        height: 600px;
-        margin: 10px auto;
-    }
-    .floatL {
-    	float: left;
-    }
-    
-    /*ラック*/
-    .rack01 {
-        margin: 137px 8px 2px 0;
-        width: 15px;
-        height: 450px;
-        background-color: #E1BE7E;
-    }
-    .rack02 {
-        width: 65px;
-        height: 20px;
-        margin: 0 17.5px 0;
-        background-color: #E1BE7E;
-    }
-    
-    /*Button_共通*/
-    /*ボタン_横*/
-    .seat_horizontal_pushed{
-        margin: 0px;
-        width: 50px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	z-index: 999;
-    }
-    .seat_horizontal {
-        margin: 0px;
-        width: 50px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 10px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	z-index: 999;
-    }
-    /*ボタン_縦*/
-    .seat_vertical_pushed {
-        margin: 5px 2px;
-        width: 22px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 1.8px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	-webkit-text-orientation: sideways;
-    	text-orientation: sideways;
-    	z-index: 999;
-    }
-    .seat_vertical {
-        margin: 5px 2px;
-        width: 22px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 23px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	z-index: 999;
-    }
-    /*正方形周り_ボタン_横*/
-    .seat_arround_square01 {
-    	margin: 4px 4px 4px 12px;
-    }
-    
-    /*列＿1行目*/
-    .row01 {
-        margin: 32px 8px 0 0;
-    }
-    .row01_seat_top {
-    	margin: 0 0 0 26px;
-    }
-    .desk_square {
-        margin: 2px;
-        width: 45px;
-        height: 50px;
-    	background-color: #7EA88D;
-    }
-    .desk_rec01 {
-        margin: 20px 2px 2px;
-        width: 45px;
-        height: 390px;
-    	background-color: #7EA88D;
-    }
-    .line01 {
-    	margin-top: 20px;
-    }
-    /*列＿２行目以降*/
-    .row02 {
-        margin: 46px 8px 0 0;
-    }
-    .row02_seat_top {
-    	margin: 10px 0 0 0;
-    }
-    .row02_seat_bottom {
-    	margin: 20px 0 0 0;
-    }
-    .line02 {
-    	margin-top: 25px;
-    }
-    .desk_rec02 {
-        margin: 20px 2px 2px;
-        width: 45px;
-        height: 450px;
-    	background-color: #7EA88D;
-    }
-    
-    /*列＿5行目*/
-    .line05 {
-    	margin-top: 80px;
-    }
-    .desk_rec05 {
-    	margin: 75px 2px 2px;
-    	width: 45px;
-    	height: 395px;
-    	background-color: #7EA88D;
-    }
-    /*列＿6行目*/
-    .line06 {
-    	margin-top: 86px;
-    }
-    .desk_rec06 {
-    	margin: 81px 2px 2px;
-    	width: 45px;
-    	height: 395px;
-    	background-color: #7EA88D;
-    }
-    
-    /*列＿7行目*/
-    .row07 {
-        margin: 46px 22px 0 0;
-    }
-    .row07_seat_top {
-    	margin: 10px 0 0 0;
-    }
-    .row07_seat_bottom {
-    	margin: 20px 0 0 0;
-    }
-    .line07 {
-    	margin-top: 75px;
-    }
-    .desk_rec07 {
-    	margin: 71px 2px 2px;
-    	width: 45px;
-    	height: 450px;
-    	background-color: #7EA88D;
-    }
-    
-    /*フリースペース_正方形*/
-    .freeSpace {
-    	width: 110px;
-    	max-height: 130px;
-    	position: relative;
-    	margin-left: 8px;
-    }
-    .desk_square02 {
-        position: relative;
-        left: 25px;
-    	margin: 2px;
-    	width: 60px;
-    	height: 60px;
-    	background-color: #7EA88D;
-    }
-    .square02_seat_top {
-        display: inherit;
-    	margin-left: 30px;
-    }
-    .square02_seat_right {
-        position: relative;
-        top: -60px;
-        left: 87px;
-    }
-    .square02_seat_bottom {
-        position: relative;
-        top: -58px;
-        left: 32px;
-    }
-    .square02_seat_left {
-        position: relative;
-        top: 86px;
-    }
-    .nine_desk {
-    	margin: 138px 0 0;
-    }
-    /* 内線関係 */
+body {
+    margin: 0;
+    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
+}
+.main {
+    width: 1420px;
+    height: 600px;
+    margin: 10px auto;
+}
+.floatL {
+	float: left;
+}
+
+/*ラック*/
+.rack01 {
+    margin: 137px 15px 0 0;
+    width: 15px;
+    height: 450px;
+    background-color: #E1BE7E;
+}
+.rack02 {
+    width: 65px;
+    height: 20px;
+    margin: 5px 19px 0;
+    background-color: #E1BE7E;
+}
+
+/*列＿1行目*/
+.row01 {
+    margin: 50px 8px 0 0;
+}
+.desk_square {
+    margin: 0 30px 0 30px;
+    width: 45px;
+    height: 50px;
+	background-color: #7EA88D;
+}
+.desk_rec01 {
+    margin: 30px 30px 0 30px;
+    width: 45px;
+    height: 390px;
+    background-color: #7EA88D;
+}
+/*列＿２行目以降*/
+.row02 {
+    margin: 50px 0 0;
+}
+.desk_rec02 {
+    margin: 30px 30px 0;
+    width: 45px;
+    height: 450px;
+	background-color: #7EA88D;
+}
+
+/*列＿5行目*/
+.desk_rec05 {
+	margin: 85px 30px 0;
+	width: 45px;
+	height: 395px;
+	background-color: #7EA88D;
+}
+/*列＿6行目*/
+.desk_rec06 {
+	margin: 85px 30px 0;
+	width: 45px;
+	height: 395px;
+	background-color: #7EA88D;
+}
+
+/*列＿7行目*/
+.desk_rec07 {
+	margin: 130px 30px 0 30px;
+	width: 45px;
+	height: 450px;
+	background-color: #7EA88D;
+}
+
+/*フリースペース_正方形*/
+.freeSpace {
+	width: 110px;
+	max-height: 130px;
+	position: relative;
+	margin-left: 8px;
+}
+.desk_square02 {
+    position: relative;
+    left: 25px;
+	margin: 25px 0 25px 0;
+	width: 60px;
+	height: 60px;
+	background-color: #7EA88D;
+}
+.nine_desk {
+	margin: 215px 0 0;
+}
+.eight_desk{
+    margin: 105px 0 0 20px;
+}
+
+/* 内線関係 */
 .naisen{
     width: 45px;
     height: 20px;
