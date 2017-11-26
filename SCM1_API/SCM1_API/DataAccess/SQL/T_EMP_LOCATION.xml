@@ -70,4 +70,54 @@
      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </delete>
 
+  
+  <select id="FetchLocation">
+    SELECT
+      SHEET_NO
+    FROM
+      T_EMP_LOCATION
+    WHERE
+      SHEET_NO = #SHEET_NO#
+  </select>
+
+  
+  <select id="hasLocationCheckByEmpId">
+    SELECT
+      EMP_NO
+    FROM
+      T_EMP_LOCATION
+    WHERE
+      EMP_NO = #EMP_NO#
+  </select>
+
+  
+  <insert id="InsertEmpLocation">
+    INSERT INTO T_EMP_LOCATION
+      (LOCATION_DATA_SEQ
+      , EMP_NO
+      , SHEET_NO
+      , EXTENSION_LINE_NO
+      , EMP_STATUS_DV
+      , FIXED_FLG)
+    VALUES
+      (NEXT VALUE FOR LOCATION_DATA_SEQ
+      , #EMP_NO#
+      , #SHEET_NO#
+      , #EXTENSION_LINE_NO#
+      , '0'
+      , '0')
+  </insert>
+
+  
+  <update id="UpdateEmpLocation">
+    UPDATE
+      T_EMP_LOCATION
+    SET
+      SHEET_NO = #SHEET_NO#
+    WHERE
+      EMP_NO = #EMP_NO#
+  </update>
+  
+  
+  
 </SqlMap>

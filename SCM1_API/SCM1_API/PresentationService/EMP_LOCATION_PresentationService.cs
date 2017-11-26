@@ -88,5 +88,45 @@ namespace SCM1_API.PresentationService
             return ReturnModel;
         }
 
+
+        /// <summary>
+        /// ユーザー位置情報を登録する
+        /// </summary>
+        /// <returns></returns>
+        public EmpLocationResponse RegisterLocation(EmpLocationRequest req)
+        {
+
+            //座席が空いてなければ終了
+            var isVacant = empLocation_Service.FetchLocationStatus_Service(req.SheetNo);
+            if (isVacant.Count() > 0 )
+            {
+
+                return new EmpLocationResponse()
+                {
+                    ProcessStatus = STATUS.NG,
+                    ResponseMessage = MESSAGE.MSG_GET_EMP_LOCATION_NG,
+                };
+            }
+
+            //その人にとって最初の席かチェック
+            int? onLocationEmpId = empLocation_Service.hasLocationCheckByEmpId_Service(int.Parse(req.EmpNo));
+
+            if (onLocationEmpId == 0)
+            {
+                //最初の席だったら登録して終了
+                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.SheetNo);
+            }
+            else
+            {
+                //次の席じゃないなら更新
+                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.SheetNo);
+            }
+
+            return new EmpLocationResponse()
+            {
+                ProcessStatus = STATUS.OK,
+                ResponseMessage = MESSAGE.MSG_OK,
+            };
+        }
     }
 }

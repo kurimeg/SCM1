@@ -54,5 +54,49 @@ namespace SCM1_API.Service
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
             return T_EMP_LOCATION_Repository.ClearAllEmpLocationInfo_Repository(param);
         }
+
+        /// <summary>
+        /// ユーザー位置情報のステータスを取得する
+        /// </summary>
+        /// <param name="sheetNo"></param>
+        /// <returns></returns>
+        public IEnumerable<T_EMP_LOCATION> FetchLocationStatus_Service(string sheetNo)
+        {
+            var param = new { SHEET_NO = sheetNo };
+            return T_EMP_LOCATION_Repository.FetchLocationStatus(param);
+        }
+
+        /// <summary>
+        /// 対象ユーザーが席をすでに席をとっているかチェック
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <returns></returns>
+        public int? hasLocationCheckByEmpId_Service(int empId)
+        {
+            var param = new { EMP_NO = empId };
+            return T_EMP_LOCATION_Repository.hasLocationCheckByEmpId(param);
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を登録する
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <param name="sheetNo"></param>
+        public bool RegisterEmpLocation_Service(int empId, string sheetNo, string phoneNo = null)
+        {
+            var param = new { EMP_NO = empId, SHEET_NO = sheetNo, EXTENSION_LINE_NO  = phoneNo};
+            return T_EMP_LOCATION_Repository.RegisterEmpLocation(param) > 0? true: false;
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を更新する
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <param name="sheetNo"></param>
+        public bool ReRegiseterEmpLocation_Service(int empId, string sheetNo)
+        {
+            var param = new { EMP_NO = empId, SHEET_NO = sheetNo };
+            return T_EMP_LOCATION_Repository.ReRegisterEmpLocation(param) > 0 ? true : false;
+        }
     }
 }

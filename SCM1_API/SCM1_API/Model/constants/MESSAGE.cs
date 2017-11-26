@@ -55,5 +55,10 @@ namespace SCM1_API.Model.constants
         /// </summary>
         public const string MSG_REG_EMP_LOCATION_NG = "ユーザー位置情報の登録に失敗しました。";
 
+        /// <summary>
+        /// ユーザー位置情報登録失敗_排他制御
+        /// </summary>
+        public const string MSG_GET_EMP_LOCATION_NG = "選択された座席は既に利用されています。";
+
     }
 }

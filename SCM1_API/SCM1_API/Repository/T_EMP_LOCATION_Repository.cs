@@ -56,5 +56,49 @@ namespace SCM1_API.Repository
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
             return executeRowCnt > 0 ? true : false;
         }
+
+        /// <summary>
+        /// ユーザー位置情報のステータスを取得する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static IEnumerable<T_EMP_LOCATION> FetchLocationStatus(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "FetchLocation", dbModel);
+        }
+
+        /// <summary>
+        /// 対象ユーザーが席をすでに席をとっているかチェック
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int? hasLocationCheckByEmpId(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "hasLocationCheckByEmpId", dbModel).Count;
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を登録する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int RegisterEmpLocation(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "InsertEmpLocation", dbModel, Model.constants.DBAccessType.Insert);
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を更新する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int ReRegisterEmpLocation(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "UpdateEmpLocation", dbModel, Model.constants.DBAccessType.Update);
+        }
     }
 }

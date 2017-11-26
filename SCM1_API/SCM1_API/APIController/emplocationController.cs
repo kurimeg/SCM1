@@ -69,12 +69,35 @@ namespace SCM1_API.APIController
 
         // PUT api/<controller>/5
         /// <summary>
-        /// PUT_ユーザー位置情報を登録する
+        /// PUT_ユーザー位置情報を登録する_こっちが正規★★
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        public void Put(int id, [FromBody]string value)
+        [SwaggerOperation("RegisterEmpLocation")]
+        [LoggingFilter("api/emplocation")] // <-- AOP（処理開始、終了時のロギング処理）
+        public JsonResult<object> Put(JToken reqJson) // <-- ActionResultのJsonResultを戻り値とする
         {
+            try
+            {
+                var req = JsonUtil.Deserialize<EmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+
+                //トークンを検証
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new EmpLocationResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
+
+                //座席情報を登録
+                var res = presentationService.RegisterLocation(req);
+                return Json((object)res);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new EmpLocationResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+            }
         }
 
 
