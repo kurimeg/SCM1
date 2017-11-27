@@ -43,7 +43,7 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// 座席情報取得失敗
         /// </summary>
-        public const string MSG_FETCH_SHEET_NG = "座席子機情報の取得に失敗しました。";
+        public const string MSG_FETCH_SEAT_NG = "座席子機情報の取得に失敗しました。";
 
         /// <summary>
         /// ユーザー位置情報取得失敗

@@ -58,11 +58,11 @@ namespace SCM1_API.Service
         /// <summary>
         /// ユーザー位置情報のステータスを取得する
         /// </summary>
-        /// <param name="sheetNo"></param>
+        /// <param name="seatNo"></param>
         /// <returns></returns>
-        public IEnumerable<T_EMP_LOCATION> FetchLocationStatus_Service(string sheetNo)
+        public IEnumerable<T_EMP_LOCATION> FetchLocationStatus_Service(string seatNo)
         {
-            var param = new { SHEET_NO = sheetNo };
+            var param = new { seat_NO = seatNo };
             return T_EMP_LOCATION_Repository.FetchLocationStatus(param);
         }
 
@@ -81,10 +81,10 @@ namespace SCM1_API.Service
         /// 対象ユーザーの席情報を登録する
         /// </summary>
         /// <param name="empId"></param>
-        /// <param name="sheetNo"></param>
-        public bool RegisterEmpLocation_Service(int empId, string sheetNo, string phoneNo = null)
+        /// <param name="seatNo"></param>
+        public bool RegisterEmpLocation_Service(int empId, string seatNo, string phoneNo = null)
         {
-            var param = new { EMP_NO = empId, SHEET_NO = sheetNo, EXTENSION_LINE_NO  = phoneNo};
+            var param = new { EMP_NO = empId, seat_NO = seatNo, EXTENSION_LINE_NO  = phoneNo};
             return T_EMP_LOCATION_Repository.RegisterEmpLocation(param) > 0? true: false;
         }
 
@@ -92,10 +92,10 @@ namespace SCM1_API.Service
         /// 対象ユーザーの席情報を更新する
         /// </summary>
         /// <param name="empId"></param>
-        /// <param name="sheetNo"></param>
-        public bool ReRegiseterEmpLocation_Service(int empId, string sheetNo)
+        /// <param name="seatNo"></param>
+        public bool ReRegiseterEmpLocation_Service(int empId, string seatNo)
         {
-            var param = new { EMP_NO = empId, SHEET_NO = sheetNo };
+            var param = new { EMP_NO = empId, seat_NO = seatNo };
             return T_EMP_LOCATION_Repository.ReRegisterEmpLocation(param) > 0 ? true : false;
         }
     }

@@ -5,12 +5,12 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class MST_SHEET : MST_CONTENT_VIEW
+    public class MST_SEAT : MST_CONTENT_VIEW
     {
         /// <summary>
         /// 座席番号
         /// </summary>
-        public string SHEET_NO
+        public string SEAT_NO
         {
             get; set;
         }
@@ -18,7 +18,7 @@ namespace SCM1_API.Model
         /// <summary>
         /// 固定席フラグ
         /// </summary>
-        public bool FIXED_SHEET_FLG
+        public bool FIXED_SEAT_FLG
         {
             get; set;
         }

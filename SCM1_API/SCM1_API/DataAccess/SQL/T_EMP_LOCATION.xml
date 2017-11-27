@@ -7,16 +7,16 @@
    SELECT
      EL.LOCATION_DATA_SEQ
      ,EL.EMP_NO
-     ,EL.SHEET_NO
+     ,EL.SEAT_NO
      ,EL.EXTENSION_LINE_NO
      ,EL.EMP_STATUS_DV
      ,EL.FIXED_FLG
    FROM
      T_EMP_LOCATION EL 
    INNER JOIN 
-     MST_SHEET MS
+     MST_SEAT MS
    ON
-     EL.SHEET_NO = MS.SHEET_NO
+     EL.SEAT_NO = MS.SEAT_NO
    WHERE
      EL.EMP_NO = #EMP_NO#
    AND
@@ -28,16 +28,16 @@
   SELECT
     EL.LOCATION_DATA_SEQ
     ,EL.EMP_NO
-    ,EL.SHEET_NO
+    ,EL.SEAT_NO
     ,EL.EXTENSION_LINE_NO
     ,EL.EMP_STATUS_DV
     ,EL.FIXED_FLG
   FROM
     T_EMP_LOCATION EL 
   INNER JOIN 
-    MST_SHEET MS
+    MST_SEAT MS
   ON
-    EL.SHEET_NO = MS.SHEET_NO
+    EL.SEAT_NO = MS.SEAT_NO
   WHERE
     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </select>
@@ -48,9 +48,9 @@
    FROM
      T_EMP_LOCATION EL 
    INNER JOIN 
-     MST_SHEET MS
+     MST_SEAT MS
    ON
-     EL.SHEET_NO = MS.SHEET_NO
+     EL.SEAT_NO = MS.SEAT_NO
    WHERE
      EL.EMP_NO = #EMP_NO#
    AND
@@ -63,9 +63,9 @@
    FROM
      T_EMP_LOCATION EL 
    INNER JOIN 
-     MST_SHEET MS
+     MST_SEAT MS
    ON
-     EL.SHEET_NO = MS.SHEET_NO
+     EL.SEAT_NO = MS.SEAT_NO
    WHERE
      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </delete>
@@ -73,11 +73,11 @@
   
   <select id="FetchLocation">
     SELECT
-      SHEET_NO
+      SEAT_NO
     FROM
       T_EMP_LOCATION
     WHERE
-      SHEET_NO = #SHEET_NO#
+      SEAT_NO = #SEAT_NO#
   </select>
 
   
@@ -95,14 +95,14 @@
     INSERT INTO T_EMP_LOCATION
       (LOCATION_DATA_SEQ
       , EMP_NO
-      , SHEET_NO
+      , SEAT_NO
       , EXTENSION_LINE_NO
       , EMP_STATUS_DV
       , FIXED_FLG)
     VALUES
       (NEXT VALUE FOR LOCATION_DATA_SEQ
       , #EMP_NO#
-      , #SHEET_NO#
+      , #SEAT_NO#
       , #EXTENSION_LINE_NO#
       , '0'
       , '0')
@@ -113,7 +113,7 @@
     UPDATE
       T_EMP_LOCATION
     SET
-      SHEET_NO = #SHEET_NO#
+      SEAT_NO = #SEAT_NO#
     WHERE
       EMP_NO = #EMP_NO#
   </update>

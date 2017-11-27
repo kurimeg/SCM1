@@ -69,7 +69,7 @@ namespace SCM1_API.APIController
 
         // PUT api/<controller>/5
         /// <summary>
-        /// PUT_ユーザー位置情報を登録する_こっちが正規★★
+        /// PUT_ユーザー位置情報を登録する
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>

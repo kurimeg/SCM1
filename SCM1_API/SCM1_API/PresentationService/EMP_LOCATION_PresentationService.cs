@@ -97,7 +97,7 @@ namespace SCM1_API.PresentationService
         {
 
             //座席が空いてなければ終了
-            var isVacant = empLocation_Service.FetchLocationStatus_Service(req.SheetNo);
+            var isVacant = empLocation_Service.FetchLocationStatus_Service(req.seatNo);
             if (isVacant.Count() > 0 )
             {
 
@@ -114,12 +114,12 @@ namespace SCM1_API.PresentationService
             if (onLocationEmpId == 0)
             {
                 //最初の席だったら登録して終了
-                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.SheetNo);
+                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
             }
             else
             {
                 //次の席じゃないなら更新
-                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.SheetNo);
+                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
             }
 
             return new EmpLocationResponse()

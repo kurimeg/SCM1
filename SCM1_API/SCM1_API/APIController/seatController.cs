@@ -10,17 +10,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
-using SCM1_API.Model.ScreenModel.Sheet;
+using SCM1_API.Model.ScreenModel.seat;
 using Swashbuckle.Swagger.Annotations;
 
 namespace SCM1_API.APIController
 {
-    public class sheetController : ApiController
+    public class seatController : ApiController
     {
-        private SHEET_PresentationService presentationService;
-        public sheetController()
+        private SHEAT_PresentationService presentationService;
+        public seatController()
         {
-            presentationService = new SHEET_PresentationService();
+            presentationService = new SHEAT_PresentationService();
         }
 
 
@@ -29,29 +29,29 @@ namespace SCM1_API.APIController
         /// </summary>
         /// <param name="empno"></param>
         /// <returns></returns>
-        [SwaggerOperation("FetchSheetInfo")]
-        [LoggingFilter("api/sheet")] // <-- AOP（処理開始、終了時のロギング処理）
+        [SwaggerOperation("FetchSeatInfo")]
+        [LoggingFilter("api/seat")] // <-- AOP（処理開始、終了時のロギング処理）
         public JsonResult<object> Post(JToken reqJson)
         {
             try
             {
-                SheetRequest req = JsonUtil.Deserialize<SheetRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+                SeatRequest req = JsonUtil.Deserialize<SeatRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
                 if (!Service.TokenHandling.InspectToken_direct(req.Token))
-                    return Json((object)new SheetResponse()
+                    return Json((object)new SeatResponse()
                     {
                         ProcessStatus = STATUS.TOKEN_ER,
                         ResponseMessage = MESSAGE.MSG_TOKEN_ER
                     });
 
-                SheetResponse res = presentationService.FetchSheetInfo(req);
+                SeatResponse res = presentationService.FetchSeatInfo(req);
                 return Json((object)res);
             }
             catch (Exception ex)
             {
                 Logger.WriteException(MESSAGE.MSG_ER, ex);
-                return Json((object)new SheetResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+                return Json((object)new SeatResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
             }
         }
     }
