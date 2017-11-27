@@ -1,5 +1,5 @@
 <template>
-	<button type="button" class="seat"　@click="onReserve">{{ name }}</button>
+	<button type="button" class="seat" v-on:click="onReserve">{{ name }}</button>
 </template>
 
 <script>
@@ -10,8 +10,10 @@
     data: function () {
         return {
             name: null,
-            empNo: null,
-            password: null
+            Token : null,
+            EmpNo: null,
+            seatNo: null,
+            Password: null
         }
     },
     methods: {
@@ -30,24 +32,41 @@
         //     }
         // },
         onReserve: function () {
-            if(!this.$data.name){
-				this.reserve({
-					EmpNo: '46012',
-					Password: '46012'
-				})
-				alert("登録が完了しました")
-				this.$data.name = "栗原"
-			}else{
-				alert("登録を解除しました")
-				this.$data.name = ""
-			}
-        },
-        created: function () {
-            let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            this.reserve({
-                EmpNo: authInfo.EmpNo,
-                Password: authInfo.Password
-            })
+            //座席未登録 & 該当座席の名前がない場合
+            if(!this.$data.name && !this.$store.state.reserve.isReserved){
+                if(confirm("座席を登録しますか？")){
+                    this.reserve({
+                        Token : this.$store.state.auth.token,
+                        EmpNo: "46012",
+                        seatNo: "E84-1"
+                    })
+                    if(!this.$store.state.reserve.hasError){
+                        this.$data.name = "栗原"
+                    }else{
+                        alert(this.$store.state.reserve.errorMessage)
+                    }
+                }
+            //座席未登録 & 該当座席の名前が自分以外の場合
+            }else if(this.$data.name != "栗原" && !this.$store.state.reserve.isReserved){
+                alert("選択された座席は既に利用されています。")
+            //座席登録済 & 該当座席の名前が自分の場合
+            }else if(this.$data.name == "栗原" && this.$store.state.reserve.isReserved){
+                if(confirm("座席を解除しますか？")){
+                    this.reserve({
+                        Token : this.$store.state.auth.token,
+                        EmpNo: "46012",
+                        seatNo: "E84-1"
+                    })
+                    if(!this.$store.state.reserve.hasError){
+                        this.$data.name = ""
+                    }else{
+                        alert(this.$store.state.reserve.errorMessage)
+                    }
+                }
+            //座席登録済 & 該当座席の名前が自分以外の場合
+            }else if(this.$data.name != "栗原" && this.$store.state.reserve.isReserved){
+                alert("あなたの座席は既に登録されています。")
+            }
         }
 	}
 }

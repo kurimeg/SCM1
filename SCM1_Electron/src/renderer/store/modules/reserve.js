@@ -1,23 +1,25 @@
 import router from '@/router'
 // TODO: main.jsでimport済。各moduleでそれを使うには？
 import axios from 'axios'
+import * as constants from '@/assets/constants'
+import * as messages from '@/assets/messages'
 
 // TODO: localStateとしたい。
 const state = {
-    token: '',
+    isReserved: false,
     hasError: false,
     errorMessage: ''
 }
 
 // TODO: もっときれいになるはず。
 const mutations = {
-    reserve (state , token) {
-        state.token = token
+    reserve (state , isReserved) {
+        state.isReserved = isReserved
         state.hasError = false
         state.errorMessage = ''
     },
     error (state, errorMessage) {
-        state.token = ''
+        state.isReserved = false
         state.hasError = true
         state.errorMessage = errorMessage
     }
@@ -25,20 +27,39 @@ const mutations = {
 
 const actions = {
     reserve ({ commit }, reserveInfo) {
-        axios.post('http://scm1test.azurewebsites.net/api/auth',reserveInfo)
-        .then((response) =>{
-            if(response.data.ProcessStatus === constants.STATUS_OK && response.data.Authenticated)
-            {
-                commit('reserve', 'OK')
-            } 
-            else
-            {
-                commit('error', response.data.ResponseMessage)
-            }
-        }).catch((error) => {
-            commit('error', messages.E_001)
-    })
-
+        if(!state.isReserved){
+            //登録処理
+            axios.put('http://scm1test.azurewebsites.net/api/emplocation/RegisterEmpLocation',reserveInfo)
+            .then((response) =>{
+                if(response.data.ResponseMessage != "処理に成功しました。")
+                {
+                    commit('error', response.data.ResponseMessage)
+                }
+                else
+                {
+                    commit('reserve', true)
+                }
+            }).catch((error) => {
+                commit('error', messages.E_001)
+            })
+        }else{
+            //解除処理
+            axios.put('http://scm1test.azurewebsites.net/api/emplocation/RegisterEmpLocation',reserveInfo)
+            .then((response) =>{
+                if(response.data.ResponseMessage != "処理に成功しました。")
+                {
+                    commit('error', response.data.ResponseMessage)
+                }
+                else
+                {
+                    commit('reserve', false)
+                }
+            }).catch((error) => {
+                commit('error', messages.E_001)
+            })
+        }
+        return state.hasError
+        
         // GET sample
         // axios.get('http://scm1test.azurewebsites.net/api/emp/testget/', {
         //     params: {
