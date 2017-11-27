@@ -3,32 +3,51 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
+    import { createNamespacedHelpers } from 'vuex'
+    const { mapActions } = createNamespacedHelpers('reserve')
 
-//TODO: moduleのマップ
-// const { mapActions } = createNamespacedHelpers('auth')
-
- export default {
-   data: function () {
-     return {
-		name: null
-     }
-   },
+    export default {
+    data: function () {
+        return {
+            name: null,
+            empNo: null,
+            password: null
+        }
+    },
     methods: {
-        //TODO: moduleのマップ
-        // ...mapActions([
-        //     'login'
-        // ]),
-
-        setName: function () {
-            //TODO: ここでaction呼び出してセット、今べた書きだとレイアウト崩れる。。。
+        ...mapActions([
+            'reserve'
+        ]),
+        // setName: function () {
+        //     //TODO: ここでaction呼び出してセット、今べた書きだとレイアウト崩れる。。。
+        //     if(!this.$data.name){
+        //         alert("登録が完了しました")
+        //         this.$data.name = "栗原"
+        //     }
+        //     else{
+        //         alert("登録を解除しました")
+        //         this.$data.name = ""
+        //     }
+        // },
+        onReserve: function () {
             if(!this.$data.name){
-                this.$data.name = "栗原"
-            }
-            else{
-                this.$data.name = ""
-            }
-            
+				this.reserve({
+					EmpNo: '46012',
+					Password: '46012'
+				})
+				alert("登録が完了しました")
+				this.$data.name = "栗原"
+			}else{
+				alert("登録を解除しました")
+				this.$data.name = ""
+			}
+        },
+        created: function () {
+            let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+            this.reserve({
+                EmpNo: authInfo.EmpNo,
+                Password: authInfo.Password
+            })
         }
 	}
 }

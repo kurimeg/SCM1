@@ -1,8 +1,6 @@
 <template>
 	<div class="main">
 		<div class="row01 floatL child">
-			<seat></seat>
-			<seat></seat>
 			<div class="desk_square">
 				<div class="naisen naisen_onsquare">2001</div>
 			</div>
@@ -231,7 +229,7 @@ export default {
 //         ])
 // 	},
 // 	created: function () {
-		//TODO: 以下のような感じでIDをセット。もっといい感じの方法があるはず。。。
+// 		//TODO: 以下のような感じでIDをセット。もっといい感じの方法があるはず。。。
 // 		const naisen = document.getElementsByClassName("naisen")
 // 		this.getNaisenIDs()
 // 		for(let i = 0; i < naisen.length; i++){
@@ -243,8 +241,6 @@ export default {
 // 		for(let i = 0; i < naisen.length; i++){
 // 			seat[i].setAttribute("id", this.$store.state.seatIDs[i])
 // 		}
-
-
 //     }
 }
 </script>
