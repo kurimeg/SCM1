@@ -1,6 +1,8 @@
 <template>
 	<div class="main">
 		<div class="row01 floatL child">
+			<seat></seat>
+			<seat></seat>
 			<div class="desk_square">
 				<div class="naisen naisen_onsquare">2001</div>
 			</div>
@@ -215,6 +217,38 @@
 	</div>
 </template>
 
+<script>
+import Seat from './Chart/Seat'
+
+export default {
+   components: {
+	   Seat
+   }
+//    methods: {
+// 	   //TODO: modulesへ追加、stateに各配列をcommitする
+//         ...mapActions([
+//             'getNaisenIDs', 'getSeatIDs'
+//         ])
+// 	},
+// 	created: function () {
+		//TODO: 以下のような感じでIDをセット。もっといい感じの方法があるはず。。。
+// 		const naisen = document.getElementsByClassName("naisen")
+// 		this.getNaisenIDs()
+// 		for(let i = 0; i < naisen.length; i++){
+// 			naisen[i].setAttribute("id", this.$store.state.naisenIDs[i])
+// 		}
+
+// 		const seat = document.getElementsByClassName("seat")
+// 		this.getSeatIDs
+// 		for(let i = 0; i < naisen.length; i++){
+// 			seat[i].setAttribute("id", this.$store.state.seatIDs[i])
+// 		}
+
+
+//     }
+}
+</script>
+
 <style>
 body {
     margin: 0;
@@ -360,5 +394,19 @@ body {
     position: absolute;
     margin-left: 6px;
     margin-top: 19px;
+}
+.seat_horizontal {
+	margin: 0px;
+	width: 50px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	padding: 10px 0;
+	background-color: #FFFFFF;
+	border: 2px solid #B8C8D6;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 14px;
+	z-index: 999;
 }
 </style>
