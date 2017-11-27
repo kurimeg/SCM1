@@ -1,6 +1,8 @@
 <template>
 	<div class="main">
 		<div class="row01 floatL child">
+			<seat></seat>
+			<seat></seat>
 			<div class="desk_square">
 				<div class="naisen naisen_onsquare">2001</div>
 			</div>

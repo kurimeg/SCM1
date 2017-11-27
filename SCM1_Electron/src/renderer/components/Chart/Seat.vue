@@ -1,5 +1,5 @@
 <template>
-	<button type="button" class="seat"　@click="setName">{{ name }}</button>
+	<button type="button" class="seat"　@click="onReserve">{{ name }}</button>
 </template>
 
 <script>
