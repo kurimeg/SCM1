@@ -17,10 +17,10 @@ namespace SCM1_API.APIController
 {
     public class seatController : ApiController
     {
-        private SHEAT_PresentationService presentationService;
+        private SEAT_PresentationService presentationService;
         public seatController()
         {
-            presentationService = new SHEAT_PresentationService();
+            presentationService = new SEAT_PresentationService();
         }
 
 

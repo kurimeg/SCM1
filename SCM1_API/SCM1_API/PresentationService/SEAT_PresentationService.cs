@@ -8,14 +8,14 @@ using SCM1_API.Model.constants;
 
 namespace SCM1_API.PresentationService
 {
-    public class SHEAT_PresentationService
+    public class SEAT_PresentationService
     {
         private SEAT_Service seat_Service;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public SHEAT_PresentationService()
+        public SEAT_PresentationService()
         {
             seat_Service = new SEAT_Service();
         }
