@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="seat" v-on:click="onReserve">{{ seatName }}</button>
+    <button type="button" class="seat" v-on:click="onReserve">{{seatName}}</button>
 </template>
 
 <script>
@@ -81,10 +81,11 @@ body {
 .seat {
     margin: 5px 2px;
     width: 22px;
-    text-decoration: none;
-    display: block;
+    height: 60px;
     text-align: center;
-    padding: 23px 0;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 6px 0;
     background-color: #FFFFFF;
     border: 2px solid #B8C8D6;
     border-radius: 10px;
