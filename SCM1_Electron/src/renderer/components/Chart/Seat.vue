@@ -1,5 +1,5 @@
 <template>
-	<button type="button" class="seat" v-on:click="onReserve">{{ name }}</button>
+    <button type="button" class="seat" v-on:click="onReserve">{{ seatName }}</button>
 </template>
 
 <script>
@@ -16,6 +16,7 @@
             Password: null
         }
     },
+    props: ['seatName'],
     methods: {
         ...mapActions([
             'reserve'

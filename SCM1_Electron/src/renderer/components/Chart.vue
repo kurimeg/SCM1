@@ -1,8 +1,6 @@
 <template>
 	<div class="main">
 		<div class="row01 floatL child">
-			<seat></seat>
-			<seat></seat>
 			<div class="desk_square">
 				<div class="naisen naisen_onsquare">2001</div>
 			</div>
@@ -214,6 +212,9 @@
 			</table>
 		</div>
 		<div id="minimap"></div>
+		<div class="seat-layer" >
+			<seat :seat-name="seat.name" v-for="seat in seats"></seat>
+		</div>
 	</div>
 </template>
 
@@ -221,6 +222,14 @@
 import Seat from './Chart/Seat'
 
 export default {
+   data: function () {
+     return {
+		seats: [
+			{name: "栗原"},
+			{name: "佐貫"}
+		]
+     }
+   },
    components: {
 	   Seat
    }
@@ -253,6 +262,7 @@ body {
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
 .main {
+	position: relative;
     width: 1420px;
     height: 600px;
     margin: 10px auto;
@@ -406,5 +416,11 @@ body {
 	cursor: pointer;
 	font-size: 14px;
 	z-index: 999;
+}
+.seat-layer {
+	position: absolute;
+    width: 1420px;
+    height: 600px;
+    margin: 10px auto;
 }
 </style>
