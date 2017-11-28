@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, Tray, ipcMain, autoUpdater } from 'electron'
+import { app, BrowserWindow, Menu, Tray, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -69,7 +69,7 @@ app.on('activate', () => {
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
 
-//import { autoUpdater } from 'electron-updater'
+const {autoUpdater} = require("electron-updater")
 
 autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
