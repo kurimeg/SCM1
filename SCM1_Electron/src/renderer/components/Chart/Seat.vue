@@ -72,22 +72,31 @@ body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
+button:focus{
+ outline:none;
+}
 .seat {
-    margin: 5px 2px;
-    width: 22px;
+    width: 24px;
     height: 60px;
     text-align: center;
     vertical-align: middle;
     text-decoration: none;
-    padding: 6px 0;
+    padding: 3px 0;
     background-color: #FFFFFF;
     border: 2px solid #B8C8D6;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: 'Century Gothic';
+	z-index: 1;
+    position: absolute;
+	float: left;
+    line-height: 1.1;
 }
 .seatY{
-    height: 22px;
+    position: absolute;
 	width: 60px;
+    height: 24px;
+    padding: 0 0;
 }
 </style>
