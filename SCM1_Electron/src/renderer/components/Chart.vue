@@ -214,7 +214,7 @@
 		</div>
 		<div id="minimap"></div>
 		<div class="seat-layer" >
-			<seat class="seat" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+			<seat class="seat" :class="{ seatY: seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
 		</div>
 	</div>
 </template>
@@ -227,8 +227,9 @@ export default {
    data: function () {
      return {
 		seats: [
-			{name: "" , positionX:3 ,positionY:10},
-			{name: "佐貫" , positionX:3 ,positionY:100}
+			{name: "栗原" , positionX:3 ,positionY:40 ,class:false},
+            {name: "佐貫" , positionX:3 ,positionY:120 ,class:false},
+            {name: "和田" , positionX:940 ,positionY:320 ,class:true}
 		]
      }
    },

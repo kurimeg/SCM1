@@ -1,11 +1,11 @@
 <template>
-    <div class="form">
+    <div class="search-layer">
         <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
         <button type="button" class="back">✖</button>
         <div>
             <input type="text" v-model="searchtxt" class="searchword">
-                <input type="image" src="../../assets/images/search_button.png" class="button"></input>
+                <img src="../../assets/images/search_button.png" class="button"></img>
             </input>
         </div>
         <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
@@ -34,7 +34,7 @@ body {
 .floatL {
 	float: left;
 }
-.form{
+.search-layer{
 	position: absolute;
 	z-index: 2;
 	overflow: hidden;	

@@ -2,7 +2,7 @@
     <div class="backimage">
         <div class="backimageToka">
             <div class="form">
-	        	<div class="error-char" v-if="this.$store.state.auth.hasError">{{ $store.state.auth.errorMessage }}</div>
+	        	<div class="error-char" v-if="this.$store.state.handler.hasError">{{ $store.state.handler.errorMessage }}</div>
                 <div class="enter">
                     <div class="login-char">社員番号</div>
                     <input type="text" v-model="empNo" class="txtbox"></input>

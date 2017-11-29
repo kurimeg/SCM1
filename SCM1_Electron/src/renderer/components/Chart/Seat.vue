@@ -9,11 +9,7 @@
     export default {
     data: function () {
         return {
-            name: null,
-            Token : null,
-            EmpNo: null,
-            seatNo: null,
-            Password: null
+            seatName: null
         }
     },
     props: ['seatName'],
@@ -92,5 +88,9 @@ body {
     cursor: pointer;
     font-size: 14px;
 	z-index: 1;
+}
+.seatY{
+    height: 22px;
+	width: 60px;
 }
 </style>
