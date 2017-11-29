@@ -31,34 +31,39 @@ const actions = {
             //登録処理
             axios.put('http://scm1test.azurewebsites.net/api/emplocation/RegisterEmpLocation',reserveInfo)
             .then((response) =>{
-                if(response.data.ResponseMessage != "処理に成功しました。")
+                if(response.data.ProcessStatus == "OK")
                 {
-                    commit('error', response.data.ResponseMessage)
+                    commit('reserve', true)
+                    return true
                 }
                 else
                 {
-                    commit('reserve', true)
+                    commit('error', response.data.ResponseMessage)
+                    return false
                 }
             }).catch((error) => {
                 commit('error', messages.E_001)
+                return false
             })
         }else{
             //解除処理
-            axios.put('http://scm1test.azurewebsites.net/api/emplocation/RegisterEmpLocation',reserveInfo)
+            axios.DELETE('http://scm1test.azurewebsites.net/api/emplocation/ClearEmpLocationInfo',reserveInfo)
             .then((response) =>{
-                if(response.data.ResponseMessage != "処理に成功しました。")
+                if(response.data.ProcessStatus == "OK")
                 {
-                    commit('error', response.data.ResponseMessage)
+                    commit('reserve', false)
+                    return true
                 }
                 else
                 {
-                    commit('reserve', false)
+                    commit('error', response.data.ResponseMessage)
+                    return false
                 }
             }).catch((error) => {
                 commit('error', messages.E_001)
+                return false
             })
         }
-        return state.hasError
         
         // GET sample
         // axios.get('http://scm1test.azurewebsites.net/api/emp/testget/', {
