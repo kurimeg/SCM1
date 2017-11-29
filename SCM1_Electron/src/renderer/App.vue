@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div class="alert-layer">
-      <alert v-if="false"></alert>
+    <div class="alert-layer" v-if="false">
+      <alert></alert>
     </div>
   </div>
 </template>

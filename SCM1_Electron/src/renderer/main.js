@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import httpClient from './assets/http-client'
+import httpClient from './util/http-client'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.use(httpClient,{ store })
