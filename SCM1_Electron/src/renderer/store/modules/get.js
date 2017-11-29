@@ -19,12 +19,13 @@ const mutations = {
 }
 
 const actions = {
-    firstview ({ commit }) {
-        Vue.http.post('api/seat/FetchSeatInfo')
+    firstview ({ commit }, token) {
+        Vue.http.post('/seat/FetchSeatInfo', token)
         .then((data) =>{
+            console.log(token)
             if(data.ProcessStatus === constants.STATUS_OK && data.Authenticated)
             {
-                commit('login', data)
+                commit('login', data.SeatInfo)
             } 
         })
     }

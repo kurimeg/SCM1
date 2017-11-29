@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon" v-on:click="{{}}"></img>
+		<img src="../assets/images/search_icon.png" class="icon"></img>
 		<search v-if="false"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat class="seat" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+				<seat :id="seat.name" class="seat" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -132,6 +132,7 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
+import { createNamespacedHelpers } from 'vuex'
 const { mapActions } = createNamespacedHelpers('get')
 
 export default {
@@ -353,7 +354,7 @@ export default {
         ]),
    },
    created: function(){
-	   this.firstview()
+	   this.firstview({Token: this.$store.state.auth.token})
    },
    
    components: {
