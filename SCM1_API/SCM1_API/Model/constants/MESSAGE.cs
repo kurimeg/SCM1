@@ -43,7 +43,7 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// 座席情報取得失敗
         /// </summary>
-        public const string MSG_FETCH_SHEET_NG = "座席子機情報の取得に失敗しました。";
+        public const string MSG_FETCH_SEAT_NG = "座席子機情報の取得に失敗しました。";
 
         /// <summary>
         /// ユーザー位置情報取得失敗
@@ -56,9 +56,9 @@ namespace SCM1_API.Model.constants
         public const string MSG_REG_EMP_LOCATION_NG = "ユーザー位置情報の登録に失敗しました。";
 
         /// <summary>
-        /// ユーザー位置情報登録失敗
+        /// ユーザー位置情報登録失敗_排他制御
         /// </summary>
         public const string MSG_GET_EMP_LOCATION_NG = "選択された座席は既に利用されています。";
-        
+
     }
 }

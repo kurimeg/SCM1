@@ -3,23 +3,20 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   
-  
-  
-  
   <select id="FetchEmpLocationInfo">
    SELECT
      EL.LOCATION_DATA_SEQ
      ,EL.EMP_NO
-     ,EL.SHEET_NO
+     ,EL.SEAT_NO
      ,EL.EXTENSION_LINE_NO
      ,EL.EMP_STATUS_DV
      ,EL.FIXED_FLG
    FROM
      T_EMP_LOCATION EL 
    INNER JOIN 
-     MST_SHEET MS
+     MST_SEAT MS
    ON
-     EL.SHEET_NO = MS.SHEET_NO
+     EL.SEAT_NO = MS.SEAT_NO
    WHERE
      EL.EMP_NO = #EMP_NO#
    AND
@@ -28,66 +25,99 @@
   
   
   <select id="FetchAllEmpLocationInfo">
-    SELECT
-      EL.LOCATION_DATA_SEQ
-      ,EL.EMP_NO
-      ,EL.SHEET_NO
-      ,EL.EXTENSION_LINE_NO
-      ,EL.EMP_STATUS_DV
-      ,EL.FIXED_FLG
-    FROM
-      T_EMP_LOCATION EL 
-    INNER JOIN 
-      MST_SHEET MS
-    ON
-      EL.SHEET_NO = MS.SHEET_NO
-    WHERE
-      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  SELECT
+    EL.LOCATION_DATA_SEQ
+    ,EL.EMP_NO
+    ,EL.SEAT_NO
+    ,EL.EXTENSION_LINE_NO
+    ,EL.EMP_STATUS_DV
+    ,EL.FIXED_FLG
+  FROM
+    T_EMP_LOCATION EL 
+  INNER JOIN 
+    MST_SEAT MS
+  ON
+    EL.SEAT_NO = MS.SEAT_NO
+  WHERE
+    MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </select>
+  
 
-  <select id="GetLocation">
+  <delete id="ClearEmpLocationInfo">
+   DELETE EL
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SEAT MS
+   ON
+     EL.SEAT_NO = MS.SEAT_NO
+   WHERE
+     EL.EMP_NO = #EMP_NO#
+   AND
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </delete>
+  
+  
+  <delete id="ClearAllEmpLocationInfo">
+   DELETE EL
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SEAT MS
+   ON
+     EL.SEAT_NO = MS.SEAT_NO
+   WHERE
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </delete>
+
+  
+  <select id="FetchLocation">
     SELECT
-      SHEET_NO
+      SEAT_NO
     FROM
       T_EMP_LOCATION
     WHERE
-      SHEET_NO = #SHEET_NO#
+      SEAT_NO = #SEAT_NO#
   </select>
 
-  <select id="GetLocationEmpId">
+  
+  <select id="hasLocationCheckByEmpId">
     SELECT
       EMP_NO
     FROM
       T_EMP_LOCATION
     WHERE
-      SHEET_NO = #SHEET_NO#
+      EMP_NO = #EMP_NO#
   </select>
 
+  
   <insert id="InsertEmpLocation">
     INSERT INTO T_EMP_LOCATION
       (LOCATION_DATA_SEQ
       , EMP_NO
-      , SHEET_NO
+      , SEAT_NO
       , EXTENSION_LINE_NO
       , EMP_STATUS_DV
       , FIXED_FLG)
     VALUES
       (NEXT VALUE FOR LOCATION_DATA_SEQ
       , #EMP_NO#
-      , #SHEET_NO#
-      , '2011'
+      , #SEAT_NO#
+      , #EXTENSION_LINE_NO#
       , '0'
       , '0')
   </insert>
 
+  
   <update id="UpdateEmpLocation">
     UPDATE
       T_EMP_LOCATION
     SET
-      SHEET_NO = #SHEET_NO#
+      SEAT_NO = #SEAT_NO#
     WHERE
       EMP_NO = #EMP_NO#
   </update>
   
-
+  
+  
 </SqlMap>

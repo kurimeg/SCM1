@@ -15,7 +15,7 @@ namespace SCM1_API.Repository
         public static IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Repository(dynamic EmpNo_TargetAreaDv)
         {
             //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<T_EMP_LOCATION>(SQL_FILE_NM, "FetchEmpLocationInfo", EmpNo_TargetAreaDv);
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "FetchEmpLocationInfo", EmpNo_TargetAreaDv);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
@@ -26,28 +26,76 @@ namespace SCM1_API.Repository
         public static IEnumerable<T_EMP_LOCATION> FetchAllEmpLocationInfo_Repository(dynamic TargetAreaDv)
         {
             //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
-            return DataAccess.DataAccess.ThrowSQLModel<T_EMP_LOCATION>(SQL_FILE_NM, "FetchAllEmpLocationInfo", TargetAreaDv);
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "FetchAllEmpLocationInfo", TargetAreaDv);
             //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
         }
 
-        public string GetLocationStatus(string sqlId, dynamic dbModel)
+        /// <summary>
+        /// ユーザー位置情報消去
+        /// </summary>
+        /// <returns></returns>
+        public static bool ClearEmpLocationInfo_Repository(dynamic EmpNo_TargetAreaDv)
         {
-            return DataAccess.DataAccess.ThrowSQLModelFirst<string>(SQL_FILE_NM, sqlId, dbModel);
+            //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            int executeRowCnt = DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "ClearEmpLocationInfo", EmpNo_TargetAreaDv, Model.constants.DBAccessType.Delete);
+            //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
+            return executeRowCnt > 0 ? true : false;
         }
 
-        public int? GetLocationEmpId(string sqlId, dynamic dbModel)
+        /// <summary>
+        /// ユーザー位置情報固定席以外全件消去
+        /// </summary>
+        /// <returns></returns>
+        public static bool ClearAllEmpLocationInfo_Repository(dynamic TargetAreaDv)
         {
-            return DataAccess.DataAccess.ThrowSQLModelFirst<int>(SQL_FILE_NM, sqlId, dbModel);
+            //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            int executeRowCnt = DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "ClearAllEmpLocationInfo", TargetAreaDv, Model.constants.DBAccessType.Delete);
+            //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
+            return executeRowCnt > 0 ? true : false;
         }
 
-        public void RegisterEmpLocation(string sqlId, dynamic dbModel)
+        /// <summary>
+        /// ユーザー位置情報のステータスを取得する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static IEnumerable<T_EMP_LOCATION> FetchLocationStatus(dynamic dbModel)
         {
-            DataAccess.DataAccess.ThrowSQLModelFirst<dynamic>(SQL_FILE_NM, sqlId, dbModel);
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "FetchLocation", dbModel);
         }
 
-        public void ReRegisterEmpLocation(string sqlId, dynamic dbModel)
+        /// <summary>
+        /// 対象ユーザーが席をすでに席をとっているかチェック
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int? hasLocationCheckByEmpId(dynamic dbModel)
         {
-            DataAccess.DataAccess.ThrowSQLModelFirst<dynamic>(SQL_FILE_NM, sqlId, dbModel);
+            return DataAccess.DataAccess.SELECT_Model<T_EMP_LOCATION>(SQL_FILE_NM, "hasLocationCheckByEmpId", dbModel).Count;
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を登録する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int RegisterEmpLocation(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "InsertEmpLocation", dbModel, Model.constants.DBAccessType.Insert);
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を更新する
+        /// </summary>
+        /// <param name="sqlId"></param>
+        /// <param name="dbModel"></param>
+        /// <returns></returns>
+        public static int ReRegisterEmpLocation(dynamic dbModel)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "UpdateEmpLocation", dbModel, Model.constants.DBAccessType.Update);
         }
     }
 }

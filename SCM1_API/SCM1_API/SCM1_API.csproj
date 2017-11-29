@@ -150,7 +150,7 @@
     <Content Include="DataAccess\SQL\MST_EXTENSION_LINE.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="DataAccess\SQL\MST_SHEET.xml">
+    <Content Include="DataAccess\SQL\MST_SEAT.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DataAccess\SQL\Sample.xml" />
@@ -168,7 +168,7 @@
     <Compile Include="APIController\empController.cs" />
     <Compile Include="APIController\emplocationController.cs" />
     <Compile Include="APIController\phoneController.cs" />
-    <Compile Include="APIController\sheetController.cs" />
+    <Compile Include="APIController\seatController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="APIController\TestController.cs" />
@@ -189,23 +189,23 @@
     <Compile Include="Model\MST_EMP.cs" />
     <Compile Include="Model\MST_EXTENSION_LINE.cs" />
     <Compile Include="Model\ScreenModel\Auth.cs" />
-    <Compile Include="Model\ScreenModel\Sheet.cs" />
+    <Compile Include="Model\ScreenModel\Seat.cs" />
     <Compile Include="Model\T_EMP_LOCATION.cs" />
     <Compile Include="PresentationService\Auth_PresentationService.cs" />
-    <Compile Include="Model\MST_SHEET.cs" />
+    <Compile Include="Model\MST_SEAT.cs" />
     <Compile Include="PresentationService\EMP_LOCATION_PresentationService.cs" />
     <Compile Include="PresentationService\EMP_PresentationService.cs" />
     <Compile Include="PresentationService\PHONE_PresentationService.cs" />
-    <Compile Include="PresentationService\SHEET_PresentationService.cs" />
+    <Compile Include="PresentationService\SEAT_PresentationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MST_EMP_Repository.cs" />
     <Compile Include="Repository\MST_EXTENSION_LINE_Repository.cs" />
-    <Compile Include="Repository\MST_SHEET_Repository.cs" />
+    <Compile Include="Repository\MST_SEAT_Repository.cs" />
     <Compile Include="Repository\T_EMP_LOCATION_Repository.cs" />
     <Compile Include="Service\EMP_LOCATION_Service.cs" />
     <Compile Include="Service\EMP_Service.cs" />
     <Compile Include="Service\PHONE_Service.cs" />
-    <Compile Include="Service\SHEET_Service.cs" />
+    <Compile Include="Service\SEAT_Service.cs" />
     <Compile Include="Service\TokenHandling.cs" />
     <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Util\Logger.cs" />

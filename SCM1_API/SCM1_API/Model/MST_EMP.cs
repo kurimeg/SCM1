@@ -42,7 +42,7 @@ namespace SCM1_API.Model
         /// <summary>
         /// 固定席利用可能フラグ
         /// </summary>
-        public bool CAN_SIT_FIXED_SHEET_FLG
+        public bool CAN_SIT_FIXED_seat_FLG
         {
             get; set;
         }

@@ -28,8 +28,8 @@ namespace SCM1_API.PresentationService
         {
             var ReturnModel = new EmpLocationResponse();
 
-            //ユーザー位置情報の全件取得
-            ReturnModel.EmpLocation = empLocation_Service.FetchAllEmpLocationInfo_Service(req.EmpNo, req.ClientAreaDv);
+            //ユーザー位置情報の取得
+            ReturnModel.EmpLocation = empLocation_Service.FetchEmpLocationInfo_Service(req.EmpNo, req.ClientAreaDv);
 
             //処理ステータスと取得結果を返す
             ReturnModel.ProcessStatus = ReturnModel.EmpLocation.Count() != 0 ? STATUS.OK : STATUS.NG;
@@ -57,6 +57,39 @@ namespace SCM1_API.PresentationService
         }
 
         /// <summary>
+        /// ユーザー位置情報を消去する
+        /// </summary>
+        /// <returns></returns>
+        public EmpLocationResponse ClearEmpLocationInfo(EmpLocationRequest req)
+        {
+            var ReturnModel = new EmpLocationResponse();
+
+            //ユーザー位置情報の消去
+            //処理ステータスと取得結果を返す
+            ReturnModel.ProcessStatus = empLocation_Service.ClearEmpLocationInfo_Service(req.EmpNo, req.ClientAreaDv) ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
+            return ReturnModel;
+        }
+
+        /// <summary>
+        /// ユーザー位置情報を固定席以外全件消去する
+        /// </summary>
+        /// <returns></returns>
+        public EmpLocationResponse ClearAllEmpLocationInfo(EmpLocationRequest req)
+        {
+            var ReturnModel = new EmpLocationResponse();
+
+            //ユーザー位置情報の全件消去
+            //処理ステータスと取得結果を返す
+            ReturnModel.ProcessStatus = empLocation_Service.ClearAllEmpLocationInfo_Service(req.ClientAreaDv) ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
+            return ReturnModel;
+        }
+
+
+        /// <summary>
         /// ユーザー位置情報を登録する
         /// </summary>
         /// <returns></returns>
@@ -64,8 +97,9 @@ namespace SCM1_API.PresentationService
         {
 
             //座席が空いてなければ終了
-            var isVacant = empLocation_Service.GetLocationStatus(req.SheetNo);
-            if (!string.IsNullOrEmpty(isVacant)) {
+            var isVacant = empLocation_Service.FetchLocationStatus_Service(req.seatNo);
+            if (isVacant.Count() > 0 )
+            {
 
                 return new EmpLocationResponse()
                 {
@@ -75,14 +109,17 @@ namespace SCM1_API.PresentationService
             }
 
             //その人にとって最初の席かチェック
-            int? onLocationEmpId = empLocation_Service.GetLocationEmpId(int.Parse(req.EmpNo));
+            int? onLocationEmpId = empLocation_Service.hasLocationCheckByEmpId_Service(int.Parse(req.EmpNo));
 
-            if (onLocationEmpId == null) {
+            if (onLocationEmpId == 0)
+            {
                 //最初の席だったら登録して終了
-                empLocation_Service.RegisterEmpLocation(int.Parse(req.EmpNo), req.SheetNo);
-            } else {
+                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
+            }
+            else
+            {
                 //次の席じゃないなら更新
-                empLocation_Service.ReRegiseterEmpLocation(int.Parse(req.EmpNo), req.SheetNo);
+                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
             }
 
             return new EmpLocationResponse()

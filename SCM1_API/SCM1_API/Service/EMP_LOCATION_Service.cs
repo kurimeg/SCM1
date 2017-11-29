@@ -21,7 +21,7 @@ namespace SCM1_API.Service
         /// ユーザー位置情報を取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T_EMP_LOCATION> FetchAllEmpLocationInfo_Service(string PostedEmpNo,int postedAreaDv = DefaultAreadv)
+        public IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Service(string PostedEmpNo,int postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
@@ -39,46 +39,70 @@ namespace SCM1_API.Service
             return T_EMP_LOCATION_Repository.FetchAllEmpLocationInfo_Repository(param);
         }
 
-        public string GetLocationStatus(string sheetNo)
+        /// <summary>
+        /// ユーザー位置情報を消去する
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearEmpLocationInfo_Service(string PostedEmpNo, int postedAreaDv = DefaultAreadv)
         {
-            var result = _repository.GetLocationStatus("GetLocation",
-                new T_EMP_LOCATION()
-                {
-                    SHEET_NO = sheetNo,
-                });
-
-            return result;
+            //                ↓はxml内に記述されたSQLの「#」で括られた部分
+            var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
+            return T_EMP_LOCATION_Repository.ClearEmpLocationInfo_Repository(param);
         }
 
-        public int? GetLocationEmpId(int empId)
+        /// <summary>
+        /// ユーザー位置情報を固定席以外全件消去する
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearAllEmpLocationInfo_Service(int postedAreaDv = DefaultAreadv)
         {
-            int? result = _repository.GetLocationEmpId("GetLocationEmpId",
-                new T_EMP_LOCATION()
-                {
-                    EMP_NO = empId,
-                });
-            return result;
+            //                ↓はxml内に記述されたSQLの「#」で括られた部分
+            var param = new { FLOOR_PLACE_DV = postedAreaDv };
+            return T_EMP_LOCATION_Repository.ClearAllEmpLocationInfo_Repository(param);
         }
 
-        public void RegisterEmpLocation(int empId, string sheetNo)
+        /// <summary>
+        /// ユーザー位置情報のステータスを取得する
+        /// </summary>
+        /// <param name="seatNo"></param>
+        /// <returns></returns>
+        public IEnumerable<T_EMP_LOCATION> FetchLocationStatus_Service(string seatNo)
         {
-
-            _repository.RegisterEmpLocation("InsertEmpLocation",
-                new T_EMP_LOCATION()
-                {
-                    EMP_NO = empId,
-                    SHEET_NO = sheetNo,
-                });
+            var param = new { seat_NO = seatNo };
+            return T_EMP_LOCATION_Repository.FetchLocationStatus(param);
         }
 
-        public void ReRegiseterEmpLocation(int empId, string sheetNo)
+        /// <summary>
+        /// 対象ユーザーが席をすでに席をとっているかチェック
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <returns></returns>
+        public int? hasLocationCheckByEmpId_Service(int empId)
         {
-            _repository.ReRegisterEmpLocation("UpdateEmpLocation",
-                new T_EMP_LOCATION()
-                {
-                    EMP_NO = empId,
-                    SHEET_NO = sheetNo,
-                });
+            var param = new { EMP_NO = empId };
+            return T_EMP_LOCATION_Repository.hasLocationCheckByEmpId(param);
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を登録する
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <param name="seatNo"></param>
+        public bool RegisterEmpLocation_Service(int empId, string seatNo, string phoneNo = null)
+        {
+            var param = new { EMP_NO = empId, seat_NO = seatNo, EXTENSION_LINE_NO  = phoneNo};
+            return T_EMP_LOCATION_Repository.RegisterEmpLocation(param) > 0? true: false;
+        }
+
+        /// <summary>
+        /// 対象ユーザーの席情報を更新する
+        /// </summary>
+        /// <param name="empId"></param>
+        /// <param name="seatNo"></param>
+        public bool ReRegiseterEmpLocation_Service(int empId, string seatNo)
+        {
+            var param = new { EMP_NO = empId, seat_NO = seatNo };
+            return T_EMP_LOCATION_Repository.ReRegisterEmpLocation(param) > 0 ? true : false;
         }
     }
 }

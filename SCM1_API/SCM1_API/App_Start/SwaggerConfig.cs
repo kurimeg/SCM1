@@ -192,11 +192,11 @@ namespace SCM1_API
                         .EnableSwaggerUi(c =>
                             {
                         */
-                        // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
+                        // Use the "InjectStyleseat" option to enrich the UI with one or more additional CSS styleseats.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's
                         // "Logical Name" is passed to the method as shown below.
                         //
-                        //c.InjectStylesheet(containingAssembly, "Swashbuckle.Dummy.SwaggerExtensions.testStyles1.css");
+                        //c.InjectStyleseat(containingAssembly, "Swashbuckle.Dummy.SwaggerExtensions.testStyles1.css");
 
                         // Use the "InjectJavaScript" option to invoke one or more custom JavaScripts after the swagger-ui
                         // has loaded. The file must be included in your project as an "Embedded Resource", and then the resource's

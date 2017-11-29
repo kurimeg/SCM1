@@ -2,17 +2,17 @@
 <SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <select id="FetchSheetInfo">
+  <select id="FetchSeatInfo">
     SELECT
-      MS.SHEET_NO
-      ,MS.FIXED_SHEET_FLG
+      MS.SEAT_NO
+      ,MS.FIXED_SEAT_FLG
       ,MCV.CONTENTS_ID
       ,MCV.CONTENTS_DV
       ,MCV.CONTENT_POSITION_X
       ,MCV.CONTENT_POSITION_Y
       ,MCV.VERTICAL_FLG
     FROM
-      MST_SHEET MS
+      MST_SEAT MS
     INNER JOIN 
       MST_CONTENT_VIEW MCV
     ON

@@ -14,6 +14,8 @@ namespace SCM1_API.APIController
     [EnableCors(origins: "*", headers: "*", methods: "*")] // <-- CORSを有効化（クロスドメイン対策）
     public class emplocationController : ApiController
     {
+
+        private const string BatchPassword = "DailyClearBatch"; 
         private EMP_LOCATION_PresentationService presentationService;
         public emplocationController()
         {
@@ -35,7 +37,12 @@ namespace SCM1_API.APIController
                 var req = JsonUtil.Deserialize<EmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
 
                 //トークンを検証
-                if (!SCM1_API.Service.TokenHandling.InspectToken_direct(req.Token)) return Json((object)new EmpLocationResponse() { ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER });
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new EmpLocationResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
 
                 //社員番号が無ければ全件取得
                 if (string.IsNullOrEmpty(req.EmpNo))
@@ -59,8 +66,8 @@ namespace SCM1_API.APIController
         /// <summary>
         /// GET _事業所別にユーザー位置情報を取得する<controller> 
         /// </summary>
-        /// <param name="reqJson">POSTされたJSON形式の値</param>
-        /// <returns></returns>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
         [SwaggerOperation("RegisterEmpLocation")]
         [LoggingFilter("api/emplocation")] // <-- AOP（処理開始、終了時のロギング処理）
         public JsonResult<object> Put(JToken reqJson) // <-- ActionResultのJsonResultを戻り値とする
@@ -73,12 +80,50 @@ namespace SCM1_API.APIController
                 if (!Service.TokenHandling.InspectToken_direct(req.Token))
                     return Json((object)new EmpLocationResponse()
                     {
-                        ProcessStatus = STATUS.TOKEN_ER, ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
                     });
 
                 //座席情報を登録
                 var res = presentationService.RegisterLocation(req);
                 return Json((object)res);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new EmpLocationResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+            }
+        }
+
+
+        // DELETE api/<controller>/5
+        [SwaggerOperation("ClearEmpLocationInfo")]
+        [LoggingFilter("api/emplocation")] // <-- AOP（処理開始、終了時のロギング処理）
+        public JsonResult<object> Delete(JToken reqJson)
+        {
+            try
+            {
+                var req = JsonUtil.Deserialize<EmpLocationRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+
+                //社員番号がバッチ処理パスワードと一致した場合は、固定席以外全件消去
+                if (req.EmpNo == BatchPassword)
+                {
+                    var res = presentationService.ClearAllEmpLocationInfo(req);
+                    return Json((object)res);
+                }
+                else
+                {
+                    //トークンを検証
+                    if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                        return Json((object)new EmpLocationResponse()
+                        {
+                            ProcessStatus = STATUS.TOKEN_ER,
+                            ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                        });
+
+                    var res = presentationService.ClearEmpLocationInfo(req);
+                    return Json((object)res);
+                }
             }
             catch (Exception ex)
             {

@@ -20,12 +20,18 @@ namespace SCM1_API.Model
         /// <summary>
         /// 座席番号
         /// </summary>
-        public string SHEET_NO { get; set; }
+        public string seat_NO
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 内線番号
         /// </summary>
-        public int EXT_LINE_NO { get; set; }
+        public string EXT_LINE_NO
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 社員ステータス
