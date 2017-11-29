@@ -377,12 +377,6 @@ body {
     margin: 0;
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
-.main {
-	position: absolute;
-    width: 1400px;
-    height: 700px;
-	margin: 0 0 0 11px;
-}
 .tables{
 	position: relative;
     width: 1400px;

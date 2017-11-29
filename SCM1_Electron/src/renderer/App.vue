@@ -24,24 +24,22 @@ export default {
     zoom: 70%;
   }
   .main {
-    position: absolute;
-    width: 1420px;
-    height: 600px;
-    margin: 10px auto;
-    z-index: 1;
+      position: absolute;
+      width: 1400px;
+      height: 700px;
+      margin: 0 0 0 11px;
+      z-index: １;
   }
   .seat-layer {
     position: absolute;
-    width: 1420px;
-    height: 600px;
-    margin: 10px auto;
+    width: 1400px;
+    height: 700px;
     z-index: 2;
   }
   .alert-layer{
     position: absolute;
-    width: 1420px;
-    height: 600px;
-    margin: 10px auto;
+    width: 1400px;
+    height: 700px;
     z-index: 3;
   }
 </style>
