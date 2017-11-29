@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div class="alert-layer" v-if="false">
-      <alert></alert>
+    <div class="alert-layer" v-if="this.$store.state.handler.hasError">
+      <alert :error="this.$store.state.handler"></alert>
     </div>
   </div>
 </template>

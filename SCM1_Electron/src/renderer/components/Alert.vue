@@ -1,14 +1,16 @@
 <template>
 	<div class="form">
 		<button type="button" class="back">✖</button>
-		<div class="message">サンプル警告メッセージ</div>
-		<button type="button" class="btn">ＯＫ</button>
+		<div class="message">{{ error.errorMessage }}</div>
+		<button type="button" class="btn" v-show="!error.hasError">ＯＫ</button>
 		<button type="button" class="btn">キャンセル</button>
     </div>
 </template>
 
 <script>
-
+export default {
+	props: ['error']
+}
 </script>
 
 <style scoped>
@@ -35,7 +37,7 @@ body {
 	margin-left: 25px; 
 	margin-top: 20px;
 	color: #939393;
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'Century Gothic';
 	display: block;
 }
