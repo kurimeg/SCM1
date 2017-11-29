@@ -530,9 +530,4 @@ body {
     margin-left: 6px;
     margin-top: 19px;
 }
-.seat-layer {
-	position: relative;
-    width: 1400px;
-    height: 600px;
-}
 </style>

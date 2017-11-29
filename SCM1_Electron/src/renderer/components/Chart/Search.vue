@@ -1,11 +1,17 @@
 <template>
-    <div class="form">
+    <div class="search-layer">
         <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
         <button type="button" class="back">✖</button>
         <div>
+<<<<<<< HEAD
             <input type="text" v-model="searchtxt" class="searchword"></input>
 			<img class="button" src="../../assets/images/search_button.png" ></input>
+=======
+            <input type="text" v-model="searchtxt" class="searchword">
+                <img src="../../assets/images/search_button.png" class="button"></img>
+            </input>
+>>>>>>> eac20c7d4c01cbf613d96aa0540470fce41792ec
         </div>
         <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
         <div class="announceChar">下記候補から選択してください。</div>
@@ -39,7 +45,7 @@ input:focus{
 button:focus{
  outline:none;
 }
-.form{
+.search-layer{
 	position: absolute;
 	z-index: 2;
 	overflow: hidden;	
