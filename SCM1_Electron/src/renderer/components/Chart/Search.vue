@@ -2,22 +2,16 @@
     <div class="search-layer">
         <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
-        <button type="button" class="back">✖</button>
+        <button type="button" class="back" @click="closeSearch">✖</button>
         <div>
-<<<<<<< HEAD
-            <input type="text" v-model="searchtxt" class="searchword"></input>
-			<img class="button" src="../../assets/images/search_button.png" ></input>
-=======
             <input type="text" v-model="searchtxt" class="searchword">
                 <img src="../../assets/images/search_button.png" class="button"></img>
             </input>
->>>>>>> eac20c7d4c01cbf613d96aa0540470fce41792ec
         </div>
         <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
         <div class="announceChar">下記候補から選択してください。</div>
         <!-- 件数フラグで回すか？リスト？ -->
-        <button type="button" class="rslt">48006 斎藤哲良</button>
-        <button type="button" class="rslt">48010 佐貫寧乙</button>
+		<button type="button" class="rslt" v-for="emp in empInfo" :key="emp.EMP_NO">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </template>
 
@@ -27,7 +21,13 @@ export default {
         return {
             searchtxt: null
         }
-    }
+	},
+	props: ['empInfo'],
+	methods:{		
+		closeSearch: function () {
+            this.$store.commit('search/hide')
+        }
+   }
 }
 </script>
 
@@ -44,15 +44,6 @@ input:focus{
 }
 button:focus{
  outline:none;
-}
-.search-layer{
-	position: absolute;
-	z-index: 2;
-	overflow: hidden;	
-	width: 400px;
-	border: 5px solid #28a1f7;
-	border-radius: 15px;
-	background-color: #5d5d5d;
 }
 .icon{
 	margin-left: 3px; 

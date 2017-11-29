@@ -2,8 +2,8 @@
 	<div class="form">
 		<button type="button" class="back">✖</button>
 		<div class="message">{{ error.errorMessage }}</div>
-		<button type="button" class="btn" v-show="!error.hasError">ＯＫ</button>
-		<button type="button" class="btn">キャンセル</button>
+		<button type="button" class="btn">ＯＫ</button>
+		<button type="button" class="btn"v-show="!error.hasError">キャンセル</button>
     </div>
 </template>
 

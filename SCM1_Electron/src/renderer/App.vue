@@ -36,10 +36,19 @@ export default {
     height: 700px;
     z-index: 2;
   }
+.search-layer{
+	position: absolute;
+	z-index: 3;
+	overflow: hidden;	
+	width: 400px;
+	border: 5px solid #28a1f7;
+	border-radius: 15px;
+	background-color: #5d5d5d;
+}
   .alert-layer{
     position: absolute;
     width: 1400px;
     height: 700px;
-    z-index: 3;
+    z-index: 4;
   }
 </style>

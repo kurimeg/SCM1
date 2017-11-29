@@ -1,7 +1,7 @@
 <template>
 	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon"></img>
-		<search v-if="false"></search>
+		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>
+		<search v-if="this.$store.state.search.show" :emp-info="this.$store.state.getMaster.empInfo"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -133,7 +133,8 @@
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('get')
+const { mapActions } = createNamespacedHelpers('getMaster')
+
 
 export default {
    data: function () {
@@ -350,11 +351,16 @@ export default {
    },
    methods:{
 	   ...mapActions([
-            'firstview'
-        ]),
+            'firstview','fetchEmpInfo'
+		]),
+		
+		openSearch: function () {
+            this.$store.commit('search/show')
+        }
    },
    created: function(){
-	   this.firstview({Token: this.$store.state.auth.token})
+	//    this.firstview({Token: this.$store.state.auth.token})
+	this.fetchEmpInfo({Token: this.$store.state.auth.token})
    },
    
    components: {
