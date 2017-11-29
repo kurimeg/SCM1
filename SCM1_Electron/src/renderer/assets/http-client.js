@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const client = axios.create({

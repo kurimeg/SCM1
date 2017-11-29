@@ -227,8 +227,8 @@ export default {
    data: function () {
      return {
 		seats: [
-			{name: "栗原" , positionX:3 ,positionY:40 ,class:false},
-            {name: "佐貫" , positionX:3 ,positionY:120 ,class:false},
+			{name: "" , positionX:3 ,positionY:40 ,class:false},
+            {name: "" , positionX:3 ,positionY:120 ,class:false},
             {name: "和田" , positionX:940 ,positionY:320 ,class:true}
 		]
      }

@@ -28,7 +28,7 @@ const mutations = {
 
 const actions = {
     login ({ commit }, authInfo) {
-        Vue.http.post('/autha',authInfo)
+        Vue.http.post('/auth',authInfo)
         .then((data) =>{
             if(data.ProcessStatus === constants.STATUS_OK && data.Authenticated)
             {
