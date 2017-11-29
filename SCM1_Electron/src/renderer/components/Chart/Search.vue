@@ -1,11 +1,11 @@
 <template>
     <div class="form">
-        <img src="../assets/images/search_icon.png" class="icon"></img>
+        <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
         <button type="button" class="back">✖</button>
         <div>
             <input type="text" v-model="searchtxt" class="searchword">
-                <input type="image" src="../assets/images/search_button.png" class="button"></input>
+                <input type="image" src="../../assets/images/search_button.png" class="button"></input>
             </input>
         </div>
         <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
@@ -17,10 +17,16 @@
 </template>
 
 <script>
-
+export default {
+    data: function () {
+        return {
+            searchtxt: null
+        }
+    }
+}
 </script>
 
-<style>
+<style scoped>
 body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
@@ -29,6 +35,8 @@ body {
 	float: left;
 }
 .form{
+	position: absolute;
+	z-index: 2;
 	overflow: hidden;	
 	width: 400px;
 	border: 5px solid #28a1f7;

@@ -1,5 +1,6 @@
 <template>
 	<div class="main">
+		<search v-if="false"></search>
 		<div class="row01 floatL child">
 			<div class="desk_square">
 				<div class="naisen naisen_onsquare">2001</div>
@@ -220,6 +221,7 @@
 
 <script>
 import Seat from './Chart/Seat'
+import Search from './Chart/Search'
 
 export default {
    data: function () {
@@ -231,7 +233,7 @@ export default {
      }
    },
    components: {
-	   Seat
+	   Seat, Search
    }
 //    methods: {
 // 	   //TODO: modulesへ追加、stateに各配列をcommitする
@@ -256,7 +258,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body {
     margin: 0;
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
