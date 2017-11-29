@@ -264,12 +264,7 @@ body {
     margin: 0;
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
-.main {
-	position: relative;
-    width: 1420px;
-    height: 600px;
-    margin: 10px auto;
-}
+
 .floatL {
 	float: left;
 }
@@ -406,12 +401,7 @@ body {
     margin-left: 6px;
     margin-top: 19px;
 }
-.seat-layer {
-	position: absolute;
-    width: 1420px;
-    height: 600px;
-    margin: 10px auto;
-}
+
 .seat{
 	position: absolute;
 	float: left;

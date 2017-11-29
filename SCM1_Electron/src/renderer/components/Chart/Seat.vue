@@ -85,7 +85,6 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
-	z-index: 1;
 }
 .seatY{
     height: 22px;

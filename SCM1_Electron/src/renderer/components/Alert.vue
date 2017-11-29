@@ -1,9 +1,9 @@
 <template>
-        <div class="form">
-            <button type="button" class="back">✖</button>
-            <div class="message">サンプル警告メッセージ</div>
-            <button type="button" class="btn">ＯＫ</button>
-            <button type="button" class="btn">キャンセル</button>
+	<div class="form">
+		<button type="button" class="back">✖</button>
+		<div class="message">サンプル警告メッセージ</div>
+		<button type="button" class="btn">ＯＫ</button>
+		<button type="button" class="btn">キャンセル</button>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ body {
 	overflow: hidden;
 	width: 400px;
 	height: 110px;
+	z-index: 3;
 }
 .message{
 	margin-left: 25px; 
