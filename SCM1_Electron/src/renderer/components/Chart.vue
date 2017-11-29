@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon"></img>
+		<img src="../assets/images/search_icon.png" class="icon" v-on:click="{{}}"></img>
 		<search v-if="false"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
@@ -132,6 +132,7 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
+const { mapActions } = createNamespacedHelpers('get')
 
 export default {
    data: function () {
@@ -346,6 +347,15 @@ export default {
 		]
      }
    },
+   methods:{
+	   ...mapActions([
+            'firstview'
+        ]),
+   },
+   created: function(){
+	   this.firstview()
+   },
+   
    components: {
 	   Seat, Search
    }
