@@ -73,7 +73,7 @@
 }
 </script>
 
-<style>
+<style scoped>
 body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
@@ -91,6 +91,6 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
-	z-index: 999;
+	z-index: 1;
 }
 </style>
