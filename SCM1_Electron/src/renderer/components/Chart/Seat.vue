@@ -34,14 +34,14 @@
         // },
         onReserve: function () {
             //座席未登録 & 該当座席の名前がない場合
+            let authInfo = JSON.parse(localStorage.getItem('authInfo'))
             if(!this.$data.name && !this.$store.state.reserve.isReserved){
                 if(confirm("座席を登録しますか？")){
-                    this.reserve({
+                    if(this.reserve({
                         Token : this.$store.state.auth.token,
-                        EmpNo: "46012",
+                        EmpNo: authInfo.EmpNo,
                         seatNo: "E84-1"
-                    })
-                    if(!this.$store.state.reserve.hasError){
+                    })){
                         this.$data.name = "栗原"
                     }else{
                         alert(this.$store.state.reserve.errorMessage)
@@ -53,12 +53,10 @@
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.$data.name == "栗原" && this.$store.state.reserve.isReserved){
                 if(confirm("座席を解除しますか？")){
-                    this.reserve({
+                    if(this.reserve({
                         Token : this.$store.state.auth.token,
-                        EmpNo: "46012",
-                        seatNo: "E84-1"
-                    })
-                    if(!this.$store.state.reserve.hasError){
+                        EmpNo: authInfo.EmpNo
+                    })){
                         this.$data.name = ""
                     }else{
                         alert(this.$store.state.reserve.errorMessage)
