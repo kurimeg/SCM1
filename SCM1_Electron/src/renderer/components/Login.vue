@@ -51,7 +51,7 @@ const { mapActions } = createNamespacedHelpers('auth')
 }
 </script>
 
-<style>
+<style scoped>
 body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
