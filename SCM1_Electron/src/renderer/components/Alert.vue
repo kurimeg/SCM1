@@ -18,6 +18,9 @@ body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
+button:focus{
+ outline:none;
+}
 .form{
 	position: absolute;
 	right: 0;
