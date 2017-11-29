@@ -40,9 +40,17 @@ namespace SCM1_API.Model
         }
 
         /// <summary>
-        /// 縦フラグ
+        /// 縦フラグ_廃止項目
         /// </summary>
         public bool VERTICAL_FLG
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// CSSクラス名
+        /// </summary>
+        public string CSS_CLASS_NM
         {
             get; set;
         }
