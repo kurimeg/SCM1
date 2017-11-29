@@ -4,9 +4,8 @@
         <div class="topChar">検索</div>
         <button type="button" class="back">✖</button>
         <div>
-            <input type="text" v-model="searchtxt" class="searchword">
-                <input type="image" src="../../assets/images/search_button.png" class="button"></input>
-            </input>
+            <input type="text" v-model="searchtxt" class="searchword"></input>
+			<img class="button" src="../../assets/images/search_button.png" ></input>
         </div>
         <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
         <div class="announceChar">下記候補から選択してください。</div>
@@ -33,6 +32,12 @@ body {
 }
 .floatL {
 	float: left;
+}
+input:focus{
+ outline:none;
+}
+button:focus{
+ outline:none;
 }
 .form{
 	position: absolute;
