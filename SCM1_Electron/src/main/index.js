@@ -20,7 +20,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    resizable: false
   })
 
   mainWindow.loadURL(winURL)
@@ -28,13 +29,17 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  
+  //メニューを消す処理
+  const menu = Menu.buildFromTemplate([{}]);
+  Menu.setApplicationMenu(menu);
 }
 
 app.on('ready', () => {
   createWindow()
 
   //タスクトレイに格納
-  var appIcon = new Tray(__static + '/image/icon.png')
+  const appIcon = new Tray(__static + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
       {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
@@ -69,8 +74,7 @@ app.on('activate', () => {
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
 
-/*
-import { autoUpdater } from 'electron-updater'
+const {autoUpdater} = require("electron-updater")
 
 autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
@@ -79,4 +83,3 @@ autoUpdater.on('update-downloaded', () => {
 app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
 })
- */
