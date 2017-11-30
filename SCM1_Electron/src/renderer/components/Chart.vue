@@ -132,9 +132,7 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
-import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('search')
-
+import { mapActions } from 'vuex'
 
 export default {
    data: function () {
@@ -350,9 +348,10 @@ export default {
      }
    },
    methods:{
-	   ...mapActions([
-            'firstview','fetchEmpInfo'
-		]),
+	   ...mapActions({
+			firstview: 'getMaster/firstview',
+			fetchEmpInfo: 'search/fetchEmpInfo'
+   		}),
 		
 		openSearch: function () {
             this.$store.commit('search/show',true)

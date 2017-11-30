@@ -15,7 +15,9 @@ const getters = {
     searchEmp: (state, getters) => (seachText) => {
         if(!seachText) return []
 
-        let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText) || emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText))
+        //TODO: NULL対応
+        let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText))        
+        // let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText) || emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText))
         let searchMessage = ''
         if(filteredEmp.length > 0){
             searchMessage = messages.I_001
