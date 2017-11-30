@@ -31,8 +31,7 @@ function createWindow () {
   })
   
   //メニューを消す処理
-  const menu = Menu.buildFromTemplate([{}]);
-  Menu.setApplicationMenu(menu);
+  Menu.setApplicationMenu(null);
 }
 
 app.on('ready', () => {
