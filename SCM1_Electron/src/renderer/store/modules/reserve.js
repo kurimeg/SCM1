@@ -33,7 +33,9 @@ const actions = {
             })
         }else{
             //解除処理
-            Vue.http({method: 'delete', url: '/emplocation/ClearEmpLocationInfo', data: reserveInfo})
+            Vue.http.delete('/emplocation/ClearEmpLocationInfo', {
+                data: reserveInfo
+            })
             .then((data) =>{
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
