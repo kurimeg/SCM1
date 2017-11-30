@@ -14,7 +14,8 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": ""
+    "postinstall": "",
+    "publish": "build -p always"
   },
   "repository" :
   { "type" : "git"
@@ -23,6 +24,13 @@
   "build": {
     "productName": "SekiPa",
     "appId": "org.simulatedgreg.electron-vue",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ryuwGit",
+        "repo": "SCM1"
+      }
+    ],
     "directories": {
       "output": "build"
     },
@@ -55,8 +63,9 @@
     }
   },
   "dependencies": {
-    "vue": "^2.3.3",
     "axios": "^0.16.1",
+    "electron-updater": "^2.16.1",
+    "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1"
