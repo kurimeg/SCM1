@@ -48,6 +48,14 @@ namespace SCM1_API.Model
         }
 
         /// <summary>
+        /// 表示社員名
+        /// </summary>
+        public string DISPLAY_EMP_NM
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 社員名
         /// </summary>
         public string EMP_NM

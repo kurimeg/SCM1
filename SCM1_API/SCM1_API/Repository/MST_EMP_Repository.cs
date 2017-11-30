@@ -24,6 +24,18 @@ namespace SCM1_API.Repository
         }
 
         /// <summary>
+        /// 社員情報取得_ログイン用
+        /// </summary>
+        /// <param name="TargetEMP_NO">絞込条件に使用する社員番号</param>
+        /// <returns></returns>
+        public static IEnumerable<MST_EMP> FetchEMPInfo_ToAuth_Repository(dynamic TargetEMP_NO)
+        {
+            //                                                         ↓DataAccess\SQLフォルダ内のSQLを記述したxmlファイル名
+            return DataAccess.DataAccess.SELECT_Model<MST_EMP>(SQL_FILE_NM, "FetchEmpInfo_auth", TargetEMP_NO);
+            //                                                                       ↑左のxmlファイル内の実際に呼び出すSQLのID
+        }
+
+        /// <summary>
         /// 社員情報全件取得
         /// </summary>
         /// <returns></returns>

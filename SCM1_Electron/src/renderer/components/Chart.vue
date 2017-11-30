@@ -139,214 +139,214 @@ const { mapActions } = createNamespacedHelpers('search')
 export default {
    data: function () {
      return {
-		seats: [
-			/*一列目左*/
-			{name: "栗原萌" , positionX:2 ,positionY:45 ,class:false},
-			{name: "佐貫" , positionX:2 ,positionY:130 ,class:false},
-			{name: "" , positionX:2 ,positionY:195 ,class:false},
-			{name: "" , positionX:2 ,positionY:260 ,class:false},
-			{name: "" , positionX:2 ,positionY:325 ,class:false},
-			{name: "" , positionX:2 ,positionY:390 ,class:false},
-			{name: "" , positionX:2 ,positionY:455 ,class:false},
-			/*一列目右*/
-			{name: "" , positionX:79 ,positionY:45 ,class:false},
-			{name: "" , positionX:79 ,positionY:130 ,class:false},
-			{name: "" , positionX:79 ,positionY:195 ,class:false},
-			{name: "" , positionX:79 ,positionY:260 ,class:false},
-			{name: "" , positionX:79 ,positionY:325 ,class:false},
-			{name: "" , positionX:79 ,positionY:390 ,class:false},
-			{name: "" , positionX:79 ,positionY:455 ,class:false},
-			/*二列目左*/
-			{name: "" , positionX:145 ,positionY:45 ,class:false},
-			{name: "" , positionX:145 ,positionY:130 ,class:false},
-			{name: "" , positionX:145 ,positionY:195 ,class:false},
-			{name: "" , positionX:145 ,positionY:260 ,class:false},
-			{name: "" , positionX:145 ,positionY:325 ,class:false},
-			{name: "" , positionX:145 ,positionY:390 ,class:false},
-			{name: "" , positionX:145 ,positionY:455 ,class:false},
-			{name: "" , positionX:145 ,positionY:520 ,class:false},
-			/*二列目右*/
-			{name: "" , positionX:222 ,positionY:45 ,class:false},
-			{name: "" , positionX:222 ,positionY:130 ,class:false},
-			{name: "" , positionX:222 ,positionY:195 ,class:false},
-			{name: "" , positionX:222 ,positionY:260 ,class:false},
-			{name: "" , positionX:222 ,positionY:325 ,class:false},
-			{name: "" , positionX:222 ,positionY:390 ,class:false},
-			{name: "" , positionX:222 ,positionY:455 ,class:false},
-			{name: "" , positionX:222 ,positionY:520 ,class:false},
-			/*三列目左*/
-			{name: "" , positionX:250 ,positionY:45 ,class:false},
-			{name: "" , positionX:250 ,positionY:130 ,class:false},
-			{name: "" , positionX:250 ,positionY:195 ,class:false},
-			{name: "" , positionX:250 ,positionY:260 ,class:false},
-			{name: "" , positionX:250 ,positionY:325 ,class:false},
-			{name: "" , positionX:250 ,positionY:390 ,class:false},
-			{name: "" , positionX:250 ,positionY:455 ,class:false},
-			{name: "" , positionX:250 ,positionY:520 ,class:false},
-			/*三列目右*/
-			{name: "" , positionX:327 ,positionY:45 ,class:false},
-			{name: "" , positionX:327 ,positionY:130 ,class:false},
-			{name: "" , positionX:327 ,positionY:195 ,class:false},
-			{name: "" , positionX:327 ,positionY:260 ,class:false},
-			{name: "" , positionX:327 ,positionY:325 ,class:false},
-			{name: "" , positionX:327 ,positionY:390 ,class:false},
-			{name: "" , positionX:327 ,positionY:455 ,class:false},
-			{name: "" , positionX:327 ,positionY:520 ,class:false},
-			/*四列目左*/
-			{name: "" , positionX:355 ,positionY:45 ,class:false},
-			{name: "" , positionX:355 ,positionY:130 ,class:false},
-			{name: "" , positionX:355 ,positionY:195 ,class:false},
-			{name: "" , positionX:355 ,positionY:260 ,class:false},
-			{name: "" , positionX:355 ,positionY:325 ,class:false},
-			{name: "" , positionX:355 ,positionY:390 ,class:false},
-			{name: "" , positionX:355 ,positionY:455 ,class:false},
-			{name: "" , positionX:355 ,positionY:520 ,class:false},
-			/*四列目右*/
-			{name: "" , positionX:432 ,positionY:45 ,class:false},
-			{name: "" , positionX:432 ,positionY:130 ,class:false},
-			{name: "" , positionX:432 ,positionY:195 ,class:false},
-			{name: "" , positionX:432 ,positionY:260 ,class:false},
-			{name: "" , positionX:432 ,positionY:325 ,class:false},
-			{name: "" , positionX:432 ,positionY:390 ,class:false},
-			{name: "" , positionX:432 ,positionY:455 ,class:false},
-			{name: "中村史" , positionX:432 ,positionY:520 ,class:false},
-			/*五列目左*/
-			{name: "" , positionX:460 ,positionY:45 ,class:false},
-			{name: "" , positionX:460 ,positionY:195 ,class:false},
-			{name: "" , positionX:460 ,positionY:260 ,class:false},
-			{name: "" , positionX:460 ,positionY:325 ,class:false},
-			{name: "" , positionX:460 ,positionY:390 ,class:false},
-			{name: "" , positionX:460 ,positionY:455 ,class:false},
-			{name: "" , positionX:460 ,positionY:520 ,class:false},
-			/*五列目右*/
-			{name: "" , positionX:537 ,positionY:45 ,class:false},
-			{name: "" , positionX:537 ,positionY:195 ,class:false},
-			{name: "" , positionX:537 ,positionY:260 ,class:false},
-			{name: "" , positionX:537 ,positionY:325 ,class:false},
-			{name: "" , positionX:537 ,positionY:390 ,class:false},
-			{name: "" , positionX:537 ,positionY:455 ,class:false},
-			{name: "" , positionX:537 ,positionY:520 ,class:false},
-			/*六列目左*/
-			{name: "" , positionX:565 ,positionY:45 ,class:false},
-			{name: "" , positionX:565 ,positionY:195 ,class:false},
-			{name: "" , positionX:565 ,positionY:260 ,class:false},
-			{name: "" , positionX:565 ,positionY:325 ,class:false},
-			{name: "" , positionX:565 ,positionY:390 ,class:false},
-			{name: "" , positionX:565 ,positionY:455 ,class:false},
-			{name: "" , positionX:565 ,positionY:520 ,class:false},
-			/*六列目右*/
-			{name: "" , positionX:642 ,positionY:45 ,class:false},
-			{name: "" , positionX:642 ,positionY:195 ,class:false},
-			{name: "" , positionX:642 ,positionY:260 ,class:false},
-			{name: "" , positionX:642 ,positionY:325 ,class:false},
-			{name: "" , positionX:642 ,positionY:390 ,class:false},
-			{name: "" , positionX:642 ,positionY:455 ,class:false},
-			{name: "" , positionX:642 ,positionY:520 ,class:false},
-			/*七列目左*/
-			{name: "" , positionX:678 ,positionY:130 ,class:false},
-			{name: "" , positionX:678 ,positionY:195 ,class:false},
-			{name: "" , positionX:678 ,positionY:260 ,class:false},
-			{name: "" , positionX:678 ,positionY:325 ,class:false},
-			{name: "" , positionX:678 ,positionY:390 ,class:false},
-			{name: "" , positionX:678 ,positionY:455 ,class:false},
-			{name: "" , positionX:678 ,positionY:520 ,class:false},
-			/*七列目右*/
-			{name: "" , positionX:754 ,positionY:130 ,class:false},
-			{name: "" , positionX:754 ,positionY:195 ,class:false},
-			{name: "" , positionX:754 ,positionY:260 ,class:false},
-			{name: "" , positionX:754 ,positionY:325 ,class:false},
-			{name: "清水" , positionX:754 ,positionY:390 ,class:false},
-			{name: "" , positionX:754 ,positionY:455 ,class:false},
-			{name: "" , positionX:754 ,positionY:520 ,class:false},
-			/*八列目左*/
-			{name: "" , positionX:807 ,positionY:130 ,class:false},
-			{name: "" , positionX:807 ,positionY:260 ,class:false},
-			{name: "" , positionX:807 ,positionY:390 ,class:false},
-			{name: "" , positionX:807 ,positionY:520 ,class:false},
-			/*八列目上*/
-			{name: "" , positionX:834 ,positionY:103 ,class:true},
-			{name: "" , positionX:834 ,positionY:233 ,class:true},
-			{name: "" , positionX:834 ,positionY:363 ,class:true},
-			{name: "" , positionX:834 ,positionY:493 ,class:true},
-			/*八列目下*/
-			{name: "" , positionX:834 ,positionY:193 ,class:true},
-			{name: "" , positionX:834 ,positionY:323 ,class:true},
-			{name: "" , positionX:834 ,positionY:453 ,class:true},
-			{name: "" , positionX:834 ,positionY:583 ,class:true},
-			/*八列目右*/
-			{name: "" , positionX:897 ,positionY:130 ,class:false},
-			{name: "" , positionX:897 ,positionY:260 ,class:false},
-			{name: "" , positionX:897 ,positionY:390 ,class:false},
-			{name: "" , positionX:897 ,positionY:520 ,class:false},
-			/*九列目左*/
-			{name: "" , positionX:923 ,positionY:130 ,class:false},
-			{name: "" , positionX:923 ,positionY:260 ,class:false},
-			{name: "" , positionX:923 ,positionY:390 ,class:false},
-			{name: "" , positionX:923 ,positionY:520 ,class:false},
-			/*九列目上*/
-			{name: "" , positionX:950 ,positionY:103 ,class:true},
-			{name: "" , positionX:950 ,positionY:233 ,class:true},
-			{name: "" , positionX:950 ,positionY:363 ,class:true},
-			{name: "" , positionX:950 ,positionY:493 ,class:true},
-			/*九列目下*/
-			{name: "" , positionX:950 ,positionY:193 ,class:true},
-			{name: "" , positionX:950 ,positionY:323 ,class:true},
-			{name: "" , positionX:950 ,positionY:453 ,class:true},
-			{name: "" , positionX:950 ,positionY:583 ,class:true},
-			/*九列目右*/
-			{name: "" , positionX:1013 ,positionY:130 ,class:false},
-			{name: "" , positionX:1013 ,positionY:260 ,class:false},
-			{name: "" , positionX:1013 ,positionY:390 ,class:false},
-			{name: "" , positionX:1013 ,positionY:520 ,class:false},
-			/*十列目左*/
-			{name: "" , positionX:1039 ,positionY:260 ,class:false},
-			{name: "" , positionX:1039 ,positionY:390 ,class:false},
-			{name: "" , positionX:1039 ,positionY:520 ,class:false},
-			/*十列目上*/
-			{name: "和田" , positionX:1066 ,positionY:233 ,class:true},
-			{name: "" , positionX:1066 ,positionY:363 ,class:true},
-			{name: "" , positionX:1066 ,positionY:493 ,class:true},
-			/*十列目下*/
-			{name: "" , positionX:1066 ,positionY:323 ,class:true},
-			{name: "" , positionX:1066 ,positionY:453 ,class:true},
-			{name: "" , positionX:1066 ,positionY:583 ,class:true},
-			/*十列目右*/
-			{name: "" , positionX:1129 ,positionY:260 ,class:false},
-			{name: "" , positionX:1129 ,positionY:390 ,class:false},
-			{name: "" , positionX:1129 ,positionY:520 ,class:false},
-			/*十一列目左*/
-			{name: "" , positionX:1155 ,positionY:260 ,class:false},
-			{name: "" , positionX:1155 ,positionY:390 ,class:false},
-			{name: "" , positionX:1155 ,positionY:520 ,class:false},
-			/*十一列目上*/
-			{name: "斎藤哲" , positionX:1182 ,positionY:233 ,class:true},
-			{name: "" , positionX:1182 ,positionY:363 ,class:true},
-			{name: "" , positionX:1182 ,positionY:493 ,class:true},
-			/*十一列目下*/
-			{name: "" , positionX:1182 ,positionY:323 ,class:true},
-			{name: "" , positionX:1182 ,positionY:453 ,class:true},
-			{name: "" , positionX:1182 ,positionY:583 ,class:true},
-			/*十一列目右*/
-			{name: "" , positionX:1245 ,positionY:260 ,class:false},
-			{name: "" , positionX:1245 ,positionY:390 ,class:false},
-			{name: "" , positionX:1245 ,positionY:520 ,class:false},
-			/*十二列目左*/
-			{name: "" , positionX:1271 ,positionY:260 ,class:false},
-			{name: "" , positionX:1271 ,positionY:390 ,class:false},
-			{name: "" , positionX:1271 ,positionY:520 ,class:false},
-			/*十二列目上*/
-			{name: "" , positionX:1298 ,positionY:233 ,class:true},
-			{name: "" , positionX:1298 ,positionY:363 ,class:true},
-			{name: "" , positionX:1298 ,positionY:493 ,class:true},
-			/*十二列目下*/
-			{name: "" , positionX:1298 ,positionY:323 ,class:true},
-			{name: "" , positionX:1298 ,positionY:453 ,class:true},
-			{name: "" , positionX:1298 ,positionY:583 ,class:true},
-			/*十二列目右*/
-			{name: "" , positionX:1361 ,positionY:260 ,class:false},
-			{name: "" , positionX:1361 ,positionY:390 ,class:false},
-			{name: "" , positionX:1361 ,positionY:520 ,class:false}
-		]
+		seats: [this.$store.state.getMaster.seatInfo]
+		// 	/*一列目左*/
+		// 	{name: "栗原萌" , positionX:2 ,positionY:45 ,class:false},
+		// 	{name: "佐貫" , positionX:2 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:2 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:2 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:2 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:2 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:2 ,positionY:455 ,class:false},
+		// 	/*一列目右*/
+		// 	{name: "" , positionX:79 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:79 ,positionY:455 ,class:false},
+		// 	/*二列目左*/
+		// 	{name: "" , positionX:145 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:145 ,positionY:520 ,class:false},
+		// 	/*二列目右*/
+		// 	{name: "" , positionX:222 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:222 ,positionY:520 ,class:false},
+		// 	/*三列目左*/
+		// 	{name: "" , positionX:250 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:250 ,positionY:520 ,class:false},
+		// 	/*三列目右*/
+		// 	{name: "" , positionX:327 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:327 ,positionY:520 ,class:false},
+		// 	/*四列目左*/
+		// 	{name: "" , positionX:355 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:355 ,positionY:520 ,class:false},
+		// 	/*四列目右*/
+		// 	{name: "" , positionX:432 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:432 ,positionY:455 ,class:false},
+		// 	{name: "中村史" , positionX:432 ,positionY:520 ,class:false},
+		// 	/*五列目左*/
+		// 	{name: "" , positionX:460 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:460 ,positionY:520 ,class:false},
+		// 	/*五列目右*/
+		// 	{name: "" , positionX:537 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:537 ,positionY:520 ,class:false},
+		// 	/*六列目左*/
+		// 	{name: "" , positionX:565 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:565 ,positionY:520 ,class:false},
+		// 	/*六列目右*/
+		// 	{name: "" , positionX:642 ,positionY:45 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:642 ,positionY:520 ,class:false},
+		// 	/*七列目左*/
+		// 	{name: "" , positionX:678 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:325 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:678 ,positionY:520 ,class:false},
+		// 	/*七列目右*/
+		// 	{name: "" , positionX:754 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:754 ,positionY:195 ,class:false},
+		// 	{name: "" , positionX:754 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:754 ,positionY:325 ,class:false},
+		// 	{name: "清水" , positionX:754 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:754 ,positionY:455 ,class:false},
+		// 	{name: "" , positionX:754 ,positionY:520 ,class:false},
+		// 	/*八列目左*/
+		// 	{name: "" , positionX:807 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:807 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:807 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:807 ,positionY:520 ,class:false},
+		// 	/*八列目上*/
+		// 	{name: "" , positionX:834 ,positionY:103 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:233 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:363 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:493 ,class:true},
+		// 	/*八列目下*/
+		// 	{name: "" , positionX:834 ,positionY:193 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:323 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:453 ,class:true},
+		// 	{name: "" , positionX:834 ,positionY:583 ,class:true},
+		// 	/*八列目右*/
+		// 	{name: "" , positionX:897 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:897 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:897 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:897 ,positionY:520 ,class:false},
+		// 	/*九列目左*/
+		// 	{name: "" , positionX:923 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:923 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:923 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:923 ,positionY:520 ,class:false},
+		// 	/*九列目上*/
+		// 	{name: "" , positionX:950 ,positionY:103 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:233 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:363 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:493 ,class:true},
+		// 	/*九列目下*/
+		// 	{name: "" , positionX:950 ,positionY:193 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:323 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:453 ,class:true},
+		// 	{name: "" , positionX:950 ,positionY:583 ,class:true},
+		// 	/*九列目右*/
+		// 	{name: "" , positionX:1013 ,positionY:130 ,class:false},
+		// 	{name: "" , positionX:1013 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1013 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1013 ,positionY:520 ,class:false},
+		// 	/*十列目左*/
+		// 	{name: "" , positionX:1039 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1039 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1039 ,positionY:520 ,class:false},
+		// 	/*十列目上*/
+		// 	{name: "和田" , positionX:1066 ,positionY:233 ,class:true},
+		// 	{name: "" , positionX:1066 ,positionY:363 ,class:true},
+		// 	{name: "" , positionX:1066 ,positionY:493 ,class:true},
+		// 	/*十列目下*/
+		// 	{name: "" , positionX:1066 ,positionY:323 ,class:true},
+		// 	{name: "" , positionX:1066 ,positionY:453 ,class:true},
+		// 	{name: "" , positionX:1066 ,positionY:583 ,class:true},
+		// 	/*十列目右*/
+		// 	{name: "" , positionX:1129 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1129 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1129 ,positionY:520 ,class:false},
+		// 	/*十一列目左*/
+		// 	{name: "" , positionX:1155 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1155 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1155 ,positionY:520 ,class:false},
+		// 	/*十一列目上*/
+		// 	{name: "斎藤哲" , positionX:1182 ,positionY:233 ,class:true},
+		// 	{name: "" , positionX:1182 ,positionY:363 ,class:true},
+		// 	{name: "" , positionX:1182 ,positionY:493 ,class:true},
+		// 	/*十一列目下*/
+		// 	{name: "" , positionX:1182 ,positionY:323 ,class:true},
+		// 	{name: "" , positionX:1182 ,positionY:453 ,class:true},
+		// 	{name: "" , positionX:1182 ,positionY:583 ,class:true},
+		// 	/*十一列目右*/
+		// 	{name: "" , positionX:1245 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1245 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1245 ,positionY:520 ,class:false},
+		// 	/*十二列目左*/
+		// 	{name: "" , positionX:1271 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1271 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1271 ,positionY:520 ,class:false},
+		// 	/*十二列目上*/
+		// 	{name: "" , positionX:1298 ,positionY:233 ,class:true},
+		// 	{name: "" , positionX:1298 ,positionY:363 ,class:true},
+		// 	{name: "" , positionX:1298 ,positionY:493 ,class:true},
+		// 	/*十二列目下*/
+		// 	{name: "" , positionX:1298 ,positionY:323 ,class:true},
+		// 	{name: "" , positionX:1298 ,positionY:453 ,class:true},
+		// 	{name: "" , positionX:1298 ,positionY:583 ,class:true},
+		// 	/*十二列目右*/
+		// 	{name: "" , positionX:1361 ,positionY:260 ,class:false},
+		// 	{name: "" , positionX:1361 ,positionY:390 ,class:false},
+		// 	{name: "" , positionX:1361 ,positionY:520 ,class:false}
+		// ]
      }
    },
    methods:{
@@ -359,7 +359,7 @@ export default {
         }
    },
    created: function(){
-	//    this.firstview({Token: this.$store.state.auth.token})
+	this.firstview({Token: this.$store.state.auth.token})
 	this.fetchEmpInfo({
 		Token: this.$store.state.auth.token,
 		EmpNo: ""
@@ -409,8 +409,8 @@ body {
 .icon{
 	margin-left: 3px; 
 	margin-top: 3px;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	float: left;
 	z-index: 999;
 	position: absolute;

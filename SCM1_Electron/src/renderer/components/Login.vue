@@ -1,15 +1,14 @@
 <template>
-    <div class="backimage">
-        <div class="backimageToka">
-            <div class="form">
-				<div class="login-char">社員番号</div>
-				<input type="text" v-model="empNo" class="txtbox"></input>
-				<div class="login-char">パスワード</div>
-				<input type="password" v-model="password" class="txtbox"></input>
-				<button type="button" @click="onLogin" class="login">ログイン</button>
-            </div>
-        </div>
-    </div>
+	<div>
+		<div class="backimage"></div>
+		<div class="form">
+			<div class="login-char">社員番号</div>
+			<input type="text" v-model="empNo" class="txtbox"></input>
+			<div class="login-char">パスワード</div>
+			<input type="password" v-model="password" class="txtbox"></input>
+			<button type="button" @click="onLogin" class="login">ログイン</button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -64,12 +63,9 @@ button:focus{
 }
 .backimage{
 	background-image: url("../assets/images/back.jpg");
-	background-size: 100vw auto;
 	background-repeat: no-repeat;
-}
-.backimageToka{
-	height: 100vh;
-	background: rgba(255, 255, 255, 0.5);
+	background-size: 100% auto;
+	height: 138vh;
 }
 .form{
 	position: absolute;
@@ -89,14 +85,6 @@ button:focus{
 	margin-top: 20px;
 	color: #28a1f7;
 	font-size: 20px;
-	font-family: 'Century Gothic';
-	display: block;
-}
-.error-char{
-	margin-left: 25px; 
-	margin-top: 3px; 
-	color: #DD0000;
-	font-size: 15px;
 	font-family: 'Century Gothic';
 	display: block;
 }
@@ -123,6 +111,7 @@ button:focus{
 	cursor: pointer;
 	text-decoration: none;
 	margin-top: 45px;
-	margin-left: 100px
+	margin-left: 100px;
+	border-style: none;
 }
 </style>
