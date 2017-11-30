@@ -4,12 +4,16 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    empInfo: []
+    empInfo: [],
+    seatInfo: []
 }
 
 const mutations = {
     fetchEmpInfo (state , empInfo) {
         state.empInfo = empInfo
+    },
+    initialize (state , seatInfo){
+        state.seatInfo = seatInfo
     }
 }
 
@@ -25,7 +29,7 @@ const actions = {
         .then((data) =>{
             if(data.ProcessStatus === constants.STATUS_OK && data.Authenticated)
             {
-                commit('login', data.SeatInfo)
+                commit('initialize', data.SeatInfo)
             } 
         })
     },
