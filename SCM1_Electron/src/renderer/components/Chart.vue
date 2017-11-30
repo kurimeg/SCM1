@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" class="seat" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+				<seat :id="seat.name" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
