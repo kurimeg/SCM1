@@ -16,6 +16,10 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": ""
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/ryuwGit/SCM1.git"
+  },
   "build": {
     "productName": "SekiPa",
     "appId": "org.simulatedgreg.electron-vue",
