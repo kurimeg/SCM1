@@ -409,8 +409,8 @@ body {
 .icon{
 	margin-left: 3px; 
 	margin-top: 3px;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	float: left;
 	z-index: 999;
 	position: absolute;

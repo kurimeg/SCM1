@@ -48,6 +48,7 @@ export default {
     border: 5px solid #28a1f7;
     border-radius: 15px;
     background-color: #5d5d5d;
+    padding-bottom: 15px;
   }
   .alert-layer{
     position: absolute;
