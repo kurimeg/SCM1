@@ -5,44 +5,36 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class MST_CONTENT_VIEW: footerColumns
+    public class footerColumns
     {
         /// <summary>
-        /// コンテンツID
+        /// 作成社員番号
         /// </summary>
-        public string CONTENTS_ID
+        public string CREATE_EMP_NO
         {
             get; set;
         }
 
         /// <summary>
-        /// コンテンツ区分
+        /// 作成日時
         /// </summary>
-        public string CONTENTS_DV
+        public DateTime CREATE_DT
         {
             get; set;
         }
 
         /// <summary>
-        /// 描画座標X
+        /// 更新社員番号
         /// </summary>
-        public string CONTENT_POSITION_X
+        public string LAST_UPDATE_EMP_NO
         {
             get; set;
         }
 
         /// <summary>
-        /// 描画座標Y
+        /// 更新日時
         /// </summary>
-        public string CONTENT_POSITION_Y
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// 縦フラグ
-        /// </summary>
-        public bool VERTICAL_FLG
+        public DateTime LAST_UPDATE_DT
         {
             get; set;
         }

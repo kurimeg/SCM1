@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class T_EMP_LOCATION
+    public class T_EMP_LOCATION: footerColumns
     {
         /// <summary>
         /// 位置データSEQ
@@ -18,7 +18,7 @@ namespace SCM1_API.Model
         /// <summary>
         /// 社員番号
         /// </summary>
-        public int EMP_NO
+        public string EMP_NO
         {
             get; set;
         }

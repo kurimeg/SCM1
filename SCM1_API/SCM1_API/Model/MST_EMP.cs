@@ -5,12 +5,12 @@ using System.Web;
 
 namespace SCM1_API.Model
 {
-    public class MST_EMP
+    public class MST_EMP: footerColumns
     {
         /// <summary>
         /// 社員番号
         /// </summary>
-        public int EMP_NO
+        public string EMP_NO
         {
             get;set;
         }
@@ -43,6 +43,22 @@ namespace SCM1_API.Model
         /// 固定席利用可能フラグ
         /// </summary>
         public bool CAN_SIT_FIXED_seat_FLG
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 社員名
+        /// </summary>
+        public string EMP_NM
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 社員名_かな
+        /// </summary>
+        public string EMP_KANA_NM
         {
             get; set;
         }

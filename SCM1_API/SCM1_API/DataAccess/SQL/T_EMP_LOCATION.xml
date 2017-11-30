@@ -55,6 +55,8 @@
      EL.EMP_NO = #EMP_NO#
    AND
      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+   AND
+     EL.FIXED_FLG = '0'
   </delete>
   
   
@@ -68,6 +70,8 @@
      EL.SEAT_NO = MS.SEAT_NO
    WHERE
      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+   AND
+     EL.FIXED_FLG = '0'
   </delete>
 
   
@@ -98,14 +102,23 @@
       , SEAT_NO
       , EXTENSION_LINE_NO
       , EMP_STATUS_DV
-      , FIXED_FLG)
+      , FIXED_FLG
+      , CREATE_EMP_NO
+		  , CREATE_DT
+		  , LAST_UPDATE_EMP_NO
+		  , LAST_UPDATE_DT)
     VALUES
       (NEXT VALUE FOR LOCATION_DATA_SEQ
       , #EMP_NO#
       , #SEAT_NO#
       , #EXTENSION_LINE_NO#
       , '0'
-      , '0')
+      , '0'
+      , #EMP_NO#
+      , GETDATE()
+      , #EMP_NO#
+      , GETDATE()
+      )
   </insert>
 
   
@@ -114,8 +127,12 @@
       T_EMP_LOCATION
     SET
       SEAT_NO = #SEAT_NO#
+      , LAST_UPDATE_EMP_NO = #EMP_NO#
+		  , LAST_UPDATE_DT = GETDATE()
     WHERE
       EMP_NO = #EMP_NO#
+    AND
+      FIXED_FLG = '0'
   </update>
   
   

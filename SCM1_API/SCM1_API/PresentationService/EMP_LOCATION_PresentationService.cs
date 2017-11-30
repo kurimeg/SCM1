@@ -118,7 +118,7 @@ namespace SCM1_API.PresentationService
             }
             else
             {
-                //次の席じゃないなら更新
+                //最初の席じゃないなら更新
                 empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
             }
 
