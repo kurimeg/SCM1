@@ -4,6 +4,9 @@ import Vue from 'vue'
 import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
+// deleteのために実装(TODO:共通化できないか...)
+import axios from 'axios'
+
 // TODO: localStateとしたい。
 const state = {
     isReserved: false
@@ -30,7 +33,7 @@ const actions = {
             })
         }else{
             //解除処理
-            Vue.http.delete('/emplocation/ClearEmpLocationInfo', reserveInfo)
+            Vue.http({method: 'delete', url: '/emplocation/ClearEmpLocationInfo', data: reserveInfo})
             .then((data) =>{
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
