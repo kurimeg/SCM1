@@ -1,8 +1,8 @@
 {
-  "name": "electron_vue",
-  "version": "0.0.0",
-  "author": "katsunori <watanabe-katsunori@ksc.co.jp>",
-  "description": "An electron-vue project",
+  "name": "SekiPa",
+  "version": "1.0.0",
+  "author": "SekiPa Development Team <ksc.sekipa@gmail.com>",
+  "description": "SekiPa",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "electron_vue",
+    "productName": "SekiPa",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"

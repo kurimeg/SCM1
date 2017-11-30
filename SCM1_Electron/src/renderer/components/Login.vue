@@ -2,11 +2,13 @@
     <div class="backimage">
         <div class="backimageToka">
             <div class="form">
-                <div class="login-char">社員番号</div>
-                <input type="text" class="txtbox"></input>
-                <div class="login-char">パスワード</div>
-                <input type="password" class="txtbox"></input>
-                <button type="button" class="login">ログイン</button>
+                <div class="enter">
+                    <div class="login-char">社員番号</div>
+                    <input type="text" v-model="empNo" class="txtbox"></input>
+                    <div class="login-char">パスワード</div>
+                    <input type="password" v-model="password" class="txtbox"></input>
+                    <button type="button" @click="onLogin" class="login">ログイン</button>
+                </div>
             </div>
         </div>
     </div>
@@ -15,20 +17,15 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 
-const { mapState, mapActions } = createNamespacedHelpers('auth')
+const { mapActions } = createNamespacedHelpers('auth')
 
  export default {
    data: function () {
      return {
-       empNo: null,
-       password: null
+		empNo: null,
+		password: null
      }
    },
-   beforeCreate () {
-        if (this.$store.state.isLogged) {
-            this.$router.replace('chart')
-        }
-    },
     methods: {
         ...mapActions([
             'login'
@@ -36,18 +33,33 @@ const { mapState, mapActions } = createNamespacedHelpers('auth')
 
         onLogin: function () {
             this.login({
-                empNo: this.empNo,
-                password: this.password
+                EmpNo: this.empNo,
+				Password: this.password
+            })
+        }
+	},
+	created: function () {
+        if (this.$store.state.auth.isLogged) {
+			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+            this.login({
+                EmpNo: authInfo.EmpNo,
+				Password: authInfo.Password
             })
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 body {
 	margin: 0;
 	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
+}
+input:focus{
+ outline:none;
+}
+button:focus{
+ outline:none;
 }
 .floatL {
 	float: left;
@@ -74,11 +86,25 @@ body {
 	border-radius: 15px;
 	background-color: #d8d8d8;
 }
+.enter{
+	position: absolute;
+	height: 300px;
+	width: 400px;
+	margin-top: 10px
+}
 .login-char{
 	margin-left: 25px; 
 	margin-top: 20px;
 	color: #28a1f7;
 	font-size: 20px;
+	font-family: 'Century Gothic';
+	display: block;
+}
+.error-char{
+	margin-left: 25px; 
+	margin-top: 3px; 
+	color: #DD0000;
+	font-size: 15px;
 	font-family: 'Century Gothic';
 	display: block;
 }

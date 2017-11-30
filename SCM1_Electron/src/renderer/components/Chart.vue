@@ -1,788 +1,548 @@
 <template>
 	<div class="main">
-		<div class="kensaku">
-			<form id="content">
-			  <input type="text" name="input" class="input">
-			  <button type="reset" class="search"></button>
-			</form>
-		</div>
-		<div class="row01 floatL child">
-			<div class="row01_seat_top">
-				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square"></div>
-			</div>
-			<div class="row01_seat_bottom">
-				<div class="line01 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>	
+		<search v-if="this.$store.state.search.show" :emp-info="this.$store.state.getMaster.empInfo"></search>
+		<div class="tables">
+			<div class="row01 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2001</div>
 				</div>
 				<div class="floatL">
-					<div class="desk_rec01"></div>
-				</div>
-				<div class="line01 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-			</div>
-		</div>
-		<div class="rack01 floatL"></div>
-		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
-				<button type="button" class="seat_vertical floatL"></button>
-			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
-				<div class="floatL">
-					<div class="desk_rec02"></div>
-				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+					<div class="desk_rec01">
+						<div class="naisen_l">
+							<div class="naisen naisen_oneigyo">2007</div>
+							<div class="naisen naisen_oneigyo">2008</div>
+							<div class="naisen naisen_oneigyo">2009</div>
+							<div class="naisen naisen_oneigyo">2010</div>
+							<div class="naisen naisen_oneigyo">2011</div>
+							<div class="naisen naisen_oneigyo">2012</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="rack01 floatL"></div>
+			<div class="row02 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2002</div>
+				</div>
+				<div class="desk_rec02">
+						<div class="naisen naisen_l2">2013</div>
+				</div>
+				<div class="rack02 floatL"></div>
 			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<div class="row02 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2003</div>
 				</div>
-				<div class="floatL">
-					<div class="desk_rec02"></div>
+				<div class="desk_rec02">
+					<div class="naisen_l">
+						<div class="naisen naisen_l3">2014</div>
+						<div class="naisen naisen_l3">2015</div>
+					</div>
 				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
+				<div class="rack02 floatL"></div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="row02 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2004</div>
+				</div>
+				<div class="desk_rec02">
+					<div class="naisen_l">
+						<div class="naisen naisen_l4">2016</div>
+						<div class="naisen naisen_l4">2017</div>
+					</div>
+				</div>
+				<div class="rack02 floatL"></div>
 			</div>
-			<div class="row02_seat_bottom">
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<div class="row02 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2005</div>
 				</div>
-				<div class="floatL">
-					<div class="desk_rec02"></div>
+				<div class="desk_rec05">
+					<div class="naisen naisen_l2">2018</div>
 				</div>
-				<div class="line02 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
+				<div class="rack02 floatL"></div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row02 floatL child">
-			<div class="row02_seat_top">
-				<button type="button" class="seat_vertical floatL"></button>
-				<div class="desk_square floatL"></div>
-				<button type="button" class="seat_vertical floatL"></button>
+			<div class="row01 floatL child">
+				<div class="desk_square">
+					<div class="naisen naisen_onsquare">2006</div>
+				</div>
+					<div class="desk_rec06">
+						<div class="naisen_l">
+							<div class="naisen naisen_l4">2019</div>
+							<div class="naisen naisen_l4">2020</div>
+						</div>
+					</div>
+				<div class="rack02 floatL"></div>
 			</div>
-			<div class="row01_seat_bottom">
-				<div class="line05 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<div class="row07 floatL child">
+				<div class="desk_rec07"></div>
+				<div class="rack02 floatL"></div>
+			</div>
+			<!--正方形机1列目-->
+			<div class="desk_recleft floatL child">
+				<div class="desk_square02"></div>
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2023</div>
 				</div>
-				<div class="floatL">
-					<div class="desk_rec05"></div>
-				</div>
-				<div class="line05 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+				<div class="desk_square02"></div>
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2024</div>
 				</div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row01 floatL child">
-			<div class="row01_seat_top">
-				<button type="button" class="seat_horizontal"></button>
-				<div class="desk_square"></div>
+			<!--正方形机2列目-->
+			<div class="desk_recleft floatL child">
+				<div class="desk_square02"></div>
+				<div class="desk_square02"></div>
+				<div class="desk_square02"></div>
+				<div class="desk_square02"></div>
 			</div>
-			<div class="row06_seat_bottom">
-				<div class="line06 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<!--正方形机3列目-->
+			<div class="desk_recright floatL child">
+				<div class="desk_square02"></div>
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2025</div>
 				</div>
-				<div class="floatL">
-					<div class="desk_rec06"></div>
-				</div>
-				<div class="line06 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-				</div>
+				<div class="desk_square02"></div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<div class="row07 floatL child">
-			<div class="row07_seat_bottom">
-				<div class="line07 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+			<!--正方形机4列目-->
+			<div class="desk_recright floatL child">
+				<div class="desk_square02"></div>
+				<div class="desk_square02"></div>
+				<div class="desk_square02"></div>
+			</div>
+			<!--正方形机5列目-->
+			<div class="desk_recright floatL child">
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2026</div>
 				</div>
-				<div class="floatL">
-					<div class="desk_rec07"></div>
-				</div>
-				<div class="line07 floatL">
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
-					<button type="button" class="seat_vertical"></button>
+				<div class="desk_square02"></div>
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2027</div>
 				</div>
 			</div>
-			<div class="rack02 floatL"></div>
-		</div>
-		<!--正方形机-->
-		<div class="floatL child">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<!--正方形机-->
-		<div class="nine_desk floatL child">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-						<td>
-							<div class="freeSpace">
-								<button type="button" class="seat_vertical square02_seat_left"></button>
-								<button type="button" class="seat_horizontal square02_seat_top"></button>
-								<div class="desk_square02">
-								</div>
-								<button type="button" class="seat_vertical square02_seat_right"></button>
-								<button type="button" class="seat_horizontal square02_seat_bottom"></button>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="seat-layer" >
+				<seat :id="seat.name" class="seat" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+			</div>
 		</div>
 		<div id="minimap"></div>
 	</div>
 </template>
 
-<style>
-    body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-    }
-    .main {
-        width: 1500px;
-        height: 600px;
-        margin: 10px auto;
-    }
-    .floatL {
-    	float: left;
-    }
-    
-    /*ラック*/
-    .rack01 {
-        margin: 137px 8px 2px 0;
-        width: 15px;
-        height: 450px;
-        background-color: #E1BE7E;
-    }
-    .rack02 {
-        width: 65px;
-        height: 20px;
-        margin: 0 17.5px 0;
-        background-color: #E1BE7E;
-    }
-    
-    /*Button_共通*/
-    /*ボタン_横*/
-    .seat_horizontal_pushed{
-        margin: 0px;
-        width: 50px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	z-index: 999;
-    }
-    .seat_horizontal {
-        margin: 0px;
-        width: 50px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 10px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	z-index: 999;
-    }
-    /*ボタン_縦*/
-    .seat_vertical_pushed {
-        margin: 5px 2px;
-        width: 22px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 1.8px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	-webkit-text-orientation: sideways;
-    	text-orientation: sideways;
-    	z-index: 999;
-    }
-    .seat_vertical {
-        margin: 5px 2px;
-        width: 22px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 23px 0;
-        background-color: #FFFFFF;
-        border: 2px solid #B8C8D6;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 14px;
-    	zinde: 999;
-    }
-    /*正方形周り_ボタン_横*/
-    .seat_arround_square01 {
-    	margin: 4px 4px 4px 12px;
-    }
-    
-    /*列＿1行目*/
-    .row01 {
-        margin: 32px 8px 0 0;
-    }
-    .row01_seat_top {
-    	margin: 0 0 0 26px;
-    }
-    .desk_square {
-        margin: 2px;
-        width: 45px;
-        height: 50px;
-    	background-color: #7EA88D;
-    }
-    .desk_rec01 {
-        margin: 20px 2px 2px;
-        width: 45px;
-        height: 390px;
-    	background-color: #7EA88D;
-    }
-    .line01 {
-    	margin-top: 20px;
-    }
-    /*列＿２行目以降*/
-    .row02 {
-        margin: 46px 8px 0 0;
-    }
-    .row02_seat_top {
-    	margin: 10px 0 0 0;
-    }
-    .row02_seat_bottom {
-    	margin: 20px 0 0 0;
-    }
-    .line02 {
-    	margin-top: 25px;
-    }
-    .desk_rec02 {
-        margin: 20px 2px 2px;
-        width: 45px;
-        height: 450px;
-    	background-color: #7EA88D;
-    }
-    
-    /*列＿5行目*/
-    .line05 {
-    	margin-top: 80px;
-    }
-    .desk_rec05 {
-    	margin: 75px 2px 2px;
-    	width: 45px;
-    	height: 395px;
-    	background-color: #7EA88D;
-    }
-    /*列＿6行目*/
-    .line06 {
-    	margin-top: 86px;
-    }
-    .desk_rec06 {
-    	margin: 81px 2px 2px;
-    	width: 45px;
-    	height: 395px;
-    	background-color: #7EA88D;
-    }
-    
-    /*列＿7行目*/
-    .row07 {
-        margin: 46px 22px 0 0;
-    }
-    .row07_seat_top {
-    	margin: 10px 0 0 0;
-    }
-    .row07_seat_bottom {
-    	margin: 20px 0 0 0;
-    }
-    .line07 {
-    	margin-top: 75px;
-    }
-    .desk_rec07 {
-    	margin: 71px 2px 2px;
-    	width: 45px;
-    	height: 450px;
-    	background-color: #7EA88D;
-    }
-    
-    /*フリースペース_正方形*/
-    .freeSpace {
-    	width: 110px;
-    	max-height: 130px;
-    	position: relative;
-    	margin-left: 8px;
-    }
-    .desk_square02 {
-        position: relative;
-        left: 25px;
-    	margin: 2px;
-    	width: 60px;
-    	height: 60px;
-    	background-color: #7EA88D;
-    }
-    .square02_seat_top {
-        display: inherit;
-    	margin-left: 30px;
-    }
-    .square02_seat_right {
-        position: relative;
-        top: -60px;
-        left: 87px;
-    }
-    .square02_seat_bottom {
-        position: relative;
-        top: -58px;
-        left: 32px;
-    }
-    .square02_seat_left {
-        position: relative;
-        top: 86px;
-    }
-    .nine_desk {
-    	margin: 138px 0 0;
-    }
-    
-    /*search icon*/
-    .kensaku {
-        width: 200px;
-        height: 50px;
-        background-color: #fff;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        position: fixed;
-        top: 10px;
-        left: 1150px;
-    }
-    #content {
-        position: absolute;
-        height: 50px;
-        width: 200px;
-        margin-left: 220px;
-        top: 100%;
-        left: 40%;
-        transform: translate(-50%, -50%);
-    }
-    
-    #content.on {
-      -webkit-animation-name: in-out;
-      animation-name: in-out;
-      -webkit-animation-duration: 0.7s;
-      animation-duration: 0.7s;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-      -webkit-animation-iteration-count: 1;
-      animation-iteration-count: 1;
-    }
-    
-    input {
-        box-sizing: border-box;
-        width: 40px;
-        height: 40px;
-        border: 3px solid #222;
-        border-radius: 50%;
-        background: none;
-        color: #000;
-        font-size: 16px;
-        font-weight: 400;
-        font-family: Roboto;
-        outline: 0;
-        -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
-        transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
-        -webkit-transition-delay: 0.4s;
-        transition-delay: 0.4s;
-        -webkit-transform: translate(-100%, -50%);
-        -ms-transform: translate(-100%, -50%);
-        transform: translate(-100%, -50%);
-    }
-    
-    .search {
-        background: none;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        height: 50px;
-        width: 50px;
-        padding: 0;
-        border-radius: 100%;
-        outline: 0;
-        border: 0;
-        color: inherit;
-        cursor: pointer;
-        -webkit-transition: 0.2s ease-in-out;
-        transition: 0.2s ease-in-out;
-        -webkit-transform: translate(-100%, -50%);
-        -ms-transform: translate(-100%, -50%);
-        transform: translate(-100%, -50%);
-    }
-    
-    .search:before {
-        content: "";
-        position: absolute;
-        width: 10px;
-        height: 3px;
-        background-color: #222;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-        margin-top: 5px;
-        margin-left: 5px;
-        -webkit-transition: 0.2s ease-in-out;
-        transition: 0.2s ease-in-out;
-    }
-    
-    .close {
-      -webkit-transition: 0.4s ease-in-out;
-      transition: 0.4s ease-in-out;
-      -webkit-transition-delay: 0.4s;
-      transition-delay: 0.4s;
-    }
-    
-    .close:before {
-        content: "";
-        position: absolute;
-        width: 27px;
-        height: 3px;
-        margin-top: -10px;
-        margin-left: -25px;
-        background-color: #222;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-        -webkit-transition: 0.2s ease-in-out;
-        transition: 0.2s ease-in-out;
-    }
-    
-    .close:after {
-        content: "";
-        position: absolute;
-        width: 27px;
-        height: 3px;
-        background-color: #222;
-        margin-top: -10px;
-        margin-left: -25px;
-        cursor: pointer;
-        -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-    }
-    
-    .square {
-        box-sizing: border-box;
-        padding: 0 40px 0 10px;
-        width: 200px;
-        height: 50px;
-        border: 3px solid #222;
-        border-radius: 0;
-        background: none;
-        color: #000;
-        font-family: Roboto;
-        font-size: 16px;
-        font-weight: 400;
-        outline: 0;
-        -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
-        transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
-        -webkit-transition-delay: 0.4s, 0s, 0.4s;
-        transition-delay: 0.4s, 0s, 0.4s;
-        -webkit-transform: translate(-100%, -50%);
-        -ms-transform: translate(-100%, -50%);
-        transform: translate(-100%, -50%);
-    }
+<script>
+import Seat from './Chart/Seat'
+import Search from './Chart/Search'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions } = createNamespacedHelpers('getMaster')
+
+
+export default {
+   data: function () {
+     return {
+		seats: [
+			/*一列目左*/
+			{name: "栗原萌" , positionX:2 ,positionY:45 ,class:false},
+			{name: "佐貫" , positionX:2 ,positionY:130 ,class:false},
+			{name: "" , positionX:2 ,positionY:195 ,class:false},
+			{name: "" , positionX:2 ,positionY:260 ,class:false},
+			{name: "" , positionX:2 ,positionY:325 ,class:false},
+			{name: "" , positionX:2 ,positionY:390 ,class:false},
+			{name: "" , positionX:2 ,positionY:455 ,class:false},
+			/*一列目右*/
+			{name: "" , positionX:79 ,positionY:45 ,class:false},
+			{name: "" , positionX:79 ,positionY:130 ,class:false},
+			{name: "" , positionX:79 ,positionY:195 ,class:false},
+			{name: "" , positionX:79 ,positionY:260 ,class:false},
+			{name: "" , positionX:79 ,positionY:325 ,class:false},
+			{name: "" , positionX:79 ,positionY:390 ,class:false},
+			{name: "" , positionX:79 ,positionY:455 ,class:false},
+			/*二列目左*/
+			{name: "" , positionX:145 ,positionY:45 ,class:false},
+			{name: "" , positionX:145 ,positionY:130 ,class:false},
+			{name: "" , positionX:145 ,positionY:195 ,class:false},
+			{name: "" , positionX:145 ,positionY:260 ,class:false},
+			{name: "" , positionX:145 ,positionY:325 ,class:false},
+			{name: "" , positionX:145 ,positionY:390 ,class:false},
+			{name: "" , positionX:145 ,positionY:455 ,class:false},
+			{name: "" , positionX:145 ,positionY:520 ,class:false},
+			/*二列目右*/
+			{name: "" , positionX:222 ,positionY:45 ,class:false},
+			{name: "" , positionX:222 ,positionY:130 ,class:false},
+			{name: "" , positionX:222 ,positionY:195 ,class:false},
+			{name: "" , positionX:222 ,positionY:260 ,class:false},
+			{name: "" , positionX:222 ,positionY:325 ,class:false},
+			{name: "" , positionX:222 ,positionY:390 ,class:false},
+			{name: "" , positionX:222 ,positionY:455 ,class:false},
+			{name: "" , positionX:222 ,positionY:520 ,class:false},
+			/*三列目左*/
+			{name: "" , positionX:250 ,positionY:45 ,class:false},
+			{name: "" , positionX:250 ,positionY:130 ,class:false},
+			{name: "" , positionX:250 ,positionY:195 ,class:false},
+			{name: "" , positionX:250 ,positionY:260 ,class:false},
+			{name: "" , positionX:250 ,positionY:325 ,class:false},
+			{name: "" , positionX:250 ,positionY:390 ,class:false},
+			{name: "" , positionX:250 ,positionY:455 ,class:false},
+			{name: "" , positionX:250 ,positionY:520 ,class:false},
+			/*三列目右*/
+			{name: "" , positionX:327 ,positionY:45 ,class:false},
+			{name: "" , positionX:327 ,positionY:130 ,class:false},
+			{name: "" , positionX:327 ,positionY:195 ,class:false},
+			{name: "" , positionX:327 ,positionY:260 ,class:false},
+			{name: "" , positionX:327 ,positionY:325 ,class:false},
+			{name: "" , positionX:327 ,positionY:390 ,class:false},
+			{name: "" , positionX:327 ,positionY:455 ,class:false},
+			{name: "" , positionX:327 ,positionY:520 ,class:false},
+			/*四列目左*/
+			{name: "" , positionX:355 ,positionY:45 ,class:false},
+			{name: "" , positionX:355 ,positionY:130 ,class:false},
+			{name: "" , positionX:355 ,positionY:195 ,class:false},
+			{name: "" , positionX:355 ,positionY:260 ,class:false},
+			{name: "" , positionX:355 ,positionY:325 ,class:false},
+			{name: "" , positionX:355 ,positionY:390 ,class:false},
+			{name: "" , positionX:355 ,positionY:455 ,class:false},
+			{name: "" , positionX:355 ,positionY:520 ,class:false},
+			/*四列目右*/
+			{name: "" , positionX:432 ,positionY:45 ,class:false},
+			{name: "" , positionX:432 ,positionY:130 ,class:false},
+			{name: "" , positionX:432 ,positionY:195 ,class:false},
+			{name: "" , positionX:432 ,positionY:260 ,class:false},
+			{name: "" , positionX:432 ,positionY:325 ,class:false},
+			{name: "" , positionX:432 ,positionY:390 ,class:false},
+			{name: "" , positionX:432 ,positionY:455 ,class:false},
+			{name: "中村史" , positionX:432 ,positionY:520 ,class:false},
+			/*五列目左*/
+			{name: "" , positionX:460 ,positionY:45 ,class:false},
+			{name: "" , positionX:460 ,positionY:195 ,class:false},
+			{name: "" , positionX:460 ,positionY:260 ,class:false},
+			{name: "" , positionX:460 ,positionY:325 ,class:false},
+			{name: "" , positionX:460 ,positionY:390 ,class:false},
+			{name: "" , positionX:460 ,positionY:455 ,class:false},
+			{name: "" , positionX:460 ,positionY:520 ,class:false},
+			/*五列目右*/
+			{name: "" , positionX:537 ,positionY:45 ,class:false},
+			{name: "" , positionX:537 ,positionY:195 ,class:false},
+			{name: "" , positionX:537 ,positionY:260 ,class:false},
+			{name: "" , positionX:537 ,positionY:325 ,class:false},
+			{name: "" , positionX:537 ,positionY:390 ,class:false},
+			{name: "" , positionX:537 ,positionY:455 ,class:false},
+			{name: "" , positionX:537 ,positionY:520 ,class:false},
+			/*六列目左*/
+			{name: "" , positionX:565 ,positionY:45 ,class:false},
+			{name: "" , positionX:565 ,positionY:195 ,class:false},
+			{name: "" , positionX:565 ,positionY:260 ,class:false},
+			{name: "" , positionX:565 ,positionY:325 ,class:false},
+			{name: "" , positionX:565 ,positionY:390 ,class:false},
+			{name: "" , positionX:565 ,positionY:455 ,class:false},
+			{name: "" , positionX:565 ,positionY:520 ,class:false},
+			/*六列目右*/
+			{name: "" , positionX:642 ,positionY:45 ,class:false},
+			{name: "" , positionX:642 ,positionY:195 ,class:false},
+			{name: "" , positionX:642 ,positionY:260 ,class:false},
+			{name: "" , positionX:642 ,positionY:325 ,class:false},
+			{name: "" , positionX:642 ,positionY:390 ,class:false},
+			{name: "" , positionX:642 ,positionY:455 ,class:false},
+			{name: "" , positionX:642 ,positionY:520 ,class:false},
+			/*七列目左*/
+			{name: "" , positionX:678 ,positionY:130 ,class:false},
+			{name: "" , positionX:678 ,positionY:195 ,class:false},
+			{name: "" , positionX:678 ,positionY:260 ,class:false},
+			{name: "" , positionX:678 ,positionY:325 ,class:false},
+			{name: "" , positionX:678 ,positionY:390 ,class:false},
+			{name: "" , positionX:678 ,positionY:455 ,class:false},
+			{name: "" , positionX:678 ,positionY:520 ,class:false},
+			/*七列目右*/
+			{name: "" , positionX:754 ,positionY:130 ,class:false},
+			{name: "" , positionX:754 ,positionY:195 ,class:false},
+			{name: "" , positionX:754 ,positionY:260 ,class:false},
+			{name: "" , positionX:754 ,positionY:325 ,class:false},
+			{name: "清水" , positionX:754 ,positionY:390 ,class:false},
+			{name: "" , positionX:754 ,positionY:455 ,class:false},
+			{name: "" , positionX:754 ,positionY:520 ,class:false},
+			/*八列目左*/
+			{name: "" , positionX:807 ,positionY:130 ,class:false},
+			{name: "" , positionX:807 ,positionY:260 ,class:false},
+			{name: "" , positionX:807 ,positionY:390 ,class:false},
+			{name: "" , positionX:807 ,positionY:520 ,class:false},
+			/*八列目上*/
+			{name: "" , positionX:834 ,positionY:103 ,class:true},
+			{name: "" , positionX:834 ,positionY:233 ,class:true},
+			{name: "" , positionX:834 ,positionY:363 ,class:true},
+			{name: "" , positionX:834 ,positionY:493 ,class:true},
+			/*八列目下*/
+			{name: "" , positionX:834 ,positionY:193 ,class:true},
+			{name: "" , positionX:834 ,positionY:323 ,class:true},
+			{name: "" , positionX:834 ,positionY:453 ,class:true},
+			{name: "" , positionX:834 ,positionY:583 ,class:true},
+			/*八列目右*/
+			{name: "" , positionX:897 ,positionY:130 ,class:false},
+			{name: "" , positionX:897 ,positionY:260 ,class:false},
+			{name: "" , positionX:897 ,positionY:390 ,class:false},
+			{name: "" , positionX:897 ,positionY:520 ,class:false},
+			/*九列目左*/
+			{name: "" , positionX:923 ,positionY:130 ,class:false},
+			{name: "" , positionX:923 ,positionY:260 ,class:false},
+			{name: "" , positionX:923 ,positionY:390 ,class:false},
+			{name: "" , positionX:923 ,positionY:520 ,class:false},
+			/*九列目上*/
+			{name: "" , positionX:950 ,positionY:103 ,class:true},
+			{name: "" , positionX:950 ,positionY:233 ,class:true},
+			{name: "" , positionX:950 ,positionY:363 ,class:true},
+			{name: "" , positionX:950 ,positionY:493 ,class:true},
+			/*九列目下*/
+			{name: "" , positionX:950 ,positionY:193 ,class:true},
+			{name: "" , positionX:950 ,positionY:323 ,class:true},
+			{name: "" , positionX:950 ,positionY:453 ,class:true},
+			{name: "" , positionX:950 ,positionY:583 ,class:true},
+			/*九列目右*/
+			{name: "" , positionX:1013 ,positionY:130 ,class:false},
+			{name: "" , positionX:1013 ,positionY:260 ,class:false},
+			{name: "" , positionX:1013 ,positionY:390 ,class:false},
+			{name: "" , positionX:1013 ,positionY:520 ,class:false},
+			/*十列目左*/
+			{name: "" , positionX:1039 ,positionY:260 ,class:false},
+			{name: "" , positionX:1039 ,positionY:390 ,class:false},
+			{name: "" , positionX:1039 ,positionY:520 ,class:false},
+			/*十列目上*/
+			{name: "和田" , positionX:1066 ,positionY:233 ,class:true},
+			{name: "" , positionX:1066 ,positionY:363 ,class:true},
+			{name: "" , positionX:1066 ,positionY:493 ,class:true},
+			/*十列目下*/
+			{name: "" , positionX:1066 ,positionY:323 ,class:true},
+			{name: "" , positionX:1066 ,positionY:453 ,class:true},
+			{name: "" , positionX:1066 ,positionY:583 ,class:true},
+			/*十列目右*/
+			{name: "" , positionX:1129 ,positionY:260 ,class:false},
+			{name: "" , positionX:1129 ,positionY:390 ,class:false},
+			{name: "" , positionX:1129 ,positionY:520 ,class:false},
+			/*十一列目左*/
+			{name: "" , positionX:1155 ,positionY:260 ,class:false},
+			{name: "" , positionX:1155 ,positionY:390 ,class:false},
+			{name: "" , positionX:1155 ,positionY:520 ,class:false},
+			/*十一列目上*/
+			{name: "斎藤哲" , positionX:1182 ,positionY:233 ,class:true},
+			{name: "" , positionX:1182 ,positionY:363 ,class:true},
+			{name: "" , positionX:1182 ,positionY:493 ,class:true},
+			/*十一列目下*/
+			{name: "" , positionX:1182 ,positionY:323 ,class:true},
+			{name: "" , positionX:1182 ,positionY:453 ,class:true},
+			{name: "" , positionX:1182 ,positionY:583 ,class:true},
+			/*十一列目右*/
+			{name: "" , positionX:1245 ,positionY:260 ,class:false},
+			{name: "" , positionX:1245 ,positionY:390 ,class:false},
+			{name: "" , positionX:1245 ,positionY:520 ,class:false},
+			/*十二列目左*/
+			{name: "" , positionX:1271 ,positionY:260 ,class:false},
+			{name: "" , positionX:1271 ,positionY:390 ,class:false},
+			{name: "" , positionX:1271 ,positionY:520 ,class:false},
+			/*十二列目上*/
+			{name: "" , positionX:1298 ,positionY:233 ,class:true},
+			{name: "" , positionX:1298 ,positionY:363 ,class:true},
+			{name: "" , positionX:1298 ,positionY:493 ,class:true},
+			/*十二列目下*/
+			{name: "" , positionX:1298 ,positionY:323 ,class:true},
+			{name: "" , positionX:1298 ,positionY:453 ,class:true},
+			{name: "" , positionX:1298 ,positionY:583 ,class:true},
+			/*十二列目右*/
+			{name: "" , positionX:1361 ,positionY:260 ,class:false},
+			{name: "" , positionX:1361 ,positionY:390 ,class:false},
+			{name: "" , positionX:1361 ,positionY:520 ,class:false}
+		]
+     }
+   },
+   methods:{
+	   ...mapActions([
+            'firstview','fetchEmpInfo'
+		]),
+		
+		openSearch: function () {
+            this.$store.commit('search/show')
+        }
+   },
+   created: function(){
+	//    this.firstview({Token: this.$store.state.auth.token})
+	this.fetchEmpInfo({
+		Token: this.$store.state.auth.token,
+		EmpNo: ""
+	})
+   },
+   
+   components: {
+	   Seat, Search
+   }
+//    methods: {
+// 	   //TODO: modulesへ追加、stateに各配列をcommitする
+//         ...mapActions([
+//             'getNaisenIDs', 'getSeatIDs'
+//         ])
+// 	},
+// 	created: function () {
+// 		//TODO: 以下のような感じでIDをセット。もっといい感じの方法があるはず。。。
+// 		const naisen = document.getElementsByClassName("naisen")
+// 		this.getNaisenIDs()
+// 		for(let i = 0; i < naisen.length; i++){
+// 			naisen[i].setAttribute("id", this.$store.state.naisenIDs[i])
+// 		}
+
+// 		const seat = document.getElementsByClassName("seat")
+// 		this.getSeatIDs
+// 		for(let i = 0; i < naisen.length; i++){
+// 			seat[i].setAttribute("id", this.$store.state.seatIDs[i])
+// 		}
+//     }
+}
+</script>
+
+<style scoped>
+body {
+    margin: 0;
+    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
+}
+.tables{
+	position: relative;
+    width: 1400px;
+    height: 600px;
+    margin: 50px 0 0 0;
+}
+.floatL {
+	float: left;
+}
+.icon{
+	margin-left: 3px; 
+	margin-top: 3px;
+	width: 50px;
+	height: 50px;
+	float: left;
+	z-index: 999;
+	position: absolute;
+	cursor: pointer;
+}
+
+/*ラック*/
+.rack01 {
+    margin: 137px 10px 0 5px;
+    width: 15px;
+    height: 450px;
+    background-color: #E1BE7E;
+}
+.rack02 {
+    width: 65px;
+    height: 20px;
+    margin: 5px 19px 0;
+    background-color: #E1BE7E;
+}
+
+/*列＿1行目*/
+.row01 {
+    margin: 50px 8px 0 0;
+}
+.desk_square {
+    margin: 0 30px 0 30px;
+    width: 45px;
+    height: 50px;
+	background-color: #91cdf7;
+}
+.desk_rec01 {
+    margin: 30px 30px 0 30px;
+    width: 45px;
+    height: 390px;
+    background-color: #91cdf7;
+}
+/*列＿２行目以降*/
+.row02 {
+    margin: 50px 0 0;
+}
+.desk_rec02 {
+    margin: 30px 30px 0;
+    width: 45px;
+    height: 450px;
+	background-color: #91cdf7;
+}
+
+/*列＿5行目*/
+.desk_rec05 {
+	margin: 85px 30px 0;
+	width: 45px;
+	height: 395px;
+	background-color: #91cdf7;
+}
+/*列＿6行目*/
+.desk_rec06 {
+	margin: 85px 30px 0;
+	width: 45px;
+	height: 395px;
+	background-color: #91cdf7;
+}
+
+/*列＿7行目*/
+.desk_rec07 {
+	margin: 130px 30px 0 30px;
+	width: 45px;
+	height: 450px;
+	background-color: #91cdf7;
+}
+/*列＿8.9行目*/
+.desk_recleft {
+	margin: 130px 0 0 ;
+}
+/*列＿10.11.12行目*/
+.desk_recright {
+	margin: 260px 0 0 ;
+}
+
+/*フリースペース_正方形*/
+.desk_square02 {
+    position: relative;
+    left: 25px;
+	margin: 0 28px 70px;
+	width: 60px;
+	height: 60px;
+	background-color: #91cdf7;
+}
+
+/* 内線関係 */
+.naisen{
+    width: 45px;
+    height: 20px;
+    background-color: #f7ffa3;
+    color: #495f92;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #495f92;
+    border-radius: 5px;
+}
+.naisen_onsquare{
+    position: absolute;
+    margin-left: -2px;
+    margin-top: 13px;
+}
+.naisen_l{
+    position: absolute;
+}
+.naisen_oneigyo{
+    margin-left: -2px;
+    margin-top: 34px;
+    margin-bottom: 30px;
+}
+.naisen_l2{
+    position: absolute;
+    margin-left: -2px;
+    margin-top: 50px;
+}
+.naisen_l3{
+    margin-left: -2px;
+    margin-top: 50px;
+    margin-bottom: 140px;
+}
+.naisen_l4{
+    margin-left: -2px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+.naisen_onfree{
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 19px;
+}
 </style>
