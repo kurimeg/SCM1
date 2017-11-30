@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
+let appIcon = null
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -38,7 +39,7 @@ app.on('ready', () => {
   createWindow()
 
   //タスクトレイに格納
-  const appIcon = new Tray(__static + '/image/icon.png')
+  appIcon = new Tray(__static + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
       {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
@@ -77,6 +78,14 @@ const {autoUpdater} = require("electron-updater")
 
 autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
+  index = dialog.showMessageBox({
+    message: "アップデートあり",
+    detail: "再起動してインストールできます。",
+    buttons: ["再起動", "後で"]
+  })
+  if (index === 0) {
+    autoUpdater.quitAndInstall()
+  }
 })
 
 app.on('ready', () => {
