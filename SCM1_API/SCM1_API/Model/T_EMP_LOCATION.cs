@@ -24,6 +24,14 @@ namespace SCM1_API.Model
         }
 
         /// <summary>
+        /// コンテンツID
+        /// </summary>
+        public string CONTENTS_ID
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// 座席番号
         /// </summary>
         public string seat_NO
