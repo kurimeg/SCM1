@@ -27,7 +27,7 @@ namespace SCM1_API.PresentationService
                 Authenticated = false,
                 Token = ""
             };
-            var empInfo = empService.FetchEMPInfo_Service(req.EmpNo);
+            var empInfo = empService.FetchEMPInfo_ToAuth_Service(req.EmpNo);
 
             if (empInfo == null || empInfo.Count() > 1)
             {
@@ -44,7 +44,7 @@ namespace SCM1_API.PresentationService
             if (TokenHandling.CreateToken(req.EmpNo))
             {
                 resModel.ProcessStatus = STATUS.OK;
-                resModel.Token = empService.FetchEMPInfo_Service(req.EmpNo).First().ACCESS_TOKEN;
+                resModel.Token = empService.FetchEMPInfo_ToAuth_Service(req.EmpNo).First().ACCESS_TOKEN;
                 resModel.Authenticated = true;
             }
             else
