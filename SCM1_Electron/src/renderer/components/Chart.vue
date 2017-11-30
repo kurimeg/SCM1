@@ -133,7 +133,7 @@
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('getMaster')
+const { mapActions } = createNamespacedHelpers('search')
 
 
 export default {
@@ -355,7 +355,7 @@ export default {
 		]),
 		
 		openSearch: function () {
-            this.$store.commit('search/show')
+            this.$store.commit('search/show',true)
         }
    },
    created: function(){

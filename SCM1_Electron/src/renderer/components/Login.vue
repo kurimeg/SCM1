@@ -2,13 +2,11 @@
     <div class="backimage">
         <div class="backimageToka">
             <div class="form">
-                <div class="enter">
-                    <div class="login-char">社員番号</div>
-                    <input type="text" v-model="empNo" class="txtbox"></input>
-                    <div class="login-char">パスワード</div>
-                    <input type="password" v-model="password" class="txtbox"></input>
-                    <button type="button" @click="onLogin" class="login">ログイン</button>
-                </div>
+				<div class="login-char">社員番号</div>
+				<input type="text" v-model="empNo" class="txtbox"></input>
+				<div class="login-char">パスワード</div>
+				<input type="password" v-model="password" class="txtbox"></input>
+				<button type="button" @click="onLogin" class="login">ログイン</button>
             </div>
         </div>
     </div>
@@ -85,12 +83,6 @@ button:focus{
 	border: 5px solid #28a1f7;
 	border-radius: 15px;
 	background-color: #d8d8d8;
-}
-.enter{
-	position: absolute;
-	height: 300px;
-	width: 400px;
-	margin-top: 10px
 }
 .login-char{
 	margin-left: 25px; 

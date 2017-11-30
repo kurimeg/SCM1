@@ -16,10 +16,6 @@ const mutations = {
         state.isLogged = true
         state.token = token
     },
-    error (state, errorMessage) {
-        state.isLogged = false
-        state.token = ''
-    },
     logout (state) {
         state.isLogged = false
         state.token = ''
@@ -41,7 +37,7 @@ const actions = {
     logout ({ commit }) {
         localStorage.removeItem('authInfo')
         commit('logout')
-        router.replace('login')
+        router.replace('/')
     }
 }
 

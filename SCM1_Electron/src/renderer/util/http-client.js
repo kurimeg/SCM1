@@ -17,7 +17,11 @@ export default (Vue, { store }) => {
     client.interceptors.response.use((response) => {
         if(response.data.ProcessStatus === constants.STATUS_OK){
             store.commit('errorHandler/clearError')
-        }else{
+        } else if(response.data.ProcessStatus === constants.STATUS_TOKEN_ER){
+            store.dispatch('auth/logout')
+            store.commit('errorHandler/showError', response.data.ResponseMessage)
+        }
+        else{
             store.commit('errorHandler/showError', response.data.ResponseMessage)
         }
         return response.data
