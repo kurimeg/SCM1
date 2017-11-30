@@ -18,7 +18,7 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// 異常終了（予期せぬエラー）
         /// </summary>
-        public const string MSG_ER = "予期せぬエラーが発生しました。";
+        public const string MSG_ER = "予期せぬエラーが発生しました。\r\nサポートに問い合わせて下さい。";
 
         /// <summary>
         /// アクセストークン認証失敗
@@ -29,6 +29,16 @@ namespace SCM1_API.Model.constants
         /// ログイン失敗
         /// </summary>
         public const string MSG_LOGIN_NG = "ログインに失敗しました。";
+
+        /// <summary>
+        /// 社番＆パスワード組み合わせエラー
+        /// </summary>
+        public const string MSG_IDPASSWORNG_ER = "社員番号/パスワードの組み合わせが適切ではありません。";
+
+        /// <summary>
+        /// トークン生成エラー
+        /// </summary>
+        public const string MSG_TOKEN_CREATE_ER = "トークンの生成に失敗しました。";
 
         /// <summary>
         /// ユーザー情報取得失敗

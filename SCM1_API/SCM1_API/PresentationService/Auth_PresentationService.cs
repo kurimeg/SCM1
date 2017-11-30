@@ -31,13 +31,15 @@ namespace SCM1_API.PresentationService
 
             if (empInfo == null || empInfo.Count() > 1)
             {
-                Logger.WriteError("社員情報の取得件数が正しくありません。");
+                Logger.WriteError(MESSAGE.MSG_IDPASSWORNG_ER);
+                resModel.ResponseMessage = MESSAGE.MSG_IDPASSWORNG_ER;
                 return resModel;
             }
 
             if (req.Password != empInfo.First().LOGIN_PASSWORD)
             {
-                Logger.WriteError("社員番号/パスワードの組み合わせが適切ではありません。");
+                Logger.WriteError(MESSAGE.MSG_IDPASSWORNG_ER);
+                resModel.ResponseMessage = MESSAGE.MSG_IDPASSWORNG_ER;
                 return resModel;
             }
 
@@ -49,7 +51,8 @@ namespace SCM1_API.PresentationService
             }
             else
             {
-                Logger.WriteError("トークンの生成に失敗しました。");
+                Logger.WriteError(MESSAGE.MSG_TOKEN_CREATE_ER);
+                resModel.ResponseMessage = MESSAGE.MSG_TOKEN_CREATE_ER;
                 return resModel;
             }
             return resModel;
