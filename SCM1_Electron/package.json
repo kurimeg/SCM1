@@ -1,8 +1,8 @@
 {
-  "name": "electron_vue",
-  "version": "0.0.0",
-  "author": "katsunori <watanabe-katsunori@ksc.co.jp>",
-  "description": "An electron-vue project",
+  "name": "SekiPa",
+  "version": "1.0.0",
+  "author": "SekiPa Development Team <ksc.sekipa@gmail.com>",
+  "description": "SekiPa",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -16,8 +16,12 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": ""
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/ryuwGit/SCM1.git"
+  },
   "build": {
-    "productName": "electron_vue",
+    "productName": "SekiPa",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
