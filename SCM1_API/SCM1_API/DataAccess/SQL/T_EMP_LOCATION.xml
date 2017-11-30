@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  
+  <select id="FetchEmpLocationInfo">
+   SELECT
+     EL.LOCATION_DATA_SEQ
+     ,EL.EMP_NO
+     ,EL.SEAT_NO
+     ,EL.EXTENSION_LINE_NO
+     ,EL.EMP_STATUS_DV
+     ,EL.FIXED_FLG
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SEAT MS
+   ON
+     EL.SEAT_NO = MS.SEAT_NO
+   WHERE
+     EL.EMP_NO = #EMP_NO#
+   AND
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </select>
+  
+  
+  <select id="FetchAllEmpLocationInfo">
+  SELECT
+    EL.LOCATION_DATA_SEQ
+    ,EL.EMP_NO
+    ,EL.SEAT_NO
+    ,EL.EXTENSION_LINE_NO
+    ,EL.EMP_STATUS_DV
+    ,EL.FIXED_FLG
+  FROM
+    T_EMP_LOCATION EL 
+  INNER JOIN 
+    MST_SEAT MS
+  ON
+    EL.SEAT_NO = MS.SEAT_NO
+  WHERE
+    MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </select>
+  
+
+  <delete id="ClearEmpLocationInfo">
+   DELETE EL
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SEAT MS
+   ON
+     EL.SEAT_NO = MS.SEAT_NO
+   WHERE
+     EL.EMP_NO = #EMP_NO#
+   AND
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+   AND
+     EL.FIXED_FLG = '0'
+  </delete>
+  
+  
+  <delete id="ClearAllEmpLocationInfo">
+   DELETE EL
+   FROM
+     T_EMP_LOCATION EL 
+   INNER JOIN 
+     MST_SEAT MS
+   ON
+     EL.SEAT_NO = MS.SEAT_NO
+   WHERE
+     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+   AND
+     EL.FIXED_FLG = '0'
+  </delete>
+
+  
+  <select id="FetchLocation">
+    SELECT
+      SEAT_NO
+    FROM
+      T_EMP_LOCATION
+    WHERE
+      SEAT_NO = #SEAT_NO#
+  </select>
+
+  
+  <select id="hasLocationCheckByEmpId">
+    SELECT
+      EMP_NO
+    FROM
+      T_EMP_LOCATION
+    WHERE
+      EMP_NO = #EMP_NO#
+  </select>
+
+  
+  <insert id="InsertEmpLocation">
+    INSERT INTO T_EMP_LOCATION
+      (LOCATION_DATA_SEQ
+      , EMP_NO
+      , SEAT_NO
+      , EXTENSION_LINE_NO
+      , EMP_STATUS_DV
+      , FIXED_FLG
+      , CREATE_EMP_NO
+		  , CREATE_DT
+		  , LAST_UPDATE_EMP_NO
+		  , LAST_UPDATE_DT)
+    VALUES
+      (NEXT VALUE FOR LOCATION_DATA_SEQ
+      , #EMP_NO#
+      , #SEAT_NO#
+      , #EXTENSION_LINE_NO#
+      , '0'
+      , '0'
+      , #EMP_NO#
+      , GETDATE()
+      , #EMP_NO#
+      , GETDATE()
+      )
+  </insert>
+
+  
+  <update id="UpdateEmpLocation">
+    UPDATE
+      T_EMP_LOCATION
+    SET
+      SEAT_NO = #SEAT_NO#
+      , LAST_UPDATE_EMP_NO = #EMP_NO#
+		  , LAST_UPDATE_DT = GETDATE()
+    WHERE
+      EMP_NO = #EMP_NO#
+    AND
+      FIXED_FLG = '0'
+  </update>
+  
+  
+  
+</SqlMap>

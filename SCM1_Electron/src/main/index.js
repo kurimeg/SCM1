@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, Tray, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -30,13 +30,30 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  //タスクトレイに格納
+  var appIcon = new Tray(__static + '/image/icon.png')
+  const contextMenu = Menu.buildFromTemplate([
+      {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
+  ])
+  appIcon.on('click', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()){
+        mainWindow.focus()
+      } else if (mainWindow.isVisible()) {
+        mainWindow.show()
+      }
+    } else {
+      createWindow()
+    }
+  })
+  appIcon.setToolTip('SekiPa : 座席管理システム')
+  appIcon.setContextMenu(contextMenu)
 })
+
+app.on('window-all-closed', () => {})
 
 app.on('activate', () => {
   if (mainWindow === null) {
