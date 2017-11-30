@@ -7,6 +7,11 @@
     const { mapActions } = createNamespacedHelpers('reserve')
 
     export default {
+    data: function () {
+        return {
+
+        }
+    },
     props: ['seatName'],
     methods: {
         ...mapActions([
@@ -20,7 +25,7 @@
                     if(this.reserve({
                         Token : this.$store.state.auth.token,
                         EmpNo: authInfo.EmpNo,
-                        seatNo: "E84-2"
+                        seatNo: "E84-1"
                     })){
                         this.seatName = "斉藤"
                     }

@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" class="seat" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+				<seat :id="seat.name" :class="{ 'seatY':seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -133,7 +133,7 @@
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('getMaster')
+const { mapActions } = createNamespacedHelpers('search')
 
 
 export default {
@@ -355,7 +355,7 @@ export default {
 		]),
 		
 		openSearch: function () {
-            this.$store.commit('search/show')
+            this.$store.commit('search/show',true)
         }
    },
    created: function(){

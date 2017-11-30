@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <div class="loading-layer" v-if="this.$store.state.loading.show">
+      <img src="./assets/images/loading.gif" class="loading"></img>
+    </div>
     <div class="alert-layer" v-if="this.$store.state.alertHandler.show">
       <alert :alert="this.$store.state.alertHandler"></alert>
     </div>
@@ -56,5 +59,21 @@ export default {
     height: 700px;
     margin: 0 0 0 11px;
     z-index: 4;
+  }
+  .loading-layer{
+    position: absolute;
+    background: #ffffff;
+    width: 1400px;
+    height: 700px;
+    margin: 0 0 0 11px;
+    z-index: 999;
+  }
+  .loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
   }
 </style>
