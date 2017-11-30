@@ -16,13 +16,13 @@ export default (Vue, { store }) => {
   
     client.interceptors.response.use((response) => {
         if(response.data.ProcessStatus === constants.STATUS_OK){
-            store.commit('handler/success')
+            store.commit('errorHandler/clearError')
         }else{
-            store.commit('handler/error', response.data.ResponseMessage)
+            store.commit('errorHandler/showError', response.data.ResponseMessage)
         }
         return response.data
     }, (error) => {
-        store.commit('handler/error', messages.E_001)
+        store.commit('errorHandler/showError', messages.E_001)
         return Promise.reject(error)
     })
   

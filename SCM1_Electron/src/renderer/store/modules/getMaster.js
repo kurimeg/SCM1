@@ -7,12 +7,17 @@ const state = {
     empInfo: []
 }
 
-// TODO: もっときれいになるはず。
 const mutations = {
     fetchEmpInfo (state , empInfo) {
-        state.empInfo = [{EMP_NO: 47003, EMP_NM: "栗原萌実"}]
+        state.empInfo = empInfo
     }
 }
+
+const getters = {
+    searchEmp: (state, getters) => (seachText) => {
+      return state.empInfo.filter(emp => emp.EMP_NM === seachText)
+    }
+  }
 
 const actions = {
     firstview ({ commit }, token) {
@@ -25,12 +30,11 @@ const actions = {
         })
     },
     fetchEmpInfo({ commit }, token) {
-        Vue.http.post('/seat/FetchEmpInfo', token)
-        .then((data) =>{
-            commit('fetchEmpInfo', data.SeatInfo)
-            if(data.ProcessStatus === constants.STATUS_OK && data.Authenticated)
+        Vue.http.post('/emp/FetchEmpInfo', token)
+        .then((data) =>{          
+            if(data.ProcessStatus === constants.STATUS_OK)
             {
-                
+                commit('fetchEmpInfo', data.EmpInfo)
             } 
         })
     }
@@ -40,5 +44,6 @@ export default {
     namespaced: true,
     state,
     mutations,
-    actions
+    actions,
+    getters
 }

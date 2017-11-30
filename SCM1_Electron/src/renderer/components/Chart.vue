@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>
+		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>	
 		<search v-if="this.$store.state.search.show" :emp-info="this.$store.state.getMaster.empInfo"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
@@ -360,7 +360,10 @@ export default {
    },
    created: function(){
 	//    this.firstview({Token: this.$store.state.auth.token})
-	this.fetchEmpInfo({Token: this.$store.state.auth.token})
+	this.fetchEmpInfo({
+		Token: this.$store.state.auth.token,
+		EmpNo: ""
+	})
    },
    
    components: {
@@ -411,6 +414,7 @@ body {
 	float: left;
 	z-index: 999;
 	position: absolute;
+	cursor: pointer;
 }
 
 /*ラック*/
