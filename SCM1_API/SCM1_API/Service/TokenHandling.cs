@@ -41,7 +41,7 @@ namespace SCM1_API.Service
         public static bool CreateToken(string empid)
         {
             // 共通鍵を用意
-            var dateKeyString = DateTime.Now.Date.ToString();
+            var dateKeyString = DateTime.Now.ToString();
             var keyString = dateKeyString + FetchTokenPublicKeyString() + empid;
             // トークン操作用のクラスを用意
             var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
@@ -95,7 +95,7 @@ namespace SCM1_API.Service
             var param = new { EMP_NO = empid };
             var resultModelData = MST_EMP_Repository.FetchAccessToken_Repository(param).First();
             // 復号鍵文字列
-            var keyString = resultModelData.TOKEN_CREATE_DATE.Date.ToString() + FetchTokenPublicKeyString() + empid;
+            var keyString = resultModelData.TOKEN_CREATE_DATE.ToString() + FetchTokenPublicKeyString() + empid;
             // 検証用正解トークン文字列
             var tokenString = resultModelData.ACCESS_TOKEN;
 
