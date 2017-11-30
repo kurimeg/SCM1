@@ -6,7 +6,7 @@ import * as messages from '@/assets/messages'
 
 // TODO: localStateとしたい。
 const state = {
-    isReserved: false,
+    isReserved: false
 }
 
 // TODO: もっときれいになるはず。
@@ -30,9 +30,10 @@ const actions = {
             })
         }else{
             //解除処理
-            Vue.http.DELETE('/emplocation/ClearEmpLocationInfo', reserveInfo)
+            Vue.http.delete('/emplocation/ClearEmpLocationInfo', reserveInfo)
             .then((data) =>{
-                if(data.ProcessStatus == "OK")
+                alert(data.ProcessStatus)
+                if(data.ProcessStatus === constants.STATUS_OK)
                 {
                     commit('reserve', false)
                     return true
