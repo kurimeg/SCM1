@@ -15,7 +15,8 @@ const mutations = {
 
 const getters = {
     searchEmp: (state, getters) => (seachText) => {
-      return state.empInfo.filter(emp => emp.EMP_NM === seachText)
+        if(!seachText) return []
+        return state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText) || emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText))
     }
   }
 
