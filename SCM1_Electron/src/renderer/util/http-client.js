@@ -9,7 +9,8 @@ const client = axios.create({
 export default (Vue, { store }) => {
     
     client.interceptors.request.use((config) => {
-      return config;
+        store.commit('loading/showLoading', true)
+        return config;
     }, (error) => {
         return Promise.reject(error)
     })
@@ -24,6 +25,7 @@ export default (Vue, { store }) => {
         else{
             store.commit('errorHandler/showError', response.data.ResponseMessage)
         }
+        store.commit('loading/showLoading', false)
         return response.data
     }, (error) => {
         store.commit('errorHandler/showError', messages.E_001)
