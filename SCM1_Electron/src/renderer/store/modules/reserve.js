@@ -33,8 +33,7 @@ const actions = {
             })
         }else{
             //解除処理
-            //Vue.http.delete('/emplocation/ClearEmpLocationInfo', reserveInfo)
-            axios({method: 'delete', url: 'http://scm1test.azurewebsites.net/api/emplocation/ClearEmpLocationInfo', data: reserveInfo})
+            Vue.http({method: 'delete', url: '/emplocation/ClearEmpLocationInfo', data: reserveInfo})
             .then((data) =>{
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
