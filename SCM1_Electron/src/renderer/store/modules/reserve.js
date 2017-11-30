@@ -32,7 +32,6 @@ const actions = {
             //解除処理
             Vue.http.delete('/emplocation/ClearEmpLocationInfo', reserveInfo)
             .then((data) =>{
-                alert(data.ProcessStatus)
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
                     commit('reserve', false)
