@@ -8,16 +8,14 @@
                 <img src="../../assets/images/search_button.png" class="button"></img>
             </input>			
         </div>
-        <!-- 1件以上のときは選択してほしい旨、0件のときはその旨の入った文言が入る -->
-        <div class="announceChar">下記候補から選択してください。</div>
-        <!-- 件数フラグで回すか？リスト？ -->
-		<button type="button" class="rslt" v-for="emp in this.searchEmp(searchtxt)" :key="emp.EMP_NO">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+        <div class="announceChar">{{ this.searchEmp(searchtxt).searchMessage }}</div>
+		<button type="button" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapGetters } = createNamespacedHelpers('getMaster')
+const { mapGetters } = createNamespacedHelpers('search')
 
 export default {
     data: function () {
@@ -28,7 +26,7 @@ export default {
 	props: ['empInfo'],
 	methods:{		
 		closeSearch: function () {
-            this.$store.commit('search/hide')
+            this.$store.commit('search/show',false)
         }
    },
    computed: {
@@ -92,6 +90,7 @@ button:focus{
 	margin-top: 15px;
 	color: #ffffff;
 	font-size: 18px;
+	height: 30px;
 }
 .searchword{
 	position: relative;

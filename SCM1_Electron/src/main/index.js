@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
+let appIcon = null
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -20,7 +21,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    resizable: false
   })
 
   mainWindow.loadURL(winURL)
@@ -28,13 +30,16 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  
+  //メニューを消す処理
+  Menu.setApplicationMenu(null);
 }
 
 app.on('ready', () => {
   createWindow()
 
   //タスクトレイに格納
-  var appIcon = new Tray(__static + '/image/icon.png')
+  appIcon = new Tray(__static + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
       {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
@@ -51,7 +56,32 @@ app.on('ready', () => {
   })
   appIcon.setToolTip('SekiPa : 座席管理システム')
   appIcon.setContextMenu(contextMenu)
+
+  //自動スタートアップ設定
+  var AutoLaunch = require('auto-launch')
+  var sekipaAutoLauncher = new AutoLaunch({
+      name: 'SekiPa'
+  })
+  
+  sekipaAutoLauncher.enable()
+  //sekipaAutoLauncher.disable();
+  
+  sekipaAutoLauncher.isEnabled()
+  .then(function(isEnabled){
+      if(isEnabled){
+          return;
+      }
+      sekipaAutoLauncher.enable()
+  })
+  .catch(function(err){
+      // handle error
+  })
 })
+
+const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {})
+if (shouldQuit) {
+  app.quit()
+}
 
 app.on('window-all-closed', () => {})
 
@@ -69,14 +99,20 @@ app.on('activate', () => {
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
 
-/*
-import { autoUpdater } from 'electron-updater'
+const {autoUpdater} = require("electron-updater")
 
 autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall()
+  index = dialog.showMessageBox({
+    message: "アップデートあり",
+    detail: "再起動してインストールできます。",
+    buttons: ["再起動", "後で"]
+  })
+  if (index === 0) {
+    autoUpdater.quitAndInstall()
+  }
 })
 
 app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
 })
- */
