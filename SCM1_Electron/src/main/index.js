@@ -78,7 +78,18 @@ app.on('ready', () => {
   })
 })
 
-const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {})
+//二つ目のインスタンスを許可しない
+const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {
+  if (mainWindow) {
+      if (mainWindow.isMinimized()){
+        mainWindow.focus()
+      } else if (mainWindow.isVisible()) {
+        mainWindow.show()
+      }
+    } else {
+      createWindow()
+    }
+})
 if (shouldQuit) {
   app.quit()
 }
