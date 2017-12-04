@@ -4,23 +4,17 @@
     <div class="loading-layer" v-if="this.$store.state.loading.show">
       <img src="./assets/images/loading.gif" class="loading"></img>
     </div>
-    <div class="alert-layer" v-if="this.$store.state.alertHandler.show">
-      <alert :alert="this.$store.state.alertHandler"></alert>
-    </div>
-    <div class="alert-layer" v-if="this.$store.state.errorHandler.show">
-      <error :error="this.$store.state.errorHandler"></error>
-    </div>
+    <modal></modal>
   </div>
 </template>
 
 <script>
-import Alert from './components/Alert'
-import Error from './components/Error'
+import Modal from './components/Modal'
 
 export default {
   name: 'electron_vue',
   components: {
-    Alert,Error
+    Modal
   }
 }
 </script>

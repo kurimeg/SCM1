@@ -1,19 +1,23 @@
 <template>
 	<div class="form">
-		<button type="button" class="back" @click="closeError">✖</button>
-		<div class="message">{{ error.errorMessage }}</div>
-		<button type="button" class="btn" @click="closeError">ＯＫ</button>
+		<button type="button" class="back" @click="hideModal">✖</button>
+		<div class="message">{{ message }}</div>
+		<button type="button" class="btn">ＯＫ</button>
+		<button type="button" class="btn" @click="hideModal">キャンセル</button>
     </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapMutations } = createNamespacedHelpers('modal')
+
 export default {
-	props: ['error']
-	,methods:{		
-		closeError: function () {
-            this.$store.commit('errorHandler/clearError')
-		}
-	}
+	props: ['message'],
+    methods:{
+        ...mapMutations([
+            'hideModal'
+        ])
+    }
 }
 </script>
 
@@ -58,7 +62,7 @@ button:focus{
 	cursor: pointer;
 	text-decoration: none;
 	margin-top: 10px;
-	margin-left: 125px;
+	margin-left: 30px;
 	margin-bottom: 10px;
 }
 .back{
