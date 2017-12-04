@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="seat" @click="onReserve">{{seatName}}</button>
+    <button type="button" class="seat" @click="onReserve(seat.SEAT_NO)">{{seatName}}</button>
 </template>
 
 <script>
@@ -9,8 +9,7 @@ import * as messages from '@/assets/messages'
     export default {
     data: function () {
         return {
-            empLoyeeName: null,
-            seatNo: null
+            empLoyeeName: null
         }
     },
     computed: {
@@ -21,7 +20,7 @@ import * as messages from '@/assets/messages'
 			isReserved: state => state.isReserved
 		})
     },
-    props: ['seatName'],
+    props: ['seat','seatName'],
     methods: {
         ...mapActions({
             reserve: 'reserve/reserve',
@@ -40,27 +39,27 @@ import * as messages from '@/assets/messages'
             //座席未登録 & 該当座席の名前がない場合
             if(!this.seatName && !this.isReserved){
                 this.showAlert( {message: messages.I_003, actionName: 'reserve/reserve',})
-                // if(confirm("座席を登録しますか？")){
-                //     this.reserve({
-                //         Token : this.$store.state.auth.token,
-                //         EmpNo: authInfo.EmpNo,
-                //         seatNo: "E84-1"
-                //     })
-                //     this.seatName = this.empLoyeeName
-                // }
+                if(confirm("座席を登録しますか？")){
+                    this.reserve({
+                        Token : this.$store.state.auth.token,
+                        EmpNo: authInfo.EmpNo,
+                        seatNo: seatNo
+                    })
+                    this.$emit('changeName',seatNo,this.empLoyeeName)
+                }
             //座席未登録 & 該当座席の名前が自分以外の場合
             }else if(this.seatName != this.empLoyeeName && !this.isReserved){
                 this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.seatName == this.empLoyeeName && this.isReserved){
                 this.showAlert(messages.I_004)
-                // if(confirm("座席を解除しますか？")){
-                //     this.reserve({
-                //         Token : this.$store.state.auth.token,
-                //         EmpNo: authInfo.EmpNo
-                //     })
-                //     this.seatName = ""
-                // }
+                if(confirm("座席を解除しますか？")){
+                    this.reserve({
+                        Token : this.$store.state.auth.token,
+                        EmpNo: authInfo.EmpNo
+                    })
+                    this.$emit('changeName',seatNo,'')
+                }
             //座席登録済 & 該当座席の名前が自分以外の場合
             }else if(this.seatName != this.empLoyeeName && this.isReserved){
                 this.showError(messages.E_003)
