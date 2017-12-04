@@ -152,8 +152,7 @@ export default {
 	   ...mapActions({
 			firstview: 'getMaster/firstview',
 			fetchEmpInfo: 'getMaster/fetchEmpInfo',
-			fetchAllEmpLocationInfo: 'getMaster/fetchAllEmpLocationInfo',
-			setSeatInfo: 'getMaster/setSeatInfo'
+			fetchAllEmpLocationInfo: 'getMaster/fetchAllEmpLocationInfo'
    		}),
 		
 		...mapMutations({
@@ -169,11 +168,7 @@ export default {
 	this.fetchAllEmpLocationInfo({
 		Token: this.$store.state.auth.token,
 		EmpNo: ""
-	})
-	
-   },
-   mounted: function(){
-		this.setSeatInfo()
+	})	
    },
    components: {
 	   Seat, Search
