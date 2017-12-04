@@ -1,7 +1,7 @@
 <template>
 	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>	
-		<search v-if="this.$store.state.search.show" :emp-info="this.$store.state.getMaster.empInfo"></search>
+		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
+		<search v-if="show"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -132,7 +132,7 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
    data: function () {
@@ -347,15 +347,20 @@ export default {
 		// ]
      }
    },
+   computed:{
+		...mapState('search', {
+			show: state => state.show
+		})
+   },
    methods:{
 	   ...mapActions({
 			firstview: 'getMaster/firstview',
 			fetchEmpInfo: 'search/fetchEmpInfo'
    		}),
 		
-		openSearch: function () {
-            this.$store.commit('search/show',true)
-        }
+		...mapMutations({
+            showSearch: 'search/showSearch'
+   		})
    },
    created: function(){
 	this.firstview({Token: this.$store.state.auth.token})

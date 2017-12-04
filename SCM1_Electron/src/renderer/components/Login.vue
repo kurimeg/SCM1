@@ -6,7 +6,7 @@
 			<input type="text" v-model="empNo" class="txtbox"></input>
 			<div class="login-char">パスワード</div>
 			<input type="password" v-model="password" class="txtbox"></input>
-			<button type="button" @click="onLogin" class="login">ログイン</button>
+			<button type="button"  @keyup.enter="onLogin" @click="onLogin" class="login">ログイン</button>
 		</div>
 	</div>
 </template>

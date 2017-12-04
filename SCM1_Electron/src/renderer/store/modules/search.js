@@ -30,8 +30,11 @@ const getters = {
 }
 
 const mutations = {
-    show (state, bool) {
-        state.show = bool
+    showSearch (state) {
+        state.show = true
+    },
+    hideSearch (state) {
+        state.show = false
     },
     fetchEmpInfo (state , empInfo) {
         state.empInfo = empInfo

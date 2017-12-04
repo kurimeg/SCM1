@@ -2,7 +2,7 @@
     <div class="search-layer">
         <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
-        <button type="button" class="back" @click="closeSearch">✖</button>
+        <button type="button" class="back" @click="hideSearch">✖</button>
         <div>
             <input type="text" v-model="searchtxt" class="searchword">
                 <img src="../../assets/images/search_button.png" class="button"></img>
@@ -15,7 +15,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapGetters } = createNamespacedHelpers('search')
+const { mapGetters,mapMutations } = createNamespacedHelpers('search')
 
 export default {
     data: function () {
@@ -23,11 +23,10 @@ export default {
             searchtxt: null
         }
 	},
-	props: ['empInfo'],
 	methods:{		
-		closeSearch: function () {
-            this.$store.commit('search/show',false)
-        }
+		...mapMutations([
+            'hideSearch'
+        ])
    },
    computed: {
     ...mapGetters([
