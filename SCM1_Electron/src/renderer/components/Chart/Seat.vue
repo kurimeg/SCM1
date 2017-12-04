@@ -20,7 +20,7 @@
         onReserve: function (seatNo) {
             //ユーザ名抽出処理
             let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            const empInfo = Array.from(this.$store.state.search.empInfo)
+            const empInfo = Array.from(this.$store.state.getMaster.empInfo)
             for(var i = 0; i < empInfo.length; i++){
                 if(empInfo[i].EMP_NO == authInfo.EmpNo){
                     this.empLoyeeName = empInfo[i].DISPLAY_EMP_NM
