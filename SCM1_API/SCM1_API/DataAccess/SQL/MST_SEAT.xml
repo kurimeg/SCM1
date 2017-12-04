@@ -21,6 +21,39 @@
       MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </select>
   
+  <select id="FetchSeatWithEmpInfo">
+    SELECT
+      MS.SEAT_NO
+      , MS.FIXED_SEAT_FLG
+      , MCV.CONTENTS_ID
+      , MCV.CONTENTS_DV
+      , MCV.CONTENT_POSITION_X
+      , MCV.CONTENT_POSITION_Y
+      , MCV.VERTICAL_FLG
+      , TEL.LOCATION_DATA_SEQ
+      , TEL.EMP_NO
+      , ME.DISPLAY_EMP_NM
+      , TEL.EXTENSION_LINE_NO
+      , TEL.EMP_STATUS_DV
+      , TEL.FIXED_FLG
+    FROM
+      MST_SEAT MS
+    INNER JOIN 
+      MST_CONTENT_VIEW MCV
+      ON
+        MS.CONTENTS_ID = MCV.CONTENTS_ID
+    LEFT OUTER JOIN
+      T_EMP_LOCATION TEL
+      ON
+        MS.SEAT_NO = TEL.SEAT_NO
+    LEFT OUTER JOIN
+      MST_EMP ME
+      ON
+        TEL.EMP_NO = ME.EMP_NO
+    WHERE
+      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
+  </select>
+  
 
   
 

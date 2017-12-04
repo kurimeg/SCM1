@@ -37,5 +37,23 @@ namespace SCM1_API.PresentationService
             if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_SEAT_NG;
             return returnModel;
         }
+
+        /// <summary>
+        /// 座席情報と登録済み社員情報を取得する
+        /// </summary>
+        /// <returns></returns>
+        public SeatWithEmpResponse FetchSeatWithEmpInfo(SeatRequest req)
+        {
+            var returnModel = new SeatWithEmpResponse();
+
+            //座席情報の取得
+            returnModel.SeatWithEmpInfo = seat_Service.FetchSeatWithEmpInfo_Service(req.ClientAreaDv);
+
+            //処理ステータスと取得結果を返す
+            returnModel.ProcessStatus = returnModel.SeatWithEmpInfo.Count() != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_SEAT_NG;
+            return returnModel;
+        }
     }
 }
