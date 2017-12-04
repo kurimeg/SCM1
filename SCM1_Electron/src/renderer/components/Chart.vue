@@ -133,15 +133,18 @@
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
 import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers('search')
+const { mapActions } = createNamespacedHelpers(['search','getMaster'])
 
 
 export default {
    data: function () {
      return {
 		seats: [this.$store.state.getMaster.seatInfo]
+		// seats: [
+		// 	/*上部横席*/
+		// 	{name: "渡邊" , positionX:22 ,positionY:23 ,class:true},
+		// 	{name: "石塚" , positionX:585 ,positionY:23 ,class:true},
 		// 	/*一列目左*/
-		// 	{name: "栗原萌" , positionX:2 ,positionY:45 ,class:false},
 		// 	{name: "佐貫" , positionX:2 ,positionY:130 ,class:false},
 		// 	{name: "" , positionX:2 ,positionY:195 ,class:false},
 		// 	{name: "" , positionX:2 ,positionY:260 ,class:false},
@@ -149,7 +152,6 @@ export default {
 		// 	{name: "" , positionX:2 ,positionY:390 ,class:false},
 		// 	{name: "" , positionX:2 ,positionY:455 ,class:false},
 		// 	/*一列目右*/
-		// 	{name: "" , positionX:79 ,positionY:45 ,class:false},
 		// 	{name: "" , positionX:79 ,positionY:130 ,class:false},
 		// 	{name: "" , positionX:79 ,positionY:195 ,class:false},
 		// 	{name: "" , positionX:79 ,positionY:260 ,class:false},
@@ -227,7 +229,6 @@ export default {
 		// 	{name: "" , positionX:537 ,positionY:455 ,class:false},
 		// 	{name: "" , positionX:537 ,positionY:520 ,class:false},
 		// 	/*六列目左*/
-		// 	{name: "" , positionX:565 ,positionY:45 ,class:false},
 		// 	{name: "" , positionX:565 ,positionY:195 ,class:false},
 		// 	{name: "" , positionX:565 ,positionY:260 ,class:false},
 		// 	{name: "" , positionX:565 ,positionY:325 ,class:false},
@@ -235,7 +236,6 @@ export default {
 		// 	{name: "" , positionX:565 ,positionY:455 ,class:false},
 		// 	{name: "" , positionX:565 ,positionY:520 ,class:false},
 		// 	/*六列目右*/
-		// 	{name: "" , positionX:642 ,positionY:45 ,class:false},
 		// 	{name: "" , positionX:642 ,positionY:195 ,class:false},
 		// 	{name: "" , positionX:642 ,positionY:260 ,class:false},
 		// 	{name: "" , positionX:642 ,positionY:325 ,class:false},
@@ -350,9 +350,10 @@ export default {
      }
    },
    methods:{
-	   ...mapActions([
-            'firstview','fetchEmpInfo'
-		]),
+		...mapActions({
+            firstview: 'getMaster/firstview',
+            fetchEmpInfo: 'search/fetchEmpInfo'
+           }),
 		
 		openSearch: function () {
             this.$store.commit('search/show',true)
