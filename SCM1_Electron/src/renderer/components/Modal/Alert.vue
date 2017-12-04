@@ -2,7 +2,7 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
-		<button type="button" class="btn">ＯＫ</button>
+		<button type="button" class="btn" @click="confirm">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
     </div>
 </template>
@@ -16,7 +16,10 @@ export default {
     methods:{
         ...mapMutations([
             'hideModal'
-        ])
+		]),
+		confirm: function () {
+            this.$emit('confirm')
+        }
     }
 }
 </script>

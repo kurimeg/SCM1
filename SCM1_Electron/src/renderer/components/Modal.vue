@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="alert-layer" v-if="show">
-        <component :is="modalName" :message="message"></component>
+        <component :is="modalName" :message="message" @confirm="confirmed"></component>
     </div>
   </transition>
 </template>
@@ -15,10 +15,15 @@ const { mapState } = createNamespacedHelpers('modal')
 export default {
     computed: {
         ...mapState([
-            'modalName', 'message'
+            'modalName', 'message','actionName'
         ]),
         show () {
             return this.modalName !== ''
+        }
+    },
+    methods: {
+        confirmed: function () {
+            store.dispatch(actionName)
         }
     },
     components: {
@@ -29,7 +34,7 @@ export default {
 
 <style scoped>
     .fade-enter-active, .fade-leave-active {
-    transition: opacity .1s
+    transition: opacity .3s
     }
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0

@@ -2,6 +2,7 @@ import * as constants from '@/assets/constants'
 
 const state = {
     modalName: '',
+    actionName: '',
     message: ''
   }
   
@@ -9,6 +10,7 @@ const state = {
     setModal (state, modalInfo) {
       state.modalName = modalInfo.modalName
       state.message = modalInfo.message
+      state.actionName = modalInfo.actionName
     },
     hideModal (state) {
       state.modalName = ''
@@ -17,8 +19,8 @@ const state = {
   }
   
   const actions = {
-    showAlert ({ commit }, message) {
-      commit('setModal', { modalName: constants.MODAL_NM_ALERT, message: message })
+    showAlert ({ commit }, modalInfo) {
+      commit('setModal', { modalName: constants.MODAL_NM_ALERT, message: modalInfo.message, actionName: modalInfo.actionName })
     },
     showError ({ commit }, message) {
       commit('setModal', { modalName: constants.MODAL_NM_ERROR, message: message })

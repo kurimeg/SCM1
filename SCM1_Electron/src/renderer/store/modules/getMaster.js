@@ -5,8 +5,7 @@ import * as messages from '@/assets/messages'
 
 const state = {
     seatInfo: [],
-    empInfo: [],
-    allEmpLocationInfo: []
+    empInfo: []
 }
 
 const mutations = {
@@ -15,28 +14,16 @@ const mutations = {
     },
     fetchEmpInfo (state , empInfo) {
         state.empInfo = empInfo
-    },
-    fetchAllEmpLocationInfo (state , allEmpLocationInfo) {
-        state.allEmpLocationInfo = allEmpLocationInfo
     }
 }
 
 const actions = {
     firstview ({ commit }, token) {
-        Vue.http.post('/seat/FetchSeatInfo', token)
+        Vue.http.post('/seatwithemp/FetchSeatWithEmpInfo', token)
         .then((data) =>{
             if(data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('initialize', data.SeatInfo)
-            } 
-        })
-    },
-    fetchAllEmpLocationInfo({ commit }, token) {
-        Vue.http.post('/emplocation/FetchAllEmpLocationInfo', token)
-        .then((data) =>{          
-            if(data.ProcessStatus === constants.STATUS_OK)
-            {
-                commit('fetchAllEmpLocationInfo', data.EmpLocation)
+                commit('initialize', data.SeatWithEmpInfo)
             } 
         })
     },
