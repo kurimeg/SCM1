@@ -9,7 +9,8 @@
     export default {
     data: function () {
         return {
-
+            empLoyeeName: null,
+            seatNo: null
         }
     },
     props: ['seatName'],
@@ -18,33 +19,39 @@
             'reserve'
         ]),
         onReserve: function () {
-            //座席未登録 & 該当座席の名前がない場合
+            //ユーザ名抽出処理
             let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+            const empInfo = Array.from(this.$store.state.search.empInfo)
+            for(var i = 0; i < empInfo.length; i++){
+                if(empInfo[i].EMP_NO == authInfo.EmpNo){
+                    this.empLoyeeName = empInfo[i].DISPLAY_EMP_NM
+                    break
+                }
+            }
+            //座席未登録 & 該当座席の名前がない場合
             if(!this.seatName && !this.$store.state.reserve.isReserved){
                 if(confirm("座席を登録しますか？")){
-                    if(this.reserve({
+                    this.reserve({
                         Token : this.$store.state.auth.token,
                         EmpNo: authInfo.EmpNo,
                         seatNo: "E84-1"
-                    })){
-                        this.seatName = "斉藤"
-                    }
+                    })
+                    this.seatName = this.empLoyeeName
                 }
             //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != "斉藤" && !this.$store.state.reserve.isReserved){
+            }else if(this.seatName != this.empLoyeeName && !this.$store.state.reserve.isReserved){
                 alert("選択された座席は既に利用されています。")
             //座席登録済 & 該当座席の名前が自分の場合
-            }else if(this.seatName == "斉藤" && this.$store.state.reserve.isReserved){
+            }else if(this.seatName == this.empLoyeeName && this.$store.state.reserve.isReserved){
                 if(confirm("座席を解除しますか？")){
-                    if(this.reserve({
+                    this.reserve({
                         Token : this.$store.state.auth.token,
                         EmpNo: authInfo.EmpNo
-                    })){
-                        this.seatName = ""
-                    }
+                    })
+                    this.seatName = ""
                 }
             //座席登録済 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != "斉藤" && this.$store.state.reserve.isReserved){
+            }else if(this.seatName != this.empLoyeeName && this.$store.state.reserve.isReserved){
                 alert("あなたの座席は既に登録されています。")
             }
         }

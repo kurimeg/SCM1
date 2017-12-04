@@ -17,18 +17,19 @@ export default (Vue, { store }) => {
   
     client.interceptors.response.use((response) => {
         if(response.data.ProcessStatus === constants.STATUS_OK){
-            store.commit('errorHandler/clearError')
+            store.commit('modal/hideModal')
         } else if(response.data.ProcessStatus === constants.STATUS_TOKEN_ER){
             store.dispatch('auth/logout')
-            store.commit('errorHandler/showError', response.data.ResponseMessage)
+            store.dispatch('modal/showError',response.data.ResponseMessage)
         }
         else{
-            store.commit('errorHandler/showError', response.data.ResponseMessage)
+            store.dispatch('modal/showError',response.data.ResponseMessage)
         }
         store.commit('loading/showLoading', false)
         return response.data
     }, (error) => {
-        store.commit('errorHandler/showError', messages.E_001)
+        store.commit('loading/showLoading', false)
+        store.dispatch('modal/showError',response.data.ResponseMessage)
         return Promise.reject(error)
     })
   

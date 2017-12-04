@@ -1,7 +1,7 @@
 <template>
-	<div class="main">
-		<img src="../assets/images/search_icon.png" class="icon" @click="openSearch"></img>	
-		<search v-if="this.$store.state.search.show" :emp-info="this.$store.state.getMaster.empInfo"></search>
+	<div class="main-layer">
+		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
+		<search v-if="show"></search>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" :class="{ 'seatY': !seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+				<seat :id="seat.name" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -132,25 +132,31 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
-import { createNamespacedHelpers } from 'vuex'
-const { mapActions } = createNamespacedHelpers(['search','getMaster'])
-
+import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
    data: function () {
      return {
-		seats: [this.$store.state.getMaster.seatInfo]
+		
      }
    },
+   computed:{
+		...mapState('search', {
+			show: state => state.show
+		}),
+		...mapState('getMaster', {
+			seats: state => state.seatInfo
+		})
+   },
    methods:{
-		...mapActions({
-            firstview: 'getMaster/firstview',
-            fetchEmpInfo: 'search/fetchEmpInfo'
-           }),
+	   ...mapActions({
+			firstview: 'getMaster/firstview',
+			fetchEmpInfo: 'search/fetchEmpInfo'
+   		}),
 		
-		openSearch: function () {
-            this.$store.commit('search/show',true)
-        }
+		...mapMutations({
+            showSearch: 'search/showSearch'
+   		})
    },
    created: function(){
 	this.firstview({Token: this.$store.state.auth.token})
@@ -238,7 +244,7 @@ body {
 .desk_rec01 {
     margin: 30px 30px 0 30px;
     width: 45px;
-    height: 390px;
+    height: 450px;
     background-color: #91cdf7;
 }
 /*列＿２行目以降*/
@@ -248,7 +254,7 @@ body {
 .desk_rec02 {
     margin: 30px 30px 0;
     width: 45px;
-    height: 450px;
+    height: 515px;
 	background-color: #91cdf7;
 }
 
@@ -256,14 +262,14 @@ body {
 .desk_rec05 {
 	margin: 85px 30px 0;
 	width: 45px;
-	height: 395px;
+	height: 460px;
 	background-color: #91cdf7;
 }
 /*列＿6行目*/
 .desk_rec06 {
 	margin: 85px 30px 0;
 	width: 45px;
-	height: 395px;
+	height: 460px;
 	background-color: #91cdf7;
 }
 
@@ -271,7 +277,7 @@ body {
 .desk_rec07 {
 	margin: 130px 30px 0 30px;
 	width: 45px;
-	height: 450px;
+	height: 515px;
 	background-color: #91cdf7;
 }
 /*列＿8.9行目*/
