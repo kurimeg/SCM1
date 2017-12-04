@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" :class="{ 'seatY': !seat.class }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.positionX + 'px' ,top: seat.positionY + 'px'}"></seat>
+				<seat :id="seat.name" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -137,12 +137,15 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
    data: function () {
      return {
-		seats: [this.$store.state.getMaster.seatInfo]
+		
      }
    },
    computed:{
 		...mapState('search', {
 			show: state => state.show
+		}),
+		...mapState('getMaster', {
+			seats: state => state.seatInfo
 		})
    },
    methods:{
