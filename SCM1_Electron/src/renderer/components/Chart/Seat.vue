@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="seat" v-on:click="onReserve">{{seatName}}</button>
+    <button type="button" class="seat" v-on:click="onReserve(seat.SEAT_NO)">{{seatName}}</button>
 </template>
 
 <script>
@@ -9,19 +9,18 @@
     export default {
     data: function () {
         return {
-            empLoyeeName: null,
-            seatNo: null
+            empLoyeeName: null
         }
     },
-    props: ['seatName'],
+    props: ['seat','seatName'],
     methods: {
         ...mapActions([
             'reserve'
         ]),
-        onReserve: function () {
+        onReserve: function (seatNo) {
             //ユーザ名抽出処理
             let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            const empInfo = Array.from(this.$store.state.search.empInfo)
+            const empInfo = Array.from(this.$store.state.getMaster.empInfo)
             for(var i = 0; i < empInfo.length; i++){
                 if(empInfo[i].EMP_NO == authInfo.EmpNo){
                     this.empLoyeeName = empInfo[i].DISPLAY_EMP_NM
@@ -34,9 +33,9 @@
                     this.reserve({
                         Token : this.$store.state.auth.token,
                         EmpNo: authInfo.EmpNo,
-                        seatNo: "E84-1"
+                        seatNo: seatNo
                     })
-                    this.seatName = this.empLoyeeName
+                    this.$emit('changeName',seatNo,this.empLoyeeName)
                 }
             //座席未登録 & 該当座席の名前が自分以外の場合
             }else if(this.seatName != this.empLoyeeName && !this.$store.state.reserve.isReserved){
@@ -48,7 +47,7 @@
                         Token : this.$store.state.auth.token,
                         EmpNo: authInfo.EmpNo
                     })
-                    this.seatName = ""
+                    this.$emit('changeName',seatNo,'')
                 }
             //座席登録済 & 該当座席の名前が自分以外の場合
             }else if(this.seatName != this.empLoyeeName && this.$store.state.reserve.isReserved){

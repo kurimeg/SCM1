@@ -7,16 +7,15 @@ import * as messages from '@/assets/messages'
 // TODO: localStateとしたい。
 const state = {
     show: false,
-    empInfo: [],
     searchMessage: ''   
 }
 
 const getters = {
-    searchEmp: (state, getters) => (seachText) => {
+    searchEmp: (state, getters, rootState) => (seachText) => {
         if(!seachText) return []
 
         //TODO: NULL対応
-        let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText))        
+        let filteredEmp = rootState.getMaster.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText))        
         // let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText) || emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText))
         let searchMessage = ''
         if(filteredEmp.length > 0){
@@ -36,31 +35,15 @@ const mutations = {
     hideSearch (state) {
         state.show = false
     },
-    fetchEmpInfo (state , empInfo) {
-        state.empInfo = empInfo
-    },
     setSearchMessage (state, searchMessage) {
         state.searchMessage = searchMessage
     }
 
 }
 
-const actions = {
-    fetchEmpInfo({ commit }, token) {
-        Vue.http.post('/emp/FetchEmpInfo', token)
-        .then((data) =>{          
-            if(data.ProcessStatus === constants.STATUS_OK)
-            {
-                commit('fetchEmpInfo', data.EmpInfo)
-            } 
-        })
-    }
-}
-
 export default {
     namespaced: true,
     state,
     mutations,
-    actions,
     getters
 }

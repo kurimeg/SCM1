@@ -133,7 +133,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.SEAT_NO" :seat="seat" @changeName="changeEmpName" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -162,12 +162,16 @@ export default {
    methods:{
 	   ...mapActions({
 			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'search/fetchEmpInfo'
+			fetchEmpInfo: 'getMaster/fetchEmpInfo',
+			fetchAllEmpLocationInfo: 'getMaster/fetchAllEmpLocationInfo'
    		}),
 		
 		...mapMutations({
             showSearch: 'search/showSearch'
-   		})
+   		}),
+		changeEmpName: function (seatNo, empName) {
+			document.getElementById(seatNo).innerHTML = empName
+		}
    },
    created: function(){
 	this.firstview({Token: this.$store.state.auth.token})
@@ -175,8 +179,11 @@ export default {
 		Token: this.$store.state.auth.token,
 		EmpNo: ""
 	})
+	this.fetchAllEmpLocationInfo({
+		Token: this.$store.state.auth.token,
+		EmpNo: ""
+	})	
    },
-   
    components: {
 	   Seat, Search
    }
