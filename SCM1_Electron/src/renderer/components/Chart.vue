@@ -241,7 +241,7 @@ body {
 .desk_rec01 {
     margin: 30px 30px 0 30px;
     width: 45px;
-    height: 390px;
+    height: 450px;
     background-color: #91cdf7;
 }
 /*列＿２行目以降*/
@@ -251,7 +251,7 @@ body {
 .desk_rec02 {
     margin: 30px 30px 0;
     width: 45px;
-    height: 450px;
+    height: 515px;
 	background-color: #91cdf7;
 }
 
@@ -259,14 +259,14 @@ body {
 .desk_rec05 {
 	margin: 85px 30px 0;
 	width: 45px;
-	height: 395px;
+	height: 460px;
 	background-color: #91cdf7;
 }
 /*列＿6行目*/
 .desk_rec06 {
 	margin: 85px 30px 0;
 	width: 45px;
-	height: 395px;
+	height: 460px;
 	background-color: #91cdf7;
 }
 
@@ -274,7 +274,7 @@ body {
 .desk_rec07 {
 	margin: 130px 30px 0 30px;
 	width: 45px;
-	height: 450px;
+	height: 515px;
 	background-color: #91cdf7;
 }
 /*列＿8.9行目*/
