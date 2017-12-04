@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.SEAT_NO" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -151,7 +151,9 @@ export default {
    methods:{
 	   ...mapActions({
 			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'search/fetchEmpInfo'
+			fetchEmpInfo: 'getMaster/fetchEmpInfo',
+			fetchAllEmpLocationInfo: 'getMaster/fetchAllEmpLocationInfo',
+			setSeatInfo: 'getMaster/setSeatInfo'
    		}),
 		
 		...mapMutations({
@@ -164,8 +166,15 @@ export default {
 		Token: this.$store.state.auth.token,
 		EmpNo: ""
 	})
+	this.fetchAllEmpLocationInfo({
+		Token: this.$store.state.auth.token,
+		EmpNo: ""
+	})
+	
    },
-   
+   mounted: function(){
+		this.setSeatInfo()
+   },
    components: {
 	   Seat, Search
    }
