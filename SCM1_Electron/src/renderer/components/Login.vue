@@ -64,8 +64,9 @@ button:focus{
 .backimage{
 	background-image: url("../assets/images/back.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% auto;
-	height: 138vh;
+	background-size: 100%;
+	height: 833px;
+	margin: 0 0 0 0;
 }
 .form{
 	position: absolute;

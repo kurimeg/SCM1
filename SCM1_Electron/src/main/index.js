@@ -56,7 +56,43 @@ app.on('ready', () => {
   })
   appIcon.setToolTip('SekiPa : 座席管理システム')
   appIcon.setContextMenu(contextMenu)
+
+  //自動スタートアップ設定
+  var AutoLaunch = require('auto-launch')
+  var sekipaAutoLauncher = new AutoLaunch({
+      name: 'SekiPa'
+  })
+  
+  sekipaAutoLauncher.enable()
+  //sekipaAutoLauncher.disable();
+  
+  sekipaAutoLauncher.isEnabled()
+  .then(function(isEnabled){
+      if(isEnabled){
+          return;
+      }
+      sekipaAutoLauncher.enable()
+  })
+  .catch(function(err){
+      // handle error
+  })
 })
+
+//二つ目のインスタンスを許可しない
+const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {
+  if (mainWindow) {
+      if (mainWindow.isMinimized()){
+        mainWindow.focus()
+      } else if (mainWindow.isVisible()) {
+        mainWindow.show()
+      }
+    } else {
+      createWindow()
+    }
+})
+if (shouldQuit) {
+  app.quit()
+}
 
 app.on('window-all-closed', () => {})
 

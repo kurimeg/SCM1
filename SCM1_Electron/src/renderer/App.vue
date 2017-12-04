@@ -70,4 +70,8 @@ export default {
     left: 0;
     margin: auto;
   }
+
+  body{
+    margin: 0 0 0 0;
+  }
 </style>
