@@ -30,26 +30,22 @@ button:focus{
 }
 .form{
 	position: absolute;
-	right: 0;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
 	border: 5px solid #28a1f7;
 	border-radius: 15px;
 	background-color: #d8d8d8;
 	overflow: hidden;
-	width: 400px;
-	height: 110px;
+	width: 560px;
 	z-index: 3;
+	padding: 3px;
 }
 .message{
-	margin-left: 25px; 
-	margin-top: 20px;
+	margin: 3px auto;
 	color: #939393;
 	font-size: 18px;
 	font-family: 'Century Gothic';
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 }
 .btn{
 	background-color: #28a1f7;
@@ -60,15 +56,15 @@ button:focus{
 	border-radius: 15px;
 	cursor: pointer;
 	text-decoration: none;
-	margin-top: 10px;
-	margin-left: 125px;
-	margin-bottom: 10px;
+	margin: 10px auto;
+	display: block;
+	border-style: none;
 }
 .back{
 	width: 30px;
 	height: 30px;
-	float: right;
-	margin-top: 3px;
+	margin: 3px 3px 0 auto;
+	display: block;
 	background: none;
 	color: #939393;
 	font-size: 20px;
@@ -76,5 +72,4 @@ button:focus{
 	border-style: none;
 	cursor: pointer;
 }
-
 </style>

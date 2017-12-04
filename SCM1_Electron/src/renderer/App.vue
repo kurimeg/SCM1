@@ -53,6 +53,9 @@ export default {
     height: 700px;
     margin: 0 0 0 0;
     z-index: 4;
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
   }
   .loading-layer{
     position: absolute;
