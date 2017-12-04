@@ -49,10 +49,13 @@ export default {
   }
   .alert-layer{
     position: absolute;
-    width: 1400px;
-    height: 700px;
+    width: 1429px;
+    height: 833px;
     margin: 0 0 0 0;
     z-index: 4;
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
   }
   .loading-layer{
     position: absolute;
