@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="alert-layer"  v-if="show">
-        <component:is="modalName" :message="message"></component>
+    <div class="alert-layer" v-if="show">
+        <component :is="modalName" :message="message"></component>
     </div>
   </transition>
 </template>
@@ -26,3 +26,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity .1s
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0
+    }
+</style>

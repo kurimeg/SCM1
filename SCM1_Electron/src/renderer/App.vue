@@ -24,12 +24,12 @@ export default {
     position: relative;
     zoom: 70%;
   }
-  .main {
+  .main-layer {
       position: absolute;
       width: 1400px;
       height: 700px;
       margin: 0 0 0 11px;
-      z-index: １;
+      z-index: 1;
   }
   .seat-layer {
     position: absolute;
@@ -51,7 +51,7 @@ export default {
     position: absolute;
     width: 1400px;
     height: 700px;
-    margin: 0 0 0 11px;
+    margin: 0 0 0 0;
     z-index: 4;
   }
   .loading-layer{

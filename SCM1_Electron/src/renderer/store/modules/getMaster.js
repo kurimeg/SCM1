@@ -17,7 +17,7 @@ const actions = {
     firstview ({ commit }, token) {
         Vue.http.post('/seat/FetchSeatInfo', token)
         .then((data) =>{
-            if(data.ProcessStatus === constants.STATUS_OK && data.Authenticated)
+            if(data.ProcessStatus === constants.STATUS_OK)
             {
                 commit('initialize', data.SeatInfo)
             } 
