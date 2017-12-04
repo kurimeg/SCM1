@@ -1,10 +1,10 @@
 <template>
-    <button type="button" class="seat" v-on:click="onReserve(seat.SEAT_NO)">{{seatName}}</button>
+    <button type="button" class="seat" @click="onReserve(seat.SEAT_NO)">{{seatName}}</button>
 </template>
 
 <script>
-    import { createNamespacedHelpers } from 'vuex'
-    const { mapActions } = createNamespacedHelpers('reserve')
+import { mapActions, mapMutations, mapState } from 'vuex'
+import * as messages from '@/assets/messages'
 
     export default {
     data: function () {
@@ -12,23 +12,33 @@
             empLoyeeName: null
         }
     },
+    computed: {
+        ...mapState('getMaster', {
+			empInfo: state => state.empInfo
+        }),
+        ...mapState('reserve', {
+			isReserved: state => state.isReserved
+		})
+    },
     props: ['seat','seatName'],
     methods: {
-        ...mapActions([
-            'reserve'
-        ]),
-        onReserve: function (seatNo) {
+        ...mapActions({
+            reserve: 'reserve/reserve',
+            showError: 'modal/showError',
+            showAlert: 'modal/showAlert'
+        }),
+        onReserve: function () {
             //ユーザ名抽出処理
             let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            const empInfo = Array.from(this.$store.state.getMaster.empInfo)
-            for(var i = 0; i < empInfo.length; i++){
-                if(empInfo[i].EMP_NO == authInfo.EmpNo){
-                    this.empLoyeeName = empInfo[i].DISPLAY_EMP_NM
+            for(var i = 0; i < this.empInfo.length; i++){
+                if(this.empInfo[i].EMP_NO == authInfo.EmpNo){
+                    this.empLoyeeName = this.empInfo[i].DISPLAY_EMP_NM
                     break
                 }
             }
             //座席未登録 & 該当座席の名前がない場合
-            if(!this.seatName && !this.$store.state.reserve.isReserved){
+            if(!this.seatName && !this.isReserved){
+                this.showAlert( {message: messages.I_003, actionName: 'reserve/reserve',})
                 if(confirm("座席を登録しますか？")){
                     this.reserve({
                         Token : this.$store.state.auth.token,
@@ -38,10 +48,11 @@
                     this.$emit('changeName',seatNo,this.empLoyeeName)
                 }
             //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != this.empLoyeeName && !this.$store.state.reserve.isReserved){
-                alert("選択された座席は既に利用されています。")
+            }else if(this.seatName != this.empLoyeeName && !this.isReserved){
+                this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
-            }else if(this.seatName == this.empLoyeeName && this.$store.state.reserve.isReserved){
+            }else if(this.seatName == this.empLoyeeName && this.isReserved){
+                this.showAlert(messages.I_004)
                 if(confirm("座席を解除しますか？")){
                     this.reserve({
                         Token : this.$store.state.auth.token,
@@ -50,8 +61,8 @@
                     this.$emit('changeName',seatNo,'')
                 }
             //座席登録済 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != this.empLoyeeName && this.$store.state.reserve.isReserved){
-                alert("あなたの座席は既に登録されています。")
+            }else if(this.seatName != this.empLoyeeName && this.isReserved){
+                this.showError(messages.E_003)
             }
         }
 	}
