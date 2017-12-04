@@ -9,13 +9,12 @@
             </input>			
         </div>
         <div class="announceChar">{{ this.searchEmp(searchtxt).searchMessage }}</div>
-		<button type="button" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapGetters,mapMutations } = createNamespacedHelpers('search')
+import { mapActions, mapMutations, mapGetters ,mapState } from 'vuex'
 
 export default {
     data: function () {
@@ -23,16 +22,29 @@ export default {
             searchtxt: null
         }
 	},
-	methods:{		
-		...mapMutations([
-            'hideSearch'
-        ])
+	computed:{
+		...mapState('getUserpath', {
+			path: state => state.userPath
+		}),
+		...mapGetters({
+      		searchEmp : 'search/searchEmp'
+		})
    },
-   computed: {
-    ...mapGetters([
-      'searchEmp'
-    ])
-  }
+	methods:{
+	   ...mapActions({
+			getuserpath: 'getUserPath/getuserpath'
+   		}),
+		...mapMutations({
+            hideSearch : 'search/hideSearch'
+		}),
+		
+		getpath:function(event){
+			this.getuserpath({
+			EmpNo: event.target.id,
+			Token: this.$store.state.auth.token
+			})
+		}
+   }
 }
 </script>
 
