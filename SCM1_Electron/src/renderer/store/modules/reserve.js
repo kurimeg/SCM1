@@ -4,15 +4,10 @@ import Vue from 'vue'
 import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
-// deleteのために実装(TODO:共通化できないか...)
-import axios from 'axios'
-
-// TODO: localStateとしたい。
 const state = {
     isReserved: false
 }
 
-// TODO: もっときれいになるはず。
 const mutations = {
     reserve (state , isReserved) {
         state.isReserved = isReserved
@@ -28,7 +23,6 @@ const actions = {
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
                     commit('reserve', true)
-                    return true
                 }
             })
         }else{
@@ -40,7 +34,6 @@ const actions = {
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
                     commit('reserve', false)
-                    return true
                 }
             })
         }
