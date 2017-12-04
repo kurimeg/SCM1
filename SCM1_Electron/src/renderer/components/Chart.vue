@@ -1,5 +1,5 @@
 <template>
-	<div class="main">
+	<div class="main-layer">
 		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
 		<search v-if="show"></search>
 		<div class="tables">

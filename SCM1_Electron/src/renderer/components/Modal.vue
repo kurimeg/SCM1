@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="alert-layer"  v-if="show">
-        <component:is="modalName" :message="message"></component>
+    <div class="alert-layer" v-if="show">
+        <component :is="modalName" :message="message"></component>
     </div>
   </transition>
 </template>
