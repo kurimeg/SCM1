@@ -133,7 +133,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :seat="seat" @changeName="changeEmpName" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -146,62 +146,44 @@ import Search from './Chart/Search'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-   data: function () {
-     return {
-		
-     }
-   },
-   computed:{
+	data: function () {
+		return {
+
+		}
+	},
+	computed:{
 		...mapState('search', {
 			show: state => state.show
 		}),
 		...mapState('getMaster', {
 			seats: state => state.seatInfo
 		})
-   },
-   methods:{
-	   ...mapActions({
+	},
+	methods:{
+		...mapActions({
 			firstview: 'getMaster/firstview',
 			fetchEmpInfo: 'getMaster/fetchEmpInfo'
-   		}),
-		
+		}),
+
 		...mapMutations({
-            showSearch: 'search/showSearch'
-   		}),
-		changeEmpName: function (seatNo, empName) {
+				showSearch: 'search/showSearch'
+			}),
+			changeEmpName: function (seatNo, empName) {
 			document.getElementById(seatNo).innerHTML = empName
 		}
-   },
-   created: function(){
-	this.firstview({Token: this.$store.state.auth.token})
-	this.fetchEmpInfo({
-		Token: this.$store.state.auth.token,
-		EmpNo: ""
-	})
-   },
-   components: {
-	   Seat, Search
-   }
-//    methods: {
-// 	   //TODO: modulesへ追加、stateに各配列をcommitする
-//         ...mapActions([
-//             'getNaisenIDs', 'getSeatIDs'
-//         ])
-// 	},
-// 	created: function () {
-// 		//TODO: 以下のような感じでIDをセット。もっといい感じの方法があるはず。。。
-// 		const naisen = document.getElementsByClassName("naisen")
-// 		this.getNaisenIDs()
-// 		for(let i = 0; i < naisen.length; i++){
-// 			naisen[i].setAttribute("id", this.$store.state.naisenIDs[i])
-// 		}
-
-// 		const seat = document.getElementsByClassName("seat")
-// 		this.getSeatIDs
-// 		for(let i = 0; i < naisen.length; i++){
-// 			seat[i].setAttribute("id", this.$store.state.seatIDs[i])
-// 		}
-//     }
+	},
+	created: function(){
+		this.firstview({
+			Token: this.$store.state.auth.token
+		})
+		this.fetchEmpInfo({
+			Token: this.$store.state.auth.token,
+			EmpNo: ""
+		})
+	},
+	components: {
+		Seat, Search
+	}
 }
 </script>
 

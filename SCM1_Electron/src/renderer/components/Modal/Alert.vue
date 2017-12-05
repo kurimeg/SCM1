@@ -2,23 +2,29 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
-		<button type="button" class="btn" @click="confirm">ＯＫ</button>
+		<button type="button" class="btn" @click="confirmed">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
     </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapMutations } = createNamespacedHelpers('modal')
+const { mapMutations, mapState } = createNamespacedHelpers('modal')
 
 export default {
 	props: ['message'],
+	computed:{
+		...mapState([
+            'actionName', 'param'
+        ]),
+	},
     methods:{
         ...mapMutations([
             'hideModal'
 		]),
-		confirm: function () {
-            this.$emit('confirm')
+        confirmed: function () {
+            this.$store.dispatch(this.actionName, this.param)
+            this.hideModal()
         }
     }
 }
