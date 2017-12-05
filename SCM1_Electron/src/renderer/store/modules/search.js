@@ -15,7 +15,14 @@ const getters = {
         if(!seachText) return []
 
         //TODO: NULL対応
-        let filteredEmp = rootState.getMaster.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText))        
+        let filteredEmp = rootState.getMaster.empInfo.filter(emp => {
+            let knj = false
+            let kana = false
+            if(emp.EMP_NM) knj = emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText)
+            if(emp.EMP_KANA_NM) kana = emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText)
+                       
+            return knj || kana
+        })        
         // let filteredEmp = state.empInfo.filter(emp => emp.EMP_NM.replace(/\s+/g, "").startsWith(seachText) || emp.EMP_KANA_NM.replace(/\s+/g, "").startsWith(seachText))
         let searchMessage = ''
         if(filteredEmp.length > 0){
