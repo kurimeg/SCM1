@@ -9,8 +9,8 @@
                 <img src="../../assets/images/search_button.png" class="button"></img>
             </input>			
         </div>
-        <div class="announceChar">{{ this.searchEmp(searchtxt).searchMessage }}</div>
-		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+        <div class="announceChar">{{ this.filterEmp(searchtxt).searchMessage }}</div>
+		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </transition>
 </template>
@@ -29,7 +29,7 @@ export default {
 			path: state => state.userPath
 		}),
 		...mapGetters({
-      		searchEmp : 'search/searchEmp'
+      		filterEmp : 'search/filterEmp'
 		})
    },
 	methods:{

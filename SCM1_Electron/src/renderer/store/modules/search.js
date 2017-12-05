@@ -11,7 +11,7 @@ const state = {
 }
 
 const getters = {
-    searchEmp: (state, getters, rootState) => (seachText) => {
+    filterEmp: (state, getters, rootState) => (seachText) => {
         if(!seachText) return []
 
         //TODO: NULL対応
