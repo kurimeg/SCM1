@@ -1,6 +1,5 @@
 <template>
-	<div>
-		<div class="backimage"></div>
+	<div class="main-layer">
 		<div class="form">
 			<div class="login-char">社員番号</div>
 			<input type="text" v-model="empNo" class="txtbox"></input>
@@ -58,15 +57,14 @@ input:focus{
 button:focus{
  outline:none;
 }
-.floatL {
-	float: left;
-}
-.backimage{
+.main-layer{
 	background-image: url("../assets/images/back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
+	width: 1429px;
 	height: 833px;
-	margin: 0 0 0 0;
+    margin: 0 0 0 0;
+	z-index: 3;
 }
 .form{
 	position: absolute;

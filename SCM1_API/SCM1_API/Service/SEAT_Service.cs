@@ -1,4 +1,5 @@
 ﻿using SCM1_API.Model;
+using SCM1_API.Model.DataModel;
 using SCM1_API.Repository;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,16 @@ namespace SCM1_API.Service
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
             return MST_SEAT_Repository.FetchSeatInfo_Repository(param);
+        }
+
+        /// <summary>
+        /// 座席情報と登録済み社員情報を取得する
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<SeatWithEmp> FetchSeatWithEmpInfo_Service(int postedAreaDv = DefaultAreadv)
+        {
+            var param = new { FLOOR_PLACE_DV = postedAreaDv };
+            return MST_SEAT_Repository.FetchSeatWithEmpInfo_Repository(param);
         }
     }
 }

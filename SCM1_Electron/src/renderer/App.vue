@@ -28,13 +28,13 @@ export default {
       position: absolute;
       width: 1400px;
       height: 700px;
-      margin: 0 0 0 11px;
+      margin: 15px 0 0 20px;
       z-index: 1;
   }
   .seat-layer {
     position: absolute;
     width: 1400px;
-    height: 700px;
+    height: 800px;
     z-index: 2;
   }
   .search-layer{
@@ -49,17 +49,20 @@ export default {
   }
   .alert-layer{
     position: absolute;
-    width: 1400px;
-    height: 700px;
+    width: 1429px;
+    height: 833px;
     margin: 0 0 0 0;
     z-index: 4;
+    display: flex;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
   }
   .loading-layer{
     position: absolute;
     background: #ffffff;
-    width: 1400px;
-    height: 700px;
-    margin: 0 0 0 11px;
+    width: 1429px;
+    height: 833px;
+    margin: 0 0 0 0;
     z-index: 999;
   }
   .loading{

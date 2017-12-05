@@ -5,17 +5,17 @@
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2001</div>
+					<div class="naisen naisen_onsquare"></div>
 				</div>
 				<div class="floatL">
 					<div class="desk_rec01">
 						<div class="naisen_l">
-							<div class="naisen naisen_oneigyo">2007</div>
-							<div class="naisen naisen_oneigyo">2008</div>
-							<div class="naisen naisen_oneigyo">2009</div>
-							<div class="naisen naisen_oneigyo">2010</div>
-							<div class="naisen naisen_oneigyo">2011</div>
-							<div class="naisen naisen_oneigyo">2012</div>
+							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo"></div>
 						</div>
 					</div>
 				</div>
@@ -23,71 +23,80 @@
 			<div class="rack01 floatL"></div>
 			<div class="row02 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2002</div>
+					<div class="naisen naisen_onsquare">2022</div>
 				</div>
 				<div class="desk_rec02">
-						<div class="naisen naisen_l2">2013</div>
+						<div class="naisen naisen_l2">2002</div>
 				</div>
 				<div class="rack02 floatL"></div>
 			</div>
 			<div class="row02 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2003</div>
+					<div class="naisen naisen_onsquare">2015</div>
 				</div>
 				<div class="desk_rec02">
 					<div class="naisen_l">
-						<div class="naisen naisen_l3">2014</div>
-						<div class="naisen naisen_l3">2015</div>
+						<div class="naisen naisen_l3">2003</div>
+						<div class="naisen naisen_l3">2004</div>
+						<div class="naisen naisen_l3 naisen_hashi">2011</div>
+						<div class="naisen naisen_l3 naisen_taka">2031</div>
 					</div>
 				</div>
 				<div class="rack02 floatL"></div>
 			</div>
 			<div class="row02 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2004</div>
+					<div class="naisen naisen_onsquare">2014</div>
 				</div>
 				<div class="desk_rec02">
 					<div class="naisen_l">
-						<div class="naisen naisen_l4">2016</div>
-						<div class="naisen naisen_l4">2017</div>
+						<div class="naisen naisen_l4">2005</div>
+						<div class="naisen naisen_l4">2023</div>
 					</div>
 				</div>
 				<div class="rack02 floatL"></div>
 			</div>
 			<div class="row02 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2005</div>
+					<div class="naisen naisen_onsquare">2013</div>
 				</div>
-				<div class="desk_rec05">
-					<div class="naisen naisen_l2">2018</div>
+				<div class="desk_rec0506">
+					<div class="naisen_l">
+						<div class="naisen naisen_l56">2024</div>
+					</div>
 				</div>
 				<div class="rack02 floatL"></div>
 			</div>
 			<div class="row01 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare">2006</div>
+					<div class="naisen naisen_onsquare">2012</div>
 				</div>
-					<div class="desk_rec06">
+					<div class="desk_rec0506">
 						<div class="naisen_l">
-							<div class="naisen naisen_l4">2019</div>
-							<div class="naisen naisen_l4">2020</div>
+							<div class="naisen naisen_l56">2025</div>
+							<div class="naisen naisen_l56">2041</div>
 						</div>
 					</div>
 				<div class="rack02 floatL"></div>
 			</div>
 			<div class="row07 floatL child">
-				<div class="desk_rec07"></div>
-				<div class="rack02 floatL"></div>
+				<div class="desk_rec07">
+					<div class="naisen_l">
+							<div class="naisen naisen_l7">2122</div>
+					</div>
+				</div>
+				<div class="rack02 floatL">
+				</div>
 			</div>
 			<!--正方形机1列目-->
 			<div class="desk_recleft floatL child">
 				<div class="desk_square02"></div>
 				<div class="desk_square02">
-					<div class="naisen naisen_onfree">2023</div>
+					<div class="naisen naisen_onfree">2060</div>
 				</div>
 				<div class="desk_square02"></div>
 				<div class="desk_square02">
-					<div class="naisen naisen_onfree">2024</div>
+					<div class="naisen naisen_onfree">2063</div>
 				</div>
 			</div>
 			<!--正方形机2列目-->
@@ -99,11 +108,13 @@
 			</div>
 			<!--正方形机3列目-->
 			<div class="desk_recright floatL child">
-				<div class="desk_square02"></div>
 				<div class="desk_square02">
-					<div class="naisen naisen_onfree">2025</div>
+					<div class="naisen naisen_onfree">2061</div>
 				</div>
 				<div class="desk_square02"></div>
+				<div class="desk_square02">
+					<div class="naisen naisen_onfree">2064</div>
+				</div>
 			</div>
 			<!--正方形机4列目-->
 			<div class="desk_recright floatL child">
@@ -114,15 +125,15 @@
 			<!--正方形机5列目-->
 			<div class="desk_recright floatL child">
 				<div class="desk_square02">
-					<div class="naisen naisen_onfree">2026</div>
+					<div class="naisen naisen_onfree">2062</div>
 				</div>
 				<div class="desk_square02"></div>
 				<div class="desk_square02">
-					<div class="naisen naisen_onfree">2027</div>
+					<div class="naisen naisen_onfree">2065</div>
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.name" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.name" v-for="seat in seats" :key="seat.name" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :seat="seat" @changeName="changeEmpName" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -151,12 +162,15 @@ export default {
    methods:{
 	   ...mapActions({
 			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'search/fetchEmpInfo'
+			fetchEmpInfo: 'getMaster/fetchEmpInfo'
    		}),
 		
 		...mapMutations({
             showSearch: 'search/showSearch'
-   		})
+   		}),
+		changeEmpName: function (seatNo, empName) {
+			document.getElementById(seatNo).innerHTML = empName
+		}
    },
    created: function(){
 	this.firstview({Token: this.$store.state.auth.token})
@@ -165,7 +179,6 @@ export default {
 		EmpNo: ""
 	})
    },
-   
    components: {
 	   Seat, Search
    }
@@ -197,10 +210,13 @@ body {
     margin: 0;
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
+.main-layer{
+	height: 800px;
+}
 .tables{
 	position: relative;
     width: 1400px;
-    height: 600px;
+    height: 700px;
     margin: 50px 0 0 0;
 }
 .floatL {
@@ -219,9 +235,9 @@ body {
 
 /*ラック*/
 .rack01 {
-    margin: 137px 10px 0 5px;
+    margin: 130px 10px 0 5px;
     width: 15px;
-    height: 450px;
+    height: 515px;
     background-color: #E1BE7E;
 }
 .rack02 {
@@ -258,18 +274,11 @@ body {
 	background-color: #91cdf7;
 }
 
-/*列＿5行目*/
-.desk_rec05 {
-	margin: 85px 30px 0;
+/*列＿5,6行目*/
+.desk_rec0506 {
+	margin: 95px 30px 0;
 	width: 45px;
-	height: 460px;
-	background-color: #91cdf7;
-}
-/*列＿6行目*/
-.desk_rec06 {
-	margin: 85px 30px 0;
-	width: 45px;
-	height: 460px;
+	height: 450px;
 	background-color: #91cdf7;
 }
 
@@ -322,27 +331,46 @@ body {
 }
 .naisen_oneigyo{
     margin-left: -2px;
-    margin-top: 34px;
-    margin-bottom: 30px;
+    margin-top: 43px;
+    margin-bottom: 20px;
 }
 .naisen_l2{
     position: absolute;
     margin-left: -2px;
-    margin-top: 50px;
+    margin-top: 35px;
 }
 .naisen_l3{
     margin-left: -2px;
-    margin-top: 50px;
-    margin-bottom: 140px;
+    margin-top: 35px;
+    margin-bottom: 205px;
 }
 .naisen_l4{
     margin-left: -2px;
-    margin-top: 50px;
-    margin-bottom: 200px;
+    margin-top: 35px;
+    margin-bottom: 205px;
+}
+.naisen_l56{
+    margin-left: -2px;
+    margin-top: 35px;
+    margin-bottom: 205px;
+}
+.naisen_l7{
+    margin-left: -2px;
+    margin-top: 458px;
 }
 .naisen_onfree{
     position: absolute;
     margin-left: 6px;
     margin-top: 19px;
+}
+.naisen_hashi{
+	margin-left: -2px;
+	margin-top: -35px;
+	margin-bottom: 0px;
+}
+.naisen_taka{
+	margin-left: -2px;
+	margin-bottom: 0px;
+	margin-top: 5px;
 }
 </style>

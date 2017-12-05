@@ -166,6 +166,7 @@
     <Compile Include="APIController\emplocationController.cs" />
     <Compile Include="APIController\phoneController.cs" />
     <Compile Include="APIController\seatController.cs" />
+    <Compile Include="APIController\seatWithEmpController.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="APIController\TestController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Model\constants\DBAccessType.cs" />
     <Compile Include="Model\constants\FLOOR_PLACE_DV.cs" />
     <Compile Include="Model\constants\MESSAGE.cs" />
+    <Compile Include="Model\DataModel\SeatWithEmp.cs" />
     <Compile Include="Model\footerColumns.cs" />
     <Compile Include="Model\ScreenModel\EmpLocationInfo.cs" />
     <Compile Include="Model\ScreenModel\EmpInfo.cs" />

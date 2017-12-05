@@ -2,7 +2,7 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
-		<button type="button" class="btn">ＯＫ</button>
+		<button type="button" class="btn" @click="confirm">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
     </div>
 </template>
@@ -16,7 +16,10 @@ export default {
     methods:{
         ...mapMutations([
             'hideModal'
-        ])
+		]),
+		confirm: function () {
+            this.$emit('confirm')
+        }
     }
 }
 </script>
@@ -31,18 +34,13 @@ button:focus{
 }
 .form{
 	position: absolute;
-	right: 0;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
 	border: 5px solid #28a1f7;
 	border-radius: 15px;
 	background-color: #d8d8d8;
 	overflow: hidden;
-	width: 400px;
-	height: 110px;
+	width: 560px;
 	z-index: 3;
+	padding: 3px;
 }
 .message{
 	margin-left: 25px; 
@@ -64,6 +62,7 @@ button:focus{
 	margin-top: 10px;
 	margin-left: 30px;
 	margin-bottom: 10px;
+	border-style: none;
 }
 .back{
 	width: 30px;

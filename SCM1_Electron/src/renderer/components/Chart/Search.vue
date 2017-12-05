@@ -1,4 +1,5 @@
 <template>
+<transition name="fade">
     <div class="search-layer">
         <img src="../../assets/images/search_icon.png" class="icon"></img>
         <div class="topChar">検索</div>
@@ -9,13 +10,13 @@
             </input>			
         </div>
         <div class="announceChar">{{ this.searchEmp(searchtxt).searchMessage }}</div>
-		<button type="button" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.searchEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
+</transition>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapGetters,mapMutations } = createNamespacedHelpers('search')
+import { mapActions, mapMutations, mapGetters ,mapState } from 'vuex'
 
 export default {
     data: function () {
@@ -23,16 +24,29 @@ export default {
             searchtxt: null
         }
 	},
-	methods:{		
-		...mapMutations([
-            'hideSearch'
-        ])
+	computed:{
+		...mapState('getUserpath', {
+			path: state => state.userPath
+		}),
+		...mapGetters({
+      		searchEmp : 'search/searchEmp'
+		})
    },
-   computed: {
-    ...mapGetters([
-      'searchEmp'
-    ])
-  }
+	methods:{
+	   ...mapActions({
+			getuserpath: 'getUserPath/getuserpath'
+   		}),
+		...mapMutations({
+            hideSearch : 'search/hideSearch'
+		}),
+		
+		getpath:function(event){
+			this.getuserpath({
+			EmpNo: event.target.id,
+			Token: this.$store.state.auth.token
+			})
+		}
+   }
 }
 </script>
 
@@ -115,5 +129,11 @@ button:focus{
 	border-style: none;
 	background: none;
 	cursor: pointer;
+}
+.fade-enter-active, .fade-leave-active {
+	transition: opacity .3s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0
 }
 </style>
