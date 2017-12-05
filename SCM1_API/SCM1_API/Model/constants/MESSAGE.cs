@@ -18,7 +18,7 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// 異常終了（予期せぬエラー）
         /// </summary>
-        public const string MSG_ER = "予期せぬエラーが発生しました。\r\nサポートに問い合わせて下さい。";
+        public const string MSG_ER = "予期せぬエラーが発生しました。サポートに問い合わせて下さい。";
 
         /// <summary>
         /// アクセストークン認証失敗
@@ -53,7 +53,7 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// 座席情報取得失敗
         /// </summary>
-        public const string MSG_FETCH_SEAT_NG = "座席子機情報の取得に失敗しました。";
+        public const string MSG_FETCH_SEAT_NG = "座席情報の取得に失敗しました。";
 
         /// <summary>
         /// ユーザー位置情報取得失敗
