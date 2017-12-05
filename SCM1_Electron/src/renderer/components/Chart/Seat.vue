@@ -99,4 +99,8 @@ button:focus{
     height: 24px;
     padding: 0 0;
 }
+.searched{
+    background-color: #ff4c4c;
+    color: #ffffff;
+}
 </style>
