@@ -133,7 +133,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': searched}" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': seat.EMP_NO === userPath[0].EMP_NO }" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -159,7 +159,7 @@ export default {
 			seats: state => state.seatInfo
 		}),
         ...mapState('getUserPath', {
-			searched: state => state.isSearched
+			userPath: state => state.userPath
         })
 	},
 	methods:{
