@@ -6,13 +6,15 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    isReserved: false
+    isReserved: false,
+    seatNo: ''
 }
 
 const mutations = {
-    reserve (state , isReserved) {
-        state.isReserved = isReserved
-    }
+    reserve (state , reserve) {
+        state.isReserved = reserve.isReserved
+        state.seatNo = reserve.seatNo
+    },
 }
 
 const actions = {
@@ -23,7 +25,7 @@ const actions = {
             .then((data) =>{
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
-                    commit('reserve', true)
+                    commit('reserve', { isReserved: true, seatNo: reserveInfo.seatNo })
                 }
             })
         }else{
@@ -34,7 +36,7 @@ const actions = {
             .then((data) =>{
                 if(data.ProcessStatus === constants.STATUS_OK)
                 {
-                    commit('reserve', false)
+                    commit('reserve', { isReserved: false, seatNo: '' })
                 }
             })
         }
@@ -45,7 +47,7 @@ const actions = {
         .then((response) => {
             if(response.data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('reserve', true)
+                commit('reserve', { isReserved: true, seatNo: response.data.EmpLocation[0].seat_NO })
             }
         })
     }

@@ -9,8 +9,7 @@ import * as messages from '@/assets/messages'
     export default {
     data: function () {
         return {
-            displayEmpNm: this.seatName,
-            empNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo
+             empNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo
         }
     },
     computed: {
@@ -18,15 +17,19 @@ import * as messages from '@/assets/messages'
 			token: state => state.token
         }),
         ...mapState('getMaster', {
-			empLoyeeName (state) {
+            empLoyeeName (state) {
                 return state.empInfo.find(emp => emp.EMP_NO === this.empNo).DISPLAY_EMP_NM
             }
         }),
         ...mapState('reserve', {
-			isReserved: state => state.isReserved
+            isReserved: state => state.isReserved,
+            displayEmpNm (state) {
+                return this.seat.SEAT_NO === state.seatNo ? this.empLoyeeName : this.seat.DISPLAY_EMP_NM
+            }
         })
+
     },
-    props: ['seatName'],
+    props: ['seat'],
     methods: {
         ...mapActions({
             reserve: 'reserve/reserve',
