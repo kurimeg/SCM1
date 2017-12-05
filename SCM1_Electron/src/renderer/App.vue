@@ -30,6 +30,7 @@ export default {
       height: 700px;
       margin: 15px 0 0 20px;
       z-index: 1;
+      overflow: hidden;
   }
   .seat-layer {
     position: absolute;

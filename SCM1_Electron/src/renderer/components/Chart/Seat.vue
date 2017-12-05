@@ -100,7 +100,16 @@ button:focus{
     padding: 0 0;
 }
 .searched{
-    background-color: #ff4c4c;
-    color: #ffffff;
+    animation: changecolor 30s 1 forwards;
+    -webkit-animation: changecolor 30s 1 forwards;
+}
+@keyframes changecolor {
+    1% { background-color: #ff7777; }
+    2% { background-color: #ffffff; }
+    3% { background-color: #ff7777; }
+    4% { background-color: #ffffff; }
+    6% { background-color: #ff7777; }
+    90% { background-color: #ff7777; }
+    100% { background-color: #ffffff; }
 }
 </style>
