@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="alert-layer" v-if="show">
-        <component :is="modalName" :message="message" @confirm="confirmed"></component>
+        <component :is="modalName" :message="message"></component>
     </div>
   </transition>
 </template>
@@ -10,20 +10,15 @@
 import { createNamespacedHelpers } from 'vuex'
 import Alert from './Modal/Alert'
 import Error from './Modal/Error'
-const { mapState } = createNamespacedHelpers('modal')
+const { mapState, mapMutations } = createNamespacedHelpers('modal')
 
 export default {
     computed: {
         ...mapState([
-            'modalName', 'message','actionName'
+            'modalName', 'message'
         ]),
         show () {
             return this.modalName !== ''
-        }
-    },
-    methods: {
-        confirmed: function () {
-            store.dispatch(actionName)
         }
     },
     components: {

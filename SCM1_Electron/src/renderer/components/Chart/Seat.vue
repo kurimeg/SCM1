@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="seat" @click="onReserve(seat.SEAT_NO)">{{seatName}}</button>
+    <button type="button" class="seat" @click="onReserve">{{ displayEmpNm }}</button>
 </template>
 
 <script>
@@ -9,59 +9,57 @@ import * as messages from '@/assets/messages'
     export default {
     data: function () {
         return {
-            empLoyeeName: null
+            displayEmpNm: this.seatName,
+            empNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo
         }
     },
     computed: {
+        ...mapState('auth', {
+			token: state => state.token
+        }),
         ...mapState('getMaster', {
-			empInfo: state => state.empInfo
+			empLoyeeName (state) {
+                return state.empInfo.find(emp => emp.EMP_NO === this.empNo).DISPLAY_EMP_NM
+            }
         }),
         ...mapState('reserve', {
 			isReserved: state => state.isReserved
-		})
+        })
     },
-    props: ['seat','seatName'],
+    props: ['seatName'],
     methods: {
         ...mapActions({
             reserve: 'reserve/reserve',
             showError: 'modal/showError',
             showAlert: 'modal/showAlert'
         }),
-        onReserve: function () {
-            //ユーザ名抽出処理
-            let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            for(var i = 0; i < this.empInfo.length; i++){
-                if(this.empInfo[i].EMP_NO == authInfo.EmpNo){
-                    this.empLoyeeName = this.empInfo[i].DISPLAY_EMP_NM
-                    break
-                }
-            }
+        onReserve: function (event) {
             //座席未登録 & 該当座席の名前がない場合
-            if(!this.seatName && !this.isReserved){
-                this.showAlert( {message: messages.I_003, actionName: 'reserve/reserve',})
-                if(confirm("座席を登録しますか？")){
-                    this.reserve({
-                        Token : this.$store.state.auth.token,
-                        EmpNo: authInfo.EmpNo,
-                        seatNo: seatNo
-                    })
-                    this.$emit('changeName',seatNo,this.empLoyeeName)
-                }
+            if(!this.displayEmpNm && !this.isReserved){                
+                this.showAlert({ 
+                                    message: messages.I_003, 
+                                    actionName: 'reserve/reserve', 
+                                    param: {
+                                                Token : this.token,
+                                                EmpNo: this.empNo,
+                                                seatNo: event.target.id
+                                    }
+                })
             //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != this.empLoyeeName && !this.isReserved){
+            }else if(this.displayEmpNm != this.empLoyeeName && !this.isReserved){
                 this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
-            }else if(this.seatName == this.empLoyeeName && this.isReserved){
-                this.showAlert(messages.I_004)
-                if(confirm("座席を解除しますか？")){
-                    this.reserve({
-                        Token : this.$store.state.auth.token,
-                        EmpNo: authInfo.EmpNo
-                    })
-                    this.$emit('changeName',seatNo,'')
-                }
+            }else if(this.displayEmpNm == this.empLoyeeName && this.isReserved){
+                this.showAlert({ 
+                                    message: messages.I_004, 
+                                    actionName: 'reserve/reserve', 
+                                    param: {
+                                                Token : this.token,
+                                                EmpNo: this.empNo,
+                                    }
+                })
             //座席登録済 & 該当座席の名前が自分以外の場合
-            }else if(this.seatName != this.empLoyeeName && this.isReserved){
+            }else if(this.displayEmpNm != this.empLoyeeName && this.isReserved){
                 this.showError(messages.E_003)
             }
         }
