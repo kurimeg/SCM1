@@ -133,7 +133,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG }" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': searched}" :seat-name="seat.DISPLAY_EMP_NM" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 		</div>
 		<div id="minimap"></div>
@@ -157,7 +157,10 @@ export default {
 		}),
 		...mapState('getMaster', {
 			seats: state => state.seatInfo
-		})
+		}),
+        ...mapState('getUserPath', {
+			searched: state => state.isSearched
+        })
 	},
 	methods:{
 		...mapActions({
@@ -194,6 +197,7 @@ body {
 }
 .main-layer{
 	height: 800px;
+	margin: 15px 0 0 20px;
 }
 .tables{
 	position: relative;

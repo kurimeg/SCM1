@@ -4,12 +4,14 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    userPath:[]
+    userPath:[],
+    isSearched:''
 }
 
 const mutations = {
-    setPath (state , userpath){
+    setPath (state , userpath , bool){
         state.userPath = userpath
+        state.isSearched = bool
     }
 }
 
@@ -19,7 +21,7 @@ const actions = {
         .then((data) =>{
             if(data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('setPath', data.EmpLocation)
+                commit('setPath', data.EmpLocation, true)
             } 
         })
     }
