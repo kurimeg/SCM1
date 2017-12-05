@@ -27,9 +27,18 @@ namespace SCM1_API.PresentationService
                 Authenticated = false,
                 Token = ""
             };
+            
+            //暫定的にサーバー側で必須チェック_＠2017/12/05
+            if (string.IsNullOrEmpty(req.EmpNo) || string.IsNullOrEmpty(req.Password))
+            {
+                Logger.WriteError(MESSAGE.MSG_IDPASSWORNG_ER);
+                resModel.ResponseMessage = MESSAGE.MSG_IDPASSWORNG_ER;
+                return resModel;
+            }
+
             var empInfo = empService.FetchEMPInfo_ToAuth_Service(req.EmpNo);
 
-            if (empInfo == null || empInfo.Count() > 1)
+            if (empInfo == null || empInfo.Count() != 1)
             {
                 Logger.WriteError(MESSAGE.MSG_IDPASSWORNG_ER);
                 resModel.ResponseMessage = MESSAGE.MSG_IDPASSWORNG_ER;

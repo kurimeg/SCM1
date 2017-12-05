@@ -11,7 +11,7 @@ var headers = {
 
 //オプションを定義
 var options = {
-  url: 'http://localhost:49189/api/emplocation/ClearEmpLocationInfo',
+  url: 'http://scm1api.azurewebsites.net/api/emplocation/ClearEmpLocationInfo',
   method: 'DELETE',
   headers: headers,
   json: { EmpNo: "DailyClearBatch" } 

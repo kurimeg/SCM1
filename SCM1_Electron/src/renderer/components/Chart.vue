@@ -165,7 +165,8 @@ export default {
 	methods:{
 		...mapActions({
 			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'getMaster/fetchEmpInfo'
+			fetchEmpInfo: 'getMaster/fetchEmpInfo',
+			getIsReserved: 'reserve/getIsReserved'
 		}),
 
 		...mapMutations({
@@ -182,6 +183,10 @@ export default {
 		this.fetchEmpInfo({
 			Token: this.$store.state.auth.token,
 			EmpNo: ""
+		})
+		this.getIsReserved({
+			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
+			Token: this.$store.state.auth.token
 		})
 	},
 	components: {
