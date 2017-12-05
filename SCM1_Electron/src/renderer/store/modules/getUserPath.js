@@ -19,7 +19,7 @@ const actions = {
         .then((data) =>{
             if(data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('setPath', data.UserPath)
+                commit('setPath', data.EmpLocation)
             } 
         })
     }
