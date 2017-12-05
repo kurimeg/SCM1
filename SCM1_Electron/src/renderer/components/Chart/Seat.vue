@@ -36,14 +36,14 @@ import * as messages from '@/assets/messages'
         onReserve: function (event) {
             //座席未登録 & 該当座席の名前がない場合
             if(!this.displayEmpNm && !this.isReserved){                
-                this.showAlert({ 
-                                    message: messages.I_003, 
-                                    actionName: 'reserve/reserve', 
-                                    param: {
-                                                Token : this.token,
-                                                EmpNo: this.empNo,
-                                                seatNo: event.target.id
-                                    }
+                this.showAlert({
+                    message: messages.I_003, 
+                    actionName: 'reserve/reserve', 
+                    param: {
+                        Token : this.token,
+                        EmpNo: this.empNo,
+                        seatNo: event.target.id
+                    }
                 })
             //座席未登録 & 該当座席の名前が自分以外の場合
             }else if(this.displayEmpNm != this.empLoyeeName && !this.isReserved){
@@ -51,12 +51,12 @@ import * as messages from '@/assets/messages'
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.displayEmpNm == this.empLoyeeName && this.isReserved){
                 this.showAlert({ 
-                                    message: messages.I_004, 
-                                    actionName: 'reserve/reserve', 
-                                    param: {
-                                                Token : this.token,
-                                                EmpNo: this.empNo,
-                                    }
+                    message: messages.I_004, 
+                    actionName: 'reserve/reserve', 
+                    param: {
+                        Token : this.token,
+                        EmpNo: this.empNo,
+                    }
                 })
             //座席登録済 & 該当座席の名前が自分以外の場合
             }else if(this.displayEmpNm != this.empLoyeeName && this.isReserved){
