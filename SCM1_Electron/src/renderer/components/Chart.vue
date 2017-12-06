@@ -199,6 +199,10 @@ export default {
 			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
 			Token: this.$store.state.auth.token
 		})
+		//5分でポーリングして初期表示処理を呼び出す
+		setInterval(() => {this.firstview({
+			Token: this.$store.state.auth.token
+			})},300000)
 	},
 	components: {
 		Seat, Search

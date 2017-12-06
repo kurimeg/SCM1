@@ -34,7 +34,7 @@ namespace SCM1_API.Model
         /// <summary>
         /// 座席番号
         /// </summary>
-        public string seat_NO
+        public string SEAT_NO
         {
             get; set;
         }
