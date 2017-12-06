@@ -175,10 +175,7 @@ export default {
 
 		...mapMutations({
 				showSearch: 'search/showSearch'
-			}),
-			changeEmpName: function (seatNo, empName) {
-			document.getElementById(seatNo).innerHTML = empName
-		}
+		})
 	},
 	created: function(){
 		this.firstview({
