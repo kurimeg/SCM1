@@ -84,9 +84,10 @@ body {
 button:focus{
  outline:none;
 }
-button :disabled{
+button:disabled{
     background-color: #cccccc;
-    color:#444444;
+    color:#777777;
+    cursor: default;
 }
 .seat {
     width: 24px;
@@ -113,16 +114,16 @@ button :disabled{
     padding: 0 0;
 }
 .searched{
-    animation: changecolor 30s 1 forwards;
-    -webkit-animation: changecolor 30s 1 forwards;
+    animation: changecolor 30s 1 ;
+    -webkit-animation: changecolor 30s 1 ;
 }
 @keyframes changecolor {
     1% { background-color: #ff7777; }
-    2% { background-color: #ffffff; }
+    2% { background-color: #cccccc; }
     3% { background-color: #ff7777; }
-    4% { background-color: #ffffff; }
+    4% { background-color: #cccccc; }
     6% { background-color: #ff7777; }
     90% { background-color: #ff7777; }
-    100% { background-color: #ffffff; }
+    100% { background-color: #cccccc; }
 }
 </style>
