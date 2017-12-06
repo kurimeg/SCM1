@@ -1,17 +1,14 @@
-import router from '@/router'
-// TODO: main.jsでimport済。各moduleでそれを使うには？
 import Vue from 'vue'
+import router from '@/router'
 import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
-// TODO: localStateとしたい。
 const state = {
     isLogged: !!localStorage.getItem('authInfo'),
     token: '',
     isGuest: false
 }
 
-// TODO: もっときれいになるはず。
 const mutations = {
     login (state , auth) {
         state.isLogged = true
@@ -42,8 +39,12 @@ const actions = {
         commit('login', { token: authInfo.token, isGuest: true })
         router.replace('chart')
     },
-    logout ({ commit }) {
+    logout ({ commit, rootState }) {
         localStorage.removeItem('authInfo')
+        //TODO: まとめてstateを初期化したい
+        commit('getMaster/reset', null, { root: true })
+        commit('getUserPath/reset', null, { root: true })
+        commit('reserve/reset', null, { root: true })
         commit('logout')
         router.replace('/')
     }

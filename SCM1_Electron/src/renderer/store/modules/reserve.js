@@ -14,6 +14,10 @@ const mutations = {
     reserve (state , reserve) {
         state.isReserved = reserve.isReserved
         state.reservedSeatNo = reserve.seatNo
+    },
+    reset (state) {
+        state.isReserved = false,
+        state.reservedSeatNo = ''
     }
 }
 

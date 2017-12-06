@@ -10,6 +10,9 @@ const state = {
 const mutations = {
     setPath (state , userpath){
         state.userPath = userpath.EmpLocation
+    },
+    reset (state){
+        state.userPath = []
     }
 }
 

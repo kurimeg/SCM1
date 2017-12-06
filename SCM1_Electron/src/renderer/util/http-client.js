@@ -11,6 +11,7 @@ export default (Vue, { store }) => {
     client.interceptors.request.use((config) => {
         return config;
     }, (error) => {
+        store.dispatch('modal/showError', messages.E_001)
         return Promise.reject(error)
     })
   
@@ -26,7 +27,7 @@ export default (Vue, { store }) => {
         }
         return response.data
     }, (error) => {
-        store.dispatch('modal/showError',response.data.ResponseMessage)
+        store.dispatch('modal/showError', messages.E_001)
         return Promise.reject(error)
     })
   
