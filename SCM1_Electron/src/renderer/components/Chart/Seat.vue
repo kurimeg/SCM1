@@ -36,13 +36,14 @@ import * as messages from '@/assets/messages'
     methods: {
         ...mapActions({
             reserve: 'reserve/reserve',
+            release: 'reserve/release',
             showError: 'modal/showError',
             showAlert: 'modal/showAlert',
             showAlertReg: 'modal/showAlertReg'
         }),
         onReserve: function (event) {
             //座席未登録 & 該当座席の名前がない場合
-            if(!this.displayEmpNm && !this.isReserved){                
+            if(!this.displayEmpNm){                
                 this.showAlertReg({
                     message: messages.I_003, 
                     actionName: 'reserve/reserve', 
@@ -53,21 +54,18 @@ import * as messages from '@/assets/messages'
                     }
                 })
             //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.loginEmpName && !this.isReserved){
+            }else if(this.displayEmpNm != this.loginEmpName){
                 this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.displayEmpNm == this.loginEmpName && this.isReserved){
                 this.showAlert({ 
                     message: messages.I_004, 
-                    actionName: 'reserve/reserve', 
+                    actionName: 'reserve/release', 
                     param: {
                         Token : this.token,
                         EmpNo: this.empNo,
                     }
                 })
-            //座席登録済 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.loginEmpName && this.isReserved){
-                this.showError(messages.E_003)
             }
         }
 	}
