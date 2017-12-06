@@ -80,6 +80,10 @@ body {
 button:focus{
  outline:none;
 }
+button :disabled{
+    background-color: #cccccc;
+    color:#444444;
+}
 .seat {
     width: 24px;
     height: 60px;

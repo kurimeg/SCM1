@@ -6,17 +6,22 @@
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
-					<div class="naisen naisen_onsquare"></div>
+					<div class="naisen naisen_onsquare">2001</div>
 				</div>
 				<div class="floatL">
 					<div class="desk_rec01">
 						<div class="naisen_l">
-							<div class="naisen naisen_oneigyo"></div>
-							<div class="naisen naisen_oneigyo"></div>
-							<div class="naisen naisen_oneigyo"></div>
-							<div class="naisen naisen_oneigyo"></div>
-							<div class="naisen naisen_oneigyo"></div>
-							<div class="naisen naisen_oneigyo"></div>
+							<div class="naisen naisen_oneigyo">2123</div>
+							<div class="naisen naisen_oneigyo">2021</div>
+							<div class="naisen naisen_oneigyo">2124</div>
+							<div class="naisen naisen_oneigyo">2032</div>
+							<div class="naisen naisen_oneigyo">2125</div>
+							<div class="naisen naisen_oneigyo">2033</div>
+							<div class="naisen naisen_oneigyo">2131</div>
+							<div class="naisen naisen_oneigyo">2034</div>
+							<div class="naisen naisen_oneigyo">2132</div>
+							<div class="naisen naisen_oneigyo">2035</div>
+							<div class="naisen naisen_oneigyolast">2133</div>
 						</div>
 					</div>
 				</div>
@@ -354,8 +359,11 @@ button:focus{
 }
 .naisen_oneigyo{
     margin-left: -2px;
-    margin-top: 43px;
-    margin-bottom: 20px;
+    margin-bottom: 9px;
+}
+.naisen_oneigyolast{
+    margin-left: -2px;
+    margin-top: 38px;
 }
 .naisen_l2{
     position: absolute;

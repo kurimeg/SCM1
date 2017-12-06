@@ -35,11 +35,11 @@ export default {
                         Token : this.param.Token,
                         EmpNo: this.param.EmpNo,
                         seatNo: this.param.seatNo,
-                        fixedFlg : this.fixed
+                        FixedFlg : this.fixed
 			}
 			this.changeParam(changedParam)
             this.$store.dispatch(this.actionName, this.param)
-            this.hideModal()
+			this.hideModal()
         }
     }
 }
