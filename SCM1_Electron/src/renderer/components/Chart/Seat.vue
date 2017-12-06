@@ -53,9 +53,6 @@ import * as messages from '@/assets/messages'
                         seatNo: event.target.id
                     }
                 })
-            //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.loginEmpName){
-                this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.displayEmpNm == this.loginEmpName && this.isReserved){
                 this.showAlert({ 
@@ -68,7 +65,14 @@ import * as messages from '@/assets/messages'
                 })
             }
         }
-	}
+	},
+    updated: function(){
+        if(this.seat.EMP_NO === this.empNo || this.seat.DISPLAY_EMP_NM === null){
+            document.getElementById(this.seat.SEAT_NO).disabled = ""
+        }else{
+            document.getElementById(this.seat.SEAT_NO).disabled = "true"
+        }
+    }
 }
 </script>
 
