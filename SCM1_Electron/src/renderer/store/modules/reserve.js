@@ -19,27 +19,26 @@ const mutations = {
 
 const actions = {
     reserve ({ commit }, reserveInfo) {
-        if(!state.isReserved){
-            //登録処理
-            Vue.http.put('/emplocation/RegisterEmpLocation',reserveInfo)
-            .then((data) =>{
-                if(data.ProcessStatus === constants.STATUS_OK)
-                {
-                    commit('reserve', { isReserved: true, seatNo: reserveInfo.seatNo })
-                }
-            })
-        }else{
-            //解除処理
-            Vue.http.delete('/emplocation/ClearEmpLocationInfo', {
-                data: reserveInfo
-            })
-            .then((data) =>{
-                if(data.ProcessStatus === constants.STATUS_OK)
-                {
-                    commit('reserve', { isReserved: false, seatNo: '' })
-                }
-            })
-        }
+        //登録処理
+        Vue.http.put('/emplocation/RegisterEmpLocation',reserveInfo)
+        .then((data) =>{
+            if(data.ProcessStatus === constants.STATUS_OK)
+            {
+                commit('reserve', { isReserved: true, seatNo: reserveInfo.seatNo })
+            }
+        })
+    },
+    release ({ commit }, reserveInfo) {
+        //解除処理
+        Vue.http.delete('/emplocation/ClearEmpLocationInfo', {
+            data: reserveInfo
+        })
+        .then((data) =>{
+            if(data.ProcessStatus === constants.STATUS_OK)
+            {
+                commit('reserve', { isReserved: false, seatNo: '' })
+            }
+        })
     },
     // メッセージを出力させない為に共通を使用しない
     getIsReserved ({ commit }, empInfo) {
