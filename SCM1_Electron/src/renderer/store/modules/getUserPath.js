@@ -4,14 +4,12 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    userPath:[],
-    isSearched: false
+    userPath:[]
 }
 
 const mutations = {
     setPath (state , userpath){
         state.userPath = userpath.EmpLocation
-        state.isSearched = userpath.isSearched
     }
 }
 

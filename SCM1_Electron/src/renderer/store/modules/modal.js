@@ -19,6 +19,9 @@ const state = {
       state.message = ''
       state.actionName = ''
       state.param = ''
+    },
+    changeParam (state, changedParam){
+      state.param = changedParam
     }
   }
   
@@ -29,7 +32,7 @@ const state = {
     showError ({ commit }, message) {
       commit('setModal', { modalName: constants.MODAL_NM_ERROR, message: message })
     },
-    showRegAlert ({ commit }, modalInfo) {
+    showAlertReg ({ commit }, modalInfo) {
       commit('setModal', { modalName: constants.MODAL_NM_REGALERT, message: modalInfo.message, actionName: modalInfo.actionName, param: modalInfo.param })
     }
   }

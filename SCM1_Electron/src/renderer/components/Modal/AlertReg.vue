@@ -2,7 +2,7 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
-		<input type="checkbox" name="check" :v-model="fixed" id="kotei">
+		<input type="checkbox" name="check" v-model="fixed" id="kotei">
 		<label for="kotei" class="label">固定席として登録する</label><br>
 		<button type="button" class="btn" @click="confirmed">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
@@ -14,20 +14,30 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations, mapState } = createNamespacedHelpers('modal')
 
 export default {
+	data: function () {
+		return {
+			fixed: false
+		}
+	},
 	props: ['message'],
 	computed:{
 		...mapState([
             'actionName', 'param'
-        ]),
+		])
 	},
     methods:{
         ...mapMutations([
-            'hideModal'
+            'hideModal', 'changeParam'
 		]),
 		
         confirmed: function () {
-			this.param.fixedFlg = false
-			if(this.fixed == true){this.param.fixedFlg = true}
+			let changedParam = {
+                        Token : this.param.Token,
+                        EmpNo: this.param.EmpNo,
+                        seatNo: this.param.seatNo,
+                        fixedFlg : this.fixed
+			}
+			this.changeParam(changedParam)
             this.$store.dispatch(this.actionName, this.param)
             this.hideModal()
         }
