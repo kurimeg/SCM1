@@ -16,6 +16,11 @@ const mutations = {
     fetchEmpInfo (state , empInfo) {
         state.empInfo = empInfo.empInfo
         state.loginEmpName = empInfo.loginEmpName
+    },
+    reset (state){
+        state.seatInfo = [],
+        state.empInfo = [],
+        state.loginEmpName = ''
     }
 }
 
