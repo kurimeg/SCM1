@@ -15,6 +15,8 @@ namespace SCM1_API.Model.ScreenModel.EmpLocationInfo
         public string EmpNo { get; set; }
         [DataMember]
         public string seatNo { get; set; }
+        [DataMember]
+        public bool FixedFlg { get; set; }
     }
 
     public class EmpLocationResponse : ScmApiBaseParameter.Response

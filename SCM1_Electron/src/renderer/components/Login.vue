@@ -12,7 +12,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-
+import * as constants from '@/assets/constants'
 const { mapActions } = createNamespacedHelpers('auth')
 
  export default {
@@ -24,22 +24,31 @@ const { mapActions } = createNamespacedHelpers('auth')
    },
     methods: {
         ...mapActions([
-            'login'
+            'login', 'guestLogin'
         ]),
 
         onLogin: function () {
             this.login({
-                EmpNo: this.empNo,
-				Password: this.password
+						EmpNo: this.empNo,
+						Password: this.password
             })
         }
 	},
 	created: function () {
-        if (this.$store.state.auth.isLogged) {
+		if(process.env.IS_WEB){
+			this.guestLogin({
+						authInfo: {
+									EmpNo: '',
+									Password: ''
+						},
+						token: constants.GUEST_USER_TOKEN
+			})
+		}
+        else if (this.$store.state.auth.isLogged) {
 			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
             this.login({
-                EmpNo: authInfo.EmpNo,
-				Password: authInfo.Password
+						EmpNo: authInfo.EmpNo,
+						Password: authInfo.Password
             })
         }
     }

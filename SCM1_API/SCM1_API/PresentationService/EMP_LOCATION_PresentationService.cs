@@ -114,12 +114,12 @@ namespace SCM1_API.PresentationService
             if (onLocationEmpId == 0)
             {
                 //最初の席だったら登録して終了
-                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
+                empLocation_Service.RegisterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo, fixedFlg:req.FixedFlg);
             }
             else
             {
                 //最初の席じゃないなら更新
-                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo);
+                empLocation_Service.ReRegiseterEmpLocation_Service(int.Parse(req.EmpNo), req.seatNo, fixedFlg: req.FixedFlg);
             }
 
             return new EmpLocationResponse()

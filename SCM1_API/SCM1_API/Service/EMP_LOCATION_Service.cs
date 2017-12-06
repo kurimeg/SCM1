@@ -82,9 +82,9 @@ namespace SCM1_API.Service
         /// </summary>
         /// <param name="empId"></param>
         /// <param name="seatNo"></param>
-        public bool RegisterEmpLocation_Service(int empId, string seatNo, string phoneNo = null)
+        public bool RegisterEmpLocation_Service(int empId, string seatNo, string phoneNo = null,bool fixedFlg = false)
         {
-            var param = new { EMP_NO = empId, seat_NO = seatNo, EXTENSION_LINE_NO  = phoneNo};
+            var param = new { EMP_NO = empId, seat_NO = seatNo, EXTENSION_LINE_NO  = phoneNo, FIXED_FLG = fixedFlg };
             return T_EMP_LOCATION_Repository.RegisterEmpLocation(param) > 0? true: false;
         }
 
@@ -93,9 +93,9 @@ namespace SCM1_API.Service
         /// </summary>
         /// <param name="empId"></param>
         /// <param name="seatNo"></param>
-        public bool ReRegiseterEmpLocation_Service(int empId, string seatNo)
+        public bool ReRegiseterEmpLocation_Service(int empId, string seatNo, bool fixedFlg = false)
         {
-            var param = new { EMP_NO = empId, seat_NO = seatNo };
+            var param = new { EMP_NO = empId, seat_NO = seatNo, FIXED_FLG = fixedFlg };
             return T_EMP_LOCATION_Repository.ReRegisterEmpLocation(param) > 0 ? true : false;
         }
     }
