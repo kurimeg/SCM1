@@ -177,7 +177,8 @@ export default {
 		}),
 
 		...mapMutations({
-				showSearch: 'search/showSearch'
+				showSearch: 'search/showSearch',
+				showLoading: 'loading/showLoading'
 		}),
 		logout:function(){
 			this.showAlert({ 
@@ -185,9 +186,13 @@ export default {
                     actionName: 'auth/logout', 
                     param: {}
                 })
+		},
+		initialize: function(){
+			
 		}
 	},
 	created: function(){
+		this.showLoading(true)
 		this.firstview({
 			Token: this.$store.state.auth.token
 		})
@@ -208,7 +213,7 @@ export default {
 			})},300000)
 	},
 	updated: function(){
-		this.$store.commit('loading/showLoading', false)
+		this.showLoading(false)
 	},
 	components: {
 		Seat, Search

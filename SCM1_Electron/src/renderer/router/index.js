@@ -21,10 +21,4 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  // Loadingの削除はVueコンポーネントのライフサイクルフック(created,mounted,updatedなど)で実装すること！
-  store.commit('loading/showLoading', true)
-  next()
-})
-
 export default router
