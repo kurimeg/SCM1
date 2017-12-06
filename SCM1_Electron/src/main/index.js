@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 let mainWindow
 let appIcon = null
+var force_quit = false
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -19,16 +20,19 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
+    width: 1000,
     height: 563,
     useContentSize: true,
-    width: 1000,
     resizable: false
   })
 
   mainWindow.loadURL(winURL)
 
-  mainWindow.on('closed', () => {
-    mainWindow = null
+  mainWindow.on('close', (e) => {
+    if(!force_quit){
+      e.preventDefault()
+      mainWindow.hide()
+    }
   })
   
   //メニューを消す処理
@@ -47,11 +51,9 @@ app.on('ready', () => {
     if (mainWindow) {
       if (mainWindow.isMinimized()){
         mainWindow.focus()
-      } else if (mainWindow.isVisible()) {
+      } else if (!mainWindow.isVisible()) {
         mainWindow.show()
       }
-    } else {
-      createWindow()
     }
   })
   appIcon.setToolTip('SekiPa : 座席管理システム')
@@ -60,7 +62,7 @@ app.on('ready', () => {
   //自動スタートアップ設定
   var AutoLaunch = require('auto-launch')
   var sekipaAutoLauncher = new AutoLaunch({
-      name: 'SekiPa'
+    name: 'SekiPa'
   })
   
   sekipaAutoLauncher.enable()
@@ -68,31 +70,33 @@ app.on('ready', () => {
   
   sekipaAutoLauncher.isEnabled()
   .then(function(isEnabled){
-      if(isEnabled){
-          return;
-      }
-      sekipaAutoLauncher.enable()
+    if(isEnabled){
+      return;
+    }
+    sekipaAutoLauncher.enable()
   })
   .catch(function(err){
-      // handle error
+    // handle error
   })
 })
 
 //二つ目のインスタンスを許可しない
 const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {
   if (mainWindow) {
-      if (mainWindow.isMinimized()){
-        mainWindow.focus()
-      } else if (mainWindow.isVisible()) {
-        mainWindow.show()
-      }
-    } else {
-      createWindow()
+    if (mainWindow.isMinimized()){
+      mainWindow.focus()
+    } else if (!mainWindow.isVisible()) {
+      mainWindow.show()
     }
+  }
 })
 if (shouldQuit) {
   app.quit()
 }
+
+app.on('before-quit', () => {
+  force_quit = true
+})
 
 app.on('window-all-closed', () => {})
 
