@@ -10,7 +10,7 @@
             </input>			
         </div>
         <div class="announceChar">{{ this.filterEmp(searchtxt).searchMessage }}</div>
-		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath" v-on:click="hideSearch">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </transition>
 </template>
