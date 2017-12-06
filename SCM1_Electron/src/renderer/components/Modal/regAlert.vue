@@ -2,6 +2,8 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
+		<input type="checkbox" name="fixedFlg" id="kotei">
+		<label for="kotei" class="label">固定席として登録する</label><br>
 		<button type="button" class="btn" @click="confirmed">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
     </div>
@@ -38,13 +40,16 @@ body {
 button:focus{
  outline:none;
 }
+input:focus{
+ outline:none;
+}
 .form{
 	position: absolute;
 	border: 5px solid #28a1f7;
 	border-radius: 15px;
 	background-color: #d8d8d8;
 	overflow: hidden;
-	width: 500px;
+	width: 400px;
 	z-index: 3;
 	padding: 3px;
 	text-align: center;
@@ -65,13 +70,13 @@ button:focus{
 	border-radius: 15px;
 	cursor: pointer;
 	text-decoration: none;
-	margin: 10px 20px;
+	margin: 10px 10px;
 	border-style: none;
 }
 .back{
 	width: 30px;
 	height: 30px;
-	margin: 3px 3px 0 auto;
+	margin: 0 3px 0 auto;
 	display: block;
 	background: none;
 	color: #939393;
@@ -79,5 +84,17 @@ button:focus{
 	font-family: 'Century Gothic';
 	border-style: none;
 	cursor: pointer;
+}
+#kotei{
+	margin-top: 10px;
+	-moz-transform:		scale(1.4);
+	-webkit-transform:	scale(1.4);
+	transform:		scale(1.4);
+}
+.label{
+	margin-top: 20px;
+	color: #939393;
+	font-size: 15px;
+	font-family: 'Century Gothic';
 }
 </style>

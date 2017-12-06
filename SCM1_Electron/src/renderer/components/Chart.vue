@@ -2,6 +2,7 @@
 	<div class="main-layer">
 		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
 		<search v-if="show"></search>
+		<button class="logout" @click="this.logout">Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -144,6 +145,7 @@
 <script>
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
+import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
@@ -167,7 +169,8 @@ export default {
 		...mapActions({
 			firstview: 'getMaster/firstview',
 			fetchEmpInfo: 'getMaster/fetchEmpInfo',
-			getIsReserved: 'reserve/getIsReserved'
+			getIsReserved: 'reserve/getIsReserved',
+			showAlert: 'modal/showAlert'
 		}),
 
 		...mapMutations({
@@ -175,6 +178,14 @@ export default {
 			}),
 			changeEmpName: function (seatNo, empName) {
 			document.getElementById(seatNo).innerHTML = empName
+		},
+
+		logout:function(event){
+			this.showAlert({ 
+                    message: messages.I_005, 
+                    actionName: 'auth/logout', 
+                    param: {}
+                })
 		}
 	},
 	created: function(){
@@ -201,6 +212,9 @@ body {
     margin: 0;
     font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
 }
+button:focus{
+ outline:none;
+}
 .main-layer{
 	height: 800px;
 	margin: 15px 0 0 20px;
@@ -222,6 +236,19 @@ body {
 	float: left;
 	z-index: 999;
 	position: absolute;
+	cursor: pointer;
+}
+.logout{
+	margin-top: 5px;
+	margin-bottom: 6px;
+	margin-right: 8px;
+	color: #cccccc;
+	font-size: 18px;
+	font-family: 'Century Gothic';
+	display: block;
+	float: right;
+	border-style: dashed;
+	background: none;
 	cursor: pointer;
 }
 

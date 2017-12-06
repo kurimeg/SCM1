@@ -34,18 +34,19 @@ import * as messages from '@/assets/messages'
         ...mapActions({
             reserve: 'reserve/reserve',
             showError: 'modal/showError',
-            showAlert: 'modal/showAlert'
+            showAlert: 'modal/showAlert',
+            showRegAlert: 'modal/showRegAlert'
         }),
         onReserve: function (event) {
             //座席未登録 & 該当座席の名前がない場合
             if(!this.displayEmpNm && !this.isReserved){                
-                this.showAlert({
+                this.showRegAlert({
                     message: messages.I_003, 
                     actionName: 'reserve/reserve', 
                     param: {
                         Token : this.token,
                         EmpNo: this.empNo,
-                        seatNo: event.target.id
+                        seatNo: event.target.id,
                     }
                 })
             //座席未登録 & 該当座席の名前が自分以外の場合

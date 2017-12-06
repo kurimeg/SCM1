@@ -10,6 +10,7 @@
 import { createNamespacedHelpers } from 'vuex'
 import Alert from './Modal/Alert'
 import Error from './Modal/Error'
+import regAlert from './Modal/regAlert'
 const { mapState, mapMutations } = createNamespacedHelpers('modal')
 
 export default {
@@ -22,7 +23,7 @@ export default {
         }
     },
     components: {
-        Alert,Error
+        Alert,Error,regAlert
     }
 }
 </script>
