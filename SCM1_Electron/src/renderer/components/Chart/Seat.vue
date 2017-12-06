@@ -65,14 +65,7 @@ import * as messages from '@/assets/messages'
                 })
             }
         }
-	},
-    beforeUpdate: function(){
-        if(this.seat.EMP_NO === this.empNo || this.seat.DISPLAY_EMP_NM === null){
-            document.getElementById(this.seat.SEAT_NO).disabled = ""
-        }else{
-            document.getElementById(this.seat.SEAT_NO).disabled = "true"
-        }
-    }
+	}
 }
 </script>
 
