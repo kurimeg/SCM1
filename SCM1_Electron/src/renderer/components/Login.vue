@@ -51,7 +51,10 @@ const { mapActions } = createNamespacedHelpers('auth')
 						Password: authInfo.Password
             })
         }
-    }
+	},
+	mounted: function(){
+		this.$store.commit('loading/showLoading', false)
+	}
 }
 </script>
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Auth from '@/store/modules/auth'
+import store from '@/store'
 import Login from '@/components/Login'
 import Chart from '@/components/Chart'
 
@@ -16,22 +16,15 @@ const router = new Router({
     {
       path: '/chart',
       name: 'chart',
-      component: Chart,
-      meta: {
-        requiresAuth: true
-      }
+      component: Chart
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !Auth.state.isLogged) {
-    next({
-      path: '/login'
-    })
-  } else {
-    next()
-  }
+  // Loadingの削除はVueコンポーネントのライフサイクルフック(created,mounted,updatedなど)で実装すること！
+  store.commit('loading/showLoading', true)
+  next()
 })
 
 export default router

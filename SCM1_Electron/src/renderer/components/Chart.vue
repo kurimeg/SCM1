@@ -2,7 +2,7 @@
 	<div class="main-layer">
 		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
 		<search v-if="show"></search>
-		<button class="logout" @click="this.logout">Log out</button>
+		<button class="logout" @click="this.logout" v-if="!isGuest">Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -134,7 +134,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].seat_NO }" :seat="seat" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}" :disabled="isGuest"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" :seat="seat" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}" :disabled="isGuest"></seat>
 			</div>
 
 		</div>
@@ -149,11 +149,6 @@ import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-	data: function () {
-		return {
-
-		}
-	},
 	computed:{
 		...mapState('auth', {
 			isGuest: state => state.isGuest
@@ -178,12 +173,8 @@ export default {
 
 		...mapMutations({
 				showSearch: 'search/showSearch'
-			}),
-			changeEmpName: function (seatNo, empName) {
-			document.getElementById(seatNo).innerHTML = empName
-		},
-
-		logout:function(event){
+		}),
+		logout:function(){
 			this.showAlert({ 
                     message: messages.I_005, 
                     actionName: 'auth/logout', 
@@ -196,13 +187,23 @@ export default {
 			Token: this.$store.state.auth.token
 		})
 		this.fetchEmpInfo({
-			Token: this.$store.state.auth.token,
-			EmpNo: ""
+			token: {
+						Token: this.$store.state.auth.token,
+						EmpNo: ""
+			},
+			loginEmpNO: JSON.parse(localStorage.getItem('authInfo')).EmpNo
 		})
 		this.getIsReserved({
 			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
 			Token: this.$store.state.auth.token
 		})
+		//5分でポーリングして初期表示処理を呼び出す
+		setInterval(() => {this.firstview({
+			Token: this.$store.state.auth.token
+			})},300000)
+	},
+	updated: function(){
+		this.$store.commit('loading/showLoading', false)
 	},
 	components: {
 		Seat, Search
