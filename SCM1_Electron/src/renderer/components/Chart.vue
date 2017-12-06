@@ -2,7 +2,7 @@
 	<div class="main-layer">
 		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
 		<search v-if="show"></search>
-		<button class="logout" @click="this.logout">Log out</button>
+		<button class="logout" @click="this.logout" v-if="!isGuest">Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -174,7 +174,7 @@ export default {
 		...mapMutations({
 				showSearch: 'search/showSearch'
 		}),
-		logout:function(event){
+		logout:function(){
 			this.showAlert({ 
                     message: messages.I_005, 
                     actionName: 'auth/logout', 
