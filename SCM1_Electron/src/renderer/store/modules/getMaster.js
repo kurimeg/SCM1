@@ -5,7 +5,8 @@ import * as messages from '@/assets/messages'
 
 const state = {
     seatInfo: [],
-    empInfo: []
+    empInfo: [],
+    loginEmpName: ''
 }
 
 const mutations = {
@@ -13,7 +14,8 @@ const mutations = {
         state.seatInfo = seatInfo
     },
     fetchEmpInfo (state , empInfo) {
-        state.empInfo = empInfo
+        state.empInfo = empInfo.empInfo
+        state.loginEmpName = empInfo.loginEmpName
     }
 }
 
@@ -27,12 +29,13 @@ const actions = {
             } 
         })
     },
-    fetchEmpInfo({ commit }, token) {
-        Vue.http.post('/emp/FetchEmpInfo', token)
+    fetchEmpInfo({ commit }, authInfo) {
+        Vue.http.post('/emp/FetchEmpInfo', authInfo.token)
         .then((data) =>{          
             if(data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('fetchEmpInfo', data.EmpInfo)
+                let loginEmpName = data.EmpInfo.find(emp => emp.EMP_NO === authInfo.loginEmpNO).DISPLAY_EMP_NM
+                commit('fetchEmpInfo', { empInfo: data.EmpInfo, loginEmpName: loginEmpName})
             } 
         })
     }

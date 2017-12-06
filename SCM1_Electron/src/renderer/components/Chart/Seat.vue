@@ -17,14 +17,17 @@ import * as messages from '@/assets/messages'
 			token: state => state.token
         }),
         ...mapState('getMaster', {
-            empLoyeeName (state) {
-                return state.empInfo.find(emp => emp.EMP_NO === this.empNo).DISPLAY_EMP_NM
-            }
+            loginEmpName: state => state.loginEmpName
         }),
         ...mapState('reserve', {
             isReserved: state => state.isReserved,
             displayEmpNm (state) {
-                return this.seat.SEAT_NO === state.seatNo ? this.empLoyeeName : this.seat.DISPLAY_EMP_NM
+                if(this.seat.SEAT_NO === state.reservedSeatNo){
+                    return this.loginEmpName
+                } else if(this.seat.EMP_NO === this.empNo){
+                    return ''
+                }                  
+                return this.seat.DISPLAY_EMP_NM 
             }
         })
 
@@ -50,10 +53,10 @@ import * as messages from '@/assets/messages'
                     }
                 })
             //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.empLoyeeName && !this.isReserved){
+            }else if(this.displayEmpNm != this.loginEmpName && !this.isReserved){
                 this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
-            }else if(this.displayEmpNm == this.empLoyeeName && this.isReserved){
+            }else if(this.displayEmpNm == this.loginEmpName && this.isReserved){
                 this.showAlert({ 
                     message: messages.I_004, 
                     actionName: 'reserve/reserve', 
@@ -63,7 +66,7 @@ import * as messages from '@/assets/messages'
                     }
                 })
             //座席登録済 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.empLoyeeName && this.isReserved){
+            }else if(this.displayEmpNm != this.loginEmpName && this.isReserved){
                 this.showError(messages.E_003)
             }
         }

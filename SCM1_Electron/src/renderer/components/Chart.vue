@@ -192,8 +192,11 @@ export default {
 			Token: this.$store.state.auth.token
 		})
 		this.fetchEmpInfo({
-			Token: this.$store.state.auth.token,
-			EmpNo: ""
+			token: {
+						Token: this.$store.state.auth.token,
+						EmpNo: ""
+			},
+			loginEmpNO: JSON.parse(localStorage.getItem('authInfo')).EmpNo
 		})
 		this.getIsReserved({
 			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
