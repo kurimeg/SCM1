@@ -17,6 +17,11 @@ For Internal Development
 + ロギング
     + NLOGを使用
 
+### Web開発
++ ElectronをWeb用にビルドするとHTMLとJS等を出力
++ IEではJSのPromiseに対応していない（下記を読み込ませる必要あり）
+    + ```<script src="https://www.promisejs.org/polyfills/promise-6.1.0.min.js"></script>```
+
 ## はじめに
 このリポジトリでは画面側とAPI側を管理する予定です。  
 (調べながら/走りながら)  
