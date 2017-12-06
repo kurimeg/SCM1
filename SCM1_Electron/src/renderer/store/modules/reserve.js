@@ -7,14 +7,14 @@ import * as messages from '@/assets/messages'
 
 const state = {
     isReserved: false,
-    seatNo: ''
+    reservedSeatNo: ''
 }
 
 const mutations = {
     reserve (state , reserve) {
         state.isReserved = reserve.isReserved
-        state.seatNo = reserve.seatNo
-    },
+        state.reservedSeatNo = reserve.seatNo
+    }
 }
 
 const actions = {
@@ -47,7 +47,7 @@ const actions = {
         .then((response) => {
             if(response.data.ProcessStatus === constants.STATUS_OK)
             {
-                commit('reserve', { isReserved: true, seatNo: response.data.EmpLocation[0].seat_NO })
+                commit('reserve', { isReserved: true, seatNo: response.data.EmpLocation[0].SEAT_NO })
             }
         })
     }
