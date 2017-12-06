@@ -45,6 +45,7 @@ export default {
 			EmpNo: event.target.id,
 			Token: this.$store.state.auth.token
 			})
+			this.hideSearch()
 		}
    }
 }
