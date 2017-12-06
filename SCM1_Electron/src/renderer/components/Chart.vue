@@ -149,11 +149,6 @@ import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-	data: function () {
-		return {
-
-		}
-	},
 	computed:{
 		...mapState('auth', {
 			isGuest: state => state.isGuest
@@ -206,6 +201,9 @@ export default {
 		setInterval(() => {this.firstview({
 			Token: this.$store.state.auth.token
 			})},300000)
+	},
+	updated: function(){
+		this.$store.commit('loading/showLoading', false)
 	},
 	components: {
 		Seat, Search

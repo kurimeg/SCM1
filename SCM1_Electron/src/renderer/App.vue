@@ -1,20 +1,19 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div class="loading-layer" v-if="this.$store.state.loading.show">
-      <img src="./assets/images/loading.gif" class="loading"></img>
-    </div>
+    <loading></loading>
     <modal></modal>
   </div>
 </template>
 
 <script>
 import Modal from './components/Modal'
+import Loading from './components/Loading'
 
 export default {
-  name: 'electron_vue',
+  name: 'SekiPa',
   components: {
-    Modal
+    Loading, Modal
   }
 }
 </script>
@@ -66,18 +65,16 @@ export default {
     margin: 0 0 0 0;
     z-index: 999;
   }
-  .loading{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-  }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  .fade-enter, .fade-leave-to{
+    opacity: 0
+  }
+  .fade-loading-leave-active {
+    transition: opacity .3s
+  }
+  .fade-loading-leave-to{
     opacity: 0
   }
   body{
