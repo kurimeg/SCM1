@@ -9,8 +9,6 @@ const client = axios.create({
 export default (Vue, { store }) => {
     
     client.interceptors.request.use((config) => {
-        //TODO: postするたびは微妙
-        // store.commit('loading/showLoading', true)
         return config;
     }, (error) => {
         return Promise.reject(error)
@@ -26,10 +24,8 @@ export default (Vue, { store }) => {
         else{
             store.dispatch('modal/showError',response.data.ResponseMessage)
         }
-        // store.commit('loading/showLoading', false)
         return response.data
     }, (error) => {
-        // store.commit('loading/showLoading', false)
         store.dispatch('modal/showError',response.data.ResponseMessage)
         return Promise.reject(error)
     })
