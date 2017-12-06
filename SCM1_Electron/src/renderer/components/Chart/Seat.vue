@@ -53,9 +53,6 @@ import * as messages from '@/assets/messages'
                         seatNo: event.target.id
                     }
                 })
-            //座席未登録 & 該当座席の名前が自分以外の場合
-            }else if(this.displayEmpNm != this.loginEmpName){
-                this.showError(messages.E_002)
             //座席登録済 & 該当座席の名前が自分の場合
             }else if(this.displayEmpNm == this.loginEmpName && this.isReserved){
                 this.showAlert({ 
@@ -68,7 +65,14 @@ import * as messages from '@/assets/messages'
                 })
             }
         }
-	}
+	},
+    beforeUpdate: function(){
+        if(this.seat.EMP_NO === this.empNo || this.seat.DISPLAY_EMP_NM === null){
+            document.getElementById(this.seat.SEAT_NO).disabled = ""
+        }else{
+            document.getElementById(this.seat.SEAT_NO).disabled = "true"
+        }
+    }
 }
 </script>
 
@@ -80,9 +84,10 @@ body {
 button:focus{
  outline:none;
 }
-button :disabled{
+button:disabled{
     background-color: #cccccc;
-    color:#444444;
+    color:#777777;
+    cursor: default;
 }
 .seat {
     width: 24px;
@@ -109,16 +114,16 @@ button :disabled{
     padding: 0 0;
 }
 .searched{
-    animation: changecolor 30s 1 forwards;
-    -webkit-animation: changecolor 30s 1 forwards;
+    animation: changecolor 30s 1 ;
+    -webkit-animation: changecolor 30s 1 ;
 }
 @keyframes changecolor {
     1% { background-color: #ff7777; }
-    2% { background-color: #ffffff; }
+    2% { background-color: #cccccc; }
     3% { background-color: #ff7777; }
-    4% { background-color: #ffffff; }
+    4% { background-color: #cccccc; }
     6% { background-color: #ff7777; }
     90% { background-color: #ff7777; }
-    100% { background-color: #ffffff; }
+    100% { background-color: #cccccc; }
 }
 </style>
