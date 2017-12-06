@@ -115,7 +115,7 @@
       , #SEAT_NO#
       , #EXTENSION_LINE_NO#
       , '0'
-      , '0'
+      , #FIXED_FLG#
       , #EMP_NO#
       , GETDATE()
       , #EMP_NO#
@@ -130,11 +130,10 @@
     SET
       SEAT_NO = #SEAT_NO#
       , LAST_UPDATE_EMP_NO = #EMP_NO#
+      , FIXED_FLG = #FIXED_FLG#
 		  , LAST_UPDATE_DT = GETDATE()
     WHERE
       EMP_NO = #EMP_NO#
-    AND
-      FIXED_FLG = '0'
   </update>
   
   
