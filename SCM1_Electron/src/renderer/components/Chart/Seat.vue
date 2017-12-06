@@ -47,6 +47,7 @@ import * as messages from '@/assets/messages'
                         Token : this.token,
                         EmpNo: this.empNo,
                         seatNo: event.target.id,
+                        fixedFlg : ''
                     }
                 })
             //座席未登録 & 該当座席の名前が自分以外の場合

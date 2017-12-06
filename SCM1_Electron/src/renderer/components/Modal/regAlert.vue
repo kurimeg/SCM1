@@ -2,7 +2,7 @@
 	<div class="form">
 		<button type="button" class="back" @click="hideModal">✖</button>
 		<div class="message">{{ message }}</div>
-		<input type="checkbox" name="fixedFlg" id="kotei">
+		<input type="checkbox" name="check" :v-model="fixed" id="kotei">
 		<label for="kotei" class="label">固定席として登録する</label><br>
 		<button type="button" class="btn" @click="confirmed">ＯＫ</button>
 		<button type="button" class="btn" @click="hideModal">キャンセル</button>
@@ -24,7 +24,10 @@ export default {
         ...mapMutations([
             'hideModal'
 		]),
+		
         confirmed: function () {
+			this.param.fixedFlg = false
+			if(this.fixed == true){this.param.fixedFlg = true}
             this.$store.dispatch(this.actionName, this.param)
             this.hideModal()
         }
@@ -49,7 +52,7 @@ input:focus{
 	border-radius: 15px;
 	background-color: #d8d8d8;
 	overflow: hidden;
-	width: 400px;
+	width: 500px;
 	z-index: 3;
 	padding: 3px;
 	text-align: center;
@@ -70,7 +73,7 @@ input:focus{
 	border-radius: 15px;
 	cursor: pointer;
 	text-decoration: none;
-	margin: 10px 10px;
+	margin: 10px 20px;
 	border-style: none;
 }
 .back{
