@@ -230,7 +230,8 @@ button:focus{
  outline:none;
 }
 .main-layer{
-	height: 800px;
+	width: 1409px;
+	height: 789px;
 	margin: 15px 0 0 20px;
 }
 .tables{

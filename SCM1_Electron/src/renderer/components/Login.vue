@@ -38,7 +38,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
         }
 	},
 	created: function () {
-		this.showLoading(true)
+		
 		// WEB用
 		// this.guestLogin({
 		// 		authInfo: {
@@ -48,6 +48,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 		// 		token: constants.GUEST_USER_TOKEN
 		// })
 		if(process.env.IS_WEB){
+			this.showLoading(true)
 			this.guestLogin({
 				authInfo: {
 					EmpNo: constants.GUEST_USER_EMP_NO,
@@ -57,15 +58,13 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 			})
 		}
         else if (this.$store.state.auth.isLogged) {
+			this.showLoading(true)
 			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
             this.login({
 						EmpNo: authInfo.EmpNo,
 						Password: authInfo.Password
             })
         }
-	},
-	mounted: function(){
-		this.showLoading(false)
 	}
 }
 </script>
@@ -86,7 +85,7 @@ button:focus{
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 1429px;
-	height: 833px;
+	height: 804px;
     margin: 0 0 0 0;
 	z-index: 3;
 }
