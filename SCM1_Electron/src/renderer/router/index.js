@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import auth from '@/store/modules/auth'
 import Login from '@/components/Login'
 import Chart from '@/components/Chart'
 
@@ -23,16 +22,5 @@ const router = new Router({
     }
   ]
 })
-
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !auth.state.isLogged) {
-    next({
-    path: '/login'
-    })
-  } else {
-    next()
-  }
-})
-
 
 export default router

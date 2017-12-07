@@ -39,6 +39,14 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 	},
 	created: function () {
 		this.showLoading(true)
+		// WEB用
+		// this.guestLogin({
+		// 		authInfo: {
+		// 			EmpNo: constants.GUEST_USER_EMP_NO,
+		// 			Password: constants.GUEST_USER_PASSWORD
+		// 		},
+		// 		token: constants.GUEST_USER_TOKEN
+		// })
 		if(process.env.IS_WEB){
 			this.guestLogin({
 				authInfo: {
