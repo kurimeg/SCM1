@@ -74,8 +74,8 @@ button:focus{
 }
 .button{
 	position: absolute;
-	margin-left: -40px;
-	margin-top: 2px;
+	margin-left: -320px;
+	margin-top: 4px;
 	width: 30px;
 	height: 30px;
 }
@@ -111,7 +111,7 @@ button:focus{
 	margin-left: 30px;
 	width: 330px;
 	height: 35px;
-	text-indent: 1em;
+	text-indent: 2.3em;
 	font-family: 'Century Gothic';
 	font-size: 20px;
 	background-color: #ffffff;
