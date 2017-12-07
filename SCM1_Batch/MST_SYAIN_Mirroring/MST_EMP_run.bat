@@ -1,0 +1,2 @@
+set JAVA_HOME="D:\Program Files (x86)\Java\jdk1.8.0_25\bin\java"
+%JAVA_HOME% -Xms10M -Xmx10M -cp .;lib/routines.jar;lib/advancedPersistentLookupLib-1.0.jar;lib/commons-collections-3.2.2.jar;lib/dom4j-1.6.1.jar;lib/jboss-serialization.jar;lib/log4j-1.2.15.jar;lib/log4j-1.2.16.jar;lib/sqljdbc42.jar;lib/trove.jar;mst_emp_0_1.jar; batch_tos.mst_emp_0_1.MST_EMP --context=Default %* 
