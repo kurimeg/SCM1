@@ -119,8 +119,8 @@ const {autoUpdater} = require("electron-updater")
 autoUpdater.on('update-downloaded', () => {
   var index = dialog.showMessageBox({
     message: "アップデートあり",
-    detail: "再起動してインストールできます。",
-    buttons: ["再起動", "後で"]
+    detail: "アプリを再起動してインストールします。",
+    buttons: ["再起動"]
   })
   if (index === 0) {
     autoUpdater.quitAndInstall()
