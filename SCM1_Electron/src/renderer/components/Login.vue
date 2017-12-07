@@ -86,7 +86,7 @@ button:focus{
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 1429px;
-	height: 833px;
+	height: 804px;
     margin: 0 0 0 0;
 	z-index: 3;
 }

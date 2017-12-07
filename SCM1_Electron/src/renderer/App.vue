@@ -25,16 +25,15 @@ export default {
   }
   .main-layer {
       position: absolute;
-      width: 1400px;
-      height: 700px;
-      margin: 15px 0 0 20px;
+      width: 1429px;
+      height: 804px;
       z-index: 1;
       overflow: hidden;
   }
   .seat-layer {
     position: absolute;
-    width: 1400px;
-    height: 800px;
+    width: 1429px;
+    height: 804px;
     z-index: 2;
   }
   .search-layer{
@@ -50,7 +49,7 @@ export default {
   .alert-layer{
     position: absolute;
     width: 1429px;
-    height: 833px;
+    height: 804px;
     margin: 0 0 0 0;
     z-index: 4;
     display: flex;
@@ -61,7 +60,7 @@ export default {
     position: absolute;
     background: #ffffff;
     width: 1429px;
-    height: 833px;
+    height: 804px;
     margin: 0 0 0 0;
     z-index: 999;
   }
