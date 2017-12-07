@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="seat" @click="onReserve">{{ displayEmpNm }}</button>
+    <button type="button" class="seat" @click="onReserve" :disabled="isGuest || isAnotherReservedSeat">{{ displayEmpNm }}</button>
 </template>
 
 <script>
@@ -14,7 +14,8 @@ import * as messages from '@/assets/messages'
     },
     computed: {
         ...mapState('auth', {
-			token: state => state.token
+            token: state => state.token,
+            isGuest: state => state.isGuest
         }),
         ...mapState('getMaster', {
             loginEmpName: state => state.loginEmpName
@@ -28,6 +29,9 @@ import * as messages from '@/assets/messages'
                     return ''
                 }                  
                 return this.seat.DISPLAY_EMP_NM 
+            },
+            isAnotherReservedSeat (state) {                
+                return !(this.seat.EMP_NO === this.empNo) && this.seat.DISPLAY_EMP_NM 
             }
         })
 
@@ -65,14 +69,7 @@ import * as messages from '@/assets/messages'
                 })
             }
         }
-	},
-    updated: function(){
-        if(this.seat.EMP_NO === this.empNo || this.seat.DISPLAY_EMP_NM === null){
-            document.getElementById(this.seat.SEAT_NO).disabled = ""
-        }else{
-            document.getElementById(this.seat.SEAT_NO).disabled = "true"
-        }
-    }
+	}
 }
 </script>
 

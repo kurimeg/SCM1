@@ -139,7 +139,7 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" :seat="seat" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}" :disabled="isGuest"></seat>
+				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" :seat="seat" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
 			</div>
 
 		</div>
@@ -177,7 +177,8 @@ export default {
 		}),
 
 		...mapMutations({
-				showSearch: 'search/showSearch'
+				showSearch: 'search/showSearch',
+				showLoading: 'loading/showLoading'
 		}),
 		logout:function(){
 			this.showAlert({ 
@@ -185,9 +186,13 @@ export default {
                     actionName: 'auth/logout', 
                     param: {}
                 })
+		},
+		initialize: function(){
+			
 		}
 	},
 	created: function(){
+		this.showLoading(true)
 		this.firstview({
 			Token: this.$store.state.auth.token
 		})
@@ -208,7 +213,7 @@ export default {
 			})},300000)
 	},
 	updated: function(){
-		this.$store.commit('loading/showLoading', false)
+		this.showLoading(false)
 	},
 	components: {
 		Seat, Search

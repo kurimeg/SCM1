@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store'
 import Login from '@/components/Login'
 import Chart from '@/components/Chart'
 
@@ -16,15 +15,12 @@ const router = new Router({
     {
       path: '/chart',
       name: 'chart',
-      component: Chart
+      component: Chart,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
-})
-
-router.beforeEach((to, from, next) => {
-  // Loadingの削除はVueコンポーネントのライフサイクルフック(created,mounted,updatedなど)で実装すること！
-  store.commit('loading/showLoading', true)
-  next()
 })
 
 export default router

@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
 import * as constants from '@/assets/constants'
-const { mapActions } = createNamespacedHelpers('auth')
+import { mapActions, mapMutations, mapState } from 'vuex'
+
 
  export default {
    data: function () {
@@ -23,10 +23,13 @@ const { mapActions } = createNamespacedHelpers('auth')
      }
    },
     methods: {
-        ...mapActions([
-            'login', 'guestLogin'
-        ]),
-
+        ...mapActions({
+			login: 'auth/login', 
+			guestLogin: 'auth/guestLogin'
+		}),
+		...mapMutations({
+			showLoading: 'loading/showLoading'
+		}),
         onLogin: function () {
             this.login({
 						EmpNo: this.empNo,
@@ -35,13 +38,22 @@ const { mapActions } = createNamespacedHelpers('auth')
         }
 	},
 	created: function () {
+		this.showLoading(true)
+		// WEB用
+		// this.guestLogin({
+		// 		authInfo: {
+		// 			EmpNo: constants.GUEST_USER_EMP_NO,
+		// 			Password: constants.GUEST_USER_PASSWORD
+		// 		},
+		// 		token: constants.GUEST_USER_TOKEN
+		// })
 		if(process.env.IS_WEB){
 			this.guestLogin({
-						authInfo: {
-									EmpNo: '',
-									Password: ''
-						},
-						token: constants.GUEST_USER_TOKEN
+				authInfo: {
+					EmpNo: constants.GUEST_USER_EMP_NO,
+					Password: constants.GUEST_USER_PASSWORD
+				},
+				token: constants.GUEST_USER_TOKEN
 			})
 		}
         else if (this.$store.state.auth.isLogged) {
@@ -53,7 +65,7 @@ const { mapActions } = createNamespacedHelpers('auth')
         }
 	},
 	mounted: function(){
-		this.$store.commit('loading/showLoading', false)
+		this.showLoading(false)
 	}
 }
 </script>
