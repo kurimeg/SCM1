@@ -189,7 +189,9 @@ export default {
                 })
 		},
 		reload:function(){
-			alert("リセット処理")
+			this.firstview({
+			Token: this.$store.state.auth.token
+			})
 		},
 		initialize: function(){
 			
