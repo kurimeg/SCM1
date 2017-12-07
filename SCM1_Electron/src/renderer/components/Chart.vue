@@ -189,6 +189,7 @@ export default {
                 })
 		},
 		reload:function(){
+			this.showLoading(true)
 			this.firstview({
 			Token: this.$store.state.auth.token
 			})
@@ -258,6 +259,12 @@ button:focus{
 	z-index: 2;
 	position: absolute;
 	cursor: pointer;
+}
+.icon:active{
+	width: 49px;
+    height: 49px;
+	margin-top: 7.9px;
+	filter:brightness(98%);
 }
 .rel{
 	margin-left: 65px; 
