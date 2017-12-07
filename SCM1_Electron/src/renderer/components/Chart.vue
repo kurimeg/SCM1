@@ -2,6 +2,7 @@
 	<div class="main-layer">
 		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
 		<search v-if="show"></search>
+		<img src="../assets/images/reload.png" class="rel" @click="reload"></img>
 		<button class="logout" @click="this.logout" v-if="!isGuest">Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
@@ -187,6 +188,12 @@ export default {
                     param: {}
                 })
 		},
+		reload:function(){
+			this.showLoading(true)
+			this.firstview({
+			Token: this.$store.state.auth.token
+			})
+		},
 		initialize: function(){
 			
 		}
@@ -244,14 +251,36 @@ button:focus{
 	float: left;
 }
 .icon{
-	margin-left: 3px; 
-	margin-top: 3px;
-	width: 55px;
-	height: 55px;
+	margin-left: 9px; 
+	margin-top: 8px;
+	width: 50px;
+	height: 50px;
 	float: left;
-	z-index: 999;
+	z-index: 2;
 	position: absolute;
 	cursor: pointer;
+}
+.icon:active{
+	width: 49px;
+    height: 49px;
+	margin-top: 7.9px;
+	filter:brightness(98%);
+}
+.rel{
+	margin-left: 65px; 
+	margin-top: 8px;
+	width: 50px;
+	height: 50px;
+	float: left;
+	z-index: 2;
+	position: absolute;
+	cursor: pointer;
+}
+.rel:active{
+	width: 49px;
+    height: 49px;
+	margin-top: 7.9px;
+	filter:brightness(98%);
 }
 .logout{
 	margin-top: 5px;
