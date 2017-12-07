@@ -144,6 +144,8 @@ namespace SCM1_API.Service
         /// <returns></returns>
         public static bool InspectToken_direct(string token)
         {
+            if (string.IsNullOrEmpty(token)) return false; 
+
             //DBよりトークン文字列とトークン生成日付を取得
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { ACCESS_TOKEN = token };
