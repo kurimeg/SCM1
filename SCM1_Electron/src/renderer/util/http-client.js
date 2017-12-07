@@ -3,7 +3,7 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const client = axios.create({
-    baseURL: 'http://scm1test.azurewebsites.net/api'
+    baseURL: 'http://scm1api.azurewebsites.net/api'
   })
 
 export default (Vue, { store }) => {

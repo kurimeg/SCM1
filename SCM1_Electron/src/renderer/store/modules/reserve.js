@@ -46,7 +46,7 @@ const actions = {
     },
     // メッセージを出力させない為に共通を使用しない
     getIsReserved ({ commit }, empInfo) {
-        axios.post('http://scm1test.azurewebsites.net/api/emplocation/FetchAllEmpLocationInfo', empInfo)
+        axios.post('http://scm1api.azurewebsites.net/api/emplocation/FetchAllEmpLocationInfo', empInfo)
         .then((response) => {
             if(response.data.ProcessStatus === constants.STATUS_OK)
             {
