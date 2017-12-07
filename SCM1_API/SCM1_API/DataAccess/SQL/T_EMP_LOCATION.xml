@@ -57,8 +57,6 @@
      EL.EMP_NO = #EMP_NO#
    AND
      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
-   AND
-     EL.FIXED_FLG = '0'
   </delete>
   
   

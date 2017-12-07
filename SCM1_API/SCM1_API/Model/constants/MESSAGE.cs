@@ -70,5 +70,10 @@ namespace SCM1_API.Model.constants
         /// </summary>
         public const string MSG_GET_EMP_LOCATION_NG = "選択された座席は既に利用されています。";
 
+        /// <summary>
+        /// ユーザー位置情報解除失敗
+        /// </summary>
+        public const string MSG_CLEAR_EMP_LOCATION_NG = "ユーザー位置情報の解除に失敗しました。";
+
     }
 }

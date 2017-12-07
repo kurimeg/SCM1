@@ -68,7 +68,7 @@ namespace SCM1_API.PresentationService
             //処理ステータスと取得結果を返す
             ReturnModel.ProcessStatus = empLocation_Service.ClearEmpLocationInfo_Service(req.EmpNo, req.ClientAreaDv) ? STATUS.OK : STATUS.NG;
             //NGの場合はメッセージを設定
-            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
+            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_CLEAR_EMP_LOCATION_NG;
             return ReturnModel;
         }
 
@@ -84,7 +84,7 @@ namespace SCM1_API.PresentationService
             //処理ステータスと取得結果を返す
             ReturnModel.ProcessStatus = empLocation_Service.ClearAllEmpLocationInfo_Service(req.ClientAreaDv) ? STATUS.OK : STATUS.NG;
             //NGの場合はメッセージを設定
-            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
+            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_CLEAR_EMP_LOCATION_NG;
             return ReturnModel;
         }
 
