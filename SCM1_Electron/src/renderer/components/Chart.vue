@@ -269,6 +269,12 @@ button:focus{
 	position: absolute;
 	cursor: pointer;
 }
+.rel:active{
+	width: 49px;
+    height: 49px;
+	margin-top: 7.9px;
+	filter:brightness(98%);
+}
 .logout{
 	margin-top: 5px;
 	margin-bottom: 6px;
