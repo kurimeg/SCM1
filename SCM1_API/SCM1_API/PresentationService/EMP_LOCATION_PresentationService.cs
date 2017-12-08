@@ -52,7 +52,7 @@ namespace SCM1_API.PresentationService
             //処理ステータスと取得結果を返す
             ReturnModel.ProcessStatus = ReturnModel.EmpLocation.Count() != 0 ? STATUS.OK : STATUS.NG;
             //NGの場合はメッセージを設定
-            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_EMP_LOCATION_NG;
+            if (ReturnModel.ProcessStatus == STATUS.NG) ReturnModel.ResponseMessage = MESSAGE.MSG_FETCH_ALL_EMP_LOCATION_NG;
             return ReturnModel;
         }
 
