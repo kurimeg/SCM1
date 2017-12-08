@@ -43,7 +43,12 @@ namespace SCM1_API.Model.constants
         /// <summary>
         /// ユーザー情報取得失敗
         /// </summary>
-        public const string MSG_FETCH_EMP_INFO_NG = "ユーザー情報の取得に失敗しました。";
+        public const string MSG_FETCH_EMP_INFO_NG = "対象のユーザーは現在、座席を登録していません。";
+
+        /// <summary>
+        /// ユーザー情報取得失敗_全件
+        /// </summary>
+        public const string MSG_FETCH_ALL_EMP_INFO_NG = "全ユーザーの座席情報取得に失敗しました。";
 
         /// <summary>
         /// 内線情報取得失敗
