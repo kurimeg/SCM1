@@ -11,12 +11,12 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations } = createNamespacedHelpers('modal')
 
 export default {
-	props: ['message'],
-    methods:{
-        ...mapMutations([
-            'hideModal'
-        ])
-    }
+  props: ['message'],
+  methods: {
+    ...mapMutations([
+      'hideModal'
+    ])
+  }
 }
 </script>
 

@@ -14,58 +14,55 @@
 import * as constants from '@/assets/constants'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
-
- export default {
-   data: function () {
-     return {
-		empNo: null,
-		password: null
-     }
-   },
-    methods: {
-        ...mapActions({
-			login: 'auth/login', 
-			guestLogin: 'auth/guestLogin'
-		}),
-		...mapMutations({
-			showLoading: 'loading/showLoading'
-		}),
-        onLogin: function () {
-            this.login({
-						EmpNo: this.empNo,
-						Password: this.password
-            })
-        }
-	},
-	created: function () {
-		
-		// WEB用
-		// this.guestLogin({
-		// 		authInfo: {
-		// 			EmpNo: constants.GUEST_USER_EMP_NO,
-		// 			Password: constants.GUEST_USER_PASSWORD
-		// 		},
-		// 		token: constants.GUEST_USER_TOKEN
-		// })
-		if(process.env.IS_WEB){
-			this.showLoading(true)
-			this.guestLogin({
-				authInfo: {
-					EmpNo: constants.GUEST_USER_EMP_NO,
-					Password: constants.GUEST_USER_PASSWORD
-				},
-				token: constants.GUEST_USER_TOKEN
-			})
-		}
-        else if (this.$store.state.auth.isLogged) {
-			this.showLoading(true)
-			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            this.login({
-						EmpNo: authInfo.EmpNo,
-						Password: authInfo.Password
-            })
-        }
-	}
+export default {
+  data: function () {
+    return {
+      empNo: null,
+      password: null
+    }
+  },
+  methods: {
+    ...mapActions({
+      login: 'auth/login',
+      guestLogin: 'auth/guestLogin'
+    }),
+    ...mapMutations({
+      showLoading: 'loading/showLoading'
+    }),
+    onLogin: function () {
+      this.login({
+        EmpNo: this.empNo,
+        Password: this.password
+      })
+    }
+  },
+  created: function () {
+    // WEB用
+    // this.guestLogin({
+    // 		authInfo: {
+    // 			EmpNo: constants.GUEST_USER_EMP_NO,
+    // 			Password: constants.GUEST_USER_PASSWORD
+    // 		},
+    // 		token: constants.GUEST_USER_TOKEN
+    // })
+    if (process.env.IS_WEB) {
+      this.showLoading(true)
+      this.guestLogin({
+        authInfo: {
+          EmpNo: constants.GUEST_USER_EMP_NO,
+          Password: constants.GUEST_USER_PASSWORD
+        },
+        token: constants.GUEST_USER_TOKEN
+      })
+    } else if (this.$store.state.auth.isLogged) {
+      this.showLoading(true)
+      let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+      this.login({
+        EmpNo: authInfo.EmpNo,
+        Password: authInfo.Password
+      })
+    }
+  }
 }
 </script>
 

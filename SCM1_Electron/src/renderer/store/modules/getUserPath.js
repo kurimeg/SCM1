@@ -4,33 +4,32 @@ import * as constants from '@/assets/constants'
 import * as messages from '@/assets/messages'
 
 const state = {
-    userPath:[]
+  userPath: []
 }
 
 const mutations = {
-    setPath (state , userpath){
-        state.userPath = userpath.EmpLocation
-    },
-    reset (state){
-        state.userPath = []
-    }
+  setPath (state, userpath) {
+    state.userPath = userpath.EmpLocation
+  },
+  reset (state) {
+    state.userPath = []
+  }
 }
 
 const actions = {
-    getuserpath ({ commit }, empNo , token) {
-        Vue.http.post('/emplocation/FetchAllEmpLocationInfo', empNo , token)
-        .then((data) =>{
-            if(data.ProcessStatus === constants.STATUS_OK)
-            {
-                commit('setPath', { EmpLocation: data.EmpLocation, isSearched: true })
-            } 
-        })
-    }
+  getuserpath ({ commit }, empNo, token) {
+    Vue.http.post('/emplocation/FetchAllEmpLocationInfo', empNo, token)
+      .then((data) => {
+        if (data.ProcessStatus === constants.STATUS_OK) {
+          commit('setPath', { EmpLocation: data.EmpLocation, isSearched: true })
+        }
+      })
+  }
 }
 
 export default {
-    namespaced: true,
-    state,
-    mutations,
-    actions
+  namespaced: true,
+  state,
+  mutations,
+  actions
 }

@@ -12,21 +12,21 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations, mapState } = createNamespacedHelpers('modal')
 
 export default {
-	props: ['message'],
-	computed:{
-		...mapState([
-            'actionName', 'param'
-        ]),
-	},
-    methods:{
-        ...mapMutations([
-            'hideModal'
-		]),
-        confirmed: function () {
-            this.$store.dispatch(this.actionName, this.param)
-            this.hideModal()
-        }
+  props: ['message'],
+  computed: {
+    ...mapState([
+      'actionName', 'param'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'hideModal'
+    ]),
+    confirmed: function () {
+      this.$store.dispatch(this.actionName, this.param)
+      this.hideModal()
     }
+  }
 }
 </script>
 

@@ -16,38 +16,38 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters ,mapState } from 'vuex'
+import { mapActions, mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
-    data: function () {
-        return {
-            searchtxt: null
-        }
-	},
-	computed:{
-		...mapState('getUserpath', {
-			path: state => state.userPath
-		}),
-		...mapGetters({
-      		filterEmp : 'search/filterEmp'
-		})
-   },
-	methods:{
+  data: function () {
+    return {
+      searchtxt: null
+    }
+  },
+  computed: {
+    ...mapState('getUserpath', {
+      path: state => state.userPath
+    }),
+    ...mapGetters({
+      		filterEmp: 'search/filterEmp'
+    })
+  },
+  methods: {
 	   ...mapActions({
-			getuserpath: 'getUserPath/getuserpath'
+      getuserpath: 'getUserPath/getuserpath'
    		}),
-		...mapMutations({
-            hideSearch : 'search/hideSearch'
-		}),
-		
-		getpath:function(event){
-			this.getuserpath({
-			EmpNo: event.target.id,
-			Token: this.$store.state.auth.token
-			})
-			this.hideSearch()
-		}
-   }
+    ...mapMutations({
+      hideSearch: 'search/hideSearch'
+    }),
+
+    getpath: function (event) {
+      this.getuserpath({
+        EmpNo: event.target.id,
+        Token: this.$store.state.auth.token
+      })
+      this.hideSearch()
+    }
+  }
 }
 </script>
 

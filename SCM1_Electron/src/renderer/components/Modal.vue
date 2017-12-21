@@ -14,16 +14,16 @@ import Error from './Modal/Error'
 const { mapState, mapMutations } = createNamespacedHelpers('modal')
 
 export default {
-    computed: {
-        ...mapState([
-            'modalName', 'message'
-        ]),
-        show () {
-            return this.modalName !== ''
-        }
-    },
-    components: {
-        Alert, AlertReg, Error
+  computed: {
+    ...mapState([
+      'modalName', 'message'
+    ]),
+    show () {
+      return this.modalName !== ''
     }
+  },
+  components: {
+    Alert, AlertReg, Error
+  }
 }
 </script>

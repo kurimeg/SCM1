@@ -29,27 +29,27 @@ function createWindow () {
   mainWindow.loadURL(winURL)
 
   mainWindow.on('close', (e) => {
-    if(!force_quit){
+    if (!force_quit) {
       e.preventDefault()
       mainWindow.hide()
     }
   })
-  
-  //メニューを消す処理
-  Menu.setApplicationMenu(null);
+
+  // メニューを消す処理
+  Menu.setApplicationMenu(null)
 }
 
 app.on('ready', () => {
   createWindow()
 
-  //タスクトレイに格納
+  // タスクトレイに格納
   appIcon = new Tray(__static + '/image/icon.png')
   const contextMenu = Menu.buildFromTemplate([
-      {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
+    {label: 'Close(Q)', accelerator: 'Command+Q', click: () => app.quit()}
   ])
   appIcon.on('click', () => {
     if (mainWindow) {
-      if (mainWindow.isMinimized()){
+      if (mainWindow.isMinimized()) {
         mainWindow.focus()
       } else if (!mainWindow.isVisible()) {
         mainWindow.show()
@@ -59,31 +59,31 @@ app.on('ready', () => {
   appIcon.setToolTip('SekiPa : 座席管理システム')
   appIcon.setContextMenu(contextMenu)
 
-  //自動スタートアップ設定
+  // 自動スタートアップ設定
   var AutoLaunch = require('auto-launch')
   var sekipaAutoLauncher = new AutoLaunch({
     name: 'SekiPa'
   })
-  
+
   sekipaAutoLauncher.enable()
-  //sekipaAutoLauncher.disable();
-  
+  // sekipaAutoLauncher.disable();
+
   sekipaAutoLauncher.isEnabled()
-  .then(function(isEnabled){
-    if(isEnabled){
-      return;
-    }
-    sekipaAutoLauncher.enable()
-  })
-  .catch(function(err){
+    .then(function (isEnabled) {
+      if (isEnabled) {
+        return
+      }
+      sekipaAutoLauncher.enable()
+    })
+    .catch(function (err) {
     // handle error
-  })
+    })
 })
 
-//二つ目のインスタンスを許可しない
+// 二つ目のインスタンスを許可しない
 const shouldQuit = app.makeSingleInstance((argv, workingDirectory) => {
   if (mainWindow) {
-    if (mainWindow.isMinimized()){
+    if (mainWindow.isMinimized()) {
       mainWindow.focus()
     } else if (!mainWindow.isVisible()) {
       mainWindow.show()
@@ -114,13 +114,13 @@ app.on('activate', () => {
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
 
-const {autoUpdater} = require("electron-updater")
+const {autoUpdater} = require('electron-updater')
 
 autoUpdater.on('update-downloaded', () => {
   var index = dialog.showMessageBox({
-    message: "アップデートあり",
-    detail: "アプリを再起動してインストールします。",
-    buttons: ["再起動"]
+    message: 'アップデートあり',
+    detail: 'アプリを再起動してインストールします。',
+    buttons: ['再起動']
   })
   if (index === 0) {
     autoUpdater.quitAndInstall()

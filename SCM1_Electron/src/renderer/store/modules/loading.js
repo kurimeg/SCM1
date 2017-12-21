@@ -6,18 +6,18 @@ import * as messages from '@/assets/messages'
 
 // TODO: localStateとしたい。
 const state = {
-    show: false
+  show: false
 }
 
 // TODO: もっときれいになるはず。
 const mutations = {
-    showLoading (state , bool) {
-        state.show = bool
-    }
+  showLoading (state, bool) {
+    state.show = bool
+  }
 }
 
 export default {
-    namespaced: true,
-    state,
-    mutations
+  namespaced: true,
+  state,
+  mutations
 }

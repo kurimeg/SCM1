@@ -10,12 +10,12 @@
 import { createNamespacedHelpers } from 'vuex'
 const { mapState } = createNamespacedHelpers('loading')
 
- export default {  
-    computed: {
-        ...mapState({
-            show: state => state.show
-		})
-    }
+export default {
+  computed: {
+    ...mapState({
+      show: state => state.show
+    })
+  }
 }
 </script>
 

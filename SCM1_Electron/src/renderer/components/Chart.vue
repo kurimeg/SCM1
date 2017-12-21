@@ -155,76 +155,78 @@ import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-	computed:{
-		...mapState('auth', {
-			isGuest: state => state.isGuest
-		}),
-		...mapState('search', {
-			show: state => state.show
-		}),
-		...mapState('getMaster', {
-			seats: state => state.seatInfo
-		}),
-        ...mapState('getUserPath', {
-			userPath: state => state.userPath
-        })
-	},
-	methods:{
-		...mapActions({
-			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'getMaster/fetchEmpInfo',
-			getIsReserved: 'reserve/getIsReserved',
-			showAlert: 'modal/showAlert'
-		}),
+  computed: {
+    ...mapState('auth', {
+      isGuest: state => state.isGuest
+    }),
+    ...mapState('search', {
+      show: state => state.show
+    }),
+    ...mapState('getMaster', {
+      seats: state => state.seatInfo
+    }),
+    ...mapState('getUserPath', {
+      userPath: state => state.userPath
+    })
+  },
+  methods: {
+    ...mapActions({
+      firstview: 'getMaster/firstview',
+      fetchEmpInfo: 'getMaster/fetchEmpInfo',
+      getIsReserved: 'reserve/getIsReserved',
+      showAlert: 'modal/showAlert'
+    }),
 
-		...mapMutations({
-				showSearch: 'search/showSearch',
-				showLoading: 'loading/showLoading'
-		}),
-		logout:function(){
-			this.showAlert({ 
-                    message: messages.I_005, 
-                    actionName: 'auth/logout', 
-                    param: {}
-                })
-		},
-		reload:function(){
-			this.showLoading(true)
-			this.firstview({
-			Token: this.$store.state.auth.token
-			})
-		},
-		initialize: function(){
-			
-		}
-	},
-	created: function(){
-		this.showLoading(true)
-		this.firstview({
-			Token: this.$store.state.auth.token
-		})
-		this.fetchEmpInfo({
-			token: {
-						Token: this.$store.state.auth.token,
-						EmpNo: ""
-			},
-			loginEmpNO: JSON.parse(localStorage.getItem('authInfo')).EmpNo
-		})
-		this.getIsReserved({
-			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
-			Token: this.$store.state.auth.token
-		})
-		//5分でポーリングして初期表示処理を呼び出す
-		setInterval(() => {this.firstview({
-			Token: this.$store.state.auth.token
-			})},300000)
-	},
-	updated: function(){
-		this.showLoading(false)
-	},
-	components: {
-		Seat, Search
-	}
+    ...mapMutations({
+      showSearch: 'search/showSearch',
+      showLoading: 'loading/showLoading'
+    }),
+    logout: function () {
+      this.showAlert({
+        message: messages.I_005,
+        actionName: 'auth/logout',
+        param: {}
+      })
+    },
+    reload: function () {
+      this.showLoading(true)
+      this.firstview({
+        Token: this.$store.state.auth.token
+      })
+    },
+    initialize: function () {
+
+    }
+  },
+  created: function () {
+    this.showLoading(true)
+    this.firstview({
+      Token: this.$store.state.auth.token
+    })
+    this.fetchEmpInfo({
+      token: {
+        Token: this.$store.state.auth.token,
+        EmpNo: ''
+      },
+      loginEmpNO: JSON.parse(localStorage.getItem('authInfo')).EmpNo
+    })
+    this.getIsReserved({
+      EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
+      Token: this.$store.state.auth.token
+    })
+    // 5分でポーリングして初期表示処理を呼び出す
+    setInterval(() => {
+      this.firstview({
+        Token: this.$store.state.auth.token
+      })
+    }, 300000)
+  },
+  updated: function () {
+    this.showLoading(false)
+  },
+  components: {
+    Seat, Search
+  }
 }
 </script>
 
