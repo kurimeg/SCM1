@@ -2,9 +2,9 @@
 	<div class="main-layer">
 		<div class="form">
 			<div class="login-char">社員番号</div>
-			<input type="text" v-model="empNo" class="txtbox"></input>
+			<input type="text" v-model="empNo" class="txtbox">
 			<div class="login-char">パスワード</div>
-			<input type="password" v-model="password" class="txtbox"></input>
+			<input type="password" v-model="password" class="txtbox">
 			<button type="button"  @keyup.enter="onLogin" @click="onLogin" class="login">ログイン</button>
 		</div>
 	</div>

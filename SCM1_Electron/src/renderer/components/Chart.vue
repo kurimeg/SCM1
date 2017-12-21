@@ -1,8 +1,8 @@
 <template>
 	<div class="main-layer">
-		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
+		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch">	
 		<search v-if="show"></search>
-		<img src="../assets/images/reload.png" class="rel" @click="reload"></img>
+		<img src="../assets/images/reload.png" class="rel" @click="reload">
 		<button class="logout" @click="this.logout" v-if="!isGuest">Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
