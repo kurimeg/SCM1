@@ -1,7 +1,5 @@
-import router from '@/router'
 import Vue from 'vue'
 import * as constants from '@/assets/constants'
-import * as messages from '@/assets/messages'
 
 const state = {
   userPath: []

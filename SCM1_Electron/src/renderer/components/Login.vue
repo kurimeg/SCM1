@@ -12,7 +12,7 @@
 
 <script>
 import * as constants from '@/assets/constants'
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
   data: function () {
@@ -37,14 +37,6 @@ export default {
     }
   },
   created: function () {
-    // WEB用
-    // this.guestLogin({
-    // 		authInfo: {
-    // 			EmpNo: constants.GUEST_USER_EMP_NO,
-    // 			Password: constants.GUEST_USER_PASSWORD
-    // 		},
-    // 		token: constants.GUEST_USER_TOKEN
-    // })
     if (process.env.IS_WEB) {
       this.showLoading(true)
       this.guestLogin({

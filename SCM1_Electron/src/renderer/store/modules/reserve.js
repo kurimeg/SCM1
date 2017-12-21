@@ -1,9 +1,6 @@
-import router from '@/router'
-// TODO: main.jsでimport済。各moduleでそれを使うには？
 import Vue from 'vue'
 import axios from 'axios'
 import * as constants from '@/assets/constants'
-import * as messages from '@/assets/messages'
 
 const state = {
   isReserved: false,
@@ -16,7 +13,7 @@ const mutations = {
     state.reservedSeatNo = reserve.seatNo
   },
   reset (state) {
-    state.isReserved = false,
+    state.isReserved = false
     state.reservedSeatNo = ''
   }
 }

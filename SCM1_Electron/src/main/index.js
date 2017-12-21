@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, Tray, ipcMain, dialog } from 'electron'
+import { app, BrowserWindow, Menu, Tray, dialog } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 let mainWindow
 let appIcon = null
-var force_quit = false
+var forceQuit = false
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
@@ -29,7 +29,7 @@ function createWindow () {
   mainWindow.loadURL(winURL)
 
   mainWindow.on('close', (e) => {
-    if (!force_quit) {
+    if (!forceQuit) {
       e.preventDefault()
       mainWindow.hide()
     }
@@ -75,9 +75,9 @@ app.on('ready', () => {
       }
       sekipaAutoLauncher.enable()
     })
-    .catch(function (err) {
-    // handle error
-    })
+    // .catch(function (err) {
+    // // handle error
+    // })
 })
 
 // 二つ目のインスタンスを許可しない
@@ -95,7 +95,7 @@ if (shouldQuit) {
 }
 
 app.on('before-quit', () => {
-  force_quit = true
+  forceQuit = true
 })
 
 app.on('window-all-closed', () => {})

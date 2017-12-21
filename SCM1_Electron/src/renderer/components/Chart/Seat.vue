@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import * as messages from '@/assets/messages'
 
 export default {
@@ -58,7 +58,7 @@ export default {
           }
         })
         // 座席登録済 & 該当座席の名前が自分の場合
-      } else if (this.displayEmpNm == this.loginEmpName && this.isReserved) {
+      } else if (this.displayEmpNm === this.loginEmpName && this.isReserved) {
         this.showAlert({
           message: messages.I_004,
           actionName: 'reserve/release',

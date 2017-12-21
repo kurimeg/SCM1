@@ -11,7 +11,7 @@ import { createNamespacedHelpers } from 'vuex'
 import Alert from './Modal/Alert'
 import AlertReg from './Modal/AlertReg'
 import Error from './Modal/Error'
-const { mapState, mapMutations } = createNamespacedHelpers('modal')
+const { mapState } = createNamespacedHelpers('modal')
 
 export default {
   computed: {

@@ -1,7 +1,5 @@
-import router from '@/router'
 import Vue from 'vue'
 import * as constants from '@/assets/constants'
-import * as messages from '@/assets/messages'
 
 const state = {
   seatInfo: [],
@@ -18,8 +16,8 @@ const mutations = {
     state.loginEmpName = empInfo.loginEmpName
   },
   reset (state) {
-    state.seatInfo = [],
-    state.empInfo = [],
+    state.seatInfo = []
+    state.empInfo = []
     state.loginEmpName = ''
   }
 }
@@ -38,7 +36,7 @@ const actions = {
       .then((data) => {
         if (data.ProcessStatus === constants.STATUS_OK) {
           let loginEmpName = data.EmpInfo.find(emp => emp.EMP_NO === authInfo.loginEmpNO).DISPLAY_EMP_NM
-          commit('fetchEmpInfo', { empInfo: data.EmpInfo, loginEmpName: loginEmpName})
+          commit('fetchEmpInfo', { empInfo: data.EmpInfo, loginEmpName: loginEmpName })
         }
       })
   }

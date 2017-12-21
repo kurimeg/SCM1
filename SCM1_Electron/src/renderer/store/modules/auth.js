@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import router from '@/router'
 import * as constants from '@/assets/constants'
-import * as messages from '@/assets/messages'
 
 const state = {
   isLogged: !!localStorage.getItem('authInfo'),

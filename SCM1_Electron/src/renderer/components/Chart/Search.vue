@@ -29,13 +29,13 @@ export default {
       path: state => state.userPath
     }),
     ...mapGetters({
-      		filterEmp: 'search/filterEmp'
+      filterEmp: 'search/filterEmp'
     })
   },
   methods: {
-	   ...mapActions({
+    ...mapActions({
       getuserpath: 'getUserPath/getuserpath'
-   		}),
+    }),
     ...mapMutations({
       hideSearch: 'search/hideSearch'
     }),
