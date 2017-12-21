@@ -1,9 +1,7 @@
 import Vue from 'vue'
-
-import App from './App'
 import router from './router'
 import store from './store'
-
+import App from './App'
 import httpClient from './util/http-client'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
