@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import Modal from './components/Modal'
-import Loading from './components/Loading'
+  import Modal from './components/Modal'
+  import Loading from './components/Loading'
 
-export default {
-  components: {
-    Loading, Modal
+  export default {
+    components: {
+      Loading, Modal
+    }
   }
-}
 </script>
 
 <style>
