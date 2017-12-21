@@ -11,7 +11,6 @@ import Modal from './components/Modal'
 import Loading from './components/Loading'
 
 export default {
-  name: 'SekiPa',
   components: {
     Loading, Modal
   }
