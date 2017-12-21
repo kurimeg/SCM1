@@ -23,6 +23,10 @@ export default {
     position: relative;
     zoom: 70%;
   }
+  body {
+    margin: 0 0 0 0;
+    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
+  }
   .main-layer {
       position: absolute;
       width: 1429px;
@@ -75,8 +79,5 @@ export default {
   }
   .fade-loading-leave-to{
     opacity: 0
-  }
-  body{
-    margin: 0 0 0 0;
   }
 </style>

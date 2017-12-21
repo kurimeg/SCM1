@@ -1,5 +1,5 @@
 <template>
-	<div class="main-layer">
+	<div class="background-layer">
 		<div class="form">
 			<div class="login-char">社員番号</div>
 			<input type="text" v-model="empNo" class="txtbox">
@@ -59,24 +59,22 @@ export default {
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 input:focus{
  outline:none;
 }
 button:focus{
  outline:none;
 }
-.main-layer{
+.background-layer{
+	position: absolute;
 	background-image: url("../assets/images/back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 1429px;
 	height: 804px;
-    margin: 0 0 0 0;
+	margin: 0 0 0 0;
 	z-index: 3;
+  overflow: hidden;
 }
 .form{
 	position: absolute;
