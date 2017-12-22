@@ -1,74 +1,164 @@
 
 
-## �͂��߂�
-����md�t�@�C����API�̃\�[�X�����p�ł��B
+## はじめに
+このmdファイルはAPIのソース説明用です。
 
 ***
-### 1. �\�[�X�̊T�v
-�{�\�[�X(SCM1_API�\�����[�V����)��UI������̃��N�G�X�g���󂯁A  
-DB�փA�N�Z�X���A�f�[�^��CRUD���鏈�����s���܂��B��1  
-������͕K���������ʁ�2��API���Ă�UI���ɕԋp���܂��B��3  
+### 1. ソースの概要
+本ソース(SCM1_APIソリューション)はUI側からのリクエストを受け、  
+DBへアクセスし、データをCRUDする処理を行います。※1  
+処理後は必ず処理結果※2をAPIを呼んだUI側に返却します。※3  
 
-    ��1 ����UI����js�ŏ���������Ȃ����G�ȏ��������������ꍇ��  
-        API���ŏ������s����������܂���  
-    ��2 [���������FOK]�A[�������s�FNG]�A[�ُ�I���FER]  
-    ��3 �f�[�^�擾�����̏ꍇ�͎擾�����f�[�^���ԋp���܂�
+    ※1 今後UI側のjsで処理しきれない複雑な処理が発生した場合は  
+        API側で処理を行うかもしれません  
+    ※2 [処理成功：OK]、[処理失敗：NG]、[異常終了：ER]  
+    ※3 データ取得処理の場合は取得したデータも返却します
 
-�܂��A�{�\�[�X��Azure���WebApps�ɓW�J����Ă���A  
-�A�g���Ă���DB��Azure���SQL Database�ł��B  
+また、本ソースはAzure上のWebAppsに展開されており、  
+連携しているDBはAzure上のSQL Databaseです。  
 
-�ȉ��A�A�v���P�[�V�����\���}�ł��B
-![�A�v���P�[�V�����\���}](./mdFileResource/ApplicationConstitution.jpg?raw=true)
+以下、アプリケーション構成図です。
+![アプリケーション構成図](./mdFileResource/ApplicationConstitution.jpg?raw=true)
 
 ***
-### 2. �A�v���̍\��
-���̃A�v����VisualStudio2017�ŊJ�����Ă��܂��B.NET Framework��4.6.2�ł��B  
-�\�����[�V�����̃t�@�C���\���͈ȉ��̂悤�ɂȂ��Ă��܂��B��2017/11/10����  
-![�\�����[�V�����G�N�X�v���[���[](./mdFileResource/SolutionCompositionOverView.jpg?raw=true)
+### 2. アプリの構成
+このアプリはVisualStudio2017で開発しています。.NET Frameworkは4.6.2です。  
+ソリューションのファイル構成は以下のようになっています。＠2017/11/10現在  
+![ソリューションエクスプローラー](./mdFileResource/SolutionCompositionOverView.jpg?raw=true)
 
-API���@�����Ɓ��̂悤��(�����w��)���Ԃŏ������s���܂��B  
->APIController��PresentationService��Service��Repository��DataAccess
+APIが叩かれると↓のような(処理層の)順番で処理が行われます。  
+>APIController→PresentationService→Service→Repository→DataAccess
 
-##### �ȉ��A�e�t�H���_���̐����ł�
+##### 以下、各フォルダ等の説明です
 + APIController  
-  UI����@�����API�̎󂯌��ƂȂ�\�[�X���i�[����Ă��܂��B  
-  (MVC��Controller�Ɠ��������ł�)  
-  APIController��HTTP���N�G�X�g�̎��(GET,POST�Ȃ�)�Ɋ�Â����A  
-  ���\�b�h�Ő��藧���Ă��܂��B
+  UIから叩かれるAPIの受け口となるソースが格納されています。  
+  (MVCのControllerと同じ役割です)  
+  APIControllerはHTTPリクエストの種類(GET,POSTなど)に基づいた、  
+  メソッドで成り立っています。
 
-+ App_Data�AApp_Start  
-  APIController�̃��[�e�B���O�ݒ�Ƃ����L�q����Ă��܂��B  
-  StackOverFlow�ɂ���[WebAPIConfig.cs]�ɂ��낢�돑���ƁA  
-  API���������ۂ̃A�h���X�ƃp�����[�^�[�̑Ή��Ƃ����ς�����炵���̂ŒǋL���Ă܂��B
++ App_Data、App_Start  
+  APIControllerのルーティング設定とかが記述されています。  
+  StackOverFlowによると[WebAPIConfig.cs]にいろいろ書くと、  
+  APIをたたく際のアドレスとパラメーターの対応とかが変えられるらしいので追記してます。
 
 + DataAccess  
-  DB�ւ̐ڑ����s���ASQL�𓊂���DataAccess.cs���i�[����Ă��܂��B  
-  �܂����w�ɂ���SQL�t�H���_�ɂ́ADB��̃e�[�u������SQL���L�q���ꂽxml�t�@�C�����u����Ă��܂��B  
-  ���Ȃ݂�DataAccess.cs�ł�Dapper���g�p����DB�ڑ����s���ASQL�t�H���_��SQL�𕶎��񉻂��ĐH�킹�Ă��܂��B
+  DBへの接続を行い、SQLを投げるDataAccess.csが格納されています。  
+  また下層にあるSQLフォルダには、DB上のテーブル毎にSQLが記述されたxmlファイルが置かれています。  
+  ちなみにDataAccess.csではDapperを使用してDB接続を行い、SQLフォルダのSQLを文字列化して食わせています。
 
 + Model  
-  DB����̎擾�l���i�[�����邽�߂̃��f���N���X���i�[����Ă��܂��B  
-  ��{�I�ɂ�DB��̊e�e�[�u���ɂ��P�N���X��z�肵�Ă��܂����A  
-  �����ɕK�v�ȃf�[�^�N���X���ǉ�����Ă�����������܂���B�B
+  DBからの取得値を格納させるためのモデルクラスが格納されています。  
+  基本的にはDB上の各テーブルにつき１クラスを想定しています。
+
+  + constants  
+  ここではアプリに使用する定数を定義したファイルが格納されています。  
+  画面に表示するメッセージ等もこの階層のMESSAGE.csに書かれています。
+
+  + DataModel  
+  処理にのみ必要な値を集約したデータモデルを定義したファイルが格納されています。  
+  ただ基本的には各テーブルのモデルによってデータの受け渡しをして欲しいので  
+  どうしても例外的に必要な場合に本階層内にデータモデルを定義してください。  
+  (画面側で使う際に余計な項目が入っているとバグる...etc)
+
+  + ScreenModel  
+  APIの入出力パラメーターを定義したデータモデルのファイルが格納されています。  
+  新たにAPIControllerファイルを作成する場合は、このScreenModelも新規に実装して下さい。
 
 + PresentationService  
-  Controller�w�ŌĂяo�����A�r�W�l�X�N���X�̎n�_�̂悤�Ȉʒu�Â��ł��B  
-  ���̒i�K�ł�API�Ƃ̊֌W�͔�������c���Ă��銴���ł��傤���B  
-  ��������Service�N���X���Ă΂�܂��B
+  Controller層で呼び出される、ビジネスクラスの始点のような位置づけです。  
+  この段階ではAPIとの関係は薄っすら残っている感じでしょうか。  
+  ここからServiceクラスが呼ばれます。
 
 + Service  
-  PresentationService�w�ŌĂяo�����A�r�W�l�X���W�b�N���̉�ł��B
-  �����ł�DB��̃e�[�u������1cs�t�@�C��(�P�N���X)�����C���[�W�ł��B    
-  ���̒i�K�ł�Service�N���X��API�Ƃ̊֌W�͑a�����ɂȂ��Ă��܂��B  
-  �Ⴆ�ΎЈ��}�X�^Service�N���X�́u�Ј��}�X�^�����������Ă���v�Ƃ����r�W�l�X���W�b�N�́A  
-  ���O�C��������APIPresentationService�N���X�ł��g���܂����A  
-  ���O�C�������Ƃ͕ʂɁA�e�Ј��̃}�X�^�����e���s�������ꍇ�̎Ј����\�������ɂ��g����Ǝv���܂��B
+  PresentationService層で呼び出される、ビジネスロジック毎の塊です。
+  ここでもDB上のテーブル毎に1csファイル(１クラス)作られるイメージです。    
+  この段階ではServiceクラスとAPIとの関係は疎結合になっています。  
+  例えば社員マスタServiceクラスの「社員マスタから情報を取ってくる」というビジネスロジックは、  
+  ログイン処理のAPIPresentationServiceクラスでも使われますが、  
+  ログイン処理とは別に、各社員のマスタメンテを行いたい場合の社員情報表示処理にも使われると思います。
 
 + Repository  
-  Service�w�ŌĂяo�����A�r�W�l�X�N���X�̏I�_�̂悤�Ȉʒu�Â��ł��B  
-  ���̒i�K�ł�Service�N���X�̃��W�b�N�ŕK�v�ȁA  
-  DB�f�[�^�ւ�CRUD�������������邽�߂ɂǂ�SQL���ĂԂ���(�p�����[�^�[�Ƌ���)�w�肵�Ă��܂��B
+  Service層で呼び出される、ビジネスクラスの終点のような位置づけです。  
+  この段階ではServiceクラスのロジックで必要な、  
+  DBデータへのCRUD処理を実現するためにどのSQLを呼ぶかを(パラメーターと共に)指定しています。
 
 
-# �����܂ŏ��������I
+### 3. 参考になるソース
++ emplocationController  
+  ユーザー位置情報(座席登録状況)について扱うコントローラです。
+  ここではPOST,PUT,DELETEの全てのタイプについて実装がされています。  
+  ※GETについてはパラメーターの都合上、本プロジェクトでは使用していません    
+    
+  処理内容は以下の通りです。  
+  + POST - 事業所別にユーザー位置情報を取得する
+  + PUT - 特定ユーザーの位置情報を登録/変更する
+  + DELETE - ユーザー位置情報を削除する  
 
+  ※POSTとDELETEについては、渡されたパラメーターによって  
+  対象の件数が個人or全体となります。
+
+本プロジェクトのソースではDI(依存性の注入)は行っていないので全てのソースがVisualStudioのF12(定義へ移動)で辿れるはずです。  
+ですので、ここからはご自身の目でお確かめ下さい(ぶん投げ)
+
+
+### 4. 細かい話
+
+このセクションではソースからは読み取れない実装の思想レベルの話を補足します。
+
++ APIControllerのファイルの分け方について  
+本アプリではなるべくRestfulAPIの思想に則って実装しました。  
+なのでxxxControllerは基本的にDBの1テーブル(リソース)に対して、  
+1ファイルになるようにしています。(Authは例外)
+ 
++ APIController内のメソッドのタイプ(分け方)について  
+こちらもなるべくRestfulAPIの思想に則っています。  
+GetはDBからのデータ取得の為に(今回は使ってないけど)、  
+PutはDBに対するデータ変更の為に、DeleteはDBに対するデータ削除の為に、  
+そしてPostは本来ならばDBへのデータ登録に使用するのですが、  
+今回は複雑なパラメータを扱う情報取得処理全般に使用しています。  
+ただ、アプリから受け取るパラメーターを xxx(JToken reqJson) という形で統一している為  
+同一系統のメソッドは1つしか実装できません。(オーバーロードできない)  
+ただ、この制約のせいで1stリリース時は結構めんどくさい思いをしたので  
+ResutfulAPIの思想を崩さない範囲で、今後いい感じに改善してくれるとありがたいです。
+
+
++ DataAccess.csにおけるSQLを投げるメソッドについて  
+今回はDapperライブラリを使用して、結構ゴリゴリにDBアクセスの共通メソッドを書いています。  
+特別難しい事もしていないので、ソースを読んでいただければわかると思いますが、  
+Select文を呼ぶ時は  
+SELECT_Model<Model名>(リポジトリ毎のSQLファイル名,SQLを記述したxmlでの呼び出すSQLのID,パラメーター)  
+という形で使用して下さい。    
+他のUpdate/Create/Delete文を投げる時は  
+ExecuteSQL(リポジトリ毎のSQLファイル名,SQLを記述したxmlでの呼び出すSQLのID,パラメーター,SQLの処理タイプ)  
+という形で使用して下さい。
+
+
++ Tokenの検証について  
+本アプリでは画面からのAPI呼出しの際に、それぞれのログインユーザー毎のアクセストークンを検証しています。  
+検証の方法については、社員マスタに、渡されたトークンを持つ社員が存在していれば検証結果：OKと判断しています。  
+(アプリ上では他人のトークンを盗み見して自身のトークンを改ざんする事が困難な為)  
+一応トークンの文字列を復号するメソッドも用意してあるので  
+セキュリティに不安がある場合にはそちらの使用に切り替えて工夫をこらして下さい。
+
+
++ Tokenの作成タイミングについて  
+本アプリの認証トークンの作成タイミングはログイン画面からログインされた時です。  
+その為、ユーザーAが自身のID/Passでログインした後、  
+ユーザーBがユーザーAのID/Passでログインした場合、  
+ユーザーAは次にAPIを呼び出したタイミングでトークンエラーとなり、  
+ログイン画面に戻されます。要するに後勝ちになっちゃうって事です。
+
+
++ xxxRepository.csについて  
+xxxRepositoryクラス内には各処理毎のSQLを呼ぶメソッドを実装していますが、
+これらは全てstaticなクラスとしています。  
+というのもRepositoryの1メソッドはServiceの1メソッドと1：1で対応している為、都度クラスのインスタンスを用意する必要がないからです。  
+今後もこの方針を守ってください。
+
+
++ 各ファイルの命名規則について  
+非常に申し訳ないのですが、各ファイルの命名規則については、  
+1stリリース時実装者のフィーリングによって決められています。  
+なので今後の開発では自由に変更してもらって構わないのですが、  
+統一性だけは失いたくないので、過去ファイルも変更する命名規則に則ったモノに書き換えて下さい。  
+特に命名規則を変えるつもりがなければ、同一フォルダ/階層内の他ファイルのネーミングに従ってください。
