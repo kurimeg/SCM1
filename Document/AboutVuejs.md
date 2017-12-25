@@ -1135,11 +1135,11 @@ State、Mutation、Actionと同様に、Getterにも`mapGetters`ヘルパーが�
 ついに、検索結果表示まで完成です(｀･ω･´)！
 
 # 参考
-[Electron（日本語）](https://electronjs.org/)
-[Vue.js（日本語）](https://jp.vuejs.org/index.html)
-[electron-vue（日本語）](https://simulatedgreg.gitbooks.io/electron-vue/content/ja/)
-[Vue.js入門 ―最速で作るシンプルなWebアプリケーション](http://gihyo.jp/dev/serial/01/vuejs)
-[Practice on embedding Node.js into Atom Editor by Cheng Zhao](https://speakerdeck.com/zcbenz/practice-on-embedding-node-dot-js-into-atom-editor)
-[The Progressive Framework](https://docs.google.com/presentation/d/1WnYsxRMiNEArT3xz7xXHdKeH1C-jT92VxmptghJb5Es/edit#slide=id.p)
-[ElectronでVue.jsを始める](https://qiita.com/SatoTakumi/items/fd79672d7eb8a9b4a0bb)
-[ChromiumからElectronを眺める](https://qiita.com/seihmd/items/8caf3af3b7a612b3c628)
+[Electron（日本語）](https://electronjs.org/)  
+[Vue.js（日本語）](https://jp.vuejs.org/index.html)  
+[electron-vue（日本語）](https://simulatedgreg.gitbooks.io/electron-vue/content/ja/)  
+[Vue.js入門 ―最速で作るシンプルなWebアプリケーション](http://gihyo.jp/dev/serial/01/vuejs)  
+[Practice on embedding Node.js into Atom Editor by Cheng Zhao](https://speakerdeck.com/zcbenz/practice-on-embedding-node-dot-js-into-atom-editor)  
+[The Progressive Framework](https://docs.google.com/presentation/d/1WnYsxRMiNEArT3xz7xXHdKeH1C-jT92VxmptghJb5Es/edit#slide=id.p)  
+[ElectronでVue.jsを始める](https://qiita.com/SatoTakumi/items/fd79672d7eb8a9b4a0bb)  
+[ChromiumからElectronを眺める](https://qiita.com/seihmd/items/8caf3af3b7a612b3c628)  
