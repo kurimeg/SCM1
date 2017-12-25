@@ -37,9 +37,12 @@ For Internal Development
 ざっくり言うと、作業単位でブランチを切るイメージです。
 
 
-###1. アプリの構成
+## アプリの構成
 
-+ API側はこちらを参照
++ API側は[こちら](https://github.com/ryuwGit/SCM1/blob/master/Document/AboutAPISource.md)を参照
+
++ Azure側は[こちら](https://github.com/ryuwGit/SCM1/blob/master/Document/AboutAzure.md)を参照
+
 
 
 
