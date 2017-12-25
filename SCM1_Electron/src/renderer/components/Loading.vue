@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade-loading">
     <div class="loading-layer" v-if="show">
-      <img src="../assets/images/loading.gif" class="loading"></img>
+      <img src="../assets/images/loading.gif" class="loading">
     </div>
 	</transition>
 </template>
