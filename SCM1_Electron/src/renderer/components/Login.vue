@@ -1,10 +1,10 @@
 <template>
-	<div class="main-layer">
+	<div class="background-layer">
 		<div class="form">
 			<div class="login-char">社員番号</div>
-			<input type="text" v-model="empNo" class="txtbox"></input>
+			<input type="text" v-model="empNo" class="txtbox">
 			<div class="login-char">パスワード</div>
-			<input type="password" v-model="password" class="txtbox"></input>
+			<input type="password" v-model="password" class="txtbox">
 			<button type="button"  @keyup.enter="onLogin" @click="onLogin" class="login">ログイン</button>
 		</div>
 	</div>
@@ -12,82 +12,69 @@
 
 <script>
 import * as constants from '@/assets/constants'
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
-
- export default {
-   data: function () {
-     return {
-		empNo: null,
-		password: null
-     }
-   },
-    methods: {
-        ...mapActions({
-			login: 'auth/login', 
-			guestLogin: 'auth/guestLogin'
-		}),
-		...mapMutations({
-			showLoading: 'loading/showLoading'
-		}),
-        onLogin: function () {
-            this.login({
-						EmpNo: this.empNo,
-						Password: this.password
-            })
-        }
-	},
-	created: function () {
-		
-		// WEB用
-		// this.guestLogin({
-		// 		authInfo: {
-		// 			EmpNo: constants.GUEST_USER_EMP_NO,
-		// 			Password: constants.GUEST_USER_PASSWORD
-		// 		},
-		// 		token: constants.GUEST_USER_TOKEN
-		// })
-		if(process.env.IS_WEB){
-			this.showLoading(true)
-			this.guestLogin({
-				authInfo: {
-					EmpNo: constants.GUEST_USER_EMP_NO,
-					Password: constants.GUEST_USER_PASSWORD
-				},
-				token: constants.GUEST_USER_TOKEN
-			})
-		}
-        else if (this.$store.state.auth.isLogged) {
-			this.showLoading(true)
-			let authInfo = JSON.parse(localStorage.getItem('authInfo'))
-            this.login({
-						EmpNo: authInfo.EmpNo,
-						Password: authInfo.Password
-            })
-        }
-	}
+export default {
+  data: function () {
+    return {
+      empNo: null,
+      password: null
+    }
+  },
+  methods: {
+    ...mapActions({
+      login: 'auth/login',
+      guestLogin: 'auth/guestLogin'
+    }),
+    ...mapMutations({
+      showLoading: 'loading/showLoading'
+    }),
+    onLogin: function () {
+      this.login({
+        EmpNo: this.empNo,
+        Password: this.password
+      })
+    }
+  },
+  created: function () {
+    if (process.env.IS_WEB) {
+      this.showLoading(true)
+      this.guestLogin({
+        authInfo: {
+          EmpNo: constants.GUEST_USER_EMP_NO,
+          Password: constants.GUEST_USER_PASSWORD
+        },
+        token: constants.GUEST_USER_TOKEN
+      })
+    } else if (this.$store.state.auth.isLogged) {
+      this.showLoading(true)
+      let authInfo = JSON.parse(localStorage.getItem('authInfo'))
+      this.login({
+        EmpNo: authInfo.EmpNo,
+        Password: authInfo.Password
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 input:focus{
  outline:none;
 }
 button:focus{
  outline:none;
 }
-.main-layer{
+.background-layer{
+	position: absolute;
 	background-image: url("../assets/images/back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 1429px;
 	height: 804px;
-    margin: 0 0 0 0;
+	margin: 0 0 0 0;
 	z-index: 3;
+  overflow: hidden;
 }
 .form{
 	position: absolute;

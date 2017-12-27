@@ -7,21 +7,24 @@
 </template>
 
 <script>
-import Modal from './components/Modal'
-import Loading from './components/Loading'
+  import Modal from './components/Modal'
+  import Loading from './components/Loading'
 
-export default {
-  name: 'SekiPa',
-  components: {
-    Loading, Modal
+  export default {
+    components: {
+      Loading, Modal
+    }
   }
-}
 </script>
 
 <style>
   #app{
     position: relative;
     zoom: 70%;
+  }
+  body {
+    margin: 0 0 0 0;
+    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
   }
   .main-layer {
       position: absolute;
@@ -75,8 +78,5 @@ export default {
   }
   .fade-loading-leave-to{
     opacity: 0
-  }
-  body{
-    margin: 0 0 0 0;
   }
 </style>

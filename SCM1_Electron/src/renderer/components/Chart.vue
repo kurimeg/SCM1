@@ -1,9 +1,21 @@
 <template>
 	<div class="main-layer">
-		<img src="../assets/images/search_icon.png" class="icon" @click="showSearch"></img>	
+		<img 
+			class="icon" 
+			src="../assets/images/search_icon.png" 			
+			@click="showSearch"
+		>	
 		<search v-if="show"></search>
-		<img src="../assets/images/reload.png" class="rel" @click="reload"></img>
-		<button class="logout" @click="this.logout" v-if="!isGuest">Log out</button>
+		<img 
+			class="rel" 
+			src="../assets/images/reload.png" 			
+			@click="reload"
+		>
+		<button 
+			class="logout" 
+			v-if="!isGuest"
+			@click="logout" 			
+		>Log out</button>
 		<div class="tables">
 			<div class="row01 floatL child">
 				<div class="desk_square">
@@ -140,9 +152,15 @@
 				</div>
 			</div>
 			<div class="seat-layer" >
-				<seat :id="seat.SEAT_NO" :class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" :seat="seat" v-for="seat in seats" :key="seat.SEAT_NO" :style="{left: seat.CONTENT_POSITION_X + 'px' ,top: seat.CONTENT_POSITION_Y + 'px'}"></seat>
+				<seat 
+					v-for="seat in seats" 
+					:id="seat.SEAT_NO" 
+					:key="seat.SEAT_NO" 
+					:class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" 			
+					:style="{ left: seat.CONTENT_POSITION_X + 'px', top: seat.CONTENT_POSITION_Y + 'px' }"
+					:seat="seat" 	
+				></seat>
 			</div>
-
 		</div>
 		<div id="minimap"></div>
 	</div>
@@ -155,84 +173,84 @@ import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
-	computed:{
-		...mapState('auth', {
-			isGuest: state => state.isGuest
-		}),
-		...mapState('search', {
-			show: state => state.show
-		}),
-		...mapState('getMaster', {
-			seats: state => state.seatInfo
-		}),
-        ...mapState('getUserPath', {
-			userPath: state => state.userPath
-        })
-	},
-	methods:{
-		...mapActions({
-			firstview: 'getMaster/firstview',
-			fetchEmpInfo: 'getMaster/fetchEmpInfo',
-			getIsReserved: 'reserve/getIsReserved',
-			showAlert: 'modal/showAlert'
-		}),
-
-		...mapMutations({
-				showSearch: 'search/showSearch',
-				showLoading: 'loading/showLoading'
-		}),
-		logout:function(){
-			this.showAlert({ 
-                    message: messages.I_005, 
-                    actionName: 'auth/logout', 
-                    param: {}
-                })
-		},
-		reload:function(){
-			this.showLoading(true)
-			this.firstview({
-			Token: this.$store.state.auth.token
-			})
-		},
-		initialize: function(){
-			
-		}
-	},
-	created: function(){
-		this.showLoading(true)
-		this.firstview({
-			Token: this.$store.state.auth.token
-		})
-		this.fetchEmpInfo({
-			token: {
-						Token: this.$store.state.auth.token,
-						EmpNo: ""
-			},
-			loginEmpNO: JSON.parse(localStorage.getItem('authInfo')).EmpNo
-		})
-		this.getIsReserved({
-			EmpNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo,
-			Token: this.$store.state.auth.token
-		})
-		//5分でポーリングして初期表示処理を呼び出す
-		setInterval(() => {this.firstview({
-			Token: this.$store.state.auth.token
-			})},300000)
-	},
-	updated: function(){
-		this.showLoading(false)
-	},
-	components: {
-		Seat, Search
-	}
+  components: {
+    Seat, Search
+  },
+  data: function () {
+    return {
+      empNo: JSON.parse(localStorage.getItem('authInfo')).EmpNo
+    }
+  },
+  computed: {
+    ...mapState('auth', {
+      token: state => state.token,
+      isGuest: state => state.isGuest
+    }),
+    ...mapState('search', {
+      show: state => state.show
+    }),
+    ...mapState('getMaster', {
+      seats: state => state.seatInfo
+    }),
+    ...mapState('getUserPath', {
+      userPath: state => state.userPath
+    })
+  },
+  created: function () {
+    this.showLoading(true)
+    this.firstview({
+      Token: this.token
+    })
+    this.fetchEmpInfo({
+      token: {
+        Token: this.token,
+        EmpNo: ''
+      },
+      loginEmpNO: this.empNo
+    })
+    this.getIsReserved({
+      EmpNo: this.empNo,
+      Token: this.token
+    })
+    // 5分でポーリングして初期表示処理を呼び出す
+    setInterval(() => {
+      this.firstview({
+        Token: this.token
+      })
+    }, 300000)
+  },
+  updated: function () {
+    this.showLoading(false)
+  },
+  methods: {
+    ...mapActions({
+      firstview: 'getMaster/firstview',
+      fetchEmpInfo: 'getMaster/fetchEmpInfo',
+      getIsReserved: 'reserve/getIsReserved',
+      showAlert: 'modal/showAlert'
+    }),
+    ...mapMutations({
+      showSearch: 'search/showSearch',
+      showLoading: 'loading/showLoading'
+    }),
+    logout: function () {
+      this.showAlert({
+        message: messages.I_005,
+        actionName: 'auth/logout',
+        param: {}
+      })
+    },
+    reload: function () {
+      this.showLoading(true)
+      this.firstview({
+        Token: this.token
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
-body {
-    margin: 0;
-    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 button:focus{
  outline:none;
 }

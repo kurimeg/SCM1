@@ -11,20 +11,16 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations } = createNamespacedHelpers('modal')
 
 export default {
-	props: ['message'],
-    methods:{
-        ...mapMutations([
-            'hideModal'
-        ])
-    }
+  props: ['message'],
+  methods: {
+    ...mapMutations([
+      'hideModal'
+    ])
+  }
 }
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 button:focus{
  outline:none;
 }

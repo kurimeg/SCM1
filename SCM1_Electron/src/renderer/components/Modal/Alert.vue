@@ -12,29 +12,25 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations, mapState } = createNamespacedHelpers('modal')
 
 export default {
-	props: ['message'],
-	computed:{
-		...mapState([
-            'actionName', 'param'
-        ]),
-	},
-    methods:{
-        ...mapMutations([
-            'hideModal'
-		]),
-        confirmed: function () {
-            this.$store.dispatch(this.actionName, this.param)
-            this.hideModal()
-        }
+  props: ['message'],
+  computed: {
+    ...mapState([
+      'actionName', 'param'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'hideModal'
+    ]),
+    confirmed: function () {
+      this.$store.dispatch(this.actionName, this.param)
+      this.hideModal()
     }
+  }
 }
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 button:focus{
  outline:none;
 }

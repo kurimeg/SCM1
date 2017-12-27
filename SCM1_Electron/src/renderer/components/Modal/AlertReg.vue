@@ -14,42 +14,38 @@ import { createNamespacedHelpers } from 'vuex'
 const { mapMutations, mapState } = createNamespacedHelpers('modal')
 
 export default {
-	data: function () {
-		return {
-			fixed: false
-		}
-	},
-	props: ['message'],
-	computed:{
-		...mapState([
-            'actionName', 'param'
-		])
-	},
-    methods:{
-        ...mapMutations([
-            'hideModal', 'changeParam'
-		]),
-		
-        confirmed: function () {
-			let changedParam = {
-                        Token : this.param.Token,
-                        EmpNo: this.param.EmpNo,
-                        seatNo: this.param.seatNo,
-                        FixedFlg : this.fixed
-			}
-			this.changeParam(changedParam)
-            this.$store.dispatch(this.actionName, this.param)
-			this.hideModal()
-        }
+  data: function () {
+    return {
+      fixed: false
     }
+  },
+  props: ['message'],
+  computed: {
+    ...mapState([
+      'actionName', 'param'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'hideModal', 'changeParam'
+    ]),
+
+    confirmed: function () {
+      let changedParam = {
+        Token: this.param.Token,
+        EmpNo: this.param.EmpNo,
+        seatNo: this.param.seatNo,
+        FixedFlg: this.fixed
+      }
+      this.changeParam(changedParam)
+      this.$store.dispatch(this.actionName, this.param)
+      this.hideModal()
+    }
+  }
 }
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 button:focus{
  outline:none;
 }

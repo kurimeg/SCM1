@@ -1,13 +1,12 @@
 <template>
 <transition name="fade">
     <div class="search-layer">
-        <img src="../../assets/images/search_icon.png" class="icon"></img>
+        <img src="../../assets/images/search_icon.png" class="icon">
         <div class="topChar">検索</div>
         <button type="button" class="back" @click="hideSearch">✖</button>
         <div>
             <input type="text" v-model="searchtxt" class="searchword">
-                <img src="../../assets/images/search_button.png" class="button"></img>
-            </input>			
+						<img src="../../assets/images/search_button.png" class="button">			
         </div>
         <div class="announceChar">{{ this.filterEmp(searchtxt).searchMessage }}</div>
 		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath" v-on:click="hideSearch">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
@@ -16,46 +15,42 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters ,mapState } from 'vuex'
+import { mapActions, mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
-    data: function () {
-        return {
-            searchtxt: null
-        }
-	},
-	computed:{
-		...mapState('getUserpath', {
-			path: state => state.userPath
-		}),
-		...mapGetters({
-      		filterEmp : 'search/filterEmp'
-		})
-   },
-	methods:{
-	   ...mapActions({
-			getuserpath: 'getUserPath/getuserpath'
-   		}),
-		...mapMutations({
-            hideSearch : 'search/hideSearch'
-		}),
-		
-		getpath:function(event){
-			this.getuserpath({
-			EmpNo: event.target.id,
-			Token: this.$store.state.auth.token
-			})
-			this.hideSearch()
-		}
-   }
+  data: function () {
+    return {
+      searchtxt: null
+    }
+  },
+  computed: {
+    ...mapState('getUserpath', {
+      path: state => state.userPath
+    }),
+    ...mapGetters({
+      filterEmp: 'search/filterEmp'
+    })
+  },
+  methods: {
+    ...mapActions({
+      getuserpath: 'getUserPath/getuserpath'
+    }),
+    ...mapMutations({
+      hideSearch: 'search/hideSearch'
+    }),
+
+    getpath: function (event) {
+      this.getuserpath({
+        EmpNo: event.target.id,
+        Token: this.$store.state.auth.token
+      })
+      this.hideSearch()
+    }
+  }
 }
 </script>
 
 <style scoped>
-body {
-	margin: 0;
-	font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
-}
 .floatL {
 	float: left;
 }
