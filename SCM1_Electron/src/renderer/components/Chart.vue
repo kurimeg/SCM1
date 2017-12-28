@@ -162,7 +162,6 @@
 				></seat>
 			</div>
 		</div>
-		<div id="minimap"></div>
 	</div>
 </template>
 
