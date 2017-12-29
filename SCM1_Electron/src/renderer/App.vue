@@ -28,36 +28,45 @@
   }
   .main-layer {
       position: absolute;
-      width: 1429px;
-      height: 804px;
+      width: 1409px;
+      height: 789px;
+      margin: 15px 0 0 20px;
       z-index: 1;
       overflow: hidden;
+  }
+  .desk-layer {
+	  position: absolute;
+    width: 1400px;
+    height: 700px;
+    margin: 50px 0 0 0;
+    z-index: 2;
   }
   .seat-layer {
     position: absolute;
     width: 1429px;
     height: 804px;
-    z-index: 2;
+    margin: 50px 0 0 0;
+    z-index: 3;
   }
   .search-layer{
     position: absolute;
-    z-index: 3;
     overflow: hidden;	
     width: 400px;
     border: 5px solid #28a1f7;
     border-radius: 15px;
     background-color: #5d5d5d;
     padding-bottom: 15px;
+    z-index: 4;
   }
   .alert-layer{
     position: absolute;
     width: 1429px;
     height: 804px;
     margin: 0 0 0 0;
-    z-index: 4;
     display: flex;
     justify-content: center; /*左右中央揃え*/
     align-items: center;     /*上下中央揃え*/
+    z-index: 5;
   }
   .loading-layer{
     position: absolute;

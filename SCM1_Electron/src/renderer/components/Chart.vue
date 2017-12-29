@@ -16,7 +16,7 @@
 			v-if="!isGuest"
 			@click="logout" 			
 		>Log out</button>
-		<div class="tables">
+		<div class="desk-layer">
 			<div class="row01 floatL child">
 				<div class="desk_square">
 					<div class="naisen naisen_onsquare">2001</div>
@@ -151,7 +151,8 @@
 					<div class="naisen naisen_onfree">2065</div>
 				</div>
 			</div>
-			<div class="seat-layer" >
+		</div>
+		<div class="seat-layer" >
 				<seat 
 					v-for="seat in seats" 
 					:id="seat.SEAT_NO" 
@@ -160,7 +161,6 @@
 					:style="{ left: seat.CONTENT_POSITION_X + 'px', top: seat.CONTENT_POSITION_Y + 'px' }"
 					:seat="seat" 	
 				></seat>
-			</div>
 		</div>
 	</div>
 </template>
@@ -252,17 +252,6 @@ export default {
 <style scoped>
 button:focus{
  outline:none;
-}
-.main-layer{
-	width: 1409px;
-	height: 789px;
-	margin: 15px 0 0 20px;
-}
-.tables{
-	position: relative;
-    width: 1400px;
-    height: 700px;
-    margin: 50px 0 0 0;
 }
 .floatL {
 	float: left;
