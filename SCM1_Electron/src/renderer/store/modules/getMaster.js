@@ -7,6 +7,21 @@ const state = {
   loginEmpName: ''
 }
 
+const getters = {
+  // filterEmp: (state, getters) => (seachText) => {
+  //   if (!seachText) return []
+
+  //   let filteredEmp = state.seatInfo.filter(emp => {
+  //     let knj = false
+  //     let kana = false
+  //     if (emp.EMP_NM) knj = emp.EMP_NM.replace(/\s+/g, '').startsWith(seachText)
+  //     if (emp.EMP_KANA_NM) kana = emp.EMP_KANA_NM.replace(/\s+/g, '').startsWith(seachText)
+
+  //     return knj || kana
+  //   })
+  // }
+}
+
 const mutations = {
   initialize (state, seatInfo) {
     state.seatInfo = seatInfo
@@ -45,6 +60,7 @@ const actions = {
 export default {
   namespaced: true,
   state,
+  getters,
   mutations,
   actions
 }
