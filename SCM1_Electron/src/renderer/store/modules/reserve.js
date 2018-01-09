@@ -42,7 +42,7 @@ const actions = {
   // メッセージを出力させない為に共通を使用しない
   getIsReserved ({ commit }, empInfo) {
     const baseUrl = process.env.NODE_ENV === 'development'
-      ? `http://scm1test.azurewebsites.net/api`
+      ? 'http://scm1test.azurewebsites.net/api'
       : 'http://scm1api.azurewebsites.net/api'
 
     axios.post(baseUrl + '/emplocation/FetchAllEmpLocationInfo', empInfo)
