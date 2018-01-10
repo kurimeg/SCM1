@@ -4,7 +4,7 @@
 
   <select id="FetchAllFloorPlace">
     SELECT 
-	    TRIM(FLOOR_PLACE_DV)
+	    TRIM(FLOOR_PLACE_DV) AS FLOOR_PLACE_DV
 	    ,FLOOR_PLACE_DV_NM
     FROM 
 	    MST_FLOOR_PLACE_DV
