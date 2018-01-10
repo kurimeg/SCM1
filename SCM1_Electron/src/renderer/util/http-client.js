@@ -4,7 +4,7 @@ import * as messages from '@/assets/messages'
 
 const client = axios.create({
   baseURL: process.env.NODE_ENV === 'development'
-    ? `http://scm1test.azurewebsites.net/api`
+    ? 'http://scm1test.azurewebsites.net/api'
     : 'http://scm1api.azurewebsites.net/api'
 })
 

@@ -85,5 +85,10 @@ namespace SCM1_API.Model.constants
         /// </summary>
         public const string MSG_CLEAR_EMP_LOCATION_NG = "ユーザー位置情報の解除に失敗しました。";
 
+        /// <summary>
+        /// 事業所区分全件取得失敗
+        /// </summary>
+        public const string MSG_FETCH_ALL_FLOOR_PLACE = "事業所情報の取得に失敗しました。";
+
     }
 }
