@@ -182,6 +182,8 @@ button:focus{
 .tabs{
 	position:absolute;
 	display: flex;
+  width: 1400px;
+  justify-content:flex-end;
 	bottom: 0;
 	z-index: 3;
 }
