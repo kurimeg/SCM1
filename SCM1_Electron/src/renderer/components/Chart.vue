@@ -17,14 +17,11 @@
 			@click="logout" 			
 		>Log out</button>
 		<div class="tabs">
-			<div class="tab">
-				<a>新浦安10F（駅側）</a>
-				<span class="tab-active"></span>				
-			</div>
-			<div class="tab">
-				<a>新浦安10F（海側）</a>
-				<span class="tab-active"></span>				
-			</div>					
+			<tab
+        v-for="floorPlace in floorPlaces" 
+        :key="floorPlace.FLOOR_PLACE_DV"
+        :floorPlace="floorPlace"
+      ></tab>				
 		</div>
 		<div class="desk-layer">
 			<desk></desk>
@@ -46,12 +43,13 @@
 import Seat from './Chart/Seat'
 import Search from './Chart/Search'
 import Desk from './Chart/Desk'
+import Tab from './Chart/Tab'
 import * as messages from '@/assets/messages'
 import { mapActions, mapMutations, mapState } from 'vuex'
 
 export default {
   components: {
-    Seat, Desk, Search
+    Seat, Desk, Search, Tab
   },
   data: function () {
     return {
@@ -67,7 +65,8 @@ export default {
       show: state => state.show
     }),
     ...mapState('getMaster', {
-      seats: state => state.seatInfo
+      seats: state => state.seatInfo,
+      floorPlaces: state => state.floorPlaces
     }),
     ...mapState('getUserPath', {
       userPath: state => state.userPath
@@ -76,6 +75,9 @@ export default {
   created: function () {
     this.showLoading(true)
     this.firstview({
+      Token: this.token
+    })
+    this.fetchAllFloorPlace({
       Token: this.token
     })
     this.fetchEmpInfo({
@@ -102,6 +104,7 @@ export default {
   methods: {
     ...mapActions({
       firstview: 'getMaster/firstview',
+      fetchAllFloorPlace: 'getMaster/fetchAllFloorPlace',
       fetchEmpInfo: 'getMaster/fetchEmpInfo',
       getIsReserved: 'reserve/getIsReserved',
       showAlert: 'modal/showAlert'
@@ -181,22 +184,5 @@ button:focus{
 	display: flex;
 	bottom: 0;
 	z-index: 3;
-}
-.tab{
-	width: 240px;
-	bottom: 0;
-	font-size: 16px;
-	font-family: 'Century Gothic';
-	text-align: center;
-}
-.tabs a{
-	cursor: pointer;
-}
-.tab-active {
-	display: inline-flex;
-	bottom: 0;
-	height: 3px;
-	background: #28a1f7;
-	width: 240px;
 }
 </style>

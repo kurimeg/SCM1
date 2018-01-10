@@ -4,6 +4,7 @@ import * as constants from '@/assets/constants'
 const state = {
   seatInfo: [],
   empInfo: [],
+  floorPlaces: [],
   loginEmpName: ''
 }
 
@@ -30,6 +31,9 @@ const mutations = {
     state.empInfo = empInfo.empInfo
     state.loginEmpName = empInfo.loginEmpName
   },
+  fetchAllFloorPlace (state, floorPlaces) {
+    state.floorPlaces = floorPlaces
+  },
   reset (state) {
     state.seatInfo = []
     state.empInfo = []
@@ -52,6 +56,14 @@ const actions = {
         if (data.ProcessStatus === constants.STATUS_OK) {
           let loginEmpName = data.EmpInfo.find(emp => emp.EMP_NO === authInfo.loginEmpNO).DISPLAY_EMP_NM
           commit('fetchEmpInfo', { empInfo: data.EmpInfo, loginEmpName: loginEmpName })
+        }
+      })
+  },
+  fetchAllFloorPlace ({ commit }, token) {
+    Vue.http.post('/floorplace/FetchAllFloorPlace', token)
+      .then((data) => {
+        if (data.ProcessStatus === constants.STATUS_OK) {
+          commit('fetchAllFloorPlace', data.FloorPlaces)
         }
       })
   }
