@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlMap xmlns="http://tempuri.org/QueryXmlBuilder"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <select id="FetchAllFloorPlace">
+    SELECT 
+	    FLOOR_PLACE_DV
+	    ,FLOOR_PLACE_DV_NM
+    FROM 
+	    MST_FLOOR_PLACE_DV
+  </select>
+  
+</SqlMap>
