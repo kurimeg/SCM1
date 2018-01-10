@@ -27,9 +27,9 @@ namespace SCM1_API.PresentationService
         public FloorPlaceResponse FetchAllFloorPlace()
         {
             var returnModel = new FloorPlaceResponse();
-            returnModel.floorPlaces = floorPlace_Service.FetchAllFloorPlace_Service();
+            returnModel.FloorPlaces = floorPlace_Service.FetchAllFloorPlace_Service();
 
-            returnModel.ProcessStatus = returnModel.floorPlaces.Count() != 0 ? STATUS.OK : STATUS.NG;
+            returnModel.ProcessStatus = returnModel.FloorPlaces.Count() != 0 ? STATUS.OK : STATUS.NG;
             if (returnModel.ProcessStatus == STATUS.NG) returnModel.ResponseMessage = MESSAGE.MSG_FETCH_ALL_FLOOR_PLACE;
 
             return returnModel;

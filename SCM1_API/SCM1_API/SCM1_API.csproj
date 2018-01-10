@@ -228,6 +228,7 @@
     <Content Include="DataAccess\DataAccess.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\scm1test - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\scm1test - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">

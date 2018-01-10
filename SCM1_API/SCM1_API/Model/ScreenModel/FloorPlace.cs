@@ -15,6 +15,6 @@ namespace SCM1_API.Model.ScreenModel.FloorPlace
 
     public class FloorPlaceResponse : ScmApiBaseParameter.Response
     {
-        public IEnumerable<MST_FLOOR_PLACE_DV> floorPlaces { get; set; }
+        public IEnumerable<MST_FLOOR_PLACE_DV> FloorPlaces { get; set; }
     }
 }
