@@ -1,6 +1,9 @@
 <template>
   <div class="tab">
-    <a>{{ floorPlace.FLOOR_PLACE_DV_NM }}</a>
+    <a
+		@click="Switch">
+		{{ floorPlace.FLOOR_PLACE_DV_NM }}
+		</a>
     <span class="tab-active"></span>				
   </div>	
 </template>
