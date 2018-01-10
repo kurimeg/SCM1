@@ -19,6 +19,7 @@
 		<div class="tabs">
 			<tab
         v-for="floorPlace in floorPlaces" 
+        :id="floorPlace.FLOOR_PLACE_DV" 
         :key="floorPlace.FLOOR_PLACE_DV"
         :floorPlace="floorPlace"
       ></tab>				
