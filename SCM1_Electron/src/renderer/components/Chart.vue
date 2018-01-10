@@ -28,7 +28,7 @@
 		</div>
 		<div class="seat-layer" >
 				<seat 
-					v-for="seat in seats" 
+					v-for="seat in this.seats" 
 					:id="seat.SEAT_NO" 
 					:key="seat.SEAT_NO" 
 					:class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" 			
@@ -45,7 +45,7 @@ import Search from './Chart/Search'
 import Desk from './Chart/Desk'
 import Tab from './Chart/Tab'
 import * as messages from '@/assets/messages'
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -65,11 +65,14 @@ export default {
       show: state => state.show
     }),
     ...mapState('getMaster', {
-      seats: state => state.seatInfo,
+      // seats: state => state.seatInfo,
       floorPlaces: state => state.floorPlaces
     }),
     ...mapState('getUserPath', {
       userPath: state => state.userPath
+    }),
+    ...mapGetters({
+      seats: 'tab/filterSeat'
     })
   },
   created: function () {
