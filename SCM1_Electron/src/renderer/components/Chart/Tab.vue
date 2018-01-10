@@ -1,16 +1,36 @@
 <template>
   <div class="tab">
     <a
-		@click="Switch">
-		{{ floorPlace.FLOOR_PLACE_DV_NM }}
+      :id="floorPlace.FLOOR_PLACE_DV"
+      @click="switchTab"
+    >
+      {{ floorPlace.FLOOR_PLACE_DV_NM }}
 		</a>
-    <span class="tab-active"></span>				
+    <span 
+      :class="{ 'tab-active': floorPlace.FLOOR_PLACE_DV === floorPlaceDv }" 			
+    ></span>				
   </div>	
 </template>
 
 <script>
+  import { createNamespacedHelpers } from 'vuex'
+  const { mapState, mapMutations } = createNamespacedHelpers('tab')
+
   export default {
-    props: ['floorPlace']
+    props: ['floorPlace'],
+    computed: {
+      ...mapState([
+        'floorPlaceDv'
+      ])
+    },
+    methods: {
+      ...mapMutations([
+        'setTab'
+      ]),
+      switchTab: function (event) {
+        this.setTab(event.target.id)
+      }
+    }
   }
 </script>
 

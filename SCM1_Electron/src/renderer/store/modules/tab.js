@@ -1,11 +1,11 @@
 
 const state = {
-  tabName: ''
+  floorPlaceDv: 'F01'
 }
 
 const mutations = {
-  setTab (state, tabName) {
-    state.tabName = tabName
+  setTab (state, floorPlaceDv) {
+    state.floorPlaceDv = floorPlaceDv
   }
 }
 
