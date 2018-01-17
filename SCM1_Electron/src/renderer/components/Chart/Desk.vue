@@ -1,9 +1,7 @@
 <template>
-  <transition name="fade">
     <div>
       <component :is="tabName"></component>
-    </div>
-  </transition>
+    </div>  
 </template>
 
 <script>

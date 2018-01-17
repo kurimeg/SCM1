@@ -65,7 +65,6 @@ export default {
       show: state => state.show
     }),
     ...mapState('getMaster', {
-      // seats: state => state.seatInfo,
       floorPlaces: state => state.floorPlaces
     }),
     ...mapState('getUserPath', {
