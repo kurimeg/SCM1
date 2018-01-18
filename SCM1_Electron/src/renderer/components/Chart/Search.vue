@@ -9,7 +9,7 @@
 						<img src="../../assets/images/search_button.png" class="button">			
         </div>
         <div class="announceChar">{{ this.filterEmp(searchtxt).searchMessage }}</div>
-		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath" v-on:click="hideSearch">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
+		<button type="button" :id="emp.EMP_NO" class="rslt" v-for="emp in this.filterEmp(searchtxt).filteredEmp" :key="emp.EMP_NO" @click="getpath">{{ emp.EMP_NO }} {{ emp.EMP_NM }}</button>
     </div>
 </transition>
 </template>
@@ -24,8 +24,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('getUserpath', {
-      path: state => state.userPath
+    ...mapState('getUserPath', {
+      userPath: state => state.userPath
     }),
     ...mapGetters({
       filterEmp: 'search/filterEmp'
@@ -36,7 +36,8 @@ export default {
       getuserpath: 'getUserPath/getuserpath'
     }),
     ...mapMutations({
-      hideSearch: 'search/hideSearch'
+      hideSearch: 'search/hideSearch',
+      setTab: 'tab/setTab'
     }),
 
     getpath: function (event) {
@@ -44,6 +45,7 @@ export default {
         EmpNo: event.target.id,
         Token: this.$store.state.auth.token
       })
+      this.setTab(this.userPath[0].FLOOR_PLACE_DV)
       this.hideSearch()
     }
   }

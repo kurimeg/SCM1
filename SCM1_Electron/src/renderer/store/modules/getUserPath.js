@@ -19,7 +19,7 @@ const actions = {
     Vue.http.post('/emplocation/FetchAllEmpLocationInfo', empNo, token)
       .then((data) => {
         if (data.ProcessStatus === constants.STATUS_OK) {
-          commit('setPath', { EmpLocation: data.EmpLocation, isSearched: true })
+          commit('setPath', { EmpLocation: data.EmpLocation })
         }
       })
   }
