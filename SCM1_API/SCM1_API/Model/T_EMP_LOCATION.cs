@@ -62,5 +62,13 @@ namespace SCM1_API.Model
         {
             get; set;
         }
+
+        /// <summary>
+        /// 事業所区分
+        /// </summary>
+        public string FLOOR_PLACE_DV
+        {
+            get; set;
+        }
     }
 }
