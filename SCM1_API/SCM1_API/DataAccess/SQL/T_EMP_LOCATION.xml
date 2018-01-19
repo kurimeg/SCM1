@@ -21,9 +21,6 @@
      EL.SEAT_NO = MS.SEAT_NO
    WHERE
      EL.EMP_NO = #EMP_NO#
-    <isNotEmpty prepend="and" property="FLOOR_PLACE_DV">
-      MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
-    </isNotEmpty>
   </select>
   
   
@@ -51,14 +48,8 @@
    DELETE EL
    FROM
      T_EMP_LOCATION EL 
-   INNER JOIN 
-     MST_SEAT MS
-   ON
-     EL.SEAT_NO = MS.SEAT_NO
    WHERE
      EL.EMP_NO = #EMP_NO#
-   AND
-     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
   </delete>
   
   
