@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryuwGit/SCM1.git"
+    "url": "https://github.com/kurimeg/SCM1.git"
   },
   "build": {
     "productName": "SekiPa",
@@ -33,7 +33,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "ryuwGit",
+        "owner": "kurimeg",
         "repo": "SCM1"
       }
     ],
