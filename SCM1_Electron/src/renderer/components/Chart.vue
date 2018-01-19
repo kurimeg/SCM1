@@ -192,7 +192,7 @@ button:focus{
 	display: flex;
   width: 1400px;
   justify-content:flex-end;
-	bottom: 0;
+	bottom: 15px;
 	z-index: 3;
 }
 </style>

@@ -106,7 +106,7 @@ export default {
   .desk_rec02 {
       margin: 30px 60px 0;
       width: 45px;
-      height: 565px;
+      height: 580px;
     background-color: #91cdf7;
   }
 
