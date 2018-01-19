@@ -1,5 +1,7 @@
 <template>
-    <button type="button" class="seat" @click="onReserve" :disabled="isGuest || isAnotherReservedSeat">{{ displayEmpNm }}</button>
+    <button type="button" class="seat"
+     @click="onReserve" :disabled="isGuest || isAnotherReservedSeat">
+     {{ displayEmpNm }}</button>
 </template>
 
 <script>

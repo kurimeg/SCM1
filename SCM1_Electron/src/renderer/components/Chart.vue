@@ -19,7 +19,6 @@
 		<div class="tabs">
 			<tab
         v-for="floorPlace in floorPlaces" 
-        :id="floorPlace.FLOOR_PLACE_DV" 
         :key="floorPlace.FLOOR_PLACE_DV"
         :floorPlace="floorPlace"
       ></tab>				
@@ -92,6 +91,7 @@ export default {
       EmpNo: this.empNo,
       Token: this.token
     })
+
     // 5分でポーリングして初期表示処理を呼び出す
     setInterval(() => {
       this.firstview({

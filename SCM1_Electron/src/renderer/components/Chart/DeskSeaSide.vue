@@ -93,24 +93,24 @@ export default {
       height: 50px;
     background-color: #91cdf7;
   }
-  .desk_rec01 {
+  /* .desk_rec01 {
       margin: 30px 30px 0 30px;
       width: 45px;
       height: 450px;
       background-color: #91cdf7;
-  }
-  /*列＿２行目以降*/
+  } */
+  /*列＿1,2行目*/
   .row02 {
       margin: 50px 0 0;
   }
   .desk_rec02 {
       margin: 30px 60px 0;
       width: 45px;
-      height: 565px;
+      height: 580px;
     background-color: #91cdf7;
   }
 
-  /*列＿5,6行目*/
+  /*列＿3.4行目*/
   .desk_rec0506 {
     margin: 95px 60px 0;
     width: 45px;
@@ -119,12 +119,12 @@ export default {
   }
 
   /*列＿7行目*/
-  .desk_rec07 {
+  /* .desk_rec07 {
     margin: 130px 30px 0 30px;
     width: 45px;
     height: 515px;
     background-color: #91cdf7;
-  }
+  } */
   /*列＿8.9行目*/
   .desk_recleft {
     margin: 130px 0 0 ;
