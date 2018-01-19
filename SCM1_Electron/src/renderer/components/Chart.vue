@@ -74,6 +74,11 @@ export default {
       seats: 'tab/filterSeat'
     })
   },
+  watch: {
+    userPath: function (path) {
+      this.setTab(path[0].FLOOR_PLACE_DV)
+    }
+  },
   created: function () {
     this.showLoading(true)
     this.firstview({
@@ -113,7 +118,8 @@ export default {
     }),
     ...mapMutations({
       showSearch: 'search/showSearch',
-      showLoading: 'loading/showLoading'
+      showLoading: 'loading/showLoading',
+      setTab: 'tab/setTab'
     }),
     logout: function () {
       this.showAlert({
