@@ -41,7 +41,11 @@ const actions = {
   },
   // メッセージを出力させない為に共通を使用しない
   getIsReserved ({ commit }, empInfo) {
-    axios.post('http://scm1api.azurewebsites.net/api/emplocation/FetchAllEmpLocationInfo', empInfo)
+    const baseUrl = process.env.NODE_ENV === 'development'
+      ? 'http://scm1test.azurewebsites.net/api'
+      : 'http://scm1api.azurewebsites.net/api'
+
+    axios.post(baseUrl + '/emplocation/FetchAllEmpLocationInfo', empInfo)
       .then((response) => {
         if (response.data.ProcessStatus === constants.STATUS_OK) {
           commit('reserve', { isReserved: true, seatNo: response.data.EmpLocation[0].SEAT_NO })

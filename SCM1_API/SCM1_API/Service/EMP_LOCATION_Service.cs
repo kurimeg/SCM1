@@ -9,13 +9,13 @@ namespace SCM1_API.Service
 {
     public class EMP_LOCATION_Service
     {
-        private const int DefaultAreadv = (int)Model.constants.FLOOR_PLACE_DV.SINURA;
+        private const string DefaultAreadv = Model.constants.FLOOR_PLACE_DV.SINURA_STATION_SIDE;
 
         /// <summary>
         /// ユーザー位置情報を取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Service(string PostedEmpNo,int postedAreaDv = DefaultAreadv)
+        public IEnumerable<T_EMP_LOCATION> FetchEmpLocationInfo_Service(string PostedEmpNo, string postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
@@ -26,7 +26,7 @@ namespace SCM1_API.Service
         /// ユーザー位置情報を全件取得する
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T_EMP_LOCATION> FetchAllEmpLocationInfo_Service(int postedAreaDv = DefaultAreadv)
+        public IEnumerable<T_EMP_LOCATION> FetchAllEmpLocationInfo_Service(string postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
@@ -37,7 +37,7 @@ namespace SCM1_API.Service
         /// ユーザー位置情報を消去する
         /// </summary>
         /// <returns></returns>
-        public bool ClearEmpLocationInfo_Service(string PostedEmpNo, int postedAreaDv = DefaultAreadv)
+        public bool ClearEmpLocationInfo_Service(string PostedEmpNo, string postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { EMP_NO = PostedEmpNo, FLOOR_PLACE_DV = postedAreaDv };
@@ -48,7 +48,7 @@ namespace SCM1_API.Service
         /// ユーザー位置情報を固定席以外全件消去する
         /// </summary>
         /// <returns></returns>
-        public bool ClearAllEmpLocationInfo_Service(int postedAreaDv = DefaultAreadv)
+        public bool ClearAllEmpLocationInfo_Service(string postedAreaDv = DefaultAreadv)
         {
             //                ↓はxml内に記述されたSQLの「#」で括られた部分
             var param = new { FLOOR_PLACE_DV = postedAreaDv };
