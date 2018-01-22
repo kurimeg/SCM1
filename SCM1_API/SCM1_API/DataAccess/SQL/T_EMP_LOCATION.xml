@@ -62,8 +62,6 @@
    ON
      EL.SEAT_NO = MS.SEAT_NO
    WHERE
-     MS.FLOOR_PLACE_DV = #FLOOR_PLACE_DV#
-   AND
      EL.FIXED_FLG = '0'
   </delete>
 
