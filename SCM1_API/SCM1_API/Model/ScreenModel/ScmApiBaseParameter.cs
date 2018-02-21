@@ -25,7 +25,7 @@ namespace SCM1_API.Model.ScreenModel
             /// クライント所属事業所区分
             /// </summary>
             [DataMember]
-            public int ClientAreaDv { get; set; }
+            public string ClientAreaDv { get; set; }
         };
 
 

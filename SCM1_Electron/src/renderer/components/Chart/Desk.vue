@@ -1,9 +1,13 @@
 <template>
-  <transition name="fade">
     <div>
+<<<<<<< HEAD
         <component :is="tabName"></component>
     </div>
   </transition>
+=======
+      <component :is="tabName"></component>
+    </div>  
+>>>>>>> 5fde66c9acadf126d7c9035a5ce97bdbd62e87ab
 </template>
 
 <script>

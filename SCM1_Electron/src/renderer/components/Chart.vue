@@ -28,7 +28,7 @@
 		</div>
 		<div class="seat-layer" >
 				<seat 
-					v-for="seat in seats" 
+					v-for="seat in this.seats" 
 					:id="seat.SEAT_NO" 
 					:key="seat.SEAT_NO" 
 					:class="{ 'seatY': !seat.VERTICAL_FLG , 'searched': userPath.length != 0 && seat.SEAT_NO === userPath[0].SEAT_NO }" 			
@@ -45,7 +45,7 @@ import Search from './Chart/Search'
 import Desk from './Chart/Desk'
 import Tab from './Chart/Tab'
 import * as messages from '@/assets/messages'
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -65,12 +65,19 @@ export default {
       show: state => state.show
     }),
     ...mapState('getMaster', {
-      seats: state => state.seatInfo,
       floorPlaces: state => state.floorPlaces
     }),
     ...mapState('getUserPath', {
       userPath: state => state.userPath
+    }),
+    ...mapGetters({
+      seats: 'tab/filterSeat'
     })
+  },
+  watch: {
+    userPath: function (path) {
+      this.setTab(path[0].FLOOR_PLACE_DV)
+    }
   },
   created: function () {
     this.showLoading(true)
@@ -112,7 +119,8 @@ export default {
     }),
     ...mapMutations({
       showSearch: 'search/showSearch',
-      showLoading: 'loading/showLoading'
+      showLoading: 'loading/showLoading',
+      setTab: 'tab/setTab'
     }),
     logout: function () {
       this.showAlert({
@@ -185,7 +193,7 @@ button:focus{
 	display: flex;
   width: 1400px;
   justify-content:flex-end;
-	bottom: 0;
+	bottom: 15px;
 	z-index: 3;
 }
 </style>

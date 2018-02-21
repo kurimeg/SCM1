@@ -24,7 +24,7 @@
   }
   body {
     margin: 0 0 0 0;
-    font-family: 'ＭＳ Ｐ明朝', 'MS PMincho','ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'serif'sans-serif;
+    font-family: 'Century Gothic';
   }
   .main-layer {
     position: absolute;
@@ -37,14 +37,14 @@
   .desk-layer {
 	  position: absolute;
     width: 1400px;
-    height: 700px;
+    height: 685px;
     margin: 50px 0 0 0;
     z-index: 2;
   }
   .seat-layer {
     position: absolute;
     width: 1400px;
-    height: 700px;
+    height: 685px;
     margin: 50px 0 0 0;
     z-index: 3;
   }
