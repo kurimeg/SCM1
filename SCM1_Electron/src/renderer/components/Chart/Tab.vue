@@ -1,11 +1,8 @@
 <template>
-  <div class="tab">
-    <a
+  <div class="tab" 
       :id="floorPlace.FLOOR_PLACE_DV"
-      @click="switchTab"
-    >
+      @click="switchTab">
       {{ floorPlace.FLOOR_PLACE_DV_NM }}
-		</a>
     <span 
       :class="{ 'tab-active': floorPlace.FLOOR_PLACE_DV === floorPlaceDv }" 			
     ></span>				
@@ -29,6 +26,7 @@
       ]),
       switchTab: function (event) {
         this.setTab(event.target.id)
+        this.$store.commit('getUserPath/reset')
       }
     }
   }

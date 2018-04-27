@@ -1,11 +1,11 @@
 <template>
 	<div class="background-layer">
-		<div class="form">
+		<div class="form"  @keyup.enter="onLogin">
 			<div class="login-char">社員番号</div>
 			<input type="text" v-model="empNo" class="txtbox">
 			<div class="login-char">パスワード</div>
 			<input type="password" v-model="password" class="txtbox">
-			<button type="button"  @keyup.enter="onLogin" @click="onLogin" class="login">ログイン</button>
+			<button type="button" @click="onLogin" class="login">ログイン</button>
 		</div>
 	</div>
 </template>
