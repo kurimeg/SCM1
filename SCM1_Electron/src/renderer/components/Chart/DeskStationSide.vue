@@ -122,7 +122,9 @@
     <div class="desk_recright floatL child">
       <div class="desk_square02"></div>
       <div class="desk_square02"></div>
-      <div class="desk_square02"></div>
+      <div class="desk_square02">
+        <div class="naisen naisen_onfree">2065</div>
+      </div>
     </div>
     <!--正方形机5列目-->
     <div class="desk_recright floatL child">
@@ -130,9 +132,7 @@
         <div class="naisen naisen_onfree">2062</div>
       </div>
       <div class="desk_square02"></div>
-      <div class="desk_square02">
-        <div class="naisen naisen_onfree">2065</div>
-      </div>
+      <div class="desk_square02"></div>
     </div>
   </div>
 </template>
