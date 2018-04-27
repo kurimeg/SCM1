@@ -5,7 +5,7 @@
         <div class="topChar">検索</div>
         <button type="button" class="back" @click="hideSearch">✖</button>
         <div>
-            <input type="text" v-model="searchtxt" class="searchword">
+            <input type="text" v-model="searchtxt" class="searchword" v-focus inputmode="kana">
             <img src="../../assets/images/search_button.png" class="button">			
         </div>
         <div class="announceChar">{{ this.filterEmp(searchtxt).searchMessage }}</div>
@@ -44,6 +44,16 @@ export default {
         Token: this.$store.state.auth.token
       })
       this.hideSearch()
+    }
+  },
+  // 検索ボックスにフォーカスを当てる
+  directives: {
+    focus: {
+      // ディレクティブ定義
+      inserted: function (el) {
+        el.focus()
+        document.createEvent()
+      }
     }
   }
 }
@@ -112,6 +122,7 @@ button:focus{
   color: #5d5d5d;
   border-radius: 20px;
   border-style: none;
+  ime-mode: active;
 }
 .rslt{
   margin-left: 40px; 
