@@ -76,7 +76,9 @@ export default {
   },
   watch: {
     userPath: function (path) {
-      this.setTab(path[0].FLOOR_PLACE_DV)
+      if (path.length !== 0) {
+        this.setTab(path[0].FLOOR_PLACE_DV)
+      }
     }
   },
   created: function () {
