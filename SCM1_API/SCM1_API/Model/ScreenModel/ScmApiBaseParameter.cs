@@ -26,6 +26,12 @@ namespace SCM1_API.Model.ScreenModel
             /// </summary>
             [DataMember]
             public string ClientAreaDv { get; set; }
+
+            /// <summary>
+            /// 編集者の社員番号
+            /// </summary>
+            [DataMember]
+            public string EditorNo { get; set; }
         };
 
 
