@@ -47,6 +47,26 @@ namespace SCM1_API.Repository
         }
 
         /// <summary>
+        /// 社員情報を登録、更新する
+        /// </summary>
+        /// <param name="dbmodel">登録/更新する社員情報</param>
+        /// <returns></returns>
+        public static int UpdateEMPInfo_Repository(dynamic dbmodel)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "UpdateEMPInfo",dbmodel,Model.constants.DBAccessType.Update);
+        }
+
+        /// <summary>
+        /// 社員情報を削除する
+        /// </summary>
+        /// <param name="TargetEMP_NO">削除する社員番号</param>
+        /// <returns></returns>
+        public static int ClearEMPInfo_Repository(dynamic TargetEMP_NO)
+        {
+            return DataAccess.DataAccess.ExecuteSQL(SQL_FILE_NM, "ClearEMPInfo", TargetEMP_NO, Model.constants.DBAccessType.Delete);
+        }
+
+        /// <summary>
         /// アクセストークン保存
         /// </summary>
         /// <param name="AccessToken_and_TargetEMP_NO">アクセストークンと絞込条件に使用する社員番号</param>

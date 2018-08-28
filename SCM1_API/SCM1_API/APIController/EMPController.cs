@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SCM1_API.Model.constants;
 using SCM1_API.Model.ScreenModel.EmpInfo;
+using SCM1_API.Model.ScreenModel.EmpLocationInfo;
 using SCM1_API.PresentationService;
 using SCM1_API.Util;
 using Swashbuckle.Swagger.Annotations;
@@ -16,9 +17,11 @@ namespace SCM1_API.APIController
     public class empController : ApiController
     {
         private EMP_PresentationService presentationService;
+        private EMP_LOCATION_PresentationService presentationServiceEmpLocation;
         public empController()
-        {
+        {   
             presentationService = new EMP_PresentationService();
+            presentationServiceEmpLocation = new EMP_LOCATION_PresentationService();
         }
 
 
@@ -62,23 +65,77 @@ namespace SCM1_API.APIController
             }
         }
 
-       
-
-        // GET api/<controller>/5
-        public JsonResult<object> Get([FromUri]string id, [FromUri]string areadv)
+        /// <summary>
+        /// PUT_ 社員情報を登録、更新する
+        /// </summary>
+        /// <param name="reqJson">POSTされたJSON形式の値</param>
+        /// <returns>処理結果</returns>
+        [SwaggerOperation("UpdateEmpinfo")]
+        [LoggingFilter("api/emp")]
+        public JsonResult<object> Put(JToken reqJson)
         {
-            return Json((object)new Tuple<String, object>("OK", id));
+            try
+            {
+                EmpInfoRequest req = JsonUtil.Deserialize<EmpInfoRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+
+                //トークンを検証
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new EmpInfoResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
+
+                EmpInfoResponse res = presentationService.UpdateEMPInfo(req);
+                return Json((object)res);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new EmpInfoResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+            }
         }
 
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// DELETE_ 社員情報を削除する
+        /// </summary>
+        /// <param name="reqJson">POSTされたJSON形式の値</param>
+        /// <returns>処理結果</returns>
+        [SwaggerOperation("ClearEmpinfo")]
+        [LoggingFilter("api/emp")]
+        public JsonResult<object> Delete(JToken reqJson)
         {
-        }
+            try
+            {
+                EmpInfoRequest req = JsonUtil.Deserialize<EmpInfoRequest>(reqJson.ToString()); // <-- JSONをモデルに変換
+                    
+                //トークンを検証
+                if (!Service.TokenHandling.InspectToken_direct(req.Token))
+                    return Json((object)new EmpInfoResponse()
+                    {
+                        ProcessStatus = STATUS.TOKEN_ER,
+                        ResponseMessage = MESSAGE.MSG_TOKEN_ER
+                    });
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+                // ユーザ位置情報解除APIの呼び出し
+                var empLocationReq = new EmpLocationRequest();
+                empLocationReq.EmpNo = req.EmpNo;
+                empLocationReq.ClientAreaDv = req.ClientAreaDv;
+
+                var empLocationRes = presentationServiceEmpLocation.ClearEmpLocationInfo(empLocationReq);
+
+                //todo ユーザ情報削除処理作成
+
+                EmpInfoResponse res = presentationService.ClearEMPInfo(req);
+                return Json((object)res);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteException(MESSAGE.MSG_ER, ex);
+                return Json((object)new EmpInfoResponse() { ProcessStatus = STATUS.ER, ResponseMessage = MESSAGE.MSG_ER });
+            }
         }
     }
 }
