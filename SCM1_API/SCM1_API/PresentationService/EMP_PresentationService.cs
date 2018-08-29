@@ -55,6 +55,40 @@ namespace SCM1_API.PresentationService
         }
 
         /// <summary>
+        /// PUT_ 社員情報を登録、更新する
+        /// </summary>
+        /// <param name="req">送られてきたモデル</param>
+        /// <returns></returns>
+        public EmpInfoResponse UpdateEMPInfo(EmpInfoRequest req)
+        {
+            var returnModel = emp_Service.UpdateEMPInfo_Service(req);
+            var empInfoResponse = new EmpInfoResponse();
+
+            //処理ステータスと取得結果を返す
+            empInfoResponse.ProcessStatus = returnModel != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (empInfoResponse.ProcessStatus == STATUS.NG) empInfoResponse.ResponseMessage = MESSAGE.MSG_FETCH_ALL_EMP_INFO_NG;
+            return empInfoResponse;
+        }
+
+        /// <summary>
+        /// DELETE_ 社員情報を削除する
+        /// </summary>
+        /// <param name="req">送られてきたモデル</param>
+        /// <returns></returns>
+        public EmpInfoResponse ClearEMPInfo(EmpInfoRequest req)
+        {
+            var returnModel =  emp_Service.ClearEMPInfo_Service(req);
+            var empInfoResponse = new EmpInfoResponse();
+
+            //処理ステータスと取得結果を返す
+            empInfoResponse.ProcessStatus = returnModel != 0 ? STATUS.OK : STATUS.NG;
+            //NGの場合はメッセージを設定
+            if (empInfoResponse.ProcessStatus == STATUS.NG) empInfoResponse.ResponseMessage = MESSAGE.MSG_FETCH_ALL_EMP_INFO_NG;
+            return empInfoResponse;
+        }
+
+        /// <summary>
         /// アクセストークンを検証
         /// </summary>
         /// <returns></returns>

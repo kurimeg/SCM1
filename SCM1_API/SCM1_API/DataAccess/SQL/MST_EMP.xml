@@ -30,7 +30,64 @@
     FROM
       MST_EMP EMP
   </select>
+
+  <update id="UpdateEMPInfo">
+    MERGE INTO MST_EMP AS A
+    USING 
+      (
+        SELECT
+            #EMP_NO# AS EMP_NO
+      ) AS B
+    ON
+      (
+        A.EMP_NO = B.EMP_NO
+      )
+    WHEN MATCHED THEN
+      UPDATE 
+        SET
+          LOGIN_PASSWORD = #LOGIN_PASSWORD#
+          ,CAN_SIT_FIXED_SEAT_FLG = #CAN_SIT_FIXED_SEAT_FLG#
+          ,EMP_NM = #EMP_NM#
+          ,EMP_KANA_NM = #EMP_KANA_NM#
+          ,LAST_UPDATE_EMP_NO = #LAST_UPDATE_EMP_NO#
+          ,LAST_UPDATE_DT = GETDATE()
+          ,DISPLAY_EMP_NM = #DISPLAY_EMP_NM#
+    WHEN NOT MATCHED THEN
+      INSERT
+        (
+          EMP_NO
+          ,LOGIN_PASSWORD
+          ,CAN_SIT_FIXED_SEAT_FLG
+          ,EMP_NM
+          ,EMP_KANA_NM
+          ,CREATE_EMP_NO
+          ,CREATE_DT
+          ,LAST_UPDATE_EMP_NO
+          ,LAST_UPDATE_DT
+          ,DISPLAY_EMP_NM
+        )
+      VALUES
+        (
+        #EMP_NO#
+        ,#LOGIN_PASSWORD#
+        ,#CAN_SIT_FIXED_SEAT_FLG#
+        ,#EMP_NM#
+        ,#EMP_KANA_NM#
+        ,#CREATE_EMP_NO#
+        ,GETDATE()
+        ,#LAST_UPDATE_EMP_NO#
+        ,GETDATE()
+        ,#DISPLAY_EMP_NM#
+        )
+        ;
+  </update>
   
+  <delete id="ClearEMPInfo">
+    DELETE FROM
+      MST_EMP
+    WHERE
+      EMP_NO = #EMP_NO#
+  </delete>
 
   <update id="StoreAccessToken">
    UPDATE
