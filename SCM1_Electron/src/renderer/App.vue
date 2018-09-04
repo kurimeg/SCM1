@@ -18,19 +18,15 @@
 </script>
 
 <style>
-  #app{
-    position: relative;
-    zoom: 70%;
-  }
   body {
     margin: 0 0 0 0;
     font-family: 'Century Gothic';
   }
   .main-layer {
     position: absolute;
-    width: 1409px;
-    height: 789px;
-    margin: 15px 0 0 20px;
+    width: 986px;
+    height: 549.5px;
+    margin: 10px 14px 0 14px;
     z-index: 1;
     overflow: hidden;
   }
@@ -60,8 +56,8 @@
   }
   .alert-layer{
     position: absolute;
-    width: 1429px;
-    height: 804px;
+    width: 1000px;
+    height: 560px;
     margin: 0 0 0 0;
     display: flex;
     justify-content: center; /*左右中央揃え*/
@@ -71,8 +67,8 @@
   .loading-layer{
     position: absolute;
     background: #ffffff;
-    width: 1429px;
-    height: 804px;
+    width: 1000px;
+    height: 560px;
     margin: 0 0 0 0;
     z-index: 999;
   }
