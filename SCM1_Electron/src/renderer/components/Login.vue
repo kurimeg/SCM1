@@ -70,8 +70,8 @@ button:focus{
 	background-image: url("../assets/images/back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width: 1429px;
-	height: 804px;
+	width: 1000px;
+	height: 560px;
 	margin: 0 0 0 0;
 	z-index: 3;
   overflow: hidden;
