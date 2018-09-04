@@ -83,28 +83,26 @@ button:disabled{
     cursor: default;
 }
 .seat {
-    width: 24px;
-    height: 60px;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    padding: 3px 0;
-    background-color: #FFFFFF;
-    border: 2px solid #B8C8D6;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Century Gothic';
-	z-index: 1;
-    position: absolute;
-	float: left;
-    line-height: 1.1;
+  position: absolute;
+  width: 16.8px;
+  height: 42px;
+  padding: 3px 0;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none; 
+  background-color: #FFFFFF;
+  border: 0.1px solid #B8C8D6;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 11.2px;
+  font-family: 'Century Gothic';
+  line-height: 1.1;
 }
 .seatY{
-    position: absolute;
-	width: 60px;
-    height: 24px;
-    padding: 0 0;
+  position: absolute;
+  width: 42px;
+  height: 16.8px;
+  padding: 0 0;
 }
 .searched{
     animation: changecolor 30s 1;
