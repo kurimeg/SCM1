@@ -1,13 +1,13 @@
 <template>
 	<div class="main-layer">
 		<img 
-			class="icon" 
+			class="icon icon-search" 
 			src="../assets/images/search_icon.png" 			
 			@click="showSearch"
 		>	
 		<search v-if="show"></search>
 		<img 
-			class="rel" 
+			class="icon icon-reload" 
 			src="../assets/images/reload.png" 			
 			@click="reload"
 		>
@@ -145,46 +145,33 @@ button:focus{
  outline:none;
 }
 .icon{
-	margin-left: 9px; 
-	margin-top: 8px;
-	width: 50px;
-	height: 50px;
-	float: left;
-	z-index: 2;
-	position: absolute;
+  position: absolute;
+	width: 35px;
+	height: 35px;
 	cursor: pointer;
 }
 .icon:active{
-	width: 49px;
-    height: 49px;
+	width: 34px;
+  height: 34px;
 	margin-top: 7.9px;
 	filter:brightness(98%);
 }
-.rel{
-	margin-left: 65px; 
-	margin-top: 8px;
-	width: 50px;
-	height: 50px;
-	float: left;
-	z-index: 2;
-	position: absolute;
-	cursor: pointer;
+.icon-search{
+	margin-left: 6.3px; 
+	margin-top: 5.6px;
 }
-.rel:active{
-	width: 49px;
-	height: 49px;
-	margin-top: 7.9px;
-	filter:brightness(98%);
+.icon-reload{
+	margin-left: 45.5px; 
+	margin-top: 5.6px;
 }
+
 .logout{
+  position: absolute;
 	margin-top: 5px;
-	margin-bottom: 6px;
-	margin-right: 8px;
+	margin-left: 900px; 
 	color: #cccccc;
-	font-size: 18px;
+	font-size: 12.6px;
 	font-family: 'Century Gothic';
-	display: block;
-	float: right;
 	border-style: dashed;
 	background: none;
 	cursor: pointer;
