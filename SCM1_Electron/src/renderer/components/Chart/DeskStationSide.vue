@@ -167,8 +167,8 @@ export default {
   }
   .desk_square {
       margin: 0 30px 0 30px;
-      width: 45px;
-      height: 50px;
+      width: 31.5px;
+      height: 35px;
     background-color: #91cdf7;
   }
   .desk_rec01 {
@@ -214,11 +214,11 @@ export default {
 
   /*フリースペース_正方形*/
   .desk_square02 {
-      position: relative;
-      left: 25px;
+    position: relative;
+    left: 25px;
     margin: 0 28px 70px;
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
     background-color: #91cdf7;
   }
 
