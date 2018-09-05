@@ -54,7 +54,7 @@ button:focus{
 }
 .btn{
 	background-color: #28a1f7;
-	width: 150px;
+	width: 105px;
 	color: #ffffff;
 	font-size: 18px;
 	font-family: 'Century Gothic';
