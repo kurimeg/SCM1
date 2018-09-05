@@ -1,21 +1,21 @@
 <template>
 	<div class="main-layer">
-		<img 
-			class="icon icon-search" 
-			src="../assets/images/search_icon.png" 			
-			@click="showSearch"
-		>	
-		<search v-if="show"></search>
-		<img 
-			class="icon icon-reload" 
-			src="../assets/images/reload.png" 			
-			@click="reload"
-		>
-		<button 
-			class="logout" 
-			v-if="!isGuest"
-			@click="logout" 			
-		>Log out</button>
+      <img 
+        class="icon icon-search" 
+        src="../assets/images/search_icon.png" 			
+        @click="showSearch"
+      >	
+      <search v-if="show"></search>
+      <img 
+        class="icon icon-reload" 
+        src="../assets/images/reload.png" 			
+        @click="reload"
+      >
+      <button 
+        class="logout" 
+        v-if="!isGuest"
+        @click="logout" 			
+      >Log out</button>
 		<div class="tabs">
 			<tab
         v-for="floorPlace in floorPlaces" 
