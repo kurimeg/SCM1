@@ -40,7 +40,7 @@ button:focus{
 	border-radius: 15px;
 	background-color: #d8d8d8;
 	overflow: hidden;
-	width: 500px;
+	width: 350px;
 	z-index: 3;
 	padding: 3px;
 	text-align: center;
