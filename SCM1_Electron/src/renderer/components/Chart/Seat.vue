@@ -92,7 +92,7 @@ button:disabled{
   text-decoration: none; 
   background-color: #FFFFFF;
   border: 0.1px solid #B8C8D6;
-  border-radius: 10px;
+  border-radius: 7px;
   cursor: pointer;
   font-size: 11.2px;
   font-family: 'Century Gothic';

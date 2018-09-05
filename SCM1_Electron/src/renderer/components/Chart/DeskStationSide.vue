@@ -224,16 +224,16 @@ export default {
 
   /* 内線関係 */
   .naisen{
-      width: 45px;
-      height: 20px;
+      width: 31.5px;
+      height: 14px;
       background-color: #f7ffa3;
       color: #495f92;
       font-family: 'Century Gothic';
-      font-size: 16px;
+      font-size: 11.2px;
       font-weight: bold;
       text-align: center;
-      border: 2px solid #495f92;
-      border-radius: 5px;
+      border: 1.4px solid #495f92;
+      border-radius: 3.5px;
   }
   .naisen_onsquare{
       position: absolute;

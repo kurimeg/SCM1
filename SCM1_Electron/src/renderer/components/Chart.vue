@@ -172,7 +172,7 @@ button:focus{
 	color: #cccccc;
 	font-size: 12.6px;
 	font-family: 'Century Gothic';
-	border-style: dashed;
+  border: 1px dashed;
 	background: none;
 	cursor: pointer;
 }
