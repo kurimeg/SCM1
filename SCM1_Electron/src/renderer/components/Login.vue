@@ -83,44 +83,44 @@ button:focus{
 	bottom: 0;
 	left: 0;
 	margin: auto;
-	height: 300px;
-	width: 400px;
-	border: 5px solid #28a1f7;
-	border-radius: 15px;
+	height: 210px;
+	width: 280px;
+	border: 3.5px solid #28a1f7;
+	border-radius: 10.5px;
 	background-color: #d8d8d8;
 }
 .login-char{
-	margin-left: 25px; 
-	margin-top: 20px;
+	margin-left: 17.5px; 
+	margin-top: 14px;
 	color: #28a1f7;
-	font-size: 20px;
+	font-size: 14px;
 	font-family: 'Century Gothic';
 	display: block;
 }
 .txtbox{
-	margin-left: 30px;
-	margin-top: 10px;
+	margin-left: 21px;
+	margin-top: 7px;
 	text-indent: 1em;
 	font-family: 'Century Gothic';
-	font-size: 20px;
+	font-size: 14px;
 	background-color: #ffffff;
 	color: #909090;
-	width: 330px;
-	height: 30px;
-	border: 2px solid #28a1f7;
+	width: 231px;
+	height: 21px;
+	border: 1.4px solid #28a1f7;
 	border-radius: 20px;
 }
 .login{
 	background-color: #28a1f7;
-	width: 200px;
+	width: 140px;
 	color: #ffffff;
-	font-size: 20px;
+	font-size: 14px;
 	font-family: 'Century Gothic';
 	border-radius: 15px;
 	cursor: pointer;
 	text-decoration: none;
-	margin-top: 45px;
-	margin-left: 100px;
+	margin-top: 31.5px;
+	margin-left: 70px;
 	border-style: none;
 }
 </style>
